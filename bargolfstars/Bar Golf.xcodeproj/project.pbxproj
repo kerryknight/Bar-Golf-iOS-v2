@@ -1,0 +1,819 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BDBC9227CBC346C5ADC47CB6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F172BBDD0FFB49A6A15EA00F /* libPods.a */; };
+		DE0A2A5F1878E3FE002DC39A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE0A2A5D1878E3FE002DC39A /* Main.storyboard */; };
+		DE8F39A3187882D3007D3942 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE8F39A2187882D3007D3942 /* Crashlytics.framework */; };
+		DEAF54DA18786C990019F7FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54D918786C990019F7FF /* Foundation.framework */; };
+		DEAF54DC18786C990019F7FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54DB18786C990019F7FF /* CoreGraphics.framework */; };
+		DEAF54DE18786C990019F7FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54DD18786C990019F7FF /* UIKit.framework */; };
+		DEAF54E418786C990019F7FF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEAF54E218786C990019F7FF /* InfoPlist.strings */; };
+		DEAF54E618786C990019F7FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAF54E518786C990019F7FF /* main.m */; };
+		DEAF54EA18786C990019F7FF /* KKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAF54E918786C990019F7FF /* KKAppDelegate.m */; };
+		DEAF54F218786C990019F7FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEAF54F118786C990019F7FF /* Images.xcassets */; };
+		DEAF54F918786C990019F7FF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54F818786C990019F7FF /* XCTest.framework */; };
+		DEAF54FA18786C990019F7FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54D918786C990019F7FF /* Foundation.framework */; };
+		DEAF54FB18786C990019F7FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54DD18786C990019F7FF /* UIKit.framework */; };
+		DEAF550318786C990019F7FF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEAF550118786C990019F7FF /* InfoPlist.strings */; };
+		DEAF550518786C990019F7FF /* BarGolfTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAF550418786C990019F7FF /* BarGolfTests.m */; };
+		DEAF550F18786D8E0019F7FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF550E18786D8E0019F7FF /* MapKit.framework */; };
+		DEE2EE661891E5DC00FC2991 /* MEDynamicTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE591891E5DC00FC2991 /* MEDynamicTransition.m */; };
+		DEE2EE671891E5DC00FC2991 /* MEFoldAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE5B1891E5DC00FC2991 /* MEFoldAnimationController.m */; };
+		DEE2EE681891E5DC00FC2991 /* MEMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE5D1891E5DC00FC2991 /* MEMenuViewController.m */; };
+		DEE2EE691891E5DC00FC2991 /* MESettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE5F1891E5DC00FC2991 /* MESettingsViewController.m */; };
+		DEE2EE6A1891E5DC00FC2991 /* METransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE611891E5DC00FC2991 /* METransitions.m */; };
+		DEE2EE6B1891E5DC00FC2991 /* METransitionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE631891E5DC00FC2991 /* METransitionsViewController.m */; };
+		DEE2EE6C1891E5DC00FC2991 /* MEZoomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE651891E5DC00FC2991 /* MEZoomAnimationController.m */; };
+		DEE2EE8D1891E73F00FC2991 /* KKAcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE711891E73F00FC2991 /* KKAcknowledgementsViewController.m */; };
+		DEE2EE8E1891E73F00FC2991 /* KKCreateRoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE741891E73F00FC2991 /* KKCreateRoundViewController.m */; };
+		DEE2EE8F1891E73F00FC2991 /* KKCurrentLeaderboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE771891E73F00FC2991 /* KKCurrentLeaderboardViewController.m */; };
+		DEE2EE901891E73F00FC2991 /* KKDisclaimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE7A1891E73F00FC2991 /* KKDisclaimerViewController.m */; };
+		DEE2EE911891E73F00FC2991 /* KKJoinRoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE7D1891E73F00FC2991 /* KKJoinRoundViewController.m */; };
+		DEE2EE921891E73F00FC2991 /* KKModifyCurrentRoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE7F1891E73F00FC2991 /* KKModifyCurrentRoundViewController.m */; };
+		DEE2EE931891E73F00FC2991 /* KKMyPlayerProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE821891E73F00FC2991 /* KKMyPlayerProfileViewController.m */; };
+		DEE2EE941891E73F00FC2991 /* KKMyScorecardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE851891E73F00FC2991 /* KKMyScorecardViewController.m */; };
+		DEE2EE951891E73F00FC2991 /* KKPrivacyPolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE881891E73F00FC2991 /* KKPrivacyPolicyViewController.m */; };
+		DEE2EE961891E73F00FC2991 /* KKHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE8B1891E73F00FC2991 /* KKHelpViewController.m */; };
+		DEE2EE991891E79300FC2991 /* KKMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE981891E79300FC2991 /* KKMenuViewController.m */; };
+		DEE2EE9D1891E7EA00FC2991 /* KKConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE9B1891E7EA00FC2991 /* KKConfig.m */; };
+		DEE2EEA01891E8CF00FC2991 /* MEAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE9F1891E8CF00FC2991 /* MEAnimationController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DEAF54FC18786C990019F7FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DEAF54CE18786C990019F7FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DEAF54D518786C990019F7FF;
+			remoteInfo = bargolfstars;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		17E43A40BFEB41C68877218D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		DE0A2A5E1878E3FE002DC39A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DE8F39A2187882D3007D3942 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		DEA02D1518787ACE00B32C43 /* NOTES */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTES; sourceTree = "<group>"; };
+		DEA274811878DFDC00ABA879 /* Bar Golf-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bar Golf-Prefix.pch"; sourceTree = "<group>"; };
+		DEAF54D618786C990019F7FF /* Bar Golf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bar Golf.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEAF54D918786C990019F7FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DEAF54DB18786C990019F7FF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DEAF54DD18786C990019F7FF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DEAF54E118786C990019F7FF /* Bar Golf-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bar Golf-Info.plist"; sourceTree = "<group>"; };
+		DEAF54E318786C990019F7FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DEAF54E518786C990019F7FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DEAF54E818786C990019F7FF /* KKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKAppDelegate.h; sourceTree = "<group>"; };
+		DEAF54E918786C990019F7FF /* KKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKAppDelegate.m; sourceTree = "<group>"; };
+		DEAF54F118786C990019F7FF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		DEAF54F718786C990019F7FF /* Bar GolfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bar GolfTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEAF54F818786C990019F7FF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		DEAF550018786C990019F7FF /* Bar GolfTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bar GolfTests-Info.plist"; sourceTree = "<group>"; };
+		DEAF550218786C990019F7FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DEAF550418786C990019F7FF /* BarGolfTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BarGolfTests.m; sourceTree = "<group>"; };
+		DEAF550E18786D8E0019F7FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DEE2EE581891E5DC00FC2991 /* MEDynamicTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEDynamicTransition.h; sourceTree = "<group>"; };
+		DEE2EE591891E5DC00FC2991 /* MEDynamicTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEDynamicTransition.m; sourceTree = "<group>"; };
+		DEE2EE5A1891E5DC00FC2991 /* MEFoldAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEFoldAnimationController.h; sourceTree = "<group>"; };
+		DEE2EE5B1891E5DC00FC2991 /* MEFoldAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEFoldAnimationController.m; sourceTree = "<group>"; };
+		DEE2EE5C1891E5DC00FC2991 /* MEMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MEMenuViewController.h; path = Transitions/MEMenuViewController.h; sourceTree = "<group>"; };
+		DEE2EE5D1891E5DC00FC2991 /* MEMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MEMenuViewController.m; path = Transitions/MEMenuViewController.m; sourceTree = "<group>"; };
+		DEE2EE5E1891E5DC00FC2991 /* MESettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MESettingsViewController.h; path = Transitions/MESettingsViewController.h; sourceTree = "<group>"; };
+		DEE2EE5F1891E5DC00FC2991 /* MESettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MESettingsViewController.m; path = Transitions/MESettingsViewController.m; sourceTree = "<group>"; };
+		DEE2EE601891E5DC00FC2991 /* METransitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = METransitions.h; path = Transitions/METransitions.h; sourceTree = "<group>"; };
+		DEE2EE611891E5DC00FC2991 /* METransitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = METransitions.m; path = Transitions/METransitions.m; sourceTree = "<group>"; };
+		DEE2EE621891E5DC00FC2991 /* METransitionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = METransitionsViewController.h; path = Transitions/METransitionsViewController.h; sourceTree = "<group>"; };
+		DEE2EE631891E5DC00FC2991 /* METransitionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = METransitionsViewController.m; path = Transitions/METransitionsViewController.m; sourceTree = "<group>"; };
+		DEE2EE641891E5DC00FC2991 /* MEZoomAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEZoomAnimationController.h; sourceTree = "<group>"; };
+		DEE2EE651891E5DC00FC2991 /* MEZoomAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEZoomAnimationController.m; sourceTree = "<group>"; };
+		DEE2EE701891E73F00FC2991 /* KKAcknowledgementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKAcknowledgementsViewController.h; sourceTree = "<group>"; };
+		DEE2EE711891E73F00FC2991 /* KKAcknowledgementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKAcknowledgementsViewController.m; sourceTree = "<group>"; };
+		DEE2EE731891E73F00FC2991 /* KKCreateRoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKCreateRoundViewController.h; sourceTree = "<group>"; };
+		DEE2EE741891E73F00FC2991 /* KKCreateRoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKCreateRoundViewController.m; sourceTree = "<group>"; };
+		DEE2EE761891E73F00FC2991 /* KKCurrentLeaderboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKCurrentLeaderboardViewController.h; sourceTree = "<group>"; };
+		DEE2EE771891E73F00FC2991 /* KKCurrentLeaderboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKCurrentLeaderboardViewController.m; sourceTree = "<group>"; };
+		DEE2EE791891E73F00FC2991 /* KKDisclaimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKDisclaimerViewController.h; sourceTree = "<group>"; };
+		DEE2EE7A1891E73F00FC2991 /* KKDisclaimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKDisclaimerViewController.m; sourceTree = "<group>"; };
+		DEE2EE7C1891E73F00FC2991 /* KKJoinRoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKJoinRoundViewController.h; sourceTree = "<group>"; };
+		DEE2EE7D1891E73F00FC2991 /* KKJoinRoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKJoinRoundViewController.m; sourceTree = "<group>"; };
+		DEE2EE7E1891E73F00FC2991 /* KKModifyCurrentRoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKModifyCurrentRoundViewController.h; sourceTree = "<group>"; };
+		DEE2EE7F1891E73F00FC2991 /* KKModifyCurrentRoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKModifyCurrentRoundViewController.m; sourceTree = "<group>"; };
+		DEE2EE811891E73F00FC2991 /* KKMyPlayerProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMyPlayerProfileViewController.h; sourceTree = "<group>"; };
+		DEE2EE821891E73F00FC2991 /* KKMyPlayerProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMyPlayerProfileViewController.m; sourceTree = "<group>"; };
+		DEE2EE841891E73F00FC2991 /* KKMyScorecardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMyScorecardViewController.h; sourceTree = "<group>"; };
+		DEE2EE851891E73F00FC2991 /* KKMyScorecardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMyScorecardViewController.m; sourceTree = "<group>"; };
+		DEE2EE871891E73F00FC2991 /* KKPrivacyPolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKPrivacyPolicyViewController.h; sourceTree = "<group>"; };
+		DEE2EE881891E73F00FC2991 /* KKPrivacyPolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKPrivacyPolicyViewController.m; sourceTree = "<group>"; };
+		DEE2EE8A1891E73F00FC2991 /* KKHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKHelpViewController.h; sourceTree = "<group>"; };
+		DEE2EE8B1891E73F00FC2991 /* KKHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKHelpViewController.m; sourceTree = "<group>"; };
+		DEE2EE971891E79300FC2991 /* KKMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMenuViewController.h; sourceTree = "<group>"; };
+		DEE2EE981891E79300FC2991 /* KKMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMenuViewController.m; sourceTree = "<group>"; };
+		DEE2EE9A1891E7EA00FC2991 /* KKConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKConfig.h; sourceTree = "<group>"; };
+		DEE2EE9B1891E7EA00FC2991 /* KKConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKConfig.m; sourceTree = "<group>"; };
+		DEE2EE9C1891E7EA00FC2991 /* KKMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMacros.h; sourceTree = "<group>"; };
+		DEE2EE9E1891E8CF00FC2991 /* MEAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEAnimationController.h; sourceTree = "<group>"; };
+		DEE2EE9F1891E8CF00FC2991 /* MEAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEAnimationController.m; sourceTree = "<group>"; };
+		F172BBDD0FFB49A6A15EA00F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DEAF54D318786C990019F7FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEAF550F18786D8E0019F7FF /* MapKit.framework in Frameworks */,
+				DEAF54DC18786C990019F7FF /* CoreGraphics.framework in Frameworks */,
+				DEAF54DE18786C990019F7FF /* UIKit.framework in Frameworks */,
+				DEAF54DA18786C990019F7FF /* Foundation.framework in Frameworks */,
+				DE8F39A3187882D3007D3942 /* Crashlytics.framework in Frameworks */,
+				BDBC9227CBC346C5ADC47CB6 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEAF54F418786C990019F7FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEAF54F918786C990019F7FF /* XCTest.framework in Frameworks */,
+				DEAF54FB18786C990019F7FF /* UIKit.framework in Frameworks */,
+				DEAF54FA18786C990019F7FF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DEAF54CD18786C990019F7FF = {
+			isa = PBXGroup;
+			children = (
+				DEA02D1518787ACE00B32C43 /* NOTES */,
+				DEAF54DF18786C990019F7FF /* Bar Golf */,
+				DEAF54FE18786C990019F7FF /* Bar Golf Tests */,
+				DEAF54D818786C990019F7FF /* Frameworks */,
+				DEAF54D718786C990019F7FF /* Products */,
+				17E43A40BFEB41C68877218D /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		DEAF54D718786C990019F7FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DEAF54D618786C990019F7FF /* Bar Golf.app */,
+				DEAF54F718786C990019F7FF /* Bar GolfTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DEAF54D818786C990019F7FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE8F39A2187882D3007D3942 /* Crashlytics.framework */,
+				DEAF550E18786D8E0019F7FF /* MapKit.framework */,
+				DEAF54D918786C990019F7FF /* Foundation.framework */,
+				DEAF54DB18786C990019F7FF /* CoreGraphics.framework */,
+				DEAF54DD18786C990019F7FF /* UIKit.framework */,
+				DEAF54F818786C990019F7FF /* XCTest.framework */,
+				F172BBDD0FFB49A6A15EA00F /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DEAF54DF18786C990019F7FF /* Bar Golf */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2EE971891E79300FC2991 /* KKMenuViewController.h */,
+				DEE2EE981891E79300FC2991 /* KKMenuViewController.m */,
+				DEE2EE8C1891E73F00FC2991 /* Utilities */,
+				DEE2EE6E1891E73F00FC2991 /* Sections */,
+				DEE2EE6D1891E67B00FC2991 /* Stuff to Replace */,
+				DEE2EE571891E5DC00FC2991 /* Transitions */,
+				DEAF54E818786C990019F7FF /* KKAppDelegate.h */,
+				DEAF54E918786C990019F7FF /* KKAppDelegate.m */,
+				DEE8BAA218787C52000EA492 /* UI Resources */,
+				DEAF54E018786C990019F7FF /* Supporting Files */,
+			);
+			name = "Bar Golf";
+			path = bargolfstars;
+			sourceTree = "<group>";
+		};
+		DEAF54E018786C990019F7FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DEA274811878DFDC00ABA879 /* Bar Golf-Prefix.pch */,
+				DEAF54E118786C990019F7FF /* Bar Golf-Info.plist */,
+				DEAF54E218786C990019F7FF /* InfoPlist.strings */,
+				DEAF54E518786C990019F7FF /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DEAF54FE18786C990019F7FF /* Bar Golf Tests */ = {
+			isa = PBXGroup;
+			children = (
+				DEAF550418786C990019F7FF /* BarGolfTests.m */,
+				DEAF54FF18786C990019F7FF /* Supporting Files */,
+			);
+			name = "Bar Golf Tests";
+			path = bargolfstarsTests;
+			sourceTree = "<group>";
+		};
+		DEAF54FF18786C990019F7FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DEAF550018786C990019F7FF /* Bar GolfTests-Info.plist */,
+				DEAF550118786C990019F7FF /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DEE2EE571891E5DC00FC2991 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2EE9E1891E8CF00FC2991 /* MEAnimationController.h */,
+				DEE2EE9F1891E8CF00FC2991 /* MEAnimationController.m */,
+				DEE2EE581891E5DC00FC2991 /* MEDynamicTransition.h */,
+				DEE2EE591891E5DC00FC2991 /* MEDynamicTransition.m */,
+				DEE2EE5A1891E5DC00FC2991 /* MEFoldAnimationController.h */,
+				DEE2EE5B1891E5DC00FC2991 /* MEFoldAnimationController.m */,
+				DEE2EE641891E5DC00FC2991 /* MEZoomAnimationController.h */,
+				DEE2EE651891E5DC00FC2991 /* MEZoomAnimationController.m */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
+		DEE2EE6D1891E67B00FC2991 /* Stuff to Replace */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2EE5C1891E5DC00FC2991 /* MEMenuViewController.h */,
+				DEE2EE5D1891E5DC00FC2991 /* MEMenuViewController.m */,
+				DEE2EE5E1891E5DC00FC2991 /* MESettingsViewController.h */,
+				DEE2EE5F1891E5DC00FC2991 /* MESettingsViewController.m */,
+				DEE2EE601891E5DC00FC2991 /* METransitions.h */,
+				DEE2EE611891E5DC00FC2991 /* METransitions.m */,
+				DEE2EE621891E5DC00FC2991 /* METransitionsViewController.h */,
+				DEE2EE631891E5DC00FC2991 /* METransitionsViewController.m */,
+			);
+			name = "Stuff to Replace";
+			sourceTree = "<group>";
+		};
+		DEE2EE6E1891E73F00FC2991 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2EE6F1891E73F00FC2991 /* Acknowledgements */,
+				DEE2EE721891E73F00FC2991 /* Create and Modify a Round */,
+				DEE2EE751891E73F00FC2991 /* Current Leaderboard */,
+				DEE2EE781891E73F00FC2991 /* Disclaimer */,
+				DEE2EE7B1891E73F00FC2991 /* Join a Round */,
+				DEE2EE801891E73F00FC2991 /* My Player Profile */,
+				DEE2EE831891E73F00FC2991 /* My Scorecard */,
+				DEE2EE861891E73F00FC2991 /* Privacy Policy and TOS */,
+				DEE2EE891891E73F00FC2991 /* Rules and Help */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		DEE2EE6F1891E73F00FC2991 /* Acknowledgements */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2EE701891E73F00FC2991 /* KKAcknowledgementsViewController.h */,
+				DEE2EE711891E73F00FC2991 /* KKAcknowledgementsViewController.m */,
+			);
+			path = Acknowledgements;
+			sourceTree = "<group>";
+		};
+		DEE2EE721891E73F00FC2991 /* Create and Modify a Round */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2EE731891E73F00FC2991 /* KKCreateRoundViewController.h */,
+				DEE2EE741891E73F00FC2991 /* KKCreateRoundViewController.m */,
+			);
+			path = "Create and Modify a Round";
+			sourceTree = "<group>";
+		};
+		DEE2EE751891E73F00FC2991 /* Current Leaderboard */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2EE761891E73F00FC2991 /* KKCurrentLeaderboardViewController.h */,
+				DEE2EE771891E73F00FC2991 /* KKCurrentLeaderboardViewController.m */,
+			);
+			path = "Current Leaderboard";
+			sourceTree = "<group>";
+		};
+		DEE2EE781891E73F00FC2991 /* Disclaimer */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2EE791891E73F00FC2991 /* KKDisclaimerViewController.h */,
+				DEE2EE7A1891E73F00FC2991 /* KKDisclaimerViewController.m */,
+			);
+			path = Disclaimer;
+			sourceTree = "<group>";
+		};
+		DEE2EE7B1891E73F00FC2991 /* Join a Round */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2EE7C1891E73F00FC2991 /* KKJoinRoundViewController.h */,
+				DEE2EE7D1891E73F00FC2991 /* KKJoinRoundViewController.m */,
+				DEE2EE7E1891E73F00FC2991 /* KKModifyCurrentRoundViewController.h */,
+				DEE2EE7F1891E73F00FC2991 /* KKModifyCurrentRoundViewController.m */,
+			);
+			path = "Join a Round";
+			sourceTree = "<group>";
+		};
+		DEE2EE801891E73F00FC2991 /* My Player Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2EE811891E73F00FC2991 /* KKMyPlayerProfileViewController.h */,
+				DEE2EE821891E73F00FC2991 /* KKMyPlayerProfileViewController.m */,
+			);
+			path = "My Player Profile";
+			sourceTree = "<group>";
+		};
+		DEE2EE831891E73F00FC2991 /* My Scorecard */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2EE841891E73F00FC2991 /* KKMyScorecardViewController.h */,
+				DEE2EE851891E73F00FC2991 /* KKMyScorecardViewController.m */,
+			);
+			path = "My Scorecard";
+			sourceTree = "<group>";
+		};
+		DEE2EE861891E73F00FC2991 /* Privacy Policy and TOS */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2EE871891E73F00FC2991 /* KKPrivacyPolicyViewController.h */,
+				DEE2EE881891E73F00FC2991 /* KKPrivacyPolicyViewController.m */,
+			);
+			path = "Privacy Policy and TOS";
+			sourceTree = "<group>";
+		};
+		DEE2EE891891E73F00FC2991 /* Rules and Help */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2EE8A1891E73F00FC2991 /* KKHelpViewController.h */,
+				DEE2EE8B1891E73F00FC2991 /* KKHelpViewController.m */,
+			);
+			path = "Rules and Help";
+			sourceTree = "<group>";
+		};
+		DEE2EE8C1891E73F00FC2991 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2EE9A1891E7EA00FC2991 /* KKConfig.h */,
+				DEE2EE9B1891E7EA00FC2991 /* KKConfig.m */,
+				DEE2EE9C1891E7EA00FC2991 /* KKMacros.h */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		DEE8BAA218787C52000EA492 /* UI Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DE0A2A5D1878E3FE002DC39A /* Main.storyboard */,
+				DEAF54F118786C990019F7FF /* Images.xcassets */,
+			);
+			name = "UI Resources";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DEAF54D518786C990019F7FF /* Bar Golf */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DEAF550818786C990019F7FF /* Build configuration list for PBXNativeTarget "Bar Golf" */;
+			buildPhases = (
+				35050D218BA24DFDA55A5C8C /* Check Pods Manifest.lock */,
+				DEAF54D218786C990019F7FF /* Sources */,
+				DEAF54D318786C990019F7FF /* Frameworks */,
+				DEAF54D418786C990019F7FF /* Resources */,
+				FE15B1F260774FA684381E24 /* Copy Pods Resources */,
+				DE8F39A11878829C007D3942 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bar Golf";
+			productName = bargolfstars;
+			productReference = DEAF54D618786C990019F7FF /* Bar Golf.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DEAF54F618786C990019F7FF /* Bar GolfTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DEAF550B18786C990019F7FF /* Build configuration list for PBXNativeTarget "Bar GolfTests" */;
+			buildPhases = (
+				DEAF54F318786C990019F7FF /* Sources */,
+				DEAF54F418786C990019F7FF /* Frameworks */,
+				DEAF54F518786C990019F7FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DEAF54FD18786C990019F7FF /* PBXTargetDependency */,
+			);
+			name = "Bar GolfTests";
+			productName = bargolfstarsTests;
+			productReference = DEAF54F718786C990019F7FF /* Bar GolfTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DEAF54CE18786C990019F7FF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = KK;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Kerry Knight";
+				TargetAttributes = {
+					DEAF54D518786C990019F7FF = {
+						DevelopmentTeam = 2FXS3J8N9C;
+					};
+					DEAF54F618786C990019F7FF = {
+						TestTargetID = DEAF54D518786C990019F7FF;
+					};
+				};
+			};
+			buildConfigurationList = DEAF54D118786C990019F7FF /* Build configuration list for PBXProject "Bar Golf" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DEAF54CD18786C990019F7FF;
+			productRefGroup = DEAF54D718786C990019F7FF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DEAF54D518786C990019F7FF /* Bar Golf */,
+				DEAF54F618786C990019F7FF /* Bar GolfTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DEAF54D418786C990019F7FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE0A2A5F1878E3FE002DC39A /* Main.storyboard in Resources */,
+				DEAF54F218786C990019F7FF /* Images.xcassets in Resources */,
+				DEAF54E418786C990019F7FF /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEAF54F518786C990019F7FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEAF550318786C990019F7FF /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		35050D218BA24DFDA55A5C8C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DE8F39A11878829C007D3942 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 72614ec4b03fbf638deccdb46a34d1ef0b3a0a62";
+		};
+		FE15B1F260774FA684381E24 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DEAF54D218786C990019F7FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEE2EEA01891E8CF00FC2991 /* MEAnimationController.m in Sources */,
+				DEE2EE961891E73F00FC2991 /* KKHelpViewController.m in Sources */,
+				DEE2EE6A1891E5DC00FC2991 /* METransitions.m in Sources */,
+				DEE2EE911891E73F00FC2991 /* KKJoinRoundViewController.m in Sources */,
+				DEE2EE991891E79300FC2991 /* KKMenuViewController.m in Sources */,
+				DEE2EE8E1891E73F00FC2991 /* KKCreateRoundViewController.m in Sources */,
+				DEE2EE661891E5DC00FC2991 /* MEDynamicTransition.m in Sources */,
+				DEE2EE671891E5DC00FC2991 /* MEFoldAnimationController.m in Sources */,
+				DEE2EE8F1891E73F00FC2991 /* KKCurrentLeaderboardViewController.m in Sources */,
+				DEE2EE921891E73F00FC2991 /* KKModifyCurrentRoundViewController.m in Sources */,
+				DEE2EE951891E73F00FC2991 /* KKPrivacyPolicyViewController.m in Sources */,
+				DEE2EE8D1891E73F00FC2991 /* KKAcknowledgementsViewController.m in Sources */,
+				DEAF54EA18786C990019F7FF /* KKAppDelegate.m in Sources */,
+				DEE2EE901891E73F00FC2991 /* KKDisclaimerViewController.m in Sources */,
+				DEE2EE681891E5DC00FC2991 /* MEMenuViewController.m in Sources */,
+				DEE2EE6C1891E5DC00FC2991 /* MEZoomAnimationController.m in Sources */,
+				DEE2EE941891E73F00FC2991 /* KKMyScorecardViewController.m in Sources */,
+				DEAF54E618786C990019F7FF /* main.m in Sources */,
+				DEE2EE691891E5DC00FC2991 /* MESettingsViewController.m in Sources */,
+				DEE2EE6B1891E5DC00FC2991 /* METransitionsViewController.m in Sources */,
+				DEE2EE931891E73F00FC2991 /* KKMyPlayerProfileViewController.m in Sources */,
+				DEE2EE9D1891E7EA00FC2991 /* KKConfig.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEAF54F318786C990019F7FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEAF550518786C990019F7FF /* BarGolfTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DEAF54FD18786C990019F7FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DEAF54D518786C990019F7FF /* Bar Golf */;
+			targetProxy = DEAF54FC18786C990019F7FF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DE0A2A5D1878E3FE002DC39A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE0A2A5E1878E3FE002DC39A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DEAF54E218786C990019F7FF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DEAF54E318786C990019F7FF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DEAF550118786C990019F7FF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DEAF550218786C990019F7FF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DEAF550618786C990019F7FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kerry Knight (98MP6F7M6L)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "CD9D71B5-826D-4D6A-9102-EFC1ACD39CE4";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DEAF550718786C990019F7FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kerry Knight (98MP6F7M6L)";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "CD9D71B5-826D-4D6A-9102-EFC1ACD39CE4";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DEAF550918786C990019F7FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17E43A40BFEB41C68877218D /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/knight/Desktop/Kerry_Apps/Bar-Golf-iOS-v2/bargolfstars",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "bargolfstars/Bar Golf-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/JDStatusBarNotification\"",
+					"\"${PODS_ROOT}/Headers/JazzHands\"",
+					"\"${PODS_ROOT}/Headers/MRProgress\"",
+					"\"${PODS_ROOT}/Headers/ReactiveCocoa\"",
+					"\"${PODS_ROOT}/Headers/ReactiveCocoa/ReactiveCocoa\"",
+					"\"${PODS_ROOT}/Headers/VTAcknowledgementsViewController\"",
+					"\"${PODS_ROOT}/Headers/ECSlidingViewController\"",
+				);
+				INFOPLIST_FILE = "bargolfstars/Bar Golf-Info.plist";
+				PRODUCT_NAME = "Bar Golf";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DEAF550A18786C990019F7FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17E43A40BFEB41C68877218D /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/knight/Desktop/Kerry_Apps/Bar-Golf-iOS-v2/bargolfstars",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "bargolfstars/Bar Golf-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"RELEASE=1",
+				);
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/JDStatusBarNotification\"",
+					"\"${PODS_ROOT}/Headers/JazzHands\"",
+					"\"${PODS_ROOT}/Headers/MRProgress\"",
+					"\"${PODS_ROOT}/Headers/ReactiveCocoa\"",
+					"\"${PODS_ROOT}/Headers/ReactiveCocoa/ReactiveCocoa\"",
+					"\"${PODS_ROOT}/Headers/VTAcknowledgementsViewController\"",
+					"\"${PODS_ROOT}/Headers/ECSlidingViewController\"",
+				);
+				INFOPLIST_FILE = "bargolfstars/Bar Golf-Info.plist";
+				PRODUCT_NAME = "Bar Golf";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		DEAF550C18786C990019F7FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bargolfstars.app/bargolfstars";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "bargolfstars/bargolfstars-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "bargolfstarsTests/Bar GolfTests-Info.plist";
+				PRODUCT_NAME = "Bar GolfTests";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		DEAF550D18786C990019F7FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bargolfstars.app/bargolfstars";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "bargolfstars/bargolfstars-Prefix.pch";
+				INFOPLIST_FILE = "bargolfstarsTests/Bar GolfTests-Info.plist";
+				PRODUCT_NAME = "Bar GolfTests";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DEAF54D118786C990019F7FF /* Build configuration list for PBXProject "Bar Golf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DEAF550618786C990019F7FF /* Debug */,
+				DEAF550718786C990019F7FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DEAF550818786C990019F7FF /* Build configuration list for PBXNativeTarget "Bar Golf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DEAF550918786C990019F7FF /* Debug */,
+				DEAF550A18786C990019F7FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DEAF550B18786C990019F7FF /* Build configuration list for PBXNativeTarget "Bar GolfTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DEAF550C18786C990019F7FF /* Debug */,
+				DEAF550D18786C990019F7FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DEAF54CE18786C990019F7FF /* Project object */;
+}

@@ -1,0 +1,18 @@
+Bar Golf Notes
+
+
+
+
+**** TO DO ****
+- use right reveal side to allow adding a score from anywhere in the app
+    - be sure to allow changing players and holes from here with uipickerview
+
+
+
+**** SNIPPETS ****
+- perform some animations based on a UITableView's scroll offset with ReactiveCocoa
+
+[RACObserve(self.tableView, contentOffset) subscribeNext:^(NSValue *value) {
+  NSInteger y = floor(self.tableView.contentOffset.y);
+  [self.animator animate:y];
+}];

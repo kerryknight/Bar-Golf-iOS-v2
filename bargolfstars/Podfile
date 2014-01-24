@@ -1,0 +1,9 @@
+platform :ios, '7.0'
+
+pod 'ReactiveCocoa'
+pod 'JDStatusBarNotification'
+pod 'VTAcknowledgementsViewController'
+pod 'MRProgress'
+pod 'JazzHands'
+pod 'ECSlidingViewController'
+pod 'RevMob'
