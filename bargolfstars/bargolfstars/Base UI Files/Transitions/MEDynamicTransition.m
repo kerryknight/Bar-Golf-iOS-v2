@@ -250,7 +250,7 @@
             
             self.isPanningRight = velocityX > 0;
             
-            self.gravityBehavior.gravityDirection = self.isPanningRight ? CGVectorMake(2, 0) : CGVectorMake(-2, 0);
+            self.gravityBehavior.gravityDirection = self.isPanningRight ? CGVectorMake(4, 0) : CGVectorMake(-4, 0);
             
             self.pushBehavior.angle = 0; // velocity may be negative
             self.pushBehavior.magnitude = velocityX;

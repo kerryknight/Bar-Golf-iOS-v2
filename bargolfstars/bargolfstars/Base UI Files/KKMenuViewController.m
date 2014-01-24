@@ -16,7 +16,6 @@
 @implementation KKMenuViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    DLog(@"");
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self) {
     }
@@ -24,10 +23,9 @@
 }
 
 - (void)viewDidLoad {
-    DLog(@"");
     [super viewDidLoad];
     
-    // topViewController is the transitions navigation controller at this point.
+    // topViewController is the first view loaded into the navigation controller at this point.
     // It is initially set as a User Defined Runtime Attributes in storyboards.
     // We keep a reference to this instance so that we can go back to it without losing its state.
     self.transitionsNavigationController = (UINavigationController *)self.slidingViewController.topViewController;
@@ -43,7 +41,7 @@
 - (NSArray *)menuItems {
     if (_menuItems) return _menuItems;
     
-    _menuItems = @[@"My Scorecard", @"Settings"];
+    _menuItems = @[@"My Scorecard", @"My Player Profile", @"Log Out"];
     
     return _menuItems;
 }
@@ -71,18 +69,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *menuItem = self.menuItems[indexPath.row];
     
-    // This undoes the Zoom Transition's scale because it affects the other transitions.
-    // You normally wouldn't need to do anything like this, but we're changing transitions
-    // dynamically so everything needs to start in a consistent state.
-    self.slidingViewController.topViewController.view.layer.transform = CATransform3DMakeScale(1, 1, 1);
+    UIViewController *newVC;
     
     if ([menuItem isEqualToString:@"My Scorecard"]) {
-        self.slidingViewController.topViewController = self.transitionsNavigationController;
-    } else if ([menuItem isEqualToString:@"Settings"]) {
-        self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"KKSettingsNavigationController"];
+        newVC = [self.storyboard instantiateViewControllerWithIdentifier:@"KKMyScorecardViewController"];
+    } else if ([menuItem isEqualToString:@"My Player Profile"]) {
+        newVC = [self.storyboard instantiateViewControllerWithIdentifier:@"KKMyPlayerProfileViewController"];
+    } else if ([menuItem isEqualToString:@"Log Out"]) {
+        DLog(@"Should log out");
+        return;
     }
     
-        
+    //after instantiating the correct view controller, reset our nav controller's
+    //root view with it
+    self.transitionsNavigationController.viewControllers = @[newVC];
+    
     [self.slidingViewController resetTopViewAnimated:YES];
 }
 

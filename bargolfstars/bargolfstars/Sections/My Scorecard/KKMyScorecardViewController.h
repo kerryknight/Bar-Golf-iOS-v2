@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ECSlidingViewController.h"
 
-@interface KKMyScorecardViewController : UIViewController <ECSlidingViewControllerDelegate>
-- (IBAction)menuButtonTapped:(id)sender;
+@interface KKMyScorecardViewController : UIViewController
+
 @end

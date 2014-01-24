@@ -125,62 +125,29 @@
             </objects>
             <point key="canvasLocation" x="811" y="873"/>
         </scene>
-        <!--Settings View Controller - Settings-->
-        <scene sceneID="mBM-zs-keE">
+        <!--My Player Profile View Controller - My Player Profile-->
+        <scene sceneID="3ZQ-Bi-ECn">
             <objects>
-                <tableViewController storyboardIdentifier="MESettingsViewController" id="ZPb-2X-K4z" customClass="MESettingsViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="WaZ-wp-RdA">
+                <viewController storyboardIdentifier="KKMyPlayerProfileViewController" id="a38-rf-7wa" customClass="KKMyPlayerProfileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S9c-IL-um4"/>
+                        <viewControllerLayoutGuide type="bottom" id="JNx-xp-yJM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZYl-rZ-tgu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="mAa-nV-Zlw">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mAa-nV-Zlw" id="IYY-YO-E9u">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Settings" id="Q6E-TG-MZt">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="xI7-Ui-0xs">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="menuButtonTapped:" destination="ZPb-2X-K4z" id="jTe-aZ-9Zc"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xd1-2z-24K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="My Player Profile" id="lYy-di-FI6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ps0-jP-VvP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="811" y="1562"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="C8G-31-ClJ">
-            <objects>
-                <navigationController storyboardIdentifier="MESettingsNavigationController" definesPresentationContext="YES" id="ClZ-r3-7Fa" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zBW-Xd-mzi">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.2421875" green="0.41135378649999998" blue="0.74942974449999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="ZPb-2X-K4z" kind="relationship" relationship="rootViewController" id="LMh-kj-IdO"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RIN-Nv-f4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="277" y="1562"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="HfK-3h-wmj">
             <objects>
-                <navigationController storyboardIdentifier="KKMyScorecardNavigationController" definesPresentationContext="YES" id="zAf-9I-xrz" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="KKMyScorecardNavigationController" definesPresentationContext="YES" id="zAf-9I-xrz" customClass="KKNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fXh-mW-8ta">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.2421875" green="0.41135378649999998" blue="0.74942974449999999" alpha="1" colorSpace="calibratedRGB"/>

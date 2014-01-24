@@ -23,13 +23,6 @@
 		DEAF550318786C990019F7FF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEAF550118786C990019F7FF /* InfoPlist.strings */; };
 		DEAF550518786C990019F7FF /* BarGolfTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAF550418786C990019F7FF /* BarGolfTests.m */; };
 		DEAF550F18786D8E0019F7FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF550E18786D8E0019F7FF /* MapKit.framework */; };
-		DEE2EE661891E5DC00FC2991 /* MEDynamicTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE591891E5DC00FC2991 /* MEDynamicTransition.m */; };
-		DEE2EE671891E5DC00FC2991 /* MEFoldAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE5B1891E5DC00FC2991 /* MEFoldAnimationController.m */; };
-		DEE2EE681891E5DC00FC2991 /* MEMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE5D1891E5DC00FC2991 /* MEMenuViewController.m */; };
-		DEE2EE691891E5DC00FC2991 /* MESettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE5F1891E5DC00FC2991 /* MESettingsViewController.m */; };
-		DEE2EE6A1891E5DC00FC2991 /* METransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE611891E5DC00FC2991 /* METransitions.m */; };
-		DEE2EE6B1891E5DC00FC2991 /* METransitionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE631891E5DC00FC2991 /* METransitionsViewController.m */; };
-		DEE2EE6C1891E5DC00FC2991 /* MEZoomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE651891E5DC00FC2991 /* MEZoomAnimationController.m */; };
 		DEE2EE8D1891E73F00FC2991 /* KKAcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE711891E73F00FC2991 /* KKAcknowledgementsViewController.m */; };
 		DEE2EE8E1891E73F00FC2991 /* KKCreateRoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE741891E73F00FC2991 /* KKCreateRoundViewController.m */; };
 		DEE2EE8F1891E73F00FC2991 /* KKCurrentLeaderboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE771891E73F00FC2991 /* KKCurrentLeaderboardViewController.m */; };
@@ -40,9 +33,11 @@
 		DEE2EE941891E73F00FC2991 /* KKMyScorecardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE851891E73F00FC2991 /* KKMyScorecardViewController.m */; };
 		DEE2EE951891E73F00FC2991 /* KKPrivacyPolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE881891E73F00FC2991 /* KKPrivacyPolicyViewController.m */; };
 		DEE2EE961891E73F00FC2991 /* KKHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE8B1891E73F00FC2991 /* KKHelpViewController.m */; };
-		DEE2EE991891E79300FC2991 /* KKMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE981891E79300FC2991 /* KKMenuViewController.m */; };
 		DEE2EE9D1891E7EA00FC2991 /* KKConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE9B1891E7EA00FC2991 /* KKConfig.m */; };
-		DEE2EEA01891E8CF00FC2991 /* MEAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE9F1891E8CF00FC2991 /* MEAnimationController.m */; };
+		DEE2EEA91891F05300FC2991 /* KKMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EEA31891F05300FC2991 /* KKMenuViewController.m */; };
+		DEE2EEAA1891F05300FC2991 /* MEAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EEA61891F05300FC2991 /* MEAnimationController.m */; };
+		DEE2EEAB1891F05300FC2991 /* MEDynamicTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EEA81891F05300FC2991 /* MEDynamicTransition.m */; };
+		DEE2EEAE1891F07B00FC2991 /* KKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EEAD1891F07B00FC2991 /* KKNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,20 +72,6 @@
 		DEAF550218786C990019F7FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DEAF550418786C990019F7FF /* BarGolfTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BarGolfTests.m; sourceTree = "<group>"; };
 		DEAF550E18786D8E0019F7FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		DEE2EE581891E5DC00FC2991 /* MEDynamicTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEDynamicTransition.h; sourceTree = "<group>"; };
-		DEE2EE591891E5DC00FC2991 /* MEDynamicTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEDynamicTransition.m; sourceTree = "<group>"; };
-		DEE2EE5A1891E5DC00FC2991 /* MEFoldAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEFoldAnimationController.h; sourceTree = "<group>"; };
-		DEE2EE5B1891E5DC00FC2991 /* MEFoldAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEFoldAnimationController.m; sourceTree = "<group>"; };
-		DEE2EE5C1891E5DC00FC2991 /* MEMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MEMenuViewController.h; path = Transitions/MEMenuViewController.h; sourceTree = "<group>"; };
-		DEE2EE5D1891E5DC00FC2991 /* MEMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MEMenuViewController.m; path = Transitions/MEMenuViewController.m; sourceTree = "<group>"; };
-		DEE2EE5E1891E5DC00FC2991 /* MESettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MESettingsViewController.h; path = Transitions/MESettingsViewController.h; sourceTree = "<group>"; };
-		DEE2EE5F1891E5DC00FC2991 /* MESettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MESettingsViewController.m; path = Transitions/MESettingsViewController.m; sourceTree = "<group>"; };
-		DEE2EE601891E5DC00FC2991 /* METransitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = METransitions.h; path = Transitions/METransitions.h; sourceTree = "<group>"; };
-		DEE2EE611891E5DC00FC2991 /* METransitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = METransitions.m; path = Transitions/METransitions.m; sourceTree = "<group>"; };
-		DEE2EE621891E5DC00FC2991 /* METransitionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = METransitionsViewController.h; path = Transitions/METransitionsViewController.h; sourceTree = "<group>"; };
-		DEE2EE631891E5DC00FC2991 /* METransitionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = METransitionsViewController.m; path = Transitions/METransitionsViewController.m; sourceTree = "<group>"; };
-		DEE2EE641891E5DC00FC2991 /* MEZoomAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEZoomAnimationController.h; sourceTree = "<group>"; };
-		DEE2EE651891E5DC00FC2991 /* MEZoomAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEZoomAnimationController.m; sourceTree = "<group>"; };
 		DEE2EE701891E73F00FC2991 /* KKAcknowledgementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKAcknowledgementsViewController.h; sourceTree = "<group>"; };
 		DEE2EE711891E73F00FC2991 /* KKAcknowledgementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKAcknowledgementsViewController.m; sourceTree = "<group>"; };
 		DEE2EE731891E73F00FC2991 /* KKCreateRoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKCreateRoundViewController.h; sourceTree = "<group>"; };
@@ -111,13 +92,17 @@
 		DEE2EE881891E73F00FC2991 /* KKPrivacyPolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKPrivacyPolicyViewController.m; sourceTree = "<group>"; };
 		DEE2EE8A1891E73F00FC2991 /* KKHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKHelpViewController.h; sourceTree = "<group>"; };
 		DEE2EE8B1891E73F00FC2991 /* KKHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKHelpViewController.m; sourceTree = "<group>"; };
-		DEE2EE971891E79300FC2991 /* KKMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMenuViewController.h; sourceTree = "<group>"; };
-		DEE2EE981891E79300FC2991 /* KKMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMenuViewController.m; sourceTree = "<group>"; };
 		DEE2EE9A1891E7EA00FC2991 /* KKConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKConfig.h; sourceTree = "<group>"; };
 		DEE2EE9B1891E7EA00FC2991 /* KKConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKConfig.m; sourceTree = "<group>"; };
 		DEE2EE9C1891E7EA00FC2991 /* KKMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMacros.h; sourceTree = "<group>"; };
-		DEE2EE9E1891E8CF00FC2991 /* MEAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEAnimationController.h; sourceTree = "<group>"; };
-		DEE2EE9F1891E8CF00FC2991 /* MEAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEAnimationController.m; sourceTree = "<group>"; };
+		DEE2EEA21891F05300FC2991 /* KKMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMenuViewController.h; sourceTree = "<group>"; };
+		DEE2EEA31891F05300FC2991 /* KKMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMenuViewController.m; sourceTree = "<group>"; };
+		DEE2EEA51891F05300FC2991 /* MEAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEAnimationController.h; sourceTree = "<group>"; };
+		DEE2EEA61891F05300FC2991 /* MEAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEAnimationController.m; sourceTree = "<group>"; };
+		DEE2EEA71891F05300FC2991 /* MEDynamicTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEDynamicTransition.h; sourceTree = "<group>"; };
+		DEE2EEA81891F05300FC2991 /* MEDynamicTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEDynamicTransition.m; sourceTree = "<group>"; };
+		DEE2EEAC1891F07B00FC2991 /* KKNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKNavigationController.h; sourceTree = "<group>"; };
+		DEE2EEAD1891F07B00FC2991 /* KKNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKNavigationController.m; sourceTree = "<group>"; };
 		F172BBDD0FFB49A6A15EA00F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -186,14 +171,11 @@
 		DEAF54DF18786C990019F7FF /* Bar Golf */ = {
 			isa = PBXGroup;
 			children = (
-				DEE2EE971891E79300FC2991 /* KKMenuViewController.h */,
-				DEE2EE981891E79300FC2991 /* KKMenuViewController.m */,
-				DEE2EE8C1891E73F00FC2991 /* Utilities */,
-				DEE2EE6E1891E73F00FC2991 /* Sections */,
-				DEE2EE6D1891E67B00FC2991 /* Stuff to Replace */,
-				DEE2EE571891E5DC00FC2991 /* Transitions */,
 				DEAF54E818786C990019F7FF /* KKAppDelegate.h */,
 				DEAF54E918786C990019F7FF /* KKAppDelegate.m */,
+				DEE2EE8C1891E73F00FC2991 /* Utilities */,
+				DEE2EEA11891F05300FC2991 /* Base UI Files */,
+				DEE2EE6E1891E73F00FC2991 /* Sections */,
 				DEE8BAA218787C52000EA492 /* UI Resources */,
 				DEAF54E018786C990019F7FF /* Supporting Files */,
 			);
@@ -229,36 +211,6 @@
 				DEAF550118786C990019F7FF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		DEE2EE571891E5DC00FC2991 /* Transitions */ = {
-			isa = PBXGroup;
-			children = (
-				DEE2EE9E1891E8CF00FC2991 /* MEAnimationController.h */,
-				DEE2EE9F1891E8CF00FC2991 /* MEAnimationController.m */,
-				DEE2EE581891E5DC00FC2991 /* MEDynamicTransition.h */,
-				DEE2EE591891E5DC00FC2991 /* MEDynamicTransition.m */,
-				DEE2EE5A1891E5DC00FC2991 /* MEFoldAnimationController.h */,
-				DEE2EE5B1891E5DC00FC2991 /* MEFoldAnimationController.m */,
-				DEE2EE641891E5DC00FC2991 /* MEZoomAnimationController.h */,
-				DEE2EE651891E5DC00FC2991 /* MEZoomAnimationController.m */,
-			);
-			path = Transitions;
-			sourceTree = "<group>";
-		};
-		DEE2EE6D1891E67B00FC2991 /* Stuff to Replace */ = {
-			isa = PBXGroup;
-			children = (
-				DEE2EE5C1891E5DC00FC2991 /* MEMenuViewController.h */,
-				DEE2EE5D1891E5DC00FC2991 /* MEMenuViewController.m */,
-				DEE2EE5E1891E5DC00FC2991 /* MESettingsViewController.h */,
-				DEE2EE5F1891E5DC00FC2991 /* MESettingsViewController.m */,
-				DEE2EE601891E5DC00FC2991 /* METransitions.h */,
-				DEE2EE611891E5DC00FC2991 /* METransitions.m */,
-				DEE2EE621891E5DC00FC2991 /* METransitionsViewController.h */,
-				DEE2EE631891E5DC00FC2991 /* METransitionsViewController.m */,
-			);
-			name = "Stuff to Replace";
 			sourceTree = "<group>";
 		};
 		DEE2EE6E1891E73F00FC2991 /* Sections */ = {
@@ -368,6 +320,29 @@
 				DEE2EE9C1891E7EA00FC2991 /* KKMacros.h */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		DEE2EEA11891F05300FC2991 /* Base UI Files */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2EEA41891F05300FC2991 /* Transitions */,
+				DEE2EEA21891F05300FC2991 /* KKMenuViewController.h */,
+				DEE2EEA31891F05300FC2991 /* KKMenuViewController.m */,
+				DEE2EEAC1891F07B00FC2991 /* KKNavigationController.h */,
+				DEE2EEAD1891F07B00FC2991 /* KKNavigationController.m */,
+			);
+			path = "Base UI Files";
+			sourceTree = "<group>";
+		};
+		DEE2EEA41891F05300FC2991 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2EEA51891F05300FC2991 /* MEAnimationController.h */,
+				DEE2EEA61891F05300FC2991 /* MEAnimationController.m */,
+				DEE2EEA71891F05300FC2991 /* MEDynamicTransition.h */,
+				DEE2EEA81891F05300FC2991 /* MEDynamicTransition.m */,
+			);
+			path = Transitions;
 			sourceTree = "<group>";
 		};
 		DEE8BAA218787C52000EA492 /* UI Resources */ = {
@@ -529,26 +504,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEE2EEA01891E8CF00FC2991 /* MEAnimationController.m in Sources */,
 				DEE2EE961891E73F00FC2991 /* KKHelpViewController.m in Sources */,
-				DEE2EE6A1891E5DC00FC2991 /* METransitions.m in Sources */,
+				DEE2EEA91891F05300FC2991 /* KKMenuViewController.m in Sources */,
+				DEE2EEAB1891F05300FC2991 /* MEDynamicTransition.m in Sources */,
 				DEE2EE911891E73F00FC2991 /* KKJoinRoundViewController.m in Sources */,
-				DEE2EE991891E79300FC2991 /* KKMenuViewController.m in Sources */,
 				DEE2EE8E1891E73F00FC2991 /* KKCreateRoundViewController.m in Sources */,
-				DEE2EE661891E5DC00FC2991 /* MEDynamicTransition.m in Sources */,
-				DEE2EE671891E5DC00FC2991 /* MEFoldAnimationController.m in Sources */,
+				DEE2EEAE1891F07B00FC2991 /* KKNavigationController.m in Sources */,
 				DEE2EE8F1891E73F00FC2991 /* KKCurrentLeaderboardViewController.m in Sources */,
 				DEE2EE921891E73F00FC2991 /* KKModifyCurrentRoundViewController.m in Sources */,
 				DEE2EE951891E73F00FC2991 /* KKPrivacyPolicyViewController.m in Sources */,
 				DEE2EE8D1891E73F00FC2991 /* KKAcknowledgementsViewController.m in Sources */,
 				DEAF54EA18786C990019F7FF /* KKAppDelegate.m in Sources */,
+				DEE2EEAA1891F05300FC2991 /* MEAnimationController.m in Sources */,
 				DEE2EE901891E73F00FC2991 /* KKDisclaimerViewController.m in Sources */,
-				DEE2EE681891E5DC00FC2991 /* MEMenuViewController.m in Sources */,
-				DEE2EE6C1891E5DC00FC2991 /* MEZoomAnimationController.m in Sources */,
 				DEE2EE941891E73F00FC2991 /* KKMyScorecardViewController.m in Sources */,
 				DEAF54E618786C990019F7FF /* main.m in Sources */,
-				DEE2EE691891E5DC00FC2991 /* MESettingsViewController.m in Sources */,
-				DEE2EE6B1891E5DC00FC2991 /* METransitionsViewController.m in Sources */,
 				DEE2EE931891E73F00FC2991 /* KKMyPlayerProfileViewController.m in Sources */,
 				DEE2EE9D1891E7EA00FC2991 /* KKConfig.m in Sources */,
 			);
