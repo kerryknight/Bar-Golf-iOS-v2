@@ -26,4 +26,21 @@
     #import "JDStatusBarNotification.h"
     #import "VTAcknowledgementsViewController.h"
     #import <RevMobAds/RevMobAds.h>
+    #import <Parse/Parse.h>
+    #import "IFTTTJazzHands.h"
+    #import "Parse-RACExtensions.h"
+    #import "DDTTYLogger.h"
+    #import "Reachability.h"
+    #import "KKUtility.h"
+    #import "KKCache.h"
+    #import "SIAlertView.h"
 #endif
+
+
+//Logging customization
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_WARN;
+#endif
+
