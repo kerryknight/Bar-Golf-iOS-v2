@@ -41,4 +41,18 @@
 #define LON_TO_MILES(l)	(l / 53.0f)
 
 // colors
-#define kSomeColor [UIColor colorWithRed:235/255.0f green:128/255.0f blue:93/255.0f alpha:1.0]
+#define kLtGray     [UIColor colorWithRed:51/255.0f green:63/255.0f blue:77/255.0f alpha:1.0]
+#define kMedGray    [UIColor colorWithRed:45/255.0f green:57/255.0f blue:69/255.0f alpha:1.0]
+#define kDrkGray    [UIColor colorWithRed:31/255.0f green:44/255.0f blue:53/255.0f alpha:1.0]
+#define kLtWhite    [UIColor colorWithRed:243/255.0f green:246/255.0f blue:253/255.0f alpha:1.0]
+#define kMedWhite   [UIColor colorWithRed:231/255.0f green:234/255.0f blue:243/255.0f alpha:1.0]
+#define kLtGreen    [UIColor colorWithRed:116/255.0f green:192/255.0f blue:166/255.0f alpha:1.0]
+#define kFBBlue     [UIColor colorWithRed:61/255.0f green:94/255.0f blue:150/255.0f alpha:1.0]
+
+//font
+#define kHelveticaLight     @"HelveticaNeue-Light"
+
+//welcome/login/signup/forgot password view formatting
+#define kWelcomButtonHeight         50
+#define kWelcomeButtonWidth         270
+#define kWelcomeTextFieldMargin     35

@@ -24,6 +24,7 @@
     #import "IFTTTJazzHands.h"
     #import "MRProgress.h"
     #import "JDStatusBarNotification.h"
+    #import "JVFloatLabeledTextField.h"
     #import "VTAcknowledgementsViewController.h"
     #import <RevMobAds/RevMobAds.h>
     #import <Parse/Parse.h>

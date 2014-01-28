@@ -32,6 +32,7 @@
 		DEAF550318786C990019F7FF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEAF550118786C990019F7FF /* InfoPlist.strings */; };
 		DEAF550518786C990019F7FF /* BarGolfTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAF550418786C990019F7FF /* BarGolfTests.m */; };
 		DEAF550F18786D8E0019F7FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF550E18786D8E0019F7FF /* MapKit.framework */; };
+		DEC0A10A189764E40016555A /* KKLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC0A109189764E40016555A /* KKLoginViewController.xib */; };
 		DEE2EE8D1891E73F00FC2991 /* KKAcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE711891E73F00FC2991 /* KKAcknowledgementsViewController.m */; };
 		DEE2EE8E1891E73F00FC2991 /* KKCreateRoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE741891E73F00FC2991 /* KKCreateRoundViewController.m */; };
 		DEE2EE8F1891E73F00FC2991 /* KKCurrentLeaderboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE771891E73F00FC2991 /* KKCurrentLeaderboardViewController.m */; };
@@ -99,6 +100,7 @@
 		DEAF550218786C990019F7FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DEAF550418786C990019F7FF /* BarGolfTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BarGolfTests.m; sourceTree = "<group>"; };
 		DEAF550E18786D8E0019F7FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DEC0A109189764E40016555A /* KKLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKLoginViewController.xib; sourceTree = "<group>"; };
 		DEE2EE701891E73F00FC2991 /* KKAcknowledgementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKAcknowledgementsViewController.h; sourceTree = "<group>"; };
 		DEE2EE711891E73F00FC2991 /* KKAcknowledgementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKAcknowledgementsViewController.m; sourceTree = "<group>"; };
 		DEE2EE731891E73F00FC2991 /* KKCreateRoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKCreateRoundViewController.h; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				DE0596161895C63900892F24 /* KKLogInViewController.h */,
 				DE0596171895C63900892F24 /* KKLogInViewController.m */,
+				DEC0A109189764E40016555A /* KKLoginViewController.xib */,
 				DE0596181895C63900892F24 /* KKSignUpViewController.h */,
 				DE0596191895C63900892F24 /* KKSignUpViewController.m */,
 				DE05961A1895C63900892F24 /* KKWelcomeViewController.h */,
@@ -507,6 +510,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEC0A10A189764E40016555A /* KKLoginViewController.xib in Resources */,
 				DE0A2A5F1878E3FE002DC39A /* Main.storyboard in Resources */,
 				DEAF54F218786C990019F7FF /* Images.xcassets in Resources */,
 				DEAF54E418786C990019F7FF /* InfoPlist.strings in Resources */,
@@ -748,6 +752,54 @@
 					"\"${PODS_ROOT}/Headers/ECSlidingViewController\"",
 				);
 				INFOPLIST_FILE = "bargolfstars/Bar Golf-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lsqlite3",
+					"-lz",
+					"-framework",
+					Accelerate,
+					"-framework",
+					AdSupport,
+					"-framework",
+					AudioToolbox,
+					"-framework",
+					CFNetwork,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					CoreLocation,
+					"-framework",
+					CoreText,
+					"-framework",
+					Foundation,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					Parse,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					RevMobAds,
+					"-framework",
+					Security,
+					"-framework",
+					StoreKit,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					UIKit,
+					"-weak_framework",
+					Accounts,
+					"-weak_framework",
+					AdSupport,
+					"-weak_framework",
+					Security,
+					"-weak_framework",
+					Social,
+					"-weak_framework",
+					StoreKit,
+					"-all_load",
+				);
 				PRODUCT_NAME = "Bar Golf";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -784,6 +836,54 @@
 					"\"${PODS_ROOT}/Headers/ECSlidingViewController\"",
 				);
 				INFOPLIST_FILE = "bargolfstars/Bar Golf-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lsqlite3",
+					"-lz",
+					"-framework",
+					Accelerate,
+					"-framework",
+					AdSupport,
+					"-framework",
+					AudioToolbox,
+					"-framework",
+					CFNetwork,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					CoreLocation,
+					"-framework",
+					CoreText,
+					"-framework",
+					Foundation,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					Parse,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					RevMobAds,
+					"-framework",
+					Security,
+					"-framework",
+					StoreKit,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					UIKit,
+					"-weak_framework",
+					Accounts,
+					"-weak_framework",
+					AdSupport,
+					"-weak_framework",
+					Security,
+					"-weak_framework",
+					Social,
+					"-weak_framework",
+					StoreKit,
+					"-all_load",
+				);
 				PRODUCT_NAME = "Bar Golf";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

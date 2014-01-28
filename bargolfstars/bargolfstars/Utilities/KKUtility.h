@@ -19,4 +19,6 @@ void alertMessage ( NSString *format, ... );
 
 + (NSString *)firstNameForDisplayName:(NSString *)displayName;
 
+
++ (UIImage *)imageFromColor:(UIColor *)color;
 @end

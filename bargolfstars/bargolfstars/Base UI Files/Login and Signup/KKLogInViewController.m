@@ -13,10 +13,13 @@
     
 }
 
-@property (nonatomic, strong) UIImageView *fieldsBackground;
-@property (nonatomic, strong) UIImageView *navBarBackground;
-@property (nonatomic, strong) UIImageView *headerBackground;
-@property (nonatomic, strong) UILabel *headerLabel;
+@property (strong, nonatomic) UIView *usernameBG;
+@property (strong, nonatomic) UIView *passwordBG;
+@property (strong, nonatomic) JVFloatLabeledTextField *usernameFloatTextField;
+@property (strong, nonatomic) JVFloatLabeledTextField *passwordFloatTextField;
+@property (strong, nonatomic) UILabel *loginButtonLabel;
+@property (strong, nonatomic) UILabel *signUpButtonLabel;
+
 @property (nonatomic, strong) UILabel *otherLoginsLabel;
 @property (nonatomic, strong) UILabel *signupLabel;
 
@@ -25,57 +28,140 @@
 @implementation KKLogInViewController
 
 - (void)viewDidLoad {
-    DLogGreen(@"");
     [super viewDidLoad];
     
-    [self.logInView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"kkMainBG.png"]]];
-    [self.logInView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kkTitleBarLogo.png"]]];
+    [PFLogInViewController class];
+    
+//    [self.logInView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"kkMainBG.png"]]];
+//    [self.logInView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kkTitleBarLogo.png"]]];
+    
+    
+//    self.loginViewController = [[PFLogInViewController alloc] init];
+//    [self.loginViewController setDelegate:self];
+//    [self.loginViewController setFields:PFLogInFieldsFacebook];
+//    [self.loginViewController setFacebookPermissions:[NSArray arrayWithObjects:@"user_about_me", nil]];
+//    [self presentViewController:self.loginViewController animated:NO completion:NULL];
+    
+    
+    UIColor *gray = [kMedWhite colorWithAlphaComponent:0.5];
+    [[JVFloatLabeledTextField appearance] setFloatingLabelActiveTextColor:kLtGreen];
+    [[JVFloatLabeledTextField appearance] setFloatingLabelTextColor:gray];
+    [[JVFloatLabeledTextField appearance] setFloatingLabelFont:[UIFont fontWithName:kHelveticaLight size:12.0f]];
+    [[JVFloatLabeledTextField appearance] setFloatingLabelYPadding:@(0)];
+    [[JVFloatLabeledTextField appearance] setFont:[UIFont fontWithName:kHelveticaLight size:20.0f]];
+    [[JVFloatLabeledTextField appearance] setTextColor:kMedWhite];
+    
+    //full view as dark gray
+    self.view.backgroundColor = kDrkGray;
+    
+    //username text field background
+    self.usernameBG = [[UIView alloc] initWithFrame:CGRectMake(25, 90, kWelcomeButtonWidth, kWelcomButtonHeight)];
+    self.usernameBG.backgroundColor = kLtGray;
+    [self.view addSubview:self.usernameBG];
+    
+    //add the username textfield
+    self.usernameFloatTextField = [[JVFloatLabeledTextField alloc] initWithFrame:
+                                           CGRectMake(kWelcomeTextFieldMargin,
+                                                      self.usernameBG.frame.origin.y,
+                                                      self.view.frame.size.width - 2 * kWelcomeTextFieldMargin,
+                                                      self.usernameBG.frame.size.height)];
+    self.usernameFloatTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    self.usernameFloatTextField.floatingLabel.text = NSLocalizedString(@"Username", nil);
+    
+    //set our placeholder text color
+    if ([self.usernameFloatTextField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+        self.usernameFloatTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Username", @"")
+                                                                                            attributes:@{NSForegroundColorAttributeName: gray}];
+    }
+    [self.view addSubview:self.usernameFloatTextField];
+    
+    //password text field background
+    self.passwordBG = [[UIView alloc] initWithFrame:CGRectMake(25, 150, kWelcomeButtonWidth, kWelcomButtonHeight)];
+    self.passwordBG.backgroundColor = kLtGray;
+    [self.view addSubview:self.passwordBG];
+    
+    //add the password textfield
+    self.passwordFloatTextField = [[JVFloatLabeledTextField alloc] initWithFrame:
+                                   CGRectMake(kWelcomeTextFieldMargin,
+                                              self.passwordBG.frame.origin.y,
+                                              self.view.frame.size.width - 2 * kWelcomeTextFieldMargin,
+                                              self.passwordBG.frame.size.height)];
+    self.passwordFloatTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    self.passwordFloatTextField.floatingLabel.text = NSLocalizedString(@"Password", nil);
+    
+    //set our placeholder text color
+    if ([self.passwordFloatTextField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+        self.passwordFloatTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Password", @"")
+                                                                                            attributes:@{NSForegroundColorAttributeName: gray}];
+    }
+    [self.view addSubview:self.passwordFloatTextField];
+    
+    
+    //configure login button
+    [self.logInView.logInButton setBackgroundImage:[KKUtility imageFromColor:kMedWhite] forState:UIControlStateNormal];
+    [self.logInView.logInButton setBackgroundImage:[KKUtility imageFromColor:[kMedWhite colorWithAlphaComponent:0.8]] forState:UIControlStateHighlighted];
+    [self.logInView.logInButton setTitleColor:kDrkGray forState:UIControlStateNormal];
+    [self.logInView.logInButton setTitleShadowColor:nil forState:UIControlStateNormal];
+    self.logInView.logInButton.titleLabel.shadowOffset = CGSizeMake(0.0, 0.0);
+    self.logInView.logInButton.titleLabel.textColor = kDrkGray;
+    //hide the fucking button title cuz the fucker won't format easily for me
+    CALayer *layer = self.logInView.logInButton.titleLabel.layer;
+    layer.opacity = 0;
+    //create a label for the button's title instead of attempting to set the button's title directly as
+    //it was being a little bitch trying to format it's color and remove dropshadow
+    self.loginButtonLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 210, kWelcomeButtonWidth, kWelcomButtonHeight)];
+    self.loginButtonLabel.text = NSLocalizedString(@"Log in", @"");
+    self.loginButtonLabel.textColor = kMedGray;
+    self.loginButtonLabel.textAlignment = NSTextAlignmentCenter;
+    self.loginButtonLabel.font = [UIFont fontWithName:kHelveticaLight size:20.0f];
+    [self.view addSubview:self.loginButtonLabel];
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     // Set buttons appearance
-    [self.logInView.passwordForgottenButton setBackgroundImage:[UIImage imageNamed:@"xxx.png"] forState:UIControlStateNormal];//fake; so it's invisible
-    [self.logInView.passwordForgottenButton setBackgroundImage:[UIImage imageNamed:@"xxx.png"] forState:UIControlStateHighlighted];//fake; so it's invisible
+    [self.logInView.passwordForgottenButton setBackgroundImage:nil forState:UIControlStateNormal];//fake; so it's invisible
+    [self.logInView.passwordForgottenButton setBackgroundImage:nil forState:UIControlStateHighlighted];//fake; so it's invisible
     [self.logInView.passwordForgottenButton setTitle:@"Forgot Password?" forState:UIControlStateNormal];
     [self.logInView.passwordForgottenButton setTitle:@"Forgot Password?" forState:UIControlStateHighlighted];
     
-    [self.logInView.signUpButton setBackgroundImage:[UIImage imageNamed:@"kkSignUpButtonUp.png"] forState:UIControlStateNormal];
-    [self.logInView.signUpButton setBackgroundImage:[UIImage imageNamed:@"kkSignUpButtonDown.png"] forState:UIControlStateHighlighted];
+    [self.logInView.signUpButton setBackgroundImage:nil forState:UIControlStateNormal];//fake; so it's invisible
+    [self.logInView.signUpButton setBackgroundImage:nil forState:UIControlStateHighlighted];//fake; so it's invisible
     [self.logInView.signUpButton setTitle:@"Sign Up" forState:UIControlStateNormal];
     [self.logInView.signUpButton setTitle:@"Sign Up" forState:UIControlStateHighlighted];
     
-    [self.logInView.logInButton setBackgroundImage:[UIImage imageNamed:@"kkLoginButtonUp.png"] forState:UIControlStateNormal];
-    [self.logInView.logInButton setBackgroundImage:[UIImage imageNamed:@"kkLoginButtonDown.png"] forState:UIControlStateHighlighted];
-    [self.logInView.logInButton setTitle:@"Log in" forState:UIControlStateNormal];
-    [self.logInView.logInButton setTitle:@"Log in" forState:UIControlStateHighlighted];
     
-    // Add login field background
-    self.fieldsBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kkLoginFieldBG.png"]];
-    [self.logInView addSubview:self.fieldsBackground];
-    [self.logInView sendSubviewToBack:self.fieldsBackground];
+    
+    
+    
+
     [self.logInView sendSubviewToBack:self.logInView.passwordForgottenButton];
+
     
-    // Add nav bar background
-    self.navBarBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kkBackgroundNavBar.png"]]; 
-    [self.logInView addSubview:self.navBarBackground];
-    [self.logInView sendSubviewToBack:self.navBarBackground];
-    
-    // Add header bar background
-    self.headerBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kkHeaderBackground.png"]];
-    [self.logInView addSubview:self.headerBackground];
-    [self.logInView sendSubviewToBack:self.headerBackground];
-    
-    //add the Log in header label
-    self.headerLabel = [[UILabel alloc] initWithFrame:self.headerBackground.frame];
-    self.headerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:17];
-    self.headerLabel.textAlignment = NSTextAlignmentLeft;
-    self.headerLabel.backgroundColor = [UIColor clearColor];
-    self.headerLabel.textColor = [UIColor colorWithRed:63.0f/255.0f green:63.0f/255.0f blue:64.0f/255.0f alpha:1.0];
-    self.headerLabel.text = @" Please log in:";
-    CALayer *headerLayer = self.headerLabel.layer;
-    headerLayer.shadowRadius = 0.5;
-    headerLayer.shadowOffset = CGSizeMake(0, -1);
-    headerLayer.shadowColor = [[UIColor whiteColor] CGColor];
-    headerLayer.shadowOpacity = 1.0f;
-    [self.logInView addSubview:self.headerLabel];
+
     
     //was having trouble modifying pre-defined small labels so creating my own here
     //add the Log in header label
@@ -125,79 +211,70 @@
     forgotLayer.shadowOpacity = 0.6f;
     
     // Remove text shadows
-    CALayer *layer = self.logInView.usernameField.layer;
+    layer = self.logInView.usernameField.layer;
     layer.shadowOpacity = 0.0f;
     layer = self.logInView.passwordField.layer;
     layer.shadowOpacity = 0.0f;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-
 - (void)viewDidLayoutSubviews {
-    //    NSLog(@"%s", __FUNCTION__);
+//    //    NSLog(@"%s", __FUNCTION__);
     // Set frame for elements
-    [self.logInView.signUpButton setFrame:CGRectMake(35.0f, 385.0f, 245.0f, 44.0f)];
-    self.signupLabel.frame = self.logInView.signUpLabel.frame;
-    [self.fieldsBackground setFrame:CGRectMake(35.0f, 85.0f, 250.0f, 100.0f)];
-    [self.headerBackground setFrame:CGRectMake(self.fieldsBackground.frame.origin.x + 1,
-                                               self.fieldsBackground.frame.origin.y - self.headerBackground.frame.size.height + 1,
-                                               self.fieldsBackground.frame.size.width - 2, 26.0f)];
-    self.headerLabel.frame = self.headerBackground.frame;
-    [self.navBarBackground setFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
+    self.logInView.logInButton.frame = self.loginButtonLabel.frame;
     
-    //position the "Kollections" logo above brown nav bar graphic
-    [self.logInView.logo setFrame:CGRectMake(self.navBarBackground.frame.size.width/2 - self.logInView.logo.frame.size.width/2,
-                                             self.navBarBackground.frame.size.height/2 - self.logInView.logo.frame.size.height/2, 102.0f, 36.0f)];
     
-    //position Log in button
-    CGRect loginButtonFrame = self.logInView.logInButton.frame;
-    [self.logInView.logInButton setFrame:CGRectMake(loginButtonFrame.origin.x,
-                                                    self.fieldsBackground.frame.origin.y + self.fieldsBackground.frame.size.height + 3,
-                                                    loginButtonFrame.size.width,
-                                                    loginButtonFrame.size.height)];
-    
-    //position forgot password button just below Log in button
-    [self.logInView.passwordForgottenButton setFrame:CGRectMake(self.logInView.logInButton.frame.origin.x + self.logInView.logInButton.frame.size.width - 120.0f,
-                                                                self.logInView.logInButton.frame.origin.y + self.logInView.logInButton.frame.size.height,
-                                                                120.0f,
-                                                                20.0f)];
-    
-    // Move all fields down
-    float yOffset = 0.0f;
-    CGRect fieldFrame = self.logInView.usernameField.frame;
-    [self.logInView.usernameField setFrame:CGRectMake(fieldFrame.origin.x+5.0f,
-                                                      fieldFrame.origin.y-8.0f+yOffset,
-                                                      fieldFrame.size.width-10.0f,
-                                                      fieldFrame.size.height)];
-    yOffset += fieldFrame.size.height - 10;
-    
-    [self.logInView.passwordField setFrame:CGRectMake(fieldFrame.origin.x+5.0f,
-                                                      fieldFrame.origin.y+0.0f+yOffset,
-                                                      fieldFrame.size.width-10.0f,
-                                                      fieldFrame.size.height)];
-    
-    //move other login label and other login buttons down a little bit
-    CGRect otherLoginFrame = self.logInView.externalLogInLabel.frame;
-    [self.otherLoginsLabel setFrame:CGRectMake(otherLoginFrame.origin.x,
-                                               otherLoginFrame.origin.y + 10.0f,
-                                               otherLoginFrame.size.width,
-                                               otherLoginFrame.size.height)];
-    
-    //fb button
-    CGRect fbButtonFrame = self.logInView.facebookButton.frame;
-    [self.logInView.facebookButton setFrame:CGRectMake(fbButtonFrame.origin.x,
-                                                       fbButtonFrame.origin.y + 10.0f,
-                                                       fbButtonFrame.size.width,
-                                                       fbButtonFrame.size.height)];
-    
-    //twitter button
-    CGRect twitterButtonFrame = self.logInView.twitterButton.frame;
-    [self.logInView.twitterButton setFrame:CGRectMake(twitterButtonFrame.origin.x,
-                                                      twitterButtonFrame.origin.y + 10.0f,
-                                                      twitterButtonFrame.size.width,
-                                                      twitterButtonFrame.size.height)];
+//    [self.logInView.signUpButton setFrame:CGRectMake(35.0f, 385.0f, 245.0f, 44.0f)];
+//    self.signupLabel.frame = self.logInView.signUpLabel.frame;
+//    
+//    
+//    
+//    //position Log in button
+//    CGRect loginButtonFrame = self.logInView.logInButton.frame;
+//    [self.logInView.logInButton setFrame:CGRectMake(loginButtonFrame.origin.x,
+//                                                    150,
+//                                                    loginButtonFrame.size.width,
+//                                                    loginButtonFrame.size.height)];
+//    
+//    //position forgot password button just below Log in button
+//    [self.logInView.passwordForgottenButton setFrame:CGRectMake(self.logInView.logInButton.frame.origin.x + self.logInView.logInButton.frame.size.width - 120.0f,
+//                                                                self.logInView.logInButton.frame.origin.y + self.logInView.logInButton.frame.size.height,
+//                                                                120.0f,
+//                                                                20.0f)];
+//    
+//    // Move all fields down
+//    float yOffset = 0.0f;
+//    CGRect fieldFrame = self.logInView.usernameField.frame;
+//    [self.logInView.usernameField setFrame:CGRectMake(fieldFrame.origin.x+5.0f,
+//                                                      fieldFrame.origin.y-8.0f+yOffset,
+//                                                      fieldFrame.size.width-10.0f,
+//                                                      fieldFrame.size.height)];
+//    yOffset += fieldFrame.size.height - 10;
+//    
+//    [self.logInView.passwordField setFrame:CGRectMake(fieldFrame.origin.x+5.0f,
+//                                                      fieldFrame.origin.y+0.0f+yOffset,
+//                                                      fieldFrame.size.width-10.0f,
+//                                                      fieldFrame.size.height)];
+//    
+//    //move other login label and other login buttons down a little bit
+//    CGRect otherLoginFrame = self.logInView.externalLogInLabel.frame;
+//    [self.otherLoginsLabel setFrame:CGRectMake(otherLoginFrame.origin.x,
+//                                               otherLoginFrame.origin.y + 10.0f,
+//                                               otherLoginFrame.size.width,
+//                                               otherLoginFrame.size.height)];
+//    
+//    //fb button
+//    CGRect fbButtonFrame = self.logInView.facebookButton.frame;
+//    [self.logInView.facebookButton setFrame:CGRectMake(fbButtonFrame.origin.x,
+//                                                       fbButtonFrame.origin.y + 10.0f,
+//                                                       fbButtonFrame.size.width,
+//                                                       fbButtonFrame.size.height)];
+//    
+//    //twitter button
+//    CGRect twitterButtonFrame = self.logInView.twitterButton.frame;
+//    [self.logInView.twitterButton setFrame:CGRectMake(twitterButtonFrame.origin.x,
+//                                                      twitterButtonFrame.origin.y + 10.0f,
+//                                                      twitterButtonFrame.size.width,
+//                                                      twitterButtonFrame.size.height)];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
