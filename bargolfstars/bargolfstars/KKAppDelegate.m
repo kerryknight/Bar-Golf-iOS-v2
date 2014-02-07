@@ -8,18 +8,12 @@
 
 #import "KKAppDelegate.h"
 #import <Crashlytics/Crashlytics.h>
-#import "KKLogInViewController.h"
-#import "KKSignUpViewController.h"
 #import "KKWelcomeViewController.h"
 
 @interface KKAppDelegate () {
 }
 
 @property (strong, nonatomic) KKWelcomeViewController *welcomeViewController;
-//@property (strong, nonatomic) KKHomeViewController *homeViewController;
-//@property (strong, nonatomic) KKActivityFeedViewController *activityViewController;
-//@property (strong, nonatomic) KKSearchViewController *searchViewController;
-//@property (strong, nonatomic) KKAccountViewController *myProfileViewController;
 
 @property (strong, nonatomic) Reachability *hostReach;
 @property (strong, nonatomic) Reachability *internetReach;
@@ -28,9 +22,6 @@
 @property (assign, nonatomic) BOOL firstLaunch;
 @property (strong, nonatomic) NSMutableData *data;;
 
-- (void)setupAppearance;
-- (BOOL)shouldProceedToMainInterface:(PFUser *)user;
-- (BOOL)handleActionURL:(NSURL *)url;
 @end
 
 @implementation KKAppDelegate
@@ -45,15 +36,7 @@
     // Crashlytics
     [Crashlytics startWithAPIKey:@"72614ec4b03fbf638deccdb46a34d1ef0b3a0a62"];
     
-    
-    // CocoaLumberjack logging
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    // And then enable colors
-    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
-    [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor greenColor] backgroundColor:nil forFlag:LOG_FLAG_INFO];
-    [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor redColor] backgroundColor:nil forFlag:LOG_FLAG_ERROR];
-    
-    
+    // Parse
     [Parse setApplicationId:kKKParseApplicationID clientKey:kKKParseApplicationClientKey];
     [PFFacebookUtils initializeFacebook];
 //    [PFTwitterUtils initializeWithConsumerKey:kKKTwitterConsumerKey consumerSecret:kKKTwitterConsumerSecret];
@@ -78,13 +61,13 @@
     
     // Create the navigation controller with our welcome vc
 	self.welcomeViewController = [[KKWelcomeViewController alloc] init];
-	self.regularNavController = [[UINavigationController alloc] initWithRootViewController:self.welcomeViewController];
+	self.welcomeNavigationController = [[UINavigationController alloc] initWithRootViewController:self.welcomeViewController];
 	
 	// Create the window and add our nav controller to it
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor blackColor];
-	self.regularNavController.navigationBarHidden = YES;
-    self.window.rootViewController = self.regularNavController;
+	self.welcomeNavigationController.navigationBarHidden = YES;
+    self.window.rootViewController = self.welcomeNavigationController;
     [self.window makeKeyAndVisible];
     
     
@@ -118,194 +101,7 @@
     [PFUser logOut];
     
     // clear out cached data, view controllers, etc
-    [self.regularNavController popToRootViewControllerAnimated:NO];
-    
-    [self presentLoginViewController];
-    
-//    self.homeViewController = nil;
-//    self.activityViewController = nil;
-//    self.searchViewController = nil;
-//    self.myProfileViewController = nil;
-}
-
-#pragma mark - PFLogInViewControllerDelegate
-- (void)presentLoginViewControllerAnimated:(BOOL)animated {
-    DLog(@"");
-    // Create the log in view controller
-    PFLogInViewController *logInViewController = [[KKLogInViewController alloc] init];
-    [logInViewController setDelegate:self]; // Set ourselves as the delegate
-    [logInViewController setFields:PFLogInFieldsUsernameAndPassword | /*PFLogInFieldsTwitter |*/ PFLogInFieldsFacebook | PFLogInFieldsSignUpButton | PFLogInFieldsLogInButton /*| PFLogInFieldsDismissButton*/ | PFLogInFieldsPasswordForgotten];
-    
-    [logInViewController setFacebookPermissions:[NSArray arrayWithObjects:@"user_about_me", @"friends_about_me", nil]];
-    
-    // Create the sign up view controller
-    PFSignUpViewController *signUpViewController = [[KKSignUpViewController alloc] init];
-    [signUpViewController setDelegate:self]; // Set ourselves as the delegate
-    [signUpViewController setFields:PFSignUpFieldsDefault | PFSignUpFieldsAdditional];
-    
-    // Assign our sign up controller to be displayed from the login controller
-    [logInViewController setSignUpController:signUpViewController];
-    
-    //main queue
-    dispatch_async(dispatch_get_main_queue(), ^{
-        // Present the log in view controller
-        [self.welcomeViewController presentViewController:logInViewController animated:NO completion:NULL];
-    });
-}
-
-
-- (void)presentLoginViewController {
-    DLog(@"");
-    [self presentLoginViewControllerAnimated:YES];
-}
-
-// Called on successful login. This is likely to be the place where we register
-// the user to the "user_xxxxxxxx" channel
-- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-    DLog(@"");
-    
-    //check what type of login we have
-    if ([PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
-        // user has logged in - we need to fetch all of their Facebook data before we let them in if they logged in with FB
-        if (![self shouldProceedToMainInterface:user]) {
-//            self.hud = [MBProgressHUD showHUDAddedTo:self.navController.presentedViewController.view  animated:YES];
-//            self.hud.color = kMint4;
-//            [self.hud setDimBackground:YES];
-//            [self.hud setLabelText:@"Loading"];
-        }
-//        //we're logged in with Facebook so request the user's name and pic data
-//        PF_FBRequest *request = [PF_FBRequest requestForGraphPath:@"me/?fields=name,picture"];
-//        [request setDelegate:self];
-//        [request startWithCompletionHandler:NULL];
-        
-        
-        // Create request for user's Facebook data
-        FBRequest *request = [FBRequest requestForMe];
-        
-        // Send request to Facebook
-        [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-            // handle response
-            DLog(@"FB request completion: %@", result);
-        }];
-        
-        
-        
-        
-    } /*else if ([PFTwitterUtils isLinkedWithUser:[PFUser currentUser]] ) {
-       //we're logged in with Twitter //TODO:
-       DLog(@"logged into twitter, now retrieve twitter name and picture");
-       } */else {
-           //we're logged with via a Parse account so dismiss the overlay
-//           [self presentTabBarController];
-           [self.regularNavController dismissViewControllerAnimated:YES completion:^{
-               //
-           }];
-       }
-    
-    // Subscribe to private push channel
-    if (user) {
-        DLog(@"subscribe to private push channel");
-        NSString *privateChannelName = [NSString stringWithFormat:@"user_%@", [user objectId]];
-        // Add the user to the installation so we can track the owner of the device
-        [[PFInstallation currentInstallation] setObject:user forKey:kKKInstallationUserKey];
-//        [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:kKKInstallationUserKey];
-        // Subscribe user to private channel
-        [[PFInstallation currentInstallation] addUniqueObject:privateChannelName forKey:kKKInstallationChannelsKey];
-        // Save installation object
-        [[PFInstallation currentInstallation] saveEventually];
-        [user setObject:privateChannelName forKey:kKKUserPrivateChannelKey];
-    }
-}
-
-// Sent to the delegate when the log in attempt fails.
-- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
-    
-    DLog(@"Failed to log in with error: %@", error);
-    alertMessage(@"Uh oh. Something happened and logging in failed with error: %@. Please try again.", [error localizedDescription]);
-}
-
-#pragma mark - PFSignUpViewControllerDelegate
-
-// Sent to the delegate to determine whether the sign up request should be submitted to the server.
-- (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
-    DLog(@"");
-    BOOL informationComplete = YES;
-    for (id key in info) {
-        NSString *field = [info objectForKey:key];
-        //make sure all fields are filled in
-        if (!field || field.length == 0) {
-            informationComplete = NO;
-            break;
-        }
-        //ensure password is long enough
-        if ([key isEqualToString:@"password"] && field.length < kKKMinimumPasswordLength) {
-            alertMessage(@"Password must be at least %i characters.", kKKMinimumPasswordLength);
-            informationComplete = NO;
-            return informationComplete;
-        }
-        
-        //check the characters used in the password field; new passwords must contain at least 1 digit
-        NSCharacterSet * set = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
-        if ([key isEqualToString:@"password"] && [field rangeOfCharacterFromSet:set].location == NSNotFound) {
-            //no numbers found
-            alertMessage(@"Password must contain at least one number");
-            informationComplete = NO;
-            return informationComplete;
-        }
-        
-        //ensure our display name doesn't include any special characters so we don't get lots of dicks and stuff for names 8======D
-        set = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789"] invertedSet];
-        if ([key isEqualToString:@"password"] && [field rangeOfCharacterFromSet:set].location != NSNotFound) {
-            //special characters found
-            alertMessage(@"Display names can only contain letters and numbers.");
-            informationComplete = NO;
-            return informationComplete;
-        }
-    }
-    
-    if (!informationComplete) {
-        
-        //knightka replaced a regular alert view with our custom subclass
-        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) andMessage:NSLocalizedString(@"Make sure you fill out all of the information!", nil)];
-        [alertView addButtonWithTitle:@"OK"
-                                 type:SIAlertViewButtonTypeCancel
-                              handler:^(SIAlertView *alert) {
-                                  NSLog(@"OK Clicked");
-                              }];
-        
-        alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
-        [alertView show];
-    }
-    
-    return informationComplete;
-}
-
-// Sent to the delegate when a PFUser is signed up.
-- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
-    DLog(@"");
-    [self.welcomeViewController dismissViewControllerAnimated:YES completion:NULL];
-    
-    //knightka replaced a regular alert view with our custom subclass
-    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:NSLocalizedString(@"Success!", nil) andMessage:NSLocalizedString(@"Please look for an email asking you to verify your email address to get the most from Bar Golf.", nil)];
-    [alertView addButtonWithTitle:@"OK"
-                             type:SIAlertViewButtonTypeCancel
-                          handler:^(SIAlertView *alert) {
-                              NSLog(@"OK Clicked");
-                          }];
-    
-    alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
-    [alertView show];
-    
-}
-
-// Sent to the delegate when the sign up attempt fails.
-- (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
-    DLog(@"Failed to sign up...");
-}
-
-// Sent to the delegate when the sign up screen is dismissed.
-- (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
-    DLog(@"User dismissed the signUpViewController");
+    [self.welcomeNavigationController popToRootViewControllerAnimated:NO];
 }
 
 
@@ -316,22 +112,6 @@
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.498f green:0.388f blue:0.329f alpha:1.0f]];
 }
 
-- (BOOL)shouldProceedToMainInterface:(PFUser *)user {
-    DLog(@"");
-    if ([KKUtility userHasValidFacebookData:[PFUser currentUser]]) {
-        DLog(@"User has valid Facebook data, granting permission to use app.");
-//        [MBProgressHUD hideHUDForView:self.navController.presentedViewController.view animated:YES];
-//        [self presentTabBarController];
-        
-        [self.regularNavController dismissViewControllerAnimated:YES completion:^{
-            //
-        }];
-        
-        return YES;
-    }
-    
-    return NO;
-}
 
 - (BOOL)handleActionURL:(NSURL *)url {
     DLog(@"");
@@ -363,10 +143,9 @@
 
 //Called by Reachability whenever status changes.
 - (void)reachabilityChanged:(NSNotification* )note {
-    DLog(@"");
     Reachability *curReach = (Reachability *)[note object];
     NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
-    //    DLog(@"Reachability changed: %@", curReach);
+//    DLogRed(@"Reachability changed: %ld", [curReach currentReachabilityStatus]);
     self.networkStatus = [curReach currentReachabilityStatus];
     
 //    if ([self isParseReachable] && [PFUser currentUser] && self.homeViewController.objects.count == 0) {
@@ -374,6 +153,10 @@
 //        // In this case, they'd see the empty timeline placeholder and have no way of refreshing the timeline unless they followed someone.
 //        [self.homeViewController loadObjects];
 //    }
+    
+    if (![self isParseReachable]) {
+        #warning should post a JDStatusBarNotification here if that we have no internet if not reachable
+    }
 }
 
 #pragma mark - Notifications

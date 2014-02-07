@@ -3,6 +3,7 @@
 //  Bar Golf
 //
 
-@interface KKWelcomeViewController : UIViewController
+@interface KKWelcomeViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+
 
 @end

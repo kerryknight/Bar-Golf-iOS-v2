@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BDBC9227CBC346C5ADC47CB6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F172BBDD0FFB49A6A15EA00F /* libPods.a */; };
 		DE0596141895C0E500892F24 /* KKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0596131895C0E500892F24 /* KKUtility.m */; };
-		DE05961C1895C63900892F24 /* KKLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0596171895C63900892F24 /* KKLogInViewController.m */; };
 		DE05961D1895C63900892F24 /* KKSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0596191895C63900892F24 /* KKSignUpViewController.m */; };
 		DE05961E1895C63900892F24 /* KKWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE05961B1895C63900892F24 /* KKWelcomeViewController.m */; };
 		DE0596381895C76600892F24 /* UIImage+AlphaAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0596311895C76600892F24 /* UIImage+AlphaAdditions.m */; };
@@ -19,6 +18,8 @@
 		DE05963E1895C85600892F24 /* KKCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DE05963D1895C85600892F24 /* KKCache.m */; };
 		DE0A2A5F1878E3FE002DC39A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE0A2A5D1878E3FE002DC39A /* Main.storyboard */; };
 		DE8F39A3187882D3007D3942 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE8F39A2187882D3007D3942 /* Crashlytics.framework */; };
+		DE8FAB8118A4B31600D66963 /* KKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8FAB7F18A4B31600D66963 /* KKLoginViewController.m */; };
+		DE8FAB8218A4B31600D66963 /* KKLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8FAB8018A4B31600D66963 /* KKLoginViewController.xib */; };
 		DEAF54DA18786C990019F7FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54D918786C990019F7FF /* Foundation.framework */; };
 		DEAF54DC18786C990019F7FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54DB18786C990019F7FF /* CoreGraphics.framework */; };
 		DEAF54DE18786C990019F7FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54DD18786C990019F7FF /* UIKit.framework */; };
@@ -32,7 +33,7 @@
 		DEAF550318786C990019F7FF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEAF550118786C990019F7FF /* InfoPlist.strings */; };
 		DEAF550518786C990019F7FF /* BarGolfTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAF550418786C990019F7FF /* BarGolfTests.m */; };
 		DEAF550F18786D8E0019F7FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF550E18786D8E0019F7FF /* MapKit.framework */; };
-		DEC0A10A189764E40016555A /* KKLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC0A109189764E40016555A /* KKLoginViewController.xib */; };
+		DEC0A10A189764E40016555A /* KKLoginViewControllerOLD.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC0A109189764E40016555A /* KKLoginViewControllerOLD.xib */; };
 		DEE2EE8D1891E73F00FC2991 /* KKAcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE711891E73F00FC2991 /* KKAcknowledgementsViewController.m */; };
 		DEE2EE8E1891E73F00FC2991 /* KKCreateRoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE741891E73F00FC2991 /* KKCreateRoundViewController.m */; };
 		DEE2EE8F1891E73F00FC2991 /* KKCurrentLeaderboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE771891E73F00FC2991 /* KKCurrentLeaderboardViewController.m */; };
@@ -64,8 +65,8 @@
 		17E43A40BFEB41C68877218D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		DE0596121895C0E500892F24 /* KKUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKUtility.h; sourceTree = "<group>"; };
 		DE0596131895C0E500892F24 /* KKUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKUtility.m; sourceTree = "<group>"; };
-		DE0596161895C63900892F24 /* KKLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKLogInViewController.h; sourceTree = "<group>"; };
-		DE0596171895C63900892F24 /* KKLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLogInViewController.m; sourceTree = "<group>"; };
+		DE0596161895C63900892F24 /* KKLogInViewControllerOLD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKLogInViewControllerOLD.h; sourceTree = "<group>"; };
+		DE0596171895C63900892F24 /* KKLogInViewControllerOLD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLogInViewControllerOLD.m; sourceTree = "<group>"; };
 		DE0596181895C63900892F24 /* KKSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSignUpViewController.h; sourceTree = "<group>"; };
 		DE0596191895C63900892F24 /* KKSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSignUpViewController.m; sourceTree = "<group>"; };
 		DE05961A1895C63900892F24 /* KKWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKWelcomeViewController.h; sourceTree = "<group>"; };
@@ -82,6 +83,9 @@
 		DE05963D1895C85600892F24 /* KKCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKCache.m; sourceTree = "<group>"; };
 		DE0A2A5E1878E3FE002DC39A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE8F39A2187882D3007D3942 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		DE8FAB7E18A4B31600D66963 /* KKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKLoginViewController.h; sourceTree = "<group>"; };
+		DE8FAB7F18A4B31600D66963 /* KKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLoginViewController.m; sourceTree = "<group>"; };
+		DE8FAB8018A4B31600D66963 /* KKLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKLoginViewController.xib; sourceTree = "<group>"; };
 		DEA02D1518787ACE00B32C43 /* NOTES */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTES; sourceTree = "<group>"; };
 		DEA274811878DFDC00ABA879 /* Bar Golf-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bar Golf-Prefix.pch"; sourceTree = "<group>"; };
 		DEAF54D618786C990019F7FF /* Bar Golf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bar Golf.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,7 +104,7 @@
 		DEAF550218786C990019F7FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DEAF550418786C990019F7FF /* BarGolfTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BarGolfTests.m; sourceTree = "<group>"; };
 		DEAF550E18786D8E0019F7FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		DEC0A109189764E40016555A /* KKLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKLoginViewController.xib; sourceTree = "<group>"; };
+		DEC0A109189764E40016555A /* KKLoginViewControllerOLD.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKLoginViewControllerOLD.xib; sourceTree = "<group>"; };
 		DEE2EE701891E73F00FC2991 /* KKAcknowledgementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKAcknowledgementsViewController.h; sourceTree = "<group>"; };
 		DEE2EE711891E73F00FC2991 /* KKAcknowledgementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKAcknowledgementsViewController.m; sourceTree = "<group>"; };
 		DEE2EE731891E73F00FC2991 /* KKCreateRoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKCreateRoundViewController.h; sourceTree = "<group>"; };
@@ -165,15 +169,19 @@
 		DE0596151895C63900892F24 /* Login and Signup */ = {
 			isa = PBXGroup;
 			children = (
-				DE0596161895C63900892F24 /* KKLogInViewController.h */,
-				DE0596171895C63900892F24 /* KKLogInViewController.m */,
-				DEC0A109189764E40016555A /* KKLoginViewController.xib */,
+				DE0596161895C63900892F24 /* KKLogInViewControllerOLD.h */,
+				DE0596171895C63900892F24 /* KKLogInViewControllerOLD.m */,
+				DEC0A109189764E40016555A /* KKLoginViewControllerOLD.xib */,
+				DE8FAB7E18A4B31600D66963 /* KKLoginViewController.h */,
+				DE8FAB7F18A4B31600D66963 /* KKLoginViewController.m */,
+				DE8FAB8018A4B31600D66963 /* KKLoginViewController.xib */,
 				DE0596181895C63900892F24 /* KKSignUpViewController.h */,
 				DE0596191895C63900892F24 /* KKSignUpViewController.m */,
 				DE05961A1895C63900892F24 /* KKWelcomeViewController.h */,
 				DE05961B1895C63900892F24 /* KKWelcomeViewController.m */,
 			);
-			path = "Login and Signup";
+			name = "Login and Signup";
+			path = "../Base UI Files/Login and Signup";
 			sourceTree = "<group>";
 		};
 		DE05962F1895C76600892F24 /* UIImage Categories */ = {
@@ -280,7 +288,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		DEE2EE6E1891E73F00FC2991 /* Sections */ = {
+		DECFE7D318A47958001C7E8C /* Menu Accessed */ = {
 			isa = PBXGroup;
 			children = (
 				DEE2EE6F1891E73F00FC2991 /* Acknowledgements */,
@@ -292,6 +300,15 @@
 				DEE2EE831891E73F00FC2991 /* My Scorecard */,
 				DEE2EE861891E73F00FC2991 /* Privacy Policy and TOS */,
 				DEE2EE891891E73F00FC2991 /* Rules and Help */,
+			);
+			name = "Menu Accessed";
+			sourceTree = "<group>";
+		};
+		DEE2EE6E1891E73F00FC2991 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				DE0596151895C63900892F24 /* Login and Signup */,
+				DECFE7D318A47958001C7E8C /* Menu Accessed */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -397,7 +414,6 @@
 		DEE2EEA11891F05300FC2991 /* Base UI Files */ = {
 			isa = PBXGroup;
 			children = (
-				DE0596151895C63900892F24 /* Login and Signup */,
 				DEE2EEA41891F05300FC2991 /* Transitions */,
 				DEE2EEA21891F05300FC2991 /* KKMenuViewController.h */,
 				DEE2EEA31891F05300FC2991 /* KKMenuViewController.m */,
@@ -510,7 +526,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEC0A10A189764E40016555A /* KKLoginViewController.xib in Resources */,
+				DE8FAB8218A4B31600D66963 /* KKLoginViewController.xib in Resources */,
+				DEC0A10A189764E40016555A /* KKLoginViewControllerOLD.xib in Resources */,
 				DE0A2A5F1878E3FE002DC39A /* Main.storyboard in Resources */,
 				DEAF54F218786C990019F7FF /* Images.xcassets in Resources */,
 				DEAF54E418786C990019F7FF /* InfoPlist.strings in Resources */,
@@ -580,7 +597,6 @@
 			files = (
 				DE05963B1895C76600892F24 /* UIImage+RoundedCornerAdditions.m in Sources */,
 				DE0596141895C0E500892F24 /* KKUtility.m in Sources */,
-				DE05961C1895C63900892F24 /* KKLogInViewController.m in Sources */,
 				DEE2EE961891E73F00FC2991 /* KKHelpViewController.m in Sources */,
 				DEE2EEA91891F05300FC2991 /* KKMenuViewController.m in Sources */,
 				DEE2EEAB1891F05300FC2991 /* MEDynamicTransition.m in Sources */,
@@ -601,6 +617,7 @@
 				DE0596391895C76600892F24 /* UIImage+Colorization.m in Sources */,
 				DEE2EE941891E73F00FC2991 /* KKMyScorecardViewController.m in Sources */,
 				DEAF54E618786C990019F7FF /* main.m in Sources */,
+				DE8FAB8118A4B31600D66963 /* KKLoginViewController.m in Sources */,
 				DE0596381895C76600892F24 /* UIImage+AlphaAdditions.m in Sources */,
 				DEE2EE931891E73F00FC2991 /* KKMyPlayerProfileViewController.m in Sources */,
 				DEE2EE9D1891E7EA00FC2991 /* KKConfig.m in Sources */,
@@ -741,6 +758,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bargolfstars/Bar Golf-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"XCODE_COLORS=1",
+				);
 				HEADER_SEARCH_PATHS = (
 					"\"${PODS_ROOT}/Headers\"",
 					"\"${PODS_ROOT}/Headers/JDStatusBarNotification\"",

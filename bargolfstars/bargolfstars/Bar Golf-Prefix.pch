@@ -13,6 +13,7 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import <QuartzCore/QuartzCore.h>
 
     //Local Files
     #import "KKConfig.h"
@@ -21,6 +22,7 @@
     //Pods
     #import "ECSlidingViewController.h"
     #import "ReactiveCocoa.h"
+    #import "RACEXTScope.h"
     #import "IFTTTJazzHands.h"
     #import "MRProgress.h"
     #import "JDStatusBarNotification.h"
@@ -30,18 +32,10 @@
     #import <Parse/Parse.h>
     #import "IFTTTJazzHands.h"
     #import "Parse-RACExtensions.h"
-    #import "DDTTYLogger.h"
     #import "Reachability.h"
     #import "KKUtility.h"
     #import "KKCache.h"
     #import "SIAlertView.h"
 #endif
 
-
-//Logging customization
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_WARN;
-#endif
 

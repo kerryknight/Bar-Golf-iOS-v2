@@ -1,16 +1,18 @@
 platform :ios, '7.0'
 
-pod 'ReactiveCocoa'
-pod 'JDStatusBarNotification'
-pod 'VTAcknowledgementsViewController'
-pod 'MRProgress'
-pod 'JazzHands'
-pod 'ECSlidingViewController'
-pod 'RevMob'
-pod 'CocoaLumberjack'
-pod 'Parse-iOS-SDK'
-pod 'Parse-RACExtensions'
-pod 'Reachability'
-pod 'JVFloatLabeledTextField'
-pod 'SIAlertView', '~> 1.3'
-pod 'OHAttributedLabel'
+pod 'ReactiveCocoa', '2.2.3'
+pod 'ReactiveViewModel', '0.2'
+pod 'JDStatusBarNotification', '1.4.7' #for status bar dropdown notifications
+pod 'MRProgress', '0.3.1'
+pod 'VTAcknowledgementsViewController', '0.7' #for adding licenses and library links
+pod 'JazzHands', '0.0.3' #for intro tours
+pod 'ECSlidingViewController', '2.0.0' #sliding menu app framework
+pod 'RevMob', '7.4.1' #advertising
+pod 'Parse-iOS-SDK', '1.2.18'
+pod 'Parse-RACExtensions', '0.0.3'
+pod 'Reachability', '3.1.1'
+pod 'JVFloatLabeledTextField', '0.0.5' #for animating placeholder text above line in textfields
+pod 'SIAlertView', '1.3' #alertview with block syntax and colored buttons
+pod 'OHAttributedLabel', '3.5.3' #for style text with links
+pod 'STPTransitions' #for animated transitions between view controllers
+pod 'FXBlurView', '1.5.3' #for blurring overlay view in realtime 

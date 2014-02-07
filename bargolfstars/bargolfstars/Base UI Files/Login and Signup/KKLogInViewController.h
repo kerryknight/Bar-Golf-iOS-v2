@@ -1,11 +1,13 @@
 //
-//  KKLogInViewController.h
-//  Kollections
+//  KKLoginViewController.h
+//  Bar Golf
 //
-//  Created by Mattieu Gamache-Asselin on 5/17/12.
-//  Copyright (c) 2012 Parse. All rights reserved.
+//  Created by Kerry Knight on 2/7/14.
+//  Copyright (c) 2014 Kerry Knight. All rights reserved.
 //
 
-@interface KKLogInViewController : PFLogInViewController
+#import <UIKit/UIKit.h>
+
+@interface KKLoginViewController : UIViewController
 
 @end

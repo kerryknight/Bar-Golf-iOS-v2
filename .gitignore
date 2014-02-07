@@ -12,6 +12,7 @@
 xcuserdata
 profile
 *.moved-aside
+
 DerivedData
 .idea/
 *.hmap
@@ -19,3 +20,6 @@ DerivedData
 
 #CocoaPods
 Pods
+
+#Crashlytics
+Crashlytics.framework

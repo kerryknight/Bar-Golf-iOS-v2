@@ -8,15 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KKAppDelegate : UIResponder <UIApplicationDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+@interface KKAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, strong) UINavigationController *regularNavController;
+@property (nonatomic, strong) UINavigationController *welcomeNavigationController;
 @property (assign, nonatomic, readonly) int networkStatus;
 
 - (BOOL)isParseReachable;
-- (void)presentLoginViewController;
-- (void)presentLoginViewControllerAnimated:(BOOL)animated;
 - (void)logOut;
 
 @end

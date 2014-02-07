@@ -8,6 +8,8 @@
 
 #import "KKWelcomeViewController.h"
 #import "KKAppDelegate.h"
+#import "KKLoginViewController.h"
+#import "KKSignUpViewController.h"
 
 @interface KKWelcomeViewController () {
 }
@@ -18,21 +20,12 @@
 
 @implementation KKWelcomeViewController
 
-#pragma mark - UIViewController
-- (void)loadView {
-    DLog(@"");
-//    UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-//    [backgroundImageView setImage:[UIImage imageNamed:@"Default.png"]];
-//    self.view = backgroundImageView;
-}
-
+#pragma mark - View Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    DLog(@"");
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    DLogGreen(@"");
     [super viewWillAppear:animated];
     
     /**************************************************************************************************/
@@ -47,20 +40,17 @@
     
     // If not logged in, present login view controller
     if (![PFUser currentUser]) {
-        DLog(@"no current user welcome");
-        [(KKAppDelegate*)[[UIApplication sharedApplication] delegate] presentLoginViewControllerAnimated:NO];
+        DLogOrange(@"no current user at welcome so show login view");
+        [self presentLoginViewControllerAnimated:NO];
         return;
     }
-    
-    // Present Kollections UI
-//    [(KKAppDelegate*)[[UIApplication sharedApplication] delegate] presentTabBarController];
     
     // Refresh current user with server side data -- checks if user is still valid and so on
     [[PFUser currentUser] refreshInBackgroundWithTarget:self selector:@selector(refreshCurrentUserCallbackWithResult:error:)];
 }
 
 
-#pragma mark - ()
+#pragma mark - Private Methods
 
 - (void)refreshCurrentUserCallbackWithResult:(PFObject *)refreshedObject error:(NSError *)error {
     DLog(@"");
@@ -99,7 +89,7 @@
 }
 
 -(void)setDisplayNameEqualToAdditionalField {
-    DLog(@"");
+    DLogCyan(@"");
     //check if it's a parse signee; if so, set their displayName field to the additional field from signup
     //check what type of login we have
     if (![PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
@@ -112,7 +102,7 @@
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (!error) {
                 if (objects.count > 0) {
-                    DLog(@"Here in kollections is where we were setting the Additional field for the user");
+                    DLog(@"Here in Bar Golf is where we were setting the Additional field for the user");
 //                    PFObject *_user = [objects objectAtIndex:0];
 //                    
 //                    //check if display name is equal to the additional field; if not, save it that way
@@ -139,5 +129,223 @@
         }];
     }
 }
+
+- (BOOL)shouldProceedToMainInterface:(PFUser *)user {
+    DLog(@"");
+    if ([KKUtility userHasValidFacebookData:[PFUser currentUser]]) {
+        DLog(@"User has valid Facebook data, granting permission to use app.");
+        //        [MBProgressHUD hideHUDForView:self.navController.presentedViewController.view animated:YES];
+        //        [self presentTabBarController];
+        
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            //
+        }];
+        
+        return YES;
+    }
+    
+    return NO;
+}
+
+
+- (void)presentLoginViewControllerAnimated:(BOOL)animated {
+    DLog(@"");
+    // Create the log in view controller
+//    PFLogInViewController *logInViewController = [[KKLoginViewController alloc] init];
+//    [logInViewController setDelegate:self]; // Set ourselves as the delegate
+//    [logInViewController setFields:PFLogInFieldsUsernameAndPassword | /*PFLogInFieldsTwitter |*/ PFLogInFieldsFacebook | PFLogInFieldsSignUpButton | PFLogInFieldsLogInButton /*| PFLogInFieldsDismissButton*/ | PFLogInFieldsPasswordForgotten];
+//    
+//    [logInViewController setFacebookPermissions:[NSArray arrayWithObjects:@"user_about_me", @"friends_about_me", nil]];
+//    
+//    // Create the sign up view controller
+//    PFSignUpViewController *signUpViewController = [[KKSignUpViewController alloc] init];
+//    [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+//    [signUpViewController setFields:PFSignUpFieldsDefault | PFSignUpFieldsAdditional];
+//    
+//    // Assign our sign up controller to be displayed from the login controller
+//    [logInViewController setSignUpController:signUpViewController];
+    
+    KKLoginViewController *loginViewController = [[KKLoginViewController alloc] init];
+    
+    //main queue
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Present the log in view controller
+        [self presentViewController:loginViewController animated:NO completion:NULL];
+    });
+}
+
+
+- (void)presentLoginViewController {
+    DLog(@"");
+    [self presentLoginViewControllerAnimated:YES];
+}
+
+#pragma mark - PFLogInViewControllerDelegate
+- (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
+    DLogGreen(@"email: %@ and password: %@", username, password);
+    return YES;
+}
+
+// Called on successful login. This is likely to be the place where we register
+// the user to the "user_xxxxxxxx" channel
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+    DLogGreen(@"");
+    
+    //check what type of login we have
+    if ([PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
+        // user has logged in - we need to fetch all of their Facebook data before we let them in if they logged in with FB
+        if (![self shouldProceedToMainInterface:user]) {
+            //            self.hud = [MBProgressHUD showHUDAddedTo:self.navController.presentedViewController.view  animated:YES];
+            //            self.hud.color = kMint4;
+            //            [self.hud setDimBackground:YES];
+            //            [self.hud setLabelText:@"Loading"];
+        }
+        //        //we're logged in with Facebook so request the user's name and pic data
+        //        PF_FBRequest *request = [PF_FBRequest requestForGraphPath:@"me/?fields=name,picture"];
+        //        [request setDelegate:self];
+        //        [request startWithCompletionHandler:NULL];
+        
+        
+        // Create request for user's Facebook data
+        FBRequest *request = [FBRequest requestForMe];
+        
+        // Send request to Facebook
+        [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+            // handle response
+            DLog(@"FB request completion: %@", result);
+        }];
+        
+        
+        
+        
+    } /*else if ([PFTwitterUtils isLinkedWithUser:[PFUser currentUser]] ) {
+       //we're logged in with Twitter //TODO:
+       DLog(@"logged into twitter, now retrieve twitter name and picture");
+       } */else {
+           //we're logged with via a Parse account so dismiss the overlay
+           //           [self presentTabBarController];
+           [self.navigationController dismissViewControllerAnimated:YES completion:^{
+               //
+           }];
+       }
+    
+    // Subscribe to private push channel
+    if (user) {
+        DLog(@"subscribe to private push channel");
+        NSString *privateChannelName = [NSString stringWithFormat:@"user_%@", [user objectId]];
+        // Add the user to the installation so we can track the owner of the device
+        [[PFInstallation currentInstallation] setObject:user forKey:kKKInstallationUserKey];
+        //        [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:kKKInstallationUserKey];
+        // Subscribe user to private channel
+        [[PFInstallation currentInstallation] addUniqueObject:privateChannelName forKey:kKKInstallationChannelsKey];
+        // Save installation object
+        [[PFInstallation currentInstallation] saveEventually];
+        [user setObject:privateChannelName forKey:kKKUserPrivateChannelKey];
+    }
+}
+
+// Sent to the delegate when the log in attempt fails.
+- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
+    
+    DLogRed(@"Failed to log in with error: %@", error);
+    alertMessage(@"Uh oh. Something happened and logging in failed with error: %@. Please try again.", [error localizedDescription]);
+}
+
+#pragma mark - PFSignUpViewControllerDelegate
+- (BOOL) validEmail:(NSString*) emailString {
+    NSString *regExPattern = @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
+    
+    NSRegularExpression *regEx = [[NSRegularExpression alloc] initWithPattern:regExPattern options:NSRegularExpressionCaseInsensitive error:nil];
+    
+    NSUInteger regExMatches = [regEx numberOfMatchesInString:emailString options:0 range:NSMakeRange(0, [emailString length])];
+    
+    if (regExMatches == 0) {
+        return NO;
+    } else
+        return YES;
+}
+
+// Sent to the delegate to determine whether the sign up request should be submitted to the server.
+- (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
+    DLogGreen(@"");
+    BOOL informationComplete = YES;
+    for (id key in info) {
+        NSString *field = [info objectForKey:key];
+        //make sure all fields are filled in
+        if (!field || field.length == 0) {
+            informationComplete = NO;
+            break;
+        }
+        //ensure password is long enough
+        if ([key isEqualToString:@"password"] && field.length < kKKMinimumPasswordLength) {
+            alertMessage(@"Password must be at least %i characters.", kKKMinimumPasswordLength);
+            informationComplete = NO;
+            return informationComplete;
+        }
+        
+        //check the characters used in the password field; new passwords must contain at least 1 digit
+        NSCharacterSet * set = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+        if ([key isEqualToString:@"password"] && [field rangeOfCharacterFromSet:set].location == NSNotFound) {
+            //no numbers found
+            alertMessage(@"Password must contain at least one number");
+            informationComplete = NO;
+            return informationComplete;
+        }
+        
+        //ensure our display name doesn't include any special characters so we don't get lots of dicks and stuff for names 8======D
+        set = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789"] invertedSet];
+        if ([key isEqualToString:@"password"] && [field rangeOfCharacterFromSet:set].location != NSNotFound) {
+            //special characters found
+            alertMessage(@"Display names can only contain letters and numbers.");
+            informationComplete = NO;
+            return informationComplete;
+        }
+    }
+    
+    if (!informationComplete) {
+        
+        //knightka replaced a regular alert view with our custom subclass
+        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) andMessage:NSLocalizedString(@"Make sure you fill out all of the information!", nil)];
+        [alertView addButtonWithTitle:@"OK"
+                                 type:SIAlertViewButtonTypeCancel
+                              handler:^(SIAlertView *alert) {
+                                  NSLog(@"OK Clicked");
+                              }];
+        
+        alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+        [alertView show];
+    }
+    
+    return informationComplete;
+}
+
+// Sent to the delegate when a PFUser is signed up.
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+    DLogRed(@"");
+    [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
+    
+    //knightka replaced a regular alert view with our custom subclass
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:NSLocalizedString(@"Success!", nil) andMessage:NSLocalizedString(@"Please look for an email asking you to verify your email address to get the most from Bar Golf.", nil)];
+    [alertView addButtonWithTitle:@"OK"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alert) {
+                              NSLog(@"OK Clicked");
+                          }];
+    
+    alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+    [alertView show];
+    
+}
+
+// Sent to the delegate when the sign up attempt fails.
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
+    DLog(@"Failed to sign up...");
+}
+
+// Sent to the delegate when the sign up screen is dismissed.
+- (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
+    DLog(@"User dismissed the signUpViewController");
+}
+
 
 @end
