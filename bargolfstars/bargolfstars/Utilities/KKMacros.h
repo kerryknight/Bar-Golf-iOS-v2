@@ -6,9 +6,8 @@
 
 // xcodecolors xcode plugin logger
 #ifdef DEBUG
-    #define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-
     #ifdef XCODE_COLORS
+        #define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
         //colors require XcodeColors plugin installed on local machine //https://github.com/robbiehanson/XcodeColors
         #define XCODE_COLORS_ESCAPE @"\033["
         #define XCODE_COLORS_RESET     XCODE_COLORS_ESCAPE @";"   // Clear any foreground or background color
@@ -86,4 +85,4 @@
 //welcome/login/signup/forgot password view formatting
 #define kWelcomButtonHeight         50
 #define kWelcomeButtonWidth         270
-#define kWelcomeTextFieldMargin     35
+#define kWelcomeTextFieldMargin     15

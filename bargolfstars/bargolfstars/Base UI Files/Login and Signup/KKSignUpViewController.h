@@ -1,13 +1,13 @@
 //
 //  KKSignUpViewController.h
-//  Kollections
+//  Bar Golf
 //
-//  Created by Kerry Knight on 12/10/12.
-//  Copyright (c) 2012 Kerry Knight. All rights reserved.
+//  Created by Kerry Knight on 2/7/14.
+//  Copyright (c) 2014 Kerry Knight. All rights reserved.
 //
 
-#import <Parse/Parse.h>
+#import <UIKit/UIKit.h>
 
-@interface KKSignUpViewController : PFSignUpViewController
-
+@interface KKSignUpViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @end

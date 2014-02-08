@@ -7,6 +7,9 @@
 //
 
 #import "KKLoginViewController.h"
+#import "KKLoginViewModel.h"
+#import "STPSlideUpTransition.h"
+#import "KKSignUpViewController.h"
 
 @interface KKLoginViewController () <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *usernameFloatTextField;
@@ -18,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UIView *container;
 @property (weak, nonatomic) IBOutlet UIView *usernameBG;
 @property (weak, nonatomic) IBOutlet UIView *passwordBG;
+@property (weak, nonatomic) IBOutlet UIView *loginButtonBG;
+@property (strong, nonatomic) KKLoginViewModel *viewModel;
+    
 @end
 
 @implementation KKLoginViewController
@@ -35,22 +41,176 @@
 	// Do any additional setup after loading the view.
     
     [self configureUI];
-    [self rac_addSubscribers];
+    [self configureViewModel];
+    [self rac_addButtonCommands];
 }
 
-- (void)viewDidLayoutSubviews {
-    // Set frame for elements
-    NSInteger startingY = IS_IPHONE_TALL ? 60 : 30;
-    self.container.frame = CGRectMake(self.container.frame.origin.x,
-                                      startingY,
-                                      self.container.frame.size.width,
-                                      self.container.frame.size.height);
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
+#pragma mark - Private Methods
+- (void)configureViewModel {
+    self.viewModel = [[KKLoginViewModel alloc] init];
+    self.viewModel.active = YES;
+}
+
+- (void)rac_addButtonCommands {
+    [self rac_createLoginButtonAndTextFieldViewModelBindings];
+    [self rac_createForgotPasswordButtonSignal];
+    [self rac_createSignUpButtonSignal];
+    [self rac_createFacebookButtonSignal];
+}
+
+- (void)rac_createLoginButtonAndTextFieldViewModelBindings {
+    RAC(self.viewModel, username) = self.usernameFloatTextField.rac_textSignal;
+    RAC(self.viewModel, password) = self.passwordFloatTextField.rac_textSignal;
+    
+    @weakify(self)
+    self.loginButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
+        @strongify(self)
+        [self logIn];
+        return [RACSignal empty];
+    }];
+    
+    //only show the login button solid color if we have a valid email address and
+    //something is entered in the password field in order to reduce erroneous and
+    //wasteful parse api calls
+    [self.viewModel.usernameAndPasswordCombinedSignal subscribeNext:^(id x) {
+        if ([x boolValue]) {
+            //fill in our log in button's bg
+            [UIView animateWithDuration:0.25 animations:^{
+                @strongify(self)
+                self.loginButtonBG.alpha = 1.0;
+            }];
+            
+        } else {
+            [UIView animateWithDuration:0.25 animations:^{
+                @strongify(self)
+                self.loginButtonBG.alpha = 0.05;
+            }];
+        }
+    }];
+    
+}
+
+- (void)rac_createForgotPasswordButtonSignal {
+    @weakify(self)
+    self.forgotPasswordButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
+        @strongify(self)
+        [self forgotPassword];
+        return [RACSignal empty];
+    }];
+}
+
+- (void)rac_createSignUpButtonSignal {
+    @weakify(self)
+    self.signUpButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
+        @strongify(self)
+        
+        [self loadSignUpView];
+        return [RACSignal empty];
+    }];
+}
+
+- (void)rac_createFacebookButtonSignal {
+    @weakify(self)
+    self.facebookButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
+        @strongify(self)
+        [self forgotPassword];
+        return [RACSignal empty];
+    }];
+}
+
+- (RACDisposable *)logIn {
+	return [[self.viewModel rac_logIn]
+	        subscribeNext: ^(PFUser *user) {
+                DLogGreen(@"user at login: %@", user);
+                //do something or noop?
+            } error: ^(NSError *error) {
+                DLogRed(@"login error and show alert: %@", [error localizedDescription]);
+                //error logging in, show error message
+            } completed: ^{
+                DLog(@"log in completed successfully, so show main interface");
+                //successfully logged in
+            }];
+}
+
+- (RACDisposable *)forgotPassword {
+	return [[self.viewModel rac_forgotPassword]
+	        subscribeNext: ^(id x) {
+                DLogGreen(@"x at login: %@", x);
+                //do something or noop?
+            } error: ^(NSError *error) {
+                DLogRed(@"forgot password error and show alert: %@", [error localizedDescription]);
+                //error logging in, show error message
+            } completed: ^{
+                DLog(@"forgot password email sent successfully");
+                //successfully logged in
+            }];
+}
+
+- (void)loadSignUpView {
+    self.transitioningDelegate = [STPTransitionCenter sharedInstance];
+    STPSlideUpTransition *transition = [STPSlideUpTransition new];
+    transition.reverseTransition = [STPSlideUpTransition new];
+    
+    KKSignUpViewController *signUpViewController = [[KKSignUpViewController alloc] init];
+    
+    //add our sign up view's cancel button behavior
+    @weakify(self)
+    signUpViewController.cancelButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
+        DLogGreen(@"");
+        @strongify(self)
+        [self dismissViewControllerUsingTransition:transition onCompletion:^{
+            DLogGreen(@"2");
+           //done dismissing
+        }];
+        return [RACSignal empty];
+    }];
+    
+    //present our sign up view controller
+    [self presentViewController:signUpViewController
+                usingTransition:transition
+                     onCompletion:^{
+                         //finished transitioning in
+                     }];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self dismissAnyKeyboard];
+    [super touchesBegan:touches withEvent:event];
+}
+
+- (void) dismissAnyKeyboard {
+	NSArray *subviews = [self.container subviews];
+	for (UIView *aview in subviews) {
+		if ([aview isKindOfClass: [JVFloatLabeledTextField class]]) {
+			JVFloatLabeledTextField *textField = (JVFloatLabeledTextField *)aview;
+			if ([textField isEditing]) {
+                
+				[textField resignFirstResponder];
+			}
+		}
+	}
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    @weakify(self)
+    [self.viewModel.usernameAndPasswordCombinedSignal subscribeNext:^(id x) {
+        @strongify(self)
+        [self logIn];
+    }];
+
+    return YES;
+}
 
 #pragma mark - UI Configuration
 - (void)configureUI {
-    DLogGreen(@"");
+    //set initially to appear disabled
+    self.loginButtonBG.alpha = 0.05;
     
     // ********** FLOATING LABEL TEXT FIELDS ********************** //
     UIColor *gray = [kMedWhite colorWithAlphaComponent:0.5];
@@ -60,12 +220,13 @@
     [[JVFloatLabeledTextField appearance] setFloatingLabelYPadding:@(0)];
     [[JVFloatLabeledTextField appearance] setFont:[UIFont fontWithName:kHelveticaLight size:20.0f]];
     [[JVFloatLabeledTextField appearance] setTextColor:kMedWhite];
+    [JVFloatLabeledTextField appearance].keyboardAppearance = UIKeyboardAppearanceDark;
     
     //add the username textfield
     self.usernameFloatTextField = [[JVFloatLabeledTextField alloc] initWithFrame:
                                    CGRectMake(kWelcomeTextFieldMargin,
                                               self.usernameBG.frame.origin.y,
-                                              self.view.frame.size.width - 2 * kWelcomeTextFieldMargin,
+                                              self.container.frame.size.width - 2 * kWelcomeTextFieldMargin + 5,
                                               self.usernameBG.frame.size.height)];
     self.usernameFloatTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.usernameFloatTextField.delegate = self;
@@ -84,7 +245,7 @@
     self.passwordFloatTextField = [[JVFloatLabeledTextField alloc] initWithFrame:
                                    CGRectMake(kWelcomeTextFieldMargin,
                                               self.passwordBG.frame.origin.y,
-                                              self.view.frame.size.width - 2 * kWelcomeTextFieldMargin,
+                                              self.container.frame.size.width - 2 * kWelcomeTextFieldMargin + 5,
                                               self.passwordBG.frame.size.height)];
     self.passwordFloatTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.passwordFloatTextField.delegate = self;
@@ -103,48 +264,13 @@
     // ********** FLOATING LABEL TEXT FIELDS ********************** //
 }
 
-#pragma mark - RAC Stuff
-- (void)rac_addSubscribers {
-    [RACObserve(self.usernameFloatTextField, text) subscribeNext:^(id x) {
-        DLogYellow(@"x: %@", x);
-    }];
-    
-    [RACObserve(self.passwordFloatTextField, text) subscribeNext:^(id x) {
-        DLogYellow(@"x: %@", x);
-    }];
-}
-
-#pragma mark - Private Methods
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self dismissAnyKeyboard];
-    [super touchesBegan:touches withEvent:event];
-}
-
-- (void) dismissAnyKeyboard {
-	NSArray *subviews = [self.view subviews];
-	for (UIView *aview in subviews) {
-		if ([aview isKindOfClass: [UITextField class]]) {
-			UITextField *textField = (UITextField *)aview;
-			if ([textField isEditing]) {
-                
-				[textField resignFirstResponder];
-			}
-		}
-	}
-}
-
-#pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    DLogYellow(@"");
-    
-    [textField resignFirstResponder];
-    
-    if (self.usernameFloatTextField.text.length > 0 && self.passwordFloatTextField.text.length > 6) {
-        DLogGreen(@"");
-        [PFUser logInWithUsername:self.usernameFloatTextField.text password:self.passwordFloatTextField.text];
-    }
-    
-    return YES;
+- (void)viewDidLayoutSubviews {
+    // Set frame for elements
+    NSInteger startingY = IS_IPHONE_TALL ? 60 : 30;
+    self.container.frame = CGRectMake(self.container.frame.origin.x,
+                                      startingY,
+                                      self.container.frame.size.width,
+                                      self.container.frame.size.height);
 }
 
 - (void)didReceiveMemoryWarning {

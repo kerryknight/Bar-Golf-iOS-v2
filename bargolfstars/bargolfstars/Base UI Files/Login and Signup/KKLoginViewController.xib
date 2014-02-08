@@ -10,6 +10,7 @@
                 <outlet property="facebookButton" destination="8y3-fe-MaS" id="MCD-TO-wqg"/>
                 <outlet property="forgotPasswordButton" destination="odh-Yi-q1G" id="160-nu-BZk"/>
                 <outlet property="loginButton" destination="Kcm-p8-VT1" id="9iK-TW-cvV"/>
+                <outlet property="loginButtonBG" destination="h8y-7D-aV6" id="gKw-is-bHf"/>
                 <outlet property="passwordBG" destination="DDe-U0-Dlr" id="6bL-fV-fUe"/>
                 <outlet property="signUpButton" destination="Qck-zY-kKR" id="ADF-ty-yca"/>
                 <outlet property="usernameBG" destination="mGI-3B-SfO" id="aZc-gh-Pyt"/>
@@ -92,13 +93,6 @@
                             <color key="textColor" red="0.90588235289999997" green="0.91764705879999997" blue="0.95294117649999999" alpha="0.5" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Forgot password?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHX-Ji-ZZn">
-                            <rect key="frame" x="5" y="198" width="270" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You can also sign in with:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taG-32-lK5">
                             <rect key="frame" x="5" y="332" width="270" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -118,10 +112,11 @@
                             <color key="backgroundColor" red="0.20000000000000001" green="0.2470588235" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odh-Yi-q1G" userLabel="Forgot Password Button">
-                            <rect key="frame" x="157" y="193" width="118" height="39"/>
+                            <rect key="frame" x="153" y="193" width="122" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal">
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                            <state key="normal" title="Forgot Password?">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>

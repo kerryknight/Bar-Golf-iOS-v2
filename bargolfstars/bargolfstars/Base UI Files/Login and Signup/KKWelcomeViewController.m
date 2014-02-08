@@ -33,7 +33,9 @@
     //TUTORIAL PRIOR TO GETTING THEM TO LOG IN; I SHOULD ALLOW THEM TO SKIP IT AND GO STRAIGHT TO THE
     //LOGIN OR SIGN-UP VIEW CONTROLLER FROM THIS TOO  //TODO:
     /**************************************************************************************************/
-    
+
+#warning remove this bogus logout when dev for login complete
+    [PFUser logOut];
     
     /**************************************************************************************************/
     /**************************************************************************************************/
@@ -251,19 +253,7 @@
     alertMessage(@"Uh oh. Something happened and logging in failed with error: %@. Please try again.", [error localizedDescription]);
 }
 
-#pragma mark - PFSignUpViewControllerDelegate
-- (BOOL) validEmail:(NSString*) emailString {
-    NSString *regExPattern = @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
-    
-    NSRegularExpression *regEx = [[NSRegularExpression alloc] initWithPattern:regExPattern options:NSRegularExpressionCaseInsensitive error:nil];
-    
-    NSUInteger regExMatches = [regEx numberOfMatchesInString:emailString options:0 range:NSMakeRange(0, [emailString length])];
-    
-    if (regExMatches == 0) {
-        return NO;
-    } else
-        return YES;
-}
+#pragma mark - PFSignUpViewControllerDelegat
 
 // Sent to the delegate to determine whether the sign up request should be submitted to the server.
 - (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
