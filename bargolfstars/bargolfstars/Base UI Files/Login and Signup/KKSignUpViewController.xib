@@ -7,9 +7,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKSignUpViewController">
             <connections>
                 <outlet property="cancelButton" destination="nr5-LJ-d6Q" id="Puf-Os-bE9"/>
+                <outlet property="confirmPasswordBG" destination="iwg-Mh-Gra" id="Q7Y-gC-4SK"/>
                 <outlet property="container" destination="cHd-TT-w5I" id="538-IM-tsB"/>
                 <outlet property="passwordBG" destination="DDe-U0-Dlr" id="6bL-fV-fUe"/>
                 <outlet property="signUpButton" destination="Qck-zY-kKR" id="ADF-ty-yca"/>
+                <outlet property="signUpButtonBG" destination="zD8-C1-NGe" id="HUS-c1-igD"/>
                 <outlet property="usernameBG" destination="mGI-3B-SfO" id="aZc-gh-Pyt"/>
                 <outlet property="view" destination="9VW-lZ-m29" id="5W2-Oq-JHw"/>
             </connections>
@@ -23,8 +25,15 @@
                     <rect key="frame" x="20" y="66" width="280" height="435"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Required sign up details:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcc-OO-gvl">
+                            <rect key="frame" x="5" y="0.0" width="270" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                            <color key="textColor" red="0.90588235289999997" green="0.91764705879999997" blue="0.95294117649999999" alpha="0.5" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zD8-C1-NGe" userLabel="Sign Up Button View">
-                            <rect key="frame" x="5" y="199" width="270" height="50"/>
+                            <rect key="frame" x="5" y="234" width="270" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qck-zY-kKR" userLabel="Sign Up Button">
@@ -40,7 +49,7 @@
                             <color key="backgroundColor" red="0.4549019608" green="0.75294117650000003" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ssf-T1-fkx" userLabel="Cancel Button View">
-                            <rect key="frame" x="5" y="259" width="270" height="50"/>
+                            <rect key="frame" x="5" y="294" width="270" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nr5-LJ-d6Q" userLabel="Cancel Button">

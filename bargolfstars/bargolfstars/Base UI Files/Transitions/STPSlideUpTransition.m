@@ -12,10 +12,10 @@
                  toView:(UIView *)toView
         inContainerView:(UIView *)containerView
     executeOnCompletion:(void (^)(BOOL))onCompletion {
+    
     [containerView addSubview:toView];
-    toView.transform =
-    CGAffineTransformMakeTranslation(0.0f,
-                                     (self.isReversed ? -1 : 1) * CGRectGetHeight(containerView.frame));
+    
+    toView.transform = CGAffineTransformMakeTranslation(0.0f, (self.isReversed ? -1 : 1) * CGRectGetHeight(containerView.frame));
 
     [UIView animateWithDuration:self.transitionDuration
                           delay:0.0f

@@ -38,6 +38,7 @@
     #import "KKCache.h"
     #import "SIAlertView.h"
     #import "STPTransitions.h"
+    #import "KKAllSTPTransitions.h"
 #endif
 
 

@@ -24,6 +24,8 @@
 		DEAB466B18A620FE008FB73D /* KKSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAB466918A620FE008FB73D /* KKSignUpViewController.m */; };
 		DEAB466C18A620FE008FB73D /* KKSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEAB466A18A620FE008FB73D /* KKSignUpViewController.xib */; };
 		DEAB466F18A6290C008FB73D /* STPSlideUpTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAB466E18A6290C008FB73D /* STPSlideUpTransition.m */; };
+		DEAB467318A682C6008FB73D /* STPCardTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAB467218A682C6008FB73D /* STPCardTransition.m */; };
+		DEAB468118A6CA36008FB73D /* JVFloatLabeledTextField+LabelText.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAB468018A6CA36008FB73D /* JVFloatLabeledTextField+LabelText.m */; };
 		DEAF54DA18786C990019F7FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54D918786C990019F7FF /* Foundation.framework */; };
 		DEAF54DC18786C990019F7FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54DB18786C990019F7FF /* CoreGraphics.framework */; };
 		DEAF54DE18786C990019F7FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54DD18786C990019F7FF /* UIKit.framework */; };
@@ -99,6 +101,11 @@
 		DEAB466A18A620FE008FB73D /* KKSignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKSignUpViewController.xib; sourceTree = "<group>"; };
 		DEAB466D18A6290C008FB73D /* STPSlideUpTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPSlideUpTransition.h; sourceTree = "<group>"; };
 		DEAB466E18A6290C008FB73D /* STPSlideUpTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPSlideUpTransition.m; sourceTree = "<group>"; };
+		DEAB467118A682C6008FB73D /* STPCardTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPCardTransition.h; sourceTree = "<group>"; };
+		DEAB467218A682C6008FB73D /* STPCardTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPCardTransition.m; sourceTree = "<group>"; };
+		DEAB467418A68522008FB73D /* KKAllSTPTransitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKAllSTPTransitions.h; sourceTree = "<group>"; };
+		DEAB467F18A6CA36008FB73D /* JVFloatLabeledTextField+LabelText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JVFloatLabeledTextField+LabelText.h"; sourceTree = "<group>"; };
+		DEAB468018A6CA36008FB73D /* JVFloatLabeledTextField+LabelText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JVFloatLabeledTextField+LabelText.m"; sourceTree = "<group>"; };
 		DEAF54D618786C990019F7FF /* Bar Golf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bar Golf.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEAF54D918786C990019F7FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DEAF54DB18786C990019F7FF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -200,6 +207,7 @@
 		DE0596841895F2BE00892F24 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				DEAB467E18A6CA12008FB73D /* Categories */,
 			);
 			name = External;
 			path = Utilities/External;
@@ -228,6 +236,27 @@
 				DEAB465D18A5FC79008FB73D /* UIImage+RoundedCornerAdditions.m */,
 			);
 			path = "UIImage Categories";
+			sourceTree = "<group>";
+		};
+		DEAB467018A68295008FB73D /* STPTransitions */ = {
+			isa = PBXGroup;
+			children = (
+				DEAB467418A68522008FB73D /* KKAllSTPTransitions.h */,
+				DEAB466D18A6290C008FB73D /* STPSlideUpTransition.h */,
+				DEAB466E18A6290C008FB73D /* STPSlideUpTransition.m */,
+				DEAB467118A682C6008FB73D /* STPCardTransition.h */,
+				DEAB467218A682C6008FB73D /* STPCardTransition.m */,
+			);
+			name = STPTransitions;
+			sourceTree = "<group>";
+		};
+		DEAB467E18A6CA12008FB73D /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				DEAB467F18A6CA36008FB73D /* JVFloatLabeledTextField+LabelText.h */,
+				DEAB468018A6CA36008FB73D /* JVFloatLabeledTextField+LabelText.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		DEAF54CD18786C990019F7FF = {
@@ -272,6 +301,7 @@
 				DEAF54E918786C990019F7FF /* KKAppDelegate.m */,
 				DE0596841895F2BE00892F24 /* External */,
 				DEE2EE8C1891E73F00FC2991 /* Utilities */,
+				DEE2EEA41891F05300FC2991 /* Transitions */,
 				DEE2EEA11891F05300FC2991 /* Base UI Files */,
 				DEE2EE6E1891E73F00FC2991 /* Sections */,
 				DEE8BAA218787C52000EA492 /* UI Resources */,
@@ -314,10 +344,10 @@
 		DEB649BA18A5E1FC005C17AA /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				DEAB466518A620F4008FB73D /* KKSignUpViewModel.h */,
-				DEAB466618A620F4008FB73D /* KKSignUpViewModel.m */,
 				DEB649BB18A5E1FC005C17AA /* KKLoginViewModel.h */,
 				DEB649BC18A5E1FC005C17AA /* KKLoginViewModel.m */,
+				DEAB466518A620F4008FB73D /* KKSignUpViewModel.h */,
+				DEAB466618A620F4008FB73D /* KKSignUpViewModel.m */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -448,7 +478,6 @@
 		DEE2EEA11891F05300FC2991 /* Base UI Files */ = {
 			isa = PBXGroup;
 			children = (
-				DEE2EEA41891F05300FC2991 /* Transitions */,
 				DEE2EEA21891F05300FC2991 /* KKMenuViewController.h */,
 				DEE2EEA31891F05300FC2991 /* KKMenuViewController.m */,
 				DEE2EEAC1891F07B00FC2991 /* KKNavigationController.h */,
@@ -460,14 +489,14 @@
 		DEE2EEA41891F05300FC2991 /* Transitions */ = {
 			isa = PBXGroup;
 			children = (
-				DEAB466D18A6290C008FB73D /* STPSlideUpTransition.h */,
-				DEAB466E18A6290C008FB73D /* STPSlideUpTransition.m */,
+				DEAB467018A68295008FB73D /* STPTransitions */,
 				DEE2EEA51891F05300FC2991 /* MEAnimationController.h */,
 				DEE2EEA61891F05300FC2991 /* MEAnimationController.m */,
 				DEE2EEA71891F05300FC2991 /* MEDynamicTransition.h */,
 				DEE2EEA81891F05300FC2991 /* MEDynamicTransition.m */,
 			);
-			path = Transitions;
+			name = Transitions;
+			path = "Base UI Files/Transitions";
 			sourceTree = "<group>";
 		};
 		DEE8BAA218787C52000EA492 /* UI Resources */ = {
@@ -637,6 +666,7 @@
 				DEAB466118A5FC79008FB73D /* UIImage+ResizeAdditions.m in Sources */,
 				DEE2EEAB1891F05300FC2991 /* MEDynamicTransition.m in Sources */,
 				DEAB466F18A6290C008FB73D /* STPSlideUpTransition.m in Sources */,
+				DEAB468118A6CA36008FB73D /* JVFloatLabeledTextField+LabelText.m in Sources */,
 				DEE2EE911891E73F00FC2991 /* KKJoinRoundViewController.m in Sources */,
 				DEE2EE8E1891E73F00FC2991 /* KKCreateRoundViewController.m in Sources */,
 				DEE2EEAE1891F07B00FC2991 /* KKNavigationController.m in Sources */,
@@ -648,6 +678,7 @@
 				DEAB466018A5FC79008FB73D /* UIImage+Colorization.m in Sources */,
 				DEAB466B18A620FE008FB73D /* KKSignUpViewController.m in Sources */,
 				DEE2EE8D1891E73F00FC2991 /* KKAcknowledgementsViewController.m in Sources */,
+				DEAB467318A682C6008FB73D /* STPCardTransition.m in Sources */,
 				DEAF54EA18786C990019F7FF /* KKAppDelegate.m in Sources */,
 				DEAB466218A5FC79008FB73D /* UIImage+RoundedCornerAdditions.m in Sources */,
 				DEAB465E18A5FC79008FB73D /* NSString+EmailAdditions.m in Sources */,

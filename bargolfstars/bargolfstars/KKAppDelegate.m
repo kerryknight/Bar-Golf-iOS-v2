@@ -62,6 +62,8 @@
     // Create the navigation controller with our welcome vc
 	self.welcomeViewController = [[KKWelcomeViewController alloc] init];
 	self.welcomeNavigationController = [[UINavigationController alloc] initWithRootViewController:self.welcomeViewController];
+    // This is the tits. Don't forget to do this! for STPTransitions
+    self.welcomeNavigationController.delegate = STPTransitionCenter.sharedInstance;
 	
 	// Create the window and add our nav controller to it
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

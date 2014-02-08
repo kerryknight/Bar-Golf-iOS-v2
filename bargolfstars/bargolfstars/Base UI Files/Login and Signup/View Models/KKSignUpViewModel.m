@@ -12,7 +12,6 @@
 @interface KKSignUpViewModel ()
 @property(nonatomic, strong) RACSignal *usernameIsValidEmailSignal;
 @property(nonatomic, strong) RACSignal *passwordIsValidSignal;
-@property(nonatomic, strong) RACSignal *confirmPasswordMatchesSignal;
 @end
 
 @implementation KKSignUpViewModel
@@ -28,9 +27,9 @@
 
 #pragma mark - Public Signal Properties
 - (RACSignal *)allFieldsCombinedSignal {
-    return [RACSignal combineLatest:@[self.usernameIsValidEmailSignal, self.passwordIsValidSignal, self.confirmPasswordMatchesSignal]
-                             reduce:^(NSNumber *user, NSNumber *pass, NSNumber *confirmPass) {
-                                 return @(user.intValue > 0 && pass.intValue > 0 && confirmPass.intValue > 0);//both must be 1 to enable
+    return [RACSignal combineLatest:@[self.usernameIsValidEmailSignal, self.passwordIsValidSignal, RACObserve(self, confirmPassword)]
+                             reduce:^(NSNumber *user, NSNumber *pass, NSString *confirmPass) {
+                                 return @(user.intValue > 0 && pass.intValue > 0 && [self.password isEqual:confirmPass]);//both must be 1 to enable
                              }];
 }
 
@@ -82,15 +81,5 @@
 	}
 	return _passwordIsValidSignal;
 }
-
-- (RACSignal *)confirmPasswordMatchesSignal {
-	if (!_confirmPasswordMatchesSignal) {
-		_confirmPasswordMatchesSignal = [RACObserve(self, confirmPassword) map:^id(NSString *confirmPass) {
-			return @([confirmPass isEqualToString:self.password]);
-		}];
-	}
-	return _confirmPasswordMatchesSignal;
-}
-
 
 @end

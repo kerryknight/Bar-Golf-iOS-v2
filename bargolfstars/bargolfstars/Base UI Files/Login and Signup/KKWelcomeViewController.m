@@ -151,36 +151,14 @@
 
 
 - (void)presentLoginViewControllerAnimated:(BOOL)animated {
-    DLog(@"");
-    // Create the log in view controller
-//    PFLogInViewController *logInViewController = [[KKLoginViewController alloc] init];
-//    [logInViewController setDelegate:self]; // Set ourselves as the delegate
-//    [logInViewController setFields:PFLogInFieldsUsernameAndPassword | /*PFLogInFieldsTwitter |*/ PFLogInFieldsFacebook | PFLogInFieldsSignUpButton | PFLogInFieldsLogInButton /*| PFLogInFieldsDismissButton*/ | PFLogInFieldsPasswordForgotten];
-//    
-//    [logInViewController setFacebookPermissions:[NSArray arrayWithObjects:@"user_about_me", @"friends_about_me", nil]];
-//    
-//    // Create the sign up view controller
-//    PFSignUpViewController *signUpViewController = [[KKSignUpViewController alloc] init];
-//    [signUpViewController setDelegate:self]; // Set ourselves as the delegate
-//    [signUpViewController setFields:PFSignUpFieldsDefault | PFSignUpFieldsAdditional];
-//    
-//    // Assign our sign up controller to be displayed from the login controller
-//    [logInViewController setSignUpController:signUpViewController];
-    
     KKLoginViewController *loginViewController = [[KKLoginViewController alloc] init];
-    
     //main queue
     dispatch_async(dispatch_get_main_queue(), ^{
         // Present the log in view controller
-        [self presentViewController:loginViewController animated:NO completion:NULL];
+        [self.navigationController pushViewController:loginViewController animated:NO];
     });
 }
 
-
-- (void)presentLoginViewController {
-    DLog(@"");
-    [self presentLoginViewControllerAnimated:YES];
-}
 
 #pragma mark - PFLogInViewControllerDelegate
 - (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {

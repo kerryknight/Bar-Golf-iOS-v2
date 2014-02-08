@@ -151,30 +151,13 @@
 }
 
 - (void)loadSignUpView {
-    self.transitioningDelegate = [STPTransitionCenter sharedInstance];
-    STPSlideUpTransition *transition = [STPSlideUpTransition new];
-    transition.reverseTransition = [STPSlideUpTransition new];
+    self.navigationController.delegate = [STPTransitionCenter sharedInstance];
+    STPCardTransition *transition = [STPCardTransition new];
+    transition.reverseTransition = [STPCardTransition new];
     
     KKSignUpViewController *signUpViewController = [[KKSignUpViewController alloc] init];
-    
-    //add our sign up view's cancel button behavior
-    @weakify(self)
-    signUpViewController.cancelButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
-        DLogGreen(@"");
-        @strongify(self)
-        [self dismissViewControllerUsingTransition:transition onCompletion:^{
-            DLogGreen(@"2");
-           //done dismissing
-        }];
-        return [RACSignal empty];
-    }];
-    
-    //present our sign up view controller
-    [self presentViewController:signUpViewController
-                usingTransition:transition
-                     onCompletion:^{
-                         //finished transitioning in
-                     }];
+    [self.navigationController pushViewController:signUpViewController
+                                  usingTransition:transition];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

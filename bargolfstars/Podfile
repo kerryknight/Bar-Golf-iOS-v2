@@ -13,9 +13,10 @@ pod 'Parse-RACExtensions', '0.0.3'
 pod 'Reachability', '3.1.1'
 pod 'JVFloatLabeledTextField', '0.0.5' #for animating placeholder text above line in textfields
 pod 'SIAlertView', '1.3' #alertview with block syntax and colored buttons
-pod 'OHAttributedLabel', '3.5.3' #for style text with links
 pod 'STPTransitions' #for animated transitions between view controllers
 pod 'FXBlurView', '1.5.3' #for blurring overlay view in realtime
+pod 'Nimbus/Core', '= 1.0.0'
+pod 'Nimbus/AttributedLabel', '= 1.0.0'
 
 
 # if permissions error, try:

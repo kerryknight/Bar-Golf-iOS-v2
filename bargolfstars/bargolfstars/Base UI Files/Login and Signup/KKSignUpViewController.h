@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KKSignUpViewController : UIViewController
+@interface KKSignUpViewController : UIViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @end

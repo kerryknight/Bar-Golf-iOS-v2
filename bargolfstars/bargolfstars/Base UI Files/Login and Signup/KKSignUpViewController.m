@@ -8,8 +8,11 @@
 
 #import "KKSignUpViewController.h"
 #import "KKSignUpViewModel.h"
+#import "JVFloatLabeledTextField+LabelText.h"
+#import "NimbusCore.h"
+#import "NimbusAttributedLabel.h"
 
-@interface KKSignUpViewController () <UITextFieldDelegate>
+@interface KKSignUpViewController () <UITextFieldDelegate, NIAttributedLabelDelegate>
 @property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *usernameFloatTextField;
 @property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *passwordFloatTextField;
 @property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *confirmPasswordFloatTextField;
@@ -82,7 +85,7 @@
         } else {
             [UIView animateWithDuration:0.25 animations:^{
                 @strongify(self)
-                self.signUpButtonBG.alpha = 0.05;
+                self.signUpButtonBG.alpha = 0.4;
             }];
         }
     }];
@@ -93,7 +96,7 @@
     @weakify(self)
     self.cancelButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
         @strongify(self)
-        [self cancel];
+        [self.navigationController popViewControllerAnimated:YES];
         return [RACSignal empty];
     }];
 }
@@ -111,11 +114,6 @@
                 //successfully logged in
             }];
 }
-
-- (void)cancel {
-    
-}
-
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self dismissAnyKeyboard];
@@ -138,19 +136,13 @@
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-    @weakify(self)
-    [self.viewModel.allFieldsCombinedSignal subscribeNext:^(id x) {
-        @strongify(self)
-        [self signUp];
-    }];
-
     return YES;
 }
 
 #pragma mark - UI Configuration
 - (void)configureUI {
     //set initially to appear disabled
-    self.signUpButtonBG.alpha = 0.05;
+    self.signUpButtonBG.alpha = 0.4;
     
     // ********** FLOATING LABEL TEXT FIELDS ********************** //
     UIColor *gray = [kMedWhite colorWithAlphaComponent:0.5];
@@ -170,9 +162,8 @@
                                               self.usernameBG.frame.size.height)];
     self.usernameFloatTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.usernameFloatTextField.delegate = self;
-    self.usernameFloatTextField.floatingLabel.text = NSLocalizedString(@"Email Address", nil);
     [self.usernameFloatTextField setKeyboardType:UIKeyboardTypeEmailAddress];
-    self.usernameFloatTextField.returnKeyType = UIReturnKeyGo;
+    self.usernameFloatTextField.returnKeyType = UIReturnKeyDone;
     self.usernameFloatTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     //set our placeholder text color
     if ([self.usernameFloatTextField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
@@ -189,19 +180,97 @@
                                               self.passwordBG.frame.size.height)];
     self.passwordFloatTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.passwordFloatTextField.delegate = self;
-    self.passwordFloatTextField.returnKeyType = UIReturnKeyGo;
+    self.passwordFloatTextField.returnKeyType = UIReturnKeyDone;
     self.passwordFloatTextField.secureTextEntry = YES;
     self.passwordFloatTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    self.passwordFloatTextField.floatingLabel.text = NSLocalizedString(@"Password", nil);
-    
     //set our placeholder text color
     if ([self.passwordFloatTextField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
         self.passwordFloatTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Password", nil)
                                                                                             attributes:@{NSForegroundColorAttributeName: gray}];
     }
+    
     [self.container addSubview:self.passwordFloatTextField];
     
+    //add the password confirmation textfield
+    self.confirmPasswordFloatTextField = [[JVFloatLabeledTextField alloc] initWithFrame:
+                                   CGRectMake(kWelcomeTextFieldMargin,
+                                              self.confirmPasswordBG.frame.origin.y,
+                                              self.container.frame.size.width - 2 * kWelcomeTextFieldMargin + 5,
+                                              self.confirmPasswordBG.frame.size.height)];
+    self.confirmPasswordFloatTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    self.confirmPasswordFloatTextField.delegate = self;
+    self.confirmPasswordFloatTextField.returnKeyType = UIReturnKeyDone;
+    self.confirmPasswordFloatTextField.secureTextEntry = YES;
+    self.confirmPasswordFloatTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    //set our placeholder text color
+    if ([self.confirmPasswordFloatTextField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+        self.confirmPasswordFloatTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Confirm Password", nil)
+                                                                                            attributes:@{NSForegroundColorAttributeName: gray}];
+    }
+    [self.container addSubview:self.confirmPasswordFloatTextField];
+    
     // ********** FLOATING LABEL TEXT FIELDS ********************** //
+    
+    [self configureAgreementAttributedString];
+
+}
+
+#pragma mark - Attributed String Agreement label
+- (void)configureAgreementAttributedString {
+    
+    //add the password footer label
+    NIAttributedLabel *agreementLabel = [[NIAttributedLabel alloc] initWithFrame:CGRectMake(self.confirmPasswordBG.frame.origin.x,
+                                                                                            self.confirmPasswordBG.frame.origin.y + self.confirmPasswordBG.frame.size.height + 5,
+                                                                                            self.confirmPasswordBG.frame.size.width,
+                                                                                            self.confirmPasswordBG.frame.size.height)];
+    agreementLabel.font = [UIFont fontWithName:kHelveticaLight size:13.0f];
+    agreementLabel.textAlignment = NSTextAlignmentCenter;
+    agreementLabel.backgroundColor = [UIColor clearColor];
+    agreementLabel.textColor = kLtWhite;
+    CALayer *agreementLayer = agreementLabel.layer;
+    agreementLayer.shadowOpacity = 0.0f;
+    agreementLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    agreementLabel.autoresizingMask = UIViewAutoresizingFlexibleDimensions;
+    agreementLabel.numberOfLines = 0;
+    
+    // Set link's color
+    agreementLabel.linkColor = kLtGreen;
+    
+    // When the user taps a link we can change the way the link text looks.
+    agreementLabel.attributesForHighlightedLink = [NSDictionary dictionaryWithObject:(id)kLtGreen.CGColor forKey:(NSString *)kCTForegroundColorAttributeName];
+    
+    // In order to handle the events generated by the user tapping a link we must implement the
+    // delegate.
+    agreementLabel.delegate = self;
+    
+    // By default the label will not automatically detect links. Turning this on will cause the label
+    // to pass through the text with an NSDataDetector, highlighting any detected URLs.
+    agreementLabel.autoDetectLinks = YES;
+    
+    // By default links do not have underlines and this is generally accepted as the standard on iOS.
+    // If, however, you do wish to show underlines, you can enable them like so:
+    //    self.agreementLabel.linksHaveUnderlines = YES;
+    
+    agreementLabel.text = @"By signing up, you accept Bar Golf's\nTerms of Service and Privacy Policy.";
+    
+    NSRange linkRange = [agreementLabel.text rangeOfString:@"Terms of Service"];
+    
+    // Explicitly adds a link at a given range.
+    [agreementLabel addLink:[NSURL URLWithString:@"http://www.bargolfstars.com/terms"] range:linkRange];
+    
+    NSRange linkRange2 = [agreementLabel.text rangeOfString:@"Privacy Policy"];
+    
+    // Explicitly adds a link at a given range.
+    [agreementLabel addLink:[NSURL URLWithString:@"http://www.bargolfstars.com/privacy"] range:linkRange2];
+    [self.container addSubview:agreementLabel];
+}
+
+#pragma mark - NIAttributedLabelDelegate
+
+- (void)attributedLabel:(NIAttributedLabel*)attributedLabel didSelectTextCheckingResult:(NSTextCheckingResult *)result atPoint:(CGPoint)point {
+    // In a later example we will show how to push a Nimbus web controller onto the navigation stack
+    // rather than punt the user out of the application to Safari.
+    [[UIApplication sharedApplication] openURL:result.URL];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -211,6 +280,14 @@
                                       startingY,
                                       self.container.frame.size.width,
                                       self.container.frame.size.height);
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if (textField == self.passwordFloatTextField) {
+        [self.passwordFloatTextField bgs_setFloatingLabelText:NSLocalizedString(@"Password (Minimum 7 characters and 1 number)", nil)];
+    }
+    
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {
