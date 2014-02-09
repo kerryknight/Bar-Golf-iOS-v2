@@ -31,6 +31,9 @@ extern NSString *const kKKUserDefaultsCacheFacebookFriendsKey;
 
 #pragma mark - Default App Settings
 extern int const kKKMinimumPasswordLength;
+extern int const kKKMaximumPasswordLength;
+extern int const kKKMinimumDisplayNameLength;
+extern int const kKKMaximumDisplayNameLength;
 
 
 #pragma mark - Launch URLs

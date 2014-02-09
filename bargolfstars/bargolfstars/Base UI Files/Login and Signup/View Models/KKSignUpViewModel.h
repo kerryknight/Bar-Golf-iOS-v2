@@ -11,7 +11,9 @@
 @property (copy, nonatomic) NSString *username;
 @property (copy, nonatomic) NSString *password;
 @property (copy, nonatomic) NSString *confirmPassword;
-@property(nonatomic, strong) RACSignal *allFieldsCombinedSignal;
+@property (copy, nonatomic) NSString *displayName;
+@property (strong, nonatomic, readonly) RACSignal *allFieldsCombinedSignal;
+@property (strong, nonatomic, readonly) RACSignal *sendErrorSignal;
 
 - (RACSignal *)rac_signUp;
 

@@ -9,6 +9,7 @@
                 <outlet property="cancelButton" destination="nr5-LJ-d6Q" id="Puf-Os-bE9"/>
                 <outlet property="confirmPasswordBG" destination="iwg-Mh-Gra" id="Q7Y-gC-4SK"/>
                 <outlet property="container" destination="cHd-TT-w5I" id="538-IM-tsB"/>
+                <outlet property="displayNameBG" destination="mxe-4e-abB" id="jMq-rV-KTl"/>
                 <outlet property="passwordBG" destination="DDe-U0-Dlr" id="6bL-fV-fUe"/>
                 <outlet property="signUpButton" destination="Qck-zY-kKR" id="ADF-ty-yca"/>
                 <outlet property="signUpButtonBG" destination="zD8-C1-NGe" id="HUS-c1-igD"/>
@@ -33,7 +34,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zD8-C1-NGe" userLabel="Sign Up Button View">
-                            <rect key="frame" x="5" y="234" width="270" height="50"/>
+                            <rect key="frame" x="5" y="294" width="270" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qck-zY-kKR" userLabel="Sign Up Button">
@@ -49,7 +50,7 @@
                             <color key="backgroundColor" red="0.4549019608" green="0.75294117650000003" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ssf-T1-fkx" userLabel="Cancel Button View">
-                            <rect key="frame" x="5" y="294" width="270" height="50"/>
+                            <rect key="frame" x="5" y="354" width="270" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nr5-LJ-d6Q" userLabel="Cancel Button">
@@ -77,6 +78,11 @@
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iwg-Mh-Gra">
                             <rect key="frame" x="5" y="140" width="270" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.20000000000000001" green="0.2470588235" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxe-4e-abB">
+                            <rect key="frame" x="5" y="198" width="270" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.20000000000000001" green="0.2470588235" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                         </view>

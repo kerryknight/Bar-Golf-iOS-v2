@@ -16,11 +16,13 @@
 @property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *usernameFloatTextField;
 @property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *passwordFloatTextField;
 @property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *confirmPasswordFloatTextField;
+@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *displayNameFloatTextField;
 @property (weak, nonatomic) IBOutlet UIButton *signUpButton;
 @property (weak, nonatomic) IBOutlet UIView *container;
 @property (weak, nonatomic) IBOutlet UIView *usernameBG;
 @property (weak, nonatomic) IBOutlet UIView *passwordBG;
 @property (weak, nonatomic) IBOutlet UIView *confirmPasswordBG;
+@property (weak, nonatomic) IBOutlet UIView *displayNameBG;
 @property (weak, nonatomic) IBOutlet UIView *signUpButtonBG;
 @property (strong, nonatomic) KKSignUpViewModel *viewModel;
     
@@ -53,6 +55,13 @@
 - (void)configureViewModel {
     self.viewModel = [[KKSignUpViewModel alloc] init];
     self.viewModel.active = YES;
+    
+    //subscribe to our viewModel's signal
+    [self.viewModel.sendErrorSignal subscribeNext:^(id error) {
+        //post error to status bar notification
+        [JDStatusBarNotification showWithStatus:[NSString stringWithFormat:@"%@", error] dismissAfter:2.0
+                                      styleName:JDStatusBarStyleError];
+    }];
 }
 
 - (void)rac_addButtonCommands {
@@ -63,6 +72,7 @@
     RAC(self.viewModel, username) = self.usernameFloatTextField.rac_textSignal;
     RAC(self.viewModel, password) = self.passwordFloatTextField.rac_textSignal;
     RAC(self.viewModel, confirmPassword) = self.confirmPasswordFloatTextField.rac_textSignal;
+    RAC(self.viewModel, displayName) = self.displayNameFloatTextField.rac_textSignal;
     
     @weakify(self)
     self.signUpButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
@@ -209,6 +219,23 @@
     }
     [self.container addSubview:self.confirmPasswordFloatTextField];
     
+    //add the password confirmation textfield
+    self.displayNameFloatTextField = [[JVFloatLabeledTextField alloc] initWithFrame:
+                                          CGRectMake(kWelcomeTextFieldMargin,
+                                                     self.displayNameBG.frame.origin.y,
+                                                     self.container.frame.size.width - 2 * kWelcomeTextFieldMargin + 5,
+                                                     self.displayNameBG.frame.size.height)];
+    self.displayNameFloatTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    self.displayNameFloatTextField.delegate = self;
+    self.displayNameFloatTextField.returnKeyType = UIReturnKeyDone;
+    self.displayNameFloatTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    //set our placeholder text color
+    if ([self.displayNameFloatTextField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+        self.displayNameFloatTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Display Name", nil)
+                                                                                                   attributes:@{NSForegroundColorAttributeName: gray}];
+    }
+    [self.container addSubview:self.displayNameFloatTextField];
+    
     // ********** FLOATING LABEL TEXT FIELDS ********************** //
     
     [self configureAgreementAttributedString];
@@ -219,10 +246,10 @@
 - (void)configureAgreementAttributedString {
     
     //add the password footer label
-    NIAttributedLabel *agreementLabel = [[NIAttributedLabel alloc] initWithFrame:CGRectMake(self.confirmPasswordBG.frame.origin.x,
-                                                                                            self.confirmPasswordBG.frame.origin.y + self.confirmPasswordBG.frame.size.height + 5,
-                                                                                            self.confirmPasswordBG.frame.size.width,
-                                                                                            self.confirmPasswordBG.frame.size.height)];
+    NIAttributedLabel *agreementLabel = [[NIAttributedLabel alloc] initWithFrame:CGRectMake(self.displayNameBG.frame.origin.x,
+                                                                                            self.displayNameBG.frame.origin.y + self.displayNameBG.frame.size.height + 5,
+                                                                                            self.displayNameBG.frame.size.width,
+                                                                                            self.displayNameBG.frame.size.height)];
     agreementLabel.font = [UIFont fontWithName:kHelveticaLight size:13.0f];
     agreementLabel.textAlignment = NSTextAlignmentCenter;
     agreementLabel.backgroundColor = [UIColor clearColor];
@@ -285,6 +312,10 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     if (textField == self.passwordFloatTextField) {
         [self.passwordFloatTextField bgs_setFloatingLabelText:NSLocalizedString(@"Password (Minimum 7 characters and 1 number)", nil)];
+    }
+    
+    if (textField == self.displayNameFloatTextField) {
+        [self.displayNameFloatTextField bgs_setFloatingLabelText:NSLocalizedString(@"Display Name (This will be visible to others)", nil)];
     }
     
     return YES;
