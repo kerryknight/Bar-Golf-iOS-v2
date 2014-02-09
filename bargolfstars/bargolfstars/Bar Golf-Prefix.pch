@@ -26,7 +26,7 @@
     #import "RVMViewModel.h"
     #import "IFTTTJazzHands.h"
     #import "MRProgress.h"
-    #import "JDStatusBarNotification.h"
+    #import "KKStatusBarNotification.h"
     #import "JVFloatLabeledTextField.h"
     #import "VTAcknowledgementsViewController.h"
     #import <RevMobAds/RevMobAds.h>

@@ -45,6 +45,7 @@
     [self configureUI];
     [self configureViewModel];
     [self rac_addButtonCommands];
+    [self rac_racifyInputTextFields];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -59,8 +60,9 @@
     //subscribe to our viewModel's signal
     [self.viewModel.sendErrorSignal subscribeNext:^(id error) {
         //post error to status bar notification
-        [JDStatusBarNotification showWithStatus:[NSString stringWithFormat:@"%@", error] dismissAfter:2.0
-                                      styleName:JDStatusBarStyleError];
+        NSString *message = [NSString stringWithFormat:NSLocalizedString(@"%@", nil), error];
+        [KKStatusBarNotification showWithStatus:message dismissAfter:2.0
+                                      customStyleName:KKStatusBarError];
     }];
 }
 
@@ -91,7 +93,6 @@
                 @strongify(self)
                 self.signUpButtonBG.alpha = 1.0;
             }];
-            
         } else {
             [UIView animateWithDuration:0.25 animations:^{
                 @strongify(self)
@@ -144,6 +145,43 @@
 }
 
 #pragma mark - UITextFieldDelegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if (textField == self.passwordFloatTextField) {
+        if (self.viewModel.passwordTextLengthIsUnderLimit) {
+            //always allow changes if we're under our character limit
+            return YES;
+        } else {
+            //if, at our limit, should still always allow backspacing (will be passed in as @"" string)
+            return [string isEqualToString:@""] ? YES : NO;
+        }
+    }
+    
+    if (textField == self.displayNameFloatTextField) {
+        if (self.viewModel.displayNameTextLengthIsUnderLimit) {
+            //always allow changes if we're under our character limit
+            return YES;
+        } else {
+            //if, at our limit, should still always allow backspacing (will be passed in as @"" string)
+            return [string isEqualToString:@""] ? YES : NO;
+        }
+    }
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if (textField == self.passwordFloatTextField) {
+        [self.passwordFloatTextField bgs_setFloatingLabelText:NSLocalizedString(@"Password (Minimum 7 characters and 1 number)", nil)];
+    }
+    
+    if (textField == self.displayNameFloatTextField) {
+        [self.displayNameFloatTextField bgs_setFloatingLabelText:NSLocalizedString(@"Display Name (This will be visible to others)", nil)];
+    }
+    
+    return YES;
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
@@ -242,6 +280,46 @@
 
 }
 
+- (void)rac_racifyInputTextFields {
+    @weakify(self)
+    //change the password font color from white to green when it's a legal password
+    [self.viewModel.passwordIsValidSignal subscribeNext:^(id x) {
+        @strongify(self)
+        if ([x boolValue]) {
+            //it's a valid password, turn it green
+            self.passwordFloatTextField.textColor = kLtGreen;
+        } else {
+            //not valid, keep white
+            self.passwordFloatTextField.textColor = kLtWhite;
+        }
+    }];
+    
+    //change the confirm password font color from white to green when it matches password
+    [self.viewModel.confirmPasswordMatchesSignal  subscribeNext:^(id x) {
+        @strongify(self)
+        if ([x boolValue]) {
+            //it matches, turn it green
+            self.confirmPasswordFloatTextField.textColor = kLtGreen;
+        } else {
+            //not valid, keep white
+            self.confirmPasswordFloatTextField.textColor = kLtWhite;
+        }
+    }];
+    
+    //change the display name font color from white to red when it's an illegal display name
+    [self.viewModel.displayNameIsValidSignal  subscribeNext:^(id x) {
+        @strongify(self)
+        if ([x boolValue]) {
+            //it's a valid password, turn it green
+            self.displayNameFloatTextField.textColor = kLtWhite;
+        } else {
+            //not valid, keep white
+            self.displayNameFloatTextField.textColor = kErrorRed;
+        }
+    }];
+
+}
+
 #pragma mark - Attributed String Agreement label
 - (void)configureAgreementAttributedString {
     
@@ -307,18 +385,6 @@
                                       startingY,
                                       self.container.frame.size.width,
                                       self.container.frame.size.height);
-}
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    if (textField == self.passwordFloatTextField) {
-        [self.passwordFloatTextField bgs_setFloatingLabelText:NSLocalizedString(@"Password (Minimum 7 characters and 1 number)", nil)];
-    }
-    
-    if (textField == self.displayNameFloatTextField) {
-        [self.displayNameFloatTextField bgs_setFloatingLabelText:NSLocalizedString(@"Display Name (This will be visible to others)", nil)];
-    }
-    
-    return YES;
 }
 
 - (void)didReceiveMemoryWarning {

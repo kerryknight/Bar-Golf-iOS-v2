@@ -13,8 +13,17 @@
 @property (copy, nonatomic) NSString *confirmPassword;
 @property (copy, nonatomic) NSString *displayName;
 @property (strong, nonatomic, readonly) RACSignal *allFieldsCombinedSignal;
+@property (strong, nonatomic, readonly) RACSignal *usernameIsValidEmailSignal;
+@property (strong, nonatomic, readonly) RACSignal *passwordIsValidSignal;
+@property (strong, nonatomic, readonly) RACSignal *confirmPasswordMatchesSignal;
+@property (strong, nonatomic, readonly) RACSignal *displayNameIsValidSignal;
 @property (strong, nonatomic, readonly) RACSignal *sendErrorSignal;
+@property (assign, nonatomic, readonly) BOOL passwordTextLengthIsUnderLimit;
+@property (assign, nonatomic, readonly) BOOL displayNameTextLengthIsUnderLimit;
 
+- (BOOL)isValidPassword;
+- (BOOL)isValidDisplayName;
+- (BOOL)confirmPasswordMatchesPassword;
 - (RACSignal *)rac_signUp;
 
 @end

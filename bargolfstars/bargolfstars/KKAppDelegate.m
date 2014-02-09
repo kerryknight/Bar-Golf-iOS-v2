@@ -130,7 +130,6 @@
 
 #pragma mark - Reachability
 - (void)monitorReachability {
-    DLog(@"");
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
     
     self.hostReach = [Reachability reachabilityWithHostname: @"api.parse.com"];
@@ -157,8 +156,11 @@
 //    }
     
     if (![self isParseReachable]) {
-        #warning should post a JDStatusBarNotification here if that we have no internet if not reachable
+        [KKStatusBarNotification showWithStatus:NSLocalizedString(@"Bar Golf service is disconnected.", nil) customStyleName:KKStatusBarError];
+    } else {
+        [KKStatusBarNotification dismiss];
     }
+    
 }
 
 #pragma mark - Notifications
@@ -274,11 +276,10 @@
 }
 
 - (void)subscribeFinished:(NSNumber *)result error:(NSError *)error {
-    //    NSLog(@"%s", __FUNCTION__);
     if ([result boolValue]) {
-        DLog(@"Kollections successfully subscribed to push notifications on the broadcast channel.");
+        DLog(@"Bar Golf successfully subscribed to push notifications on the broadcast channel.");
     } else {
-        DLog(@"Kollections failed to subscribe to push notifications on the broadcast channel.");
+        DLog(@"Bar Golf failed to subscribe to push notifications on the broadcast channel.");
     }
 }
 

@@ -1,0 +1,101 @@
+Bar Golf
+========
+
+
+
+To Do
+-----
+
+-   Be sure to check for stale info from Facebook if the user logs in via FB as
+    their photo could change
+
+-   Change Password font color to green when it’s a legal password
+
+-   Change  Confirm Password placeholder text font color to green when it
+    matches; or regular text color?
+
+
+
+Issues
+------
+
+-   password/confirm password signals at Sign Up are still a little squarely
+
+
+
+Best Practices
+--------------
+
+-   All user-facing strings should be NSLocalizedStrings
+
+
+
+Examples/Snippets
+-----------------
+
+### Use RAC for NSNotificationCenter observing
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RACSignal *notificationSignal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillShowNotification object:nil];
+[self rac_liftSelector:@selector(slideComponentsWithKeyboardNotification:up:) withObjects:notificationSignal, @YES];
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+### Perform some animations based on a UITableView's scroll offset with RAC
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[RACObserve(self.tableView, contentOffset) subscribeNext:^(NSValue *value) {
+    NSInteger y = floor(self.tableView.contentOffset.y);
+    [self.animator animate:y];
+}];
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+### Using SIAlertView
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Missing Information" andMessage:@"Make sure you fill out all of the information!"];
+
+[alertView addButtonWithTitle:@“OK" 
+                         type:SIAlertViewButtonTypeDefault
+                      handler:^(SIAlertView *alert) {
+                         NSLog(@"Button1 Clicked");
+}];
+    
+[alertView addButtonWithTitle:@"Button2"
+                         type:SIAlertViewButtonTypeDestructive
+                      handler:^(SIAlertView *alert) {
+                        NSLog(@"Button2 Clicked");
+}];
+
+[alertView addButtonWithTitle:@"Button3"
+                         type:SIAlertViewButtonTypeCancel
+                      handler:^(SIAlertView *alert) {
+                        NSLog(@"Button3 Clicked");
+}];
+
+alertView.willShowHandler = ^(SIAlertView *alertView) {
+    NSLog(@"%@, willShowHandler", alertView);
+};
+
+alertView.didShowHandler = ^(SIAlertView *alertView) {
+    NSLog(@"%@, didShowHandler", alertView);
+};
+
+alertView.willDismissHandler = ^(SIAlertView *alertView) {
+    NSLog(@"%@, willDismissHandler", alertView);
+};
+
+alertView.didDismissHandler = ^(SIAlertView *alertView) {
+    NSLog(@"%@, didDismissHandler", alertView);
+};
+
+alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+[alertView show];
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  
+  
+

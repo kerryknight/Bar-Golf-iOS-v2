@@ -26,6 +26,8 @@
 		DEAB466F18A6290C008FB73D /* STPSlideUpTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAB466E18A6290C008FB73D /* STPSlideUpTransition.m */; };
 		DEAB467318A682C6008FB73D /* STPCardTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAB467218A682C6008FB73D /* STPCardTransition.m */; };
 		DEAB468118A6CA36008FB73D /* JVFloatLabeledTextField+LabelText.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAB468018A6CA36008FB73D /* JVFloatLabeledTextField+LabelText.m */; };
+		DEAB468518A80DAC008FB73D /* NOTES.text in Resources */ = {isa = PBXBuildFile; fileRef = DEAB468418A80DAC008FB73D /* NOTES.text */; };
+		DEAB468918A82F3C008FB73D /* KKStatusBarNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAB468818A82F3C008FB73D /* KKStatusBarNotification.m */; };
 		DEAF54DA18786C990019F7FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54D918786C990019F7FF /* Foundation.framework */; };
 		DEAF54DC18786C990019F7FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54DB18786C990019F7FF /* CoreGraphics.framework */; };
 		DEAF54DE18786C990019F7FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54DD18786C990019F7FF /* UIKit.framework */; };
@@ -82,7 +84,6 @@
 		DE8FAB7E18A4B31600D66963 /* KKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKLoginViewController.h; sourceTree = "<group>"; };
 		DE8FAB7F18A4B31600D66963 /* KKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLoginViewController.m; sourceTree = "<group>"; };
 		DE8FAB8018A4B31600D66963 /* KKLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKLoginViewController.xib; sourceTree = "<group>"; };
-		DEA02D1518787ACE00B32C43 /* NOTES */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTES; sourceTree = "<group>"; };
 		DEA274811878DFDC00ABA879 /* Bar Golf-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bar Golf-Prefix.pch"; sourceTree = "<group>"; };
 		DEAB465318A5FC79008FB73D /* NSString+EmailAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EmailAdditions.h"; sourceTree = "<group>"; };
 		DEAB465418A5FC79008FB73D /* NSString+EmailAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EmailAdditions.m"; sourceTree = "<group>"; };
@@ -106,6 +107,9 @@
 		DEAB467418A68522008FB73D /* KKAllSTPTransitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKAllSTPTransitions.h; sourceTree = "<group>"; };
 		DEAB467F18A6CA36008FB73D /* JVFloatLabeledTextField+LabelText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JVFloatLabeledTextField+LabelText.h"; sourceTree = "<group>"; };
 		DEAB468018A6CA36008FB73D /* JVFloatLabeledTextField+LabelText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JVFloatLabeledTextField+LabelText.m"; sourceTree = "<group>"; };
+		DEAB468418A80DAC008FB73D /* NOTES.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NOTES.text; sourceTree = "<group>"; };
+		DEAB468718A82F3C008FB73D /* KKStatusBarNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKStatusBarNotification.h; sourceTree = "<group>"; };
+		DEAB468818A82F3C008FB73D /* KKStatusBarNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKStatusBarNotification.m; sourceTree = "<group>"; };
 		DEAF54D618786C990019F7FF /* Bar Golf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bar Golf.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEAF54D918786C990019F7FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DEAF54DB18786C990019F7FF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -207,6 +211,7 @@
 		DE0596841895F2BE00892F24 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				DEAB468618A82F1C008FB73D /* Subclasses */,
 				DEAB467E18A6CA12008FB73D /* Categories */,
 			);
 			name = External;
@@ -259,10 +264,19 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		DEAB468618A82F1C008FB73D /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				DEAB468718A82F3C008FB73D /* KKStatusBarNotification.h */,
+				DEAB468818A82F3C008FB73D /* KKStatusBarNotification.m */,
+			);
+			path = Subclasses;
+			sourceTree = "<group>";
+		};
 		DEAF54CD18786C990019F7FF = {
 			isa = PBXGroup;
 			children = (
-				DEA02D1518787ACE00B32C43 /* NOTES */,
+				DEAB468418A80DAC008FB73D /* NOTES.text */,
 				DEAF54DF18786C990019F7FF /* Bar Golf */,
 				DEAF54FE18786C990019F7FF /* Bar Golf Tests */,
 				DEAF54D818786C990019F7FF /* Frameworks */,
@@ -595,6 +609,7 @@
 				DE8FAB8218A4B31600D66963 /* KKLoginViewController.xib in Resources */,
 				DE0A2A5F1878E3FE002DC39A /* Main.storyboard in Resources */,
 				DEAF54F218786C990019F7FF /* Images.xcassets in Resources */,
+				DEAB468518A80DAC008FB73D /* NOTES.text in Resources */,
 				DEAF54E418786C990019F7FF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -691,6 +706,7 @@
 				DE8FAB8118A4B31600D66963 /* KKLoginViewController.m in Sources */,
 				DEE2EE931891E73F00FC2991 /* KKMyPlayerProfileViewController.m in Sources */,
 				DEAB466718A620F4008FB73D /* KKSignUpViewModel.m in Sources */,
+				DEAB468918A82F3C008FB73D /* KKStatusBarNotification.m in Sources */,
 				DEE2EE9D1891E7EA00FC2991 /* KKConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
