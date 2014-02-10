@@ -117,17 +117,13 @@
     dispatch_async(dispatch_get_main_queue(), ^(void) {
         @strongify(self)
         //dismiss the spinner regardless of outcome
-        [MRProgressOverlayView showOverlayAddedTo:self.view title:NSLocalizedString(@"Signing up...", Nil) mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+        MRProgressOverlayView *spinnerView = [MRProgressOverlayView showOverlayAddedTo:self.view title:NSLocalizedString(@"Signing up...", Nil) mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+        [spinnerView setTintColor:kLtGreen];
     });
     
 	return [[[self.viewModel rac_signUpNewUser] deliverOn:[RACScheduler mainThreadScheduler]]
-	        subscribeNext: ^(PFUser *user) {
-                DLogGreen(@"user at login: %@", user);
-                
-                //also, save the Display Name for the new user; we'll do this in the background on view model
-                [self.viewModel saveDisplayNameForNewlySignedUpUser:user];
-                
-            } error: ^(NSError *error) {
+	        subscribeError: ^(NSError *error) {
+                @strongify(self)
                 DLogRed(@"login error and show alert: %@", [error localizedDescription]);
                 
                 //dismiss the spinner regardless of outcome
@@ -138,12 +134,16 @@
                 [KKStatusBarNotification showWithStatus:message dismissAfter:2.0 customStyleName:KKStatusBarError];
                 
             } completed: ^{
+                @strongify(self)
                 DLog(@"log in completed successfully, so show main interface");
                 
                 [KKStatusBarNotification showWithStatus:NSLocalizedString(@"Success! Welcome, new bar golfer!", nil) dismissAfter:2.0 customStyleName:KKStatusBarSuccess];
                 //successfully logged in
 #warning prob let welcome view controller do this instead or post notification to it or something
                 [self.navigationController popViewControllerAnimated:YES];
+                
+                //also, save the Display Name for the new user; we'll do this in the background on view model
+                [self.viewModel saveDisplayNameForNewlySignedUpUser];
             }];
 }
 

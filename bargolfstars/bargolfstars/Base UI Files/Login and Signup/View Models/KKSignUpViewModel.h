@@ -25,7 +25,7 @@
 - (BOOL)isValidDisplayNameLength;
 - (BOOL)isValidDisplayNameCharacter:(NSString *)characters;
 - (BOOL)confirmPasswordMatchesPassword;
-- (void)saveDisplayNameForNewlySignedUpUser:(PFUser *)newUser;
+- (void)saveDisplayNameForNewlySignedUpUser;
 - (RACSignal *)rac_signUpNewUser;
 
 @end

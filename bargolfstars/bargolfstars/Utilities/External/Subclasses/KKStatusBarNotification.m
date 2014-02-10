@@ -26,7 +26,7 @@ NSString *const KKStatusBarError = @"KKStatusBarError";
 
 + (void)addCustomStyles {
     //custom success style
-    [JDStatusBarNotification addStyleNamed:KKStatusBarError
+    [JDStatusBarNotification addStyleNamed:KKStatusBarSuccess
                                    prepare:^JDStatusBarStyle *(JDStatusBarStyle *style) {
                                        style.barColor = kLtGreen;
                                        style.textColor = [UIColor whiteColor];
@@ -58,7 +58,7 @@ NSString *const KKStatusBarError = @"KKStatusBarError";
 }
 
 - (void)sharedInstanceShowWithStatus:(NSString *)status dismissAfter:(NSTimeInterval)timeInterval customStyleName:(NSString*)styleName {
-    [JDStatusBarNotification showWithStatus:status dismissAfter:2.0 styleName:styleName];
+    [JDStatusBarNotification showWithStatus:status dismissAfter:timeInterval styleName:styleName];
 }
 
 @end

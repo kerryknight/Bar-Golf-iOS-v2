@@ -50,19 +50,13 @@
 
 //we have to wait for the new user sign up to complete before we can save additional fields to the user
 //this method gets called from KKLoginViewController on the sign up signal completing successfully
-- (void)saveDisplayNameForNewlySignedUpUser:(PFUser *)newUser {
+- (void)saveDisplayNameForNewlySignedUpUser {
     @weakify(self)
-    [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+    PFUser *newUser = [PFUser currentUser];
+    newUser[kKKUserDisplayNameKey] = self.displayName;
+    //we'll assume a successfully save and only care about an error; if it errors out, we'll allow user to reset in account settings
+    [[[newUser rac_saveEventually] deliverOn:[RACScheduler schedulerWithPriority:RACSchedulerPriorityDefault]] subscribeError:^(NSError *error) {
         @strongify(self)
-        newUser[kKKUserDisplayNameKey] = self.displayName;
-        
-        return [[[newUser rac_save] deliverOn:[RACScheduler schedulerWithPriority:RACSchedulerPriorityBackground]] subscribeNext:^(id x) {
-            [subscriber sendCompleted];
-        } error:^(NSError *error) {
-            [subscriber sendError:error];
-        }];
-        
-    }] doError:^(NSError *error) {
         NSString *err = [NSString stringWithFormat:NSLocalizedString(@"Error saving display name. Please try from account settings.", nil)];
         [(RACSubject *)self.sendErrorSignal sendNext:err];
     }];
@@ -129,7 +123,6 @@
     }
     return isValid;
 }
-
 
 - (BOOL)isValidDisplayName:(NSString *)name {
     BOOL isValid = YES;

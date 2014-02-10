@@ -152,6 +152,7 @@
 
 - (void)presentLoginViewControllerAnimated:(BOOL)animated {
     KKLoginViewController *loginViewController = [[KKLoginViewController alloc] init];
+
     //main queue
     dispatch_async(dispatch_get_main_queue(), ^{
         // Present the log in view controller
