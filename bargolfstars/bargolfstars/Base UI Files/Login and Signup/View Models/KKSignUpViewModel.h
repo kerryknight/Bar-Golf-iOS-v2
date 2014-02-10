@@ -22,8 +22,10 @@
 @property (assign, nonatomic, readonly) BOOL displayNameTextLengthIsUnderLimit;
 
 - (BOOL)isValidPassword;
-- (BOOL)isValidDisplayName;
+- (BOOL)isValidDisplayNameLength;
+- (BOOL)isValidDisplayNameCharacter:(NSString *)characters;
 - (BOOL)confirmPasswordMatchesPassword;
-- (RACSignal *)rac_signUp;
+- (void)saveDisplayNameForNewlySignedUpUser:(PFUser *)newUser;
+- (RACSignal *)rac_signUpNewUser;
 
 @end

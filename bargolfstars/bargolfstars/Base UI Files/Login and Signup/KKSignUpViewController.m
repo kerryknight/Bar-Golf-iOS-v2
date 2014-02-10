@@ -58,9 +58,9 @@
     self.viewModel.active = YES;
     
     //subscribe to our viewModel's signal
-    [self.viewModel.sendErrorSignal subscribeNext:^(id error) {
+    [[self.viewModel.sendErrorSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(id error) {
         //post error to status bar notification
-        NSString *message = [NSString stringWithFormat:NSLocalizedString(@"%@", nil), error];
+        NSString *message = [NSString stringWithFormat:@"%@", error];
         [KKStatusBarNotification showWithStatus:message dismissAfter:2.0
                                       customStyleName:KKStatusBarError];
     }];
@@ -113,16 +113,37 @@
 }
 
 - (RACDisposable *)signUp {
-	return [[self.viewModel rac_signUp]
+    @weakify(self)
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        @strongify(self)
+        //dismiss the spinner regardless of outcome
+        [MRProgressOverlayView showOverlayAddedTo:self.view title:NSLocalizedString(@"Signing up...", Nil) mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+    });
+    
+	return [[[self.viewModel rac_signUpNewUser] deliverOn:[RACScheduler mainThreadScheduler]]
 	        subscribeNext: ^(PFUser *user) {
                 DLogGreen(@"user at login: %@", user);
-                //do something or noop?
+                
+                //also, save the Display Name for the new user; we'll do this in the background on view model
+                [self.viewModel saveDisplayNameForNewlySignedUpUser:user];
+                
             } error: ^(NSError *error) {
                 DLogRed(@"login error and show alert: %@", [error localizedDescription]);
+                
+                //dismiss the spinner regardless of outcome
+                [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
+                
                 //error logging in, show error message
+                NSString *message = [NSString stringWithFormat:NSLocalizedString(@"Error: %@", nil), [error localizedDescription]];
+                [KKStatusBarNotification showWithStatus:message dismissAfter:2.0 customStyleName:KKStatusBarError];
+                
             } completed: ^{
                 DLog(@"log in completed successfully, so show main interface");
+                
+                [KKStatusBarNotification showWithStatus:NSLocalizedString(@"Success! Welcome, new bar golfer!", nil) dismissAfter:2.0 customStyleName:KKStatusBarSuccess];
                 //successfully logged in
+#warning prob let welcome view controller do this instead or post notification to it or something
+                [self.navigationController popViewControllerAnimated:YES];
             }];
 }
 
@@ -158,11 +179,11 @@
     }
     
     if (textField == self.displayNameFloatTextField) {
-        if (self.viewModel.displayNameTextLengthIsUnderLimit) {
+        //check if we're under our limit, only allow insertions if so
+        if (self.viewModel.displayNameTextLengthIsUnderLimit && [self.viewModel isValidDisplayNameCharacter:string]) {
             //always allow changes if we're under our character limit
             return YES;
         } else {
-            //if, at our limit, should still always allow backspacing (will be passed in as @"" string)
             return [string isEqualToString:@""] ? YES : NO;
         }
     }
@@ -305,19 +326,6 @@
             self.confirmPasswordFloatTextField.textColor = kLtWhite;
         }
     }];
-    
-    //change the display name font color from white to red when it's an illegal display name
-    [self.viewModel.displayNameIsValidSignal  subscribeNext:^(id x) {
-        @strongify(self)
-        if ([x boolValue]) {
-            //it's a valid password, turn it green
-            self.displayNameFloatTextField.textColor = kLtWhite;
-        } else {
-            //not valid, keep white
-            self.displayNameFloatTextField.textColor = kErrorRed;
-        }
-    }];
-
 }
 
 #pragma mark - Attributed String Agreement label

@@ -28,6 +28,7 @@
 		DEAB468118A6CA36008FB73D /* JVFloatLabeledTextField+LabelText.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAB468018A6CA36008FB73D /* JVFloatLabeledTextField+LabelText.m */; };
 		DEAB468518A80DAC008FB73D /* NOTES.text in Resources */ = {isa = PBXBuildFile; fileRef = DEAB468418A80DAC008FB73D /* NOTES.text */; };
 		DEAB468918A82F3C008FB73D /* KKStatusBarNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAB468818A82F3C008FB73D /* KKStatusBarNotification.m */; };
+		DEAB468D18A84BBD008FB73D /* System Design Specifications.text in Resources */ = {isa = PBXBuildFile; fileRef = DEAB468C18A84BBD008FB73D /* System Design Specifications.text */; };
 		DEAF54DA18786C990019F7FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54D918786C990019F7FF /* Foundation.framework */; };
 		DEAF54DC18786C990019F7FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54DB18786C990019F7FF /* CoreGraphics.framework */; };
 		DEAF54DE18786C990019F7FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54DD18786C990019F7FF /* UIKit.framework */; };
@@ -110,6 +111,7 @@
 		DEAB468418A80DAC008FB73D /* NOTES.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NOTES.text; sourceTree = "<group>"; };
 		DEAB468718A82F3C008FB73D /* KKStatusBarNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKStatusBarNotification.h; sourceTree = "<group>"; };
 		DEAB468818A82F3C008FB73D /* KKStatusBarNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKStatusBarNotification.m; sourceTree = "<group>"; };
+		DEAB468C18A84BBD008FB73D /* System Design Specifications.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "System Design Specifications.text"; sourceTree = "<group>"; };
 		DEAF54D618786C990019F7FF /* Bar Golf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bar Golf.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEAF54D918786C990019F7FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DEAF54DB18786C990019F7FF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -276,6 +278,7 @@
 		DEAF54CD18786C990019F7FF = {
 			isa = PBXGroup;
 			children = (
+				DEAB468C18A84BBD008FB73D /* System Design Specifications.text */,
 				DEAB468418A80DAC008FB73D /* NOTES.text */,
 				DEAF54DF18786C990019F7FF /* Bar Golf */,
 				DEAF54FE18786C990019F7FF /* Bar Golf Tests */,
@@ -608,6 +611,7 @@
 				DEAB466C18A620FE008FB73D /* KKSignUpViewController.xib in Resources */,
 				DE8FAB8218A4B31600D66963 /* KKLoginViewController.xib in Resources */,
 				DE0A2A5F1878E3FE002DC39A /* Main.storyboard in Resources */,
+				DEAB468D18A84BBD008FB73D /* System Design Specifications.text in Resources */,
 				DEAF54F218786C990019F7FF /* Images.xcassets in Resources */,
 				DEAB468518A80DAC008FB73D /* NOTES.text in Resources */,
 				DEAF54E418786C990019F7FF /* InfoPlist.strings in Resources */,

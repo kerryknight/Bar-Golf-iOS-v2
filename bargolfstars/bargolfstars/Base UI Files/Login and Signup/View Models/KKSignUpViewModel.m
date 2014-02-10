@@ -37,16 +37,42 @@
 
 
 #pragma mark - Public Methods
-- (RACSignal *)rac_signUp {
-    return nil;
-//    return [PFUser rac_logInWithUsername:self.username password:self.password];
+- (RACSignal *)rac_signUpNewUser {
+    
+    //create a new PFUser with username and password set; the email address will double as the username
+    PFUser *user = [PFUser user];
+    user.username = self.username;
+    user.password = self.password;
+    user.email = self.username;
+    
+    return [[user rac_signUp] deliverOn:[RACScheduler immediateScheduler]];
+}
+
+//we have to wait for the new user sign up to complete before we can save additional fields to the user
+//this method gets called from KKLoginViewController on the sign up signal completing successfully
+- (void)saveDisplayNameForNewlySignedUpUser:(PFUser *)newUser {
+    @weakify(self)
+    [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self)
+        newUser[kKKUserDisplayNameKey] = self.displayName;
+        
+        return [[[newUser rac_save] deliverOn:[RACScheduler schedulerWithPriority:RACSchedulerPriorityBackground]] subscribeNext:^(id x) {
+            [subscriber sendCompleted];
+        } error:^(NSError *error) {
+            [subscriber sendError:error];
+        }];
+        
+    }] doError:^(NSError *error) {
+        NSString *err = [NSString stringWithFormat:NSLocalizedString(@"Error saving display name. Please try from account settings.", nil)];
+        [(RACSubject *)self.sendErrorSignal sendNext:err];
+    }];
 }
 
 #pragma mark - Public Normal Properties
 - (BOOL)passwordTextLengthIsUnderLimit {
     BOOL underLimit = (self.password.length < kKKMaximumPasswordLength);
     if (!underLimit) {
-        NSString *characterLimit = [NSString stringWithFormat:@"Password limit is %i characters", kKKMaximumPasswordLength];
+        NSString *characterLimit = [NSString stringWithFormat:NSLocalizedString(@"Passwords are limited to %i characters", nil), kKKMaximumDisplayNameLength];
         [(RACSubject *)self.sendErrorSignal sendNext:characterLimit];
     }
     
@@ -56,7 +82,7 @@
 - (BOOL)displayNameTextLengthIsUnderLimit {
     BOOL underLimit = (self.displayName.length < kKKMaximumDisplayNameLength);
     if (!underLimit) {
-        NSString *characterLimit = [NSString stringWithFormat:@"Display name limit is %i characters", kKKMaximumDisplayNameLength];
+        NSString *characterLimit = [NSString stringWithFormat:NSLocalizedString(@"Display names are limited to %i characters", nil), kKKMaximumDisplayNameLength];
         [(RACSubject *)self.sendErrorSignal sendNext:characterLimit];
     }
     
@@ -105,22 +131,25 @@
 }
 
 
-- (BOOL)isValidDisplayName {
+- (BOOL)isValidDisplayName:(NSString *)name {
     BOOL isValid = YES;
-    //ensure password is long enough
-    if (self.displayName.length < kKKMinimumDisplayNameLength || self.displayName.length > kKKMaximumDisplayNameLength) {
-        isValid = NO;
-        return isValid;
-    }
-    
+    isValid = ([self isValidDisplayNameLength] && [self isValidDisplayNameCharacter:name]);
+    return isValid;
+}
+
+- (BOOL)isValidDisplayNameLength {
+    return (self.displayName.length >= kKKMinimumDisplayNameLength && self.displayName.length <= kKKMaximumDisplayNameLength);
+}
+
+- (BOOL)isValidDisplayNameCharacter:(NSString *)characters {
+    BOOL isValid = YES;
     //ensure our display name doesn't include any special characters so we don't get lots of dicks and stuff for names 8======D
-    NSCharacterSet * set = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789 "] invertedSet];
-    if ([self.displayName rangeOfCharacterFromSet:set].location != NSNotFound) {
+    NSCharacterSet * set = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789_"] invertedSet];
+    if ([characters rangeOfCharacterFromSet:set].location != NSNotFound) {
         //special characters found
-        NSString *error = [NSString stringWithFormat:NSLocalizedString(@"Display names can contain letters, numbers and spaces only.", nil)];
+        NSString *error = [NSString stringWithFormat:NSLocalizedString(@"Can contain letters, numbers, and underscores only.", nil)];
         [(RACSubject *)self.sendErrorSignal sendNext:error];
         isValid = NO;
-        return isValid;
     }
     return isValid;
 }
@@ -169,7 +198,7 @@
          @weakify(self)
 		_displayNameIsValidSignal = [RACObserve(self, displayName) map: ^id (NSString *name) {
             @strongify(self)
-		    return @([self isValidDisplayName]);
+		    return @([self isValidDisplayName:name]);
 		}];
 	}
 	return _displayNameIsValidSignal;
