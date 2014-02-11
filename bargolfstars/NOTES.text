@@ -9,13 +9,13 @@ To Do
 -   Be sure to check for stale info from Facebook if the user logs in via FB as
     their photo could change
 
--   Get forgot password view working
-
 -   Get facebook login working
 
--   Turn on email confirmation for Parse
+-   Add analytics for returned errors
 
 -   Be sure to check formatting on 4S screen size
+
+-   Always Harvest my time
 
 
 

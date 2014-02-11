@@ -10,6 +10,7 @@
 #import "KKLoginViewModel.h"
 #import "STPSlideUpTransition.h"
 #import "KKSignUpViewController.h"
+#import "KKForgotPasswordViewController.h"
 
 @interface KKLoginViewController () <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *usernameFloatTextField;
@@ -98,7 +99,7 @@
     @weakify(self)
     self.forgotPasswordButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
         @strongify(self)
-        [self forgotPassword];
+        [self loadForgotPasswordView];
         return [RACSignal empty];
     }];
 }
@@ -114,10 +115,10 @@
 }
 
 - (void)rac_createFacebookButtonSignal {
-    @weakify(self)
+//    @weakify(self)
     self.facebookButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
-        @strongify(self)
-        [self forgotPassword];
+//        @strongify(self)
+//        [self forgotPassword];
         return [RACSignal empty];
     }];
 }
@@ -136,20 +137,6 @@
             }];
 }
 
-- (RACDisposable *)forgotPassword {
-	return [[self.viewModel rac_forgotPassword]
-	        subscribeNext: ^(id x) {
-                DLogGreen(@"x at login: %@", x);
-                //do something or noop?
-            } error: ^(NSError *error) {
-                DLogRed(@"forgot password error and show alert: %@", [error localizedDescription]);
-                //error logging in, show error message
-            } completed: ^{
-                DLog(@"forgot password email sent successfully");
-                //successfully logged in
-            }];
-}
-
 - (void)loadSignUpView {
     self.navigationController.delegate = [STPTransitionCenter sharedInstance];
     STPCardTransition *transition = [STPCardTransition new];
@@ -157,6 +144,16 @@
     
     KKSignUpViewController *signUpViewController = [[KKSignUpViewController alloc] init];
     [self.navigationController pushViewController:signUpViewController
+                                  usingTransition:transition];
+}
+
+- (void)loadForgotPasswordView {
+    self.navigationController.delegate = [STPTransitionCenter sharedInstance];
+    STPCardTransition *transition = [STPCardTransition new];
+    transition.reverseTransition = [STPCardTransition new];
+    
+    KKForgotPasswordViewController *forgotPasswordViewController = [[KKForgotPasswordViewController alloc] init];
+    [self.navigationController pushViewController:forgotPasswordViewController
                                   usingTransition:transition];
 }
 
