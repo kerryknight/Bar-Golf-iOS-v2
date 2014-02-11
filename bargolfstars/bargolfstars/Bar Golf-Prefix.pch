@@ -20,7 +20,6 @@
     #import "KKMacros.h"
 
     //Pods
-    #import "ECSlidingViewController.h"
     #import "ReactiveCocoa.h"
     #import "RACEXTScope.h"
     #import "RVMViewModel.h"
@@ -39,6 +38,7 @@
     #import "SIAlertView.h"
     #import "STPTransitions.h"
     #import "KKAllSTPTransitions.h"
+    #import "ECSlidingViewController.h"
 #endif
 
 

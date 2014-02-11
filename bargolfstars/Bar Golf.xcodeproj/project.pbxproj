@@ -15,9 +15,15 @@
 		DE25FF8218A9A889003213EC /* KKForgotPasswordViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE25FF8118A9A889003213EC /* KKForgotPasswordViewModel.m */; };
 		DE25FF8618A9A892003213EC /* KKForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE25FF8418A9A892003213EC /* KKForgotPasswordViewController.m */; };
 		DE25FF8718A9A892003213EC /* KKForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE25FF8518A9A892003213EC /* KKForgotPasswordViewController.xib */; };
+		DE56F53718A9E013000BDF13 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54F818786C990019F7FF /* XCTest.framework */; };
+		DE56F53818A9E013000BDF13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54D918786C990019F7FF /* Foundation.framework */; };
+		DE56F53918A9E013000BDF13 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54DD18786C990019F7FF /* UIKit.framework */; };
+		DE56F53F18A9E013000BDF13 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE56F53D18A9E013000BDF13 /* InfoPlist.strings */; };
+		DE56F54118A9E013000BDF13 /* KKLoginViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56F54018A9E013000BDF13 /* KKLoginViewControllerTests.m */; };
 		DE8F39A3187882D3007D3942 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE8F39A2187882D3007D3942 /* Crashlytics.framework */; };
 		DE8FAB8118A4B31600D66963 /* KKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8FAB7F18A4B31600D66963 /* KKLoginViewController.m */; };
 		DE8FAB8218A4B31600D66963 /* KKLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8FAB8018A4B31600D66963 /* KKLoginViewController.xib */; };
+		DE91EFD518A9E0FB00CE2489 /* XCTAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56F52E18A9DC2C000BDF13 /* XCTAsyncTestCase.m */; };
 		DEAB465E18A5FC79008FB73D /* NSString+EmailAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAB465418A5FC79008FB73D /* NSString+EmailAdditions.m */; };
 		DEAB465F18A5FC79008FB73D /* UIImage+AlphaAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAB465718A5FC79008FB73D /* UIImage+AlphaAdditions.m */; };
 		DEAB466018A5FC79008FB73D /* UIImage+Colorization.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAB465918A5FC79008FB73D /* UIImage+Colorization.m */; };
@@ -39,11 +45,6 @@
 		DEAF54E618786C990019F7FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAF54E518786C990019F7FF /* main.m */; };
 		DEAF54EA18786C990019F7FF /* KKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAF54E918786C990019F7FF /* KKAppDelegate.m */; };
 		DEAF54F218786C990019F7FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEAF54F118786C990019F7FF /* Images.xcassets */; };
-		DEAF54F918786C990019F7FF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54F818786C990019F7FF /* XCTest.framework */; };
-		DEAF54FA18786C990019F7FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54D918786C990019F7FF /* Foundation.framework */; };
-		DEAF54FB18786C990019F7FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54DD18786C990019F7FF /* UIKit.framework */; };
-		DEAF550318786C990019F7FF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEAF550118786C990019F7FF /* InfoPlist.strings */; };
-		DEAF550518786C990019F7FF /* BarGolfTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAF550418786C990019F7FF /* BarGolfTests.m */; };
 		DEAF550F18786D8E0019F7FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF550E18786D8E0019F7FF /* MapKit.framework */; };
 		DEB649BD18A5E1FC005C17AA /* KKLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB649BC18A5E1FC005C17AA /* KKLoginViewModel.m */; };
 		DEE2EE8D1891E73F00FC2991 /* KKAcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE711891E73F00FC2991 /* KKAcknowledgementsViewController.m */; };
@@ -64,12 +65,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DEAF54FC18786C990019F7FF /* PBXContainerItemProxy */ = {
+		DE56F54318A9E013000BDF13 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DEAF54CE18786C990019F7FF /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = DEAF54D518786C990019F7FF;
-			remoteInfo = bargolfstars;
+			remoteInfo = "Bar Golf";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -87,6 +88,13 @@
 		DE25FF8318A9A892003213EC /* KKForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKForgotPasswordViewController.h; sourceTree = "<group>"; };
 		DE25FF8418A9A892003213EC /* KKForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKForgotPasswordViewController.m; sourceTree = "<group>"; };
 		DE25FF8518A9A892003213EC /* KKForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKForgotPasswordViewController.xib; sourceTree = "<group>"; };
+		DE56F52D18A9DC2C000BDF13 /* XCTAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XCTAsyncTestCase.h; path = bargolfstarsTests/XCTAsyncTestCase.h; sourceTree = SOURCE_ROOT; };
+		DE56F52E18A9DC2C000BDF13 /* XCTAsyncTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XCTAsyncTestCase.m; path = bargolfstarsTests/XCTAsyncTestCase.m; sourceTree = SOURCE_ROOT; };
+		DE56F53618A9E013000BDF13 /* Bar Golf Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bar Golf Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE56F53C18A9E013000BDF13 /* Bar Golf Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bar Golf Tests-Info.plist"; sourceTree = "<group>"; };
+		DE56F53E18A9E013000BDF13 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DE56F54018A9E013000BDF13 /* KKLoginViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKLoginViewControllerTests.m; sourceTree = "<group>"; };
+		DE56F54218A9E013000BDF13 /* Bar Golf Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bar Golf Tests-Prefix.pch"; sourceTree = "<group>"; };
 		DE8F39A2187882D3007D3942 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		DE8FAB7E18A4B31600D66963 /* KKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKLoginViewController.h; sourceTree = "<group>"; };
 		DE8FAB7F18A4B31600D66963 /* KKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLoginViewController.m; sourceTree = "<group>"; };
@@ -128,11 +136,7 @@
 		DEAF54E818786C990019F7FF /* KKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKAppDelegate.h; sourceTree = "<group>"; };
 		DEAF54E918786C990019F7FF /* KKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKAppDelegate.m; sourceTree = "<group>"; };
 		DEAF54F118786C990019F7FF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		DEAF54F718786C990019F7FF /* Bar GolfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bar GolfTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEAF54F818786C990019F7FF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		DEAF550018786C990019F7FF /* Bar GolfTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bar GolfTests-Info.plist"; sourceTree = "<group>"; };
-		DEAF550218786C990019F7FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DEAF550418786C990019F7FF /* BarGolfTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BarGolfTests.m; sourceTree = "<group>"; };
 		DEAF550E18786D8E0019F7FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DEB649BB18A5E1FC005C17AA /* KKLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKLoginViewModel.h; sourceTree = "<group>"; };
 		DEB649BC18A5E1FC005C17AA /* KKLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLoginViewModel.m; sourceTree = "<group>"; };
@@ -171,6 +175,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DE56F53318A9E013000BDF13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE56F53718A9E013000BDF13 /* XCTest.framework in Frameworks */,
+				DE56F53918A9E013000BDF13 /* UIKit.framework in Frameworks */,
+				DE56F53818A9E013000BDF13 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEAF54D318786C990019F7FF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -181,16 +195,6 @@
 				DEAF54DA18786C990019F7FF /* Foundation.framework in Frameworks */,
 				DE8F39A3187882D3007D3942 /* Crashlytics.framework in Frameworks */,
 				BDBC9227CBC346C5ADC47CB6 /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DEAF54F418786C990019F7FF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DEAF54F918786C990019F7FF /* XCTest.framework in Frameworks */,
-				DEAF54FB18786C990019F7FF /* UIKit.framework in Frameworks */,
-				DEAF54FA18786C990019F7FF /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +229,59 @@
 			);
 			name = External;
 			path = Utilities/External;
+			sourceTree = "<group>";
+		};
+		DE56F53A18A9E013000BDF13 /* Bar Golf Tests */ = {
+			isa = PBXGroup;
+			children = (
+				DE56F54A18A9E047000BDF13 /* Helpers */,
+				DE56F54B18A9E056000BDF13 /* Tests */,
+				DE56F53B18A9E013000BDF13 /* Supporting Files */,
+			);
+			path = "Bar Golf Tests";
+			sourceTree = "<group>";
+		};
+		DE56F53B18A9E013000BDF13 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DE56F53C18A9E013000BDF13 /* Bar Golf Tests-Info.plist */,
+				DE56F53D18A9E013000BDF13 /* InfoPlist.strings */,
+				DE56F54218A9E013000BDF13 /* Bar Golf Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DE56F54818A9E02D000BDF13 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DE56F54918A9E031000BDF13 /* Login and Sign Up */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		DE56F54918A9E031000BDF13 /* Login and Sign Up */ = {
+			isa = PBXGroup;
+			children = (
+				DE56F54018A9E013000BDF13 /* KKLoginViewControllerTests.m */,
+			);
+			name = "Login and Sign Up";
+			sourceTree = "<group>";
+		};
+		DE56F54A18A9E047000BDF13 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DE56F52D18A9DC2C000BDF13 /* XCTAsyncTestCase.h */,
+				DE56F52E18A9DC2C000BDF13 /* XCTAsyncTestCase.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		DE56F54B18A9E056000BDF13 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				DE56F54818A9E02D000BDF13 /* Views */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 		DEAB465218A5FC79008FB73D /* Categories */ = {
@@ -288,7 +345,7 @@
 				DEAB468C18A84BBD008FB73D /* System Design Specifications.text */,
 				DEAB468418A80DAC008FB73D /* NOTES.text */,
 				DEAF54DF18786C990019F7FF /* Bar Golf */,
-				DEAF54FE18786C990019F7FF /* Bar Golf Tests */,
+				DE56F53A18A9E013000BDF13 /* Bar Golf Tests */,
 				DEAF54D818786C990019F7FF /* Frameworks */,
 				DEAF54D718786C990019F7FF /* Products */,
 				17E43A40BFEB41C68877218D /* Pods.xcconfig */,
@@ -299,7 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				DEAF54D618786C990019F7FF /* Bar Golf.app */,
-				DEAF54F718786C990019F7FF /* Bar GolfTests.xctest */,
+				DE56F53618A9E013000BDF13 /* Bar Golf Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -342,25 +399,6 @@
 				DEAF54E118786C990019F7FF /* Bar Golf-Info.plist */,
 				DEAF54E218786C990019F7FF /* InfoPlist.strings */,
 				DEAF54E518786C990019F7FF /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		DEAF54FE18786C990019F7FF /* Bar Golf Tests */ = {
-			isa = PBXGroup;
-			children = (
-				DEAF550418786C990019F7FF /* BarGolfTests.m */,
-				DEAF54FF18786C990019F7FF /* Supporting Files */,
-			);
-			name = "Bar Golf Tests";
-			path = bargolfstarsTests;
-			sourceTree = "<group>";
-		};
-		DEAF54FF18786C990019F7FF /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				DEAF550018786C990019F7FF /* Bar GolfTests-Info.plist */,
-				DEAF550118786C990019F7FF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -537,6 +575,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		DE56F53518A9E013000BDF13 /* Bar Golf Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE56F54518A9E013000BDF13 /* Build configuration list for PBXNativeTarget "Bar Golf Tests" */;
+			buildPhases = (
+				DE56F53218A9E013000BDF13 /* Sources */,
+				DE56F53318A9E013000BDF13 /* Frameworks */,
+				DE56F53418A9E013000BDF13 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DE56F54418A9E013000BDF13 /* PBXTargetDependency */,
+			);
+			name = "Bar Golf Tests";
+			productName = "Bar Golf Tests";
+			productReference = DE56F53618A9E013000BDF13 /* Bar Golf Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		DEAF54D518786C990019F7FF /* Bar Golf */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEAF550818786C990019F7FF /* Build configuration list for PBXNativeTarget "Bar Golf" */;
@@ -557,24 +613,6 @@
 			productReference = DEAF54D618786C990019F7FF /* Bar Golf.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DEAF54F618786C990019F7FF /* Bar GolfTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DEAF550B18786C990019F7FF /* Build configuration list for PBXNativeTarget "Bar GolfTests" */;
-			buildPhases = (
-				DEAF54F318786C990019F7FF /* Sources */,
-				DEAF54F418786C990019F7FF /* Frameworks */,
-				DEAF54F518786C990019F7FF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DEAF54FD18786C990019F7FF /* PBXTargetDependency */,
-			);
-			name = "Bar GolfTests";
-			productName = bargolfstarsTests;
-			productReference = DEAF54F718786C990019F7FF /* Bar GolfTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -585,11 +623,11 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Kerry Knight";
 				TargetAttributes = {
+					DE56F53518A9E013000BDF13 = {
+						TestTargetID = DEAF54D518786C990019F7FF;
+					};
 					DEAF54D518786C990019F7FF = {
 						DevelopmentTeam = 2FXS3J8N9C;
-					};
-					DEAF54F618786C990019F7FF = {
-						TestTargetID = DEAF54D518786C990019F7FF;
 					};
 				};
 			};
@@ -607,12 +645,20 @@
 			projectRoot = "";
 			targets = (
 				DEAF54D518786C990019F7FF /* Bar Golf */,
-				DEAF54F618786C990019F7FF /* Bar GolfTests */,
+				DE56F53518A9E013000BDF13 /* Bar Golf Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DE56F53418A9E013000BDF13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE56F53F18A9E013000BDF13 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEAF54D418786C990019F7FF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -625,14 +671,6 @@
 				DEAF54F218786C990019F7FF /* Images.xcassets in Resources */,
 				DEAB468518A80DAC008FB73D /* NOTES.text in Resources */,
 				DEAF54E418786C990019F7FF /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DEAF54F518786C990019F7FF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DEAF550318786C990019F7FF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,6 +723,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DE56F53218A9E013000BDF13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE91EFD518A9E0FB00CE2489 /* XCTAsyncTestCase.m in Sources */,
+				DE56F54118A9E013000BDF13 /* KKLoginViewControllerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEAF54D218786C990019F7FF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -727,21 +774,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DEAF54F318786C990019F7FF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DEAF550518786C990019F7FF /* BarGolfTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		DEAF54FD18786C990019F7FF /* PBXTargetDependency */ = {
+		DE56F54418A9E013000BDF13 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DEAF54D518786C990019F7FF /* Bar Golf */;
-			targetProxy = DEAF54FC18786C990019F7FF /* PBXContainerItemProxy */;
+			targetProxy = DE56F54318A9E013000BDF13 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -754,6 +793,14 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
+		DE56F53D18A9E013000BDF13 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE56F53E18A9E013000BDF13 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		DEAF54E218786C990019F7FF /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -762,17 +809,51 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		DEAF550118786C990019F7FF /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DEAF550218786C990019F7FF /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		DE56F54618A9E013000BDF13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bar Golf.app/Bar Golf";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Bar Golf Tests/Bar Golf Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Bar Golf Tests/Bar Golf Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		DE56F54718A9E013000BDF13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bar Golf.app/Bar Golf";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Bar Golf Tests/Bar Golf Tests-Prefix.pch";
+				INFOPLIST_FILE = "Bar Golf Tests/Bar Golf Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 		DEAF550618786C990019F7FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1015,51 +1096,18 @@
 			};
 			name = Release;
 		};
-		DEAF550C18786C990019F7FF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bargolfstars.app/bargolfstars";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "bargolfstars/bargolfstars-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "bargolfstarsTests/Bar GolfTests-Info.plist";
-				PRODUCT_NAME = "Bar GolfTests";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		DEAF550D18786C990019F7FF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bargolfstars.app/bargolfstars";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "bargolfstars/bargolfstars-Prefix.pch";
-				INFOPLIST_FILE = "bargolfstarsTests/Bar GolfTests-Info.plist";
-				PRODUCT_NAME = "Bar GolfTests";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DE56F54518A9E013000BDF13 /* Build configuration list for PBXNativeTarget "Bar Golf Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE56F54618A9E013000BDF13 /* Debug */,
+				DE56F54718A9E013000BDF13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DEAF54D118786C990019F7FF /* Build configuration list for PBXProject "Bar Golf" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1074,15 +1122,6 @@
 			buildConfigurations = (
 				DEAF550918786C990019F7FF /* Debug */,
 				DEAF550A18786C990019F7FF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DEAF550B18786C990019F7FF /* Build configuration list for PBXNativeTarget "Bar GolfTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DEAF550C18786C990019F7FF /* Debug */,
-				DEAF550D18786C990019F7FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
