@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KKLoginViewController : UIViewController <UIViewControllerTransitioningDelegate>
+@class KKLoginViewModel;
+
+@interface KKLoginViewController : UIViewController
+
+//exposing these simply for unit testing access to check connections
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
+@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
+@property (weak, nonatomic) IBOutlet UIButton *facebookButton;
+@property (weak, nonatomic) IBOutlet UIView *container;
+@property (weak, nonatomic) IBOutlet UIView *usernameBG;
+@property (weak, nonatomic) IBOutlet UIView *passwordBG;
+@property (weak, nonatomic) IBOutlet UIView *loginButtonBG;
+@property (strong, nonatomic, readonly) KKLoginViewModel *viewModel;
 
 @end

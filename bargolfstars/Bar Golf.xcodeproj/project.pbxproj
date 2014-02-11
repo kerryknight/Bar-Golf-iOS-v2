@@ -99,6 +99,7 @@
 		DE8FAB7E18A4B31600D66963 /* KKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKLoginViewController.h; sourceTree = "<group>"; };
 		DE8FAB7F18A4B31600D66963 /* KKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLoginViewController.m; sourceTree = "<group>"; };
 		DE8FAB8018A4B31600D66963 /* KKLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKLoginViewController.xib; sourceTree = "<group>"; };
+		DE91EFD718A9F24B00CE2489 /* KKImportHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKImportHelper.h; sourceTree = "<group>"; };
 		DEA274811878DFDC00ABA879 /* Bar Golf-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bar Golf-Prefix.pch"; sourceTree = "<group>"; };
 		DEAB465318A5FC79008FB73D /* NSString+EmailAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EmailAdditions.h"; sourceTree = "<group>"; };
 		DEAB465418A5FC79008FB73D /* NSString+EmailAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EmailAdditions.m"; sourceTree = "<group>"; };
@@ -204,9 +205,6 @@
 		DE0596151895C63900892F24 /* Login and Signup */ = {
 			isa = PBXGroup;
 			children = (
-				DE25FF8318A9A892003213EC /* KKForgotPasswordViewController.h */,
-				DE25FF8418A9A892003213EC /* KKForgotPasswordViewController.m */,
-				DE25FF8518A9A892003213EC /* KKForgotPasswordViewController.xib */,
 				DEB649BA18A5E1FC005C17AA /* View Models */,
 				DE8FAB7E18A4B31600D66963 /* KKLoginViewController.h */,
 				DE8FAB7F18A4B31600D66963 /* KKLoginViewController.m */,
@@ -214,6 +212,9 @@
 				DEAB466818A620FE008FB73D /* KKSignUpViewController.h */,
 				DEAB466918A620FE008FB73D /* KKSignUpViewController.m */,
 				DEAB466A18A620FE008FB73D /* KKSignUpViewController.xib */,
+				DE25FF8318A9A892003213EC /* KKForgotPasswordViewController.h */,
+				DE25FF8418A9A892003213EC /* KKForgotPasswordViewController.m */,
+				DE25FF8518A9A892003213EC /* KKForgotPasswordViewController.xib */,
 				DE05961A1895C63900892F24 /* KKWelcomeViewController.h */,
 				DE05961B1895C63900892F24 /* KKWelcomeViewController.m */,
 			);
@@ -270,8 +271,10 @@
 		DE56F54A18A9E047000BDF13 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				DE91EFD618A9EAE900CE2489 /* Testing Categories */,
 				DE56F52D18A9DC2C000BDF13 /* XCTAsyncTestCase.h */,
 				DE56F52E18A9DC2C000BDF13 /* XCTAsyncTestCase.m */,
+				DE91EFD718A9F24B00CE2489 /* KKImportHelper.h */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -282,6 +285,13 @@
 				DE56F54818A9E02D000BDF13 /* Views */,
 			);
 			name = Tests;
+			sourceTree = "<group>";
+		};
+		DE91EFD618A9EAE900CE2489 /* Testing Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Testing Categories";
 			sourceTree = "<group>";
 		};
 		DEAB465218A5FC79008FB73D /* Categories */ = {
@@ -818,6 +828,7 @@
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bar Golf.app/Bar Golf";
 				FRAMEWORK_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Parse\"",
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -827,8 +838,34 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					"COCOAPODS=1",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"${SRC_ROOT}",
+					"${HEADERS_SEARCH_PATHS}",
+					"${PODS_ROOT}",
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/ReactiveCocoa\"",
+					"\"${PODS_ROOT}/Headers/ReactiveCocoa/ReactiveCocoa\"",
+					"\"${PODS_ROOT}/Headers/ReactiveViewModel\"",
+					"\"${PODS_ROOT}/Parse\"",
+					"\"${PODS_ROOT}/Headers/Parse-RACExtensions\"",
 				);
 				INFOPLIST_FILE = "Bar Golf Tests/Bar Golf Tests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"${PODS_ROOT}",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Parse\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
+				PODS_ROOT = "${SRCROOT}/Pods";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -841,13 +878,39 @@
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bar Golf.app/Bar Golf";
 				FRAMEWORK_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Parse\"",
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bar Golf Tests/Bar Golf Tests-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"${SRC_ROOT}",
+					"${HEADERS_SEARCH_PATHS}",
+					"${PODS_ROOT}",
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/ReactiveCocoa\"",
+					"\"${PODS_ROOT}/Headers/ReactiveCocoa/ReactiveCocoa\"",
+					"\"${PODS_ROOT}/Headers/ReactiveViewModel\"",
+					"\"${PODS_ROOT}/Parse\"",
+					"\"${PODS_ROOT}/Headers/Parse-RACExtensions\"",
+				);
 				INFOPLIST_FILE = "Bar Golf Tests/Bar Golf Tests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"${PODS_ROOT}",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Parse\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
+				PODS_ROOT = "${SRCROOT}/Pods";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

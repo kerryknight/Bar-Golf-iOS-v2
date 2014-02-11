@@ -11,7 +11,7 @@
 @property (copy, nonatomic) NSString *username;
 @property (copy, nonatomic) NSString *password;
 @property (copy, nonatomic) NSString *forgottenEmail;
-@property(nonatomic, strong) RACSignal *usernameAndPasswordCombinedSignal;
+@property (strong, nonatomic) RACSignal *usernameAndPasswordCombinedSignal;
 
 - (RACSignal *)rac_logIn;
 - (RACSignal *)rac_forgotPassword;

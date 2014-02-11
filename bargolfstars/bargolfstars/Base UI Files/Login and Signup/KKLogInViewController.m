@@ -15,16 +15,7 @@
 @interface KKLoginViewController () <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *usernameFloatTextField;
 @property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *passwordFloatTextField;
-@property (weak, nonatomic) IBOutlet UIButton *loginButton;
-@property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
-@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
-@property (weak, nonatomic) IBOutlet UIButton *facebookButton;
-@property (weak, nonatomic) IBOutlet UIView *container;
-@property (weak, nonatomic) IBOutlet UIView *usernameBG;
-@property (weak, nonatomic) IBOutlet UIView *passwordBG;
-@property (weak, nonatomic) IBOutlet UIView *loginButtonBG;
-@property (strong, nonatomic) KKLoginViewModel *viewModel;
-    
+@property (strong, nonatomic, readwrite) KKLoginViewModel *viewModel;
 @end
 
 @implementation KKLoginViewController

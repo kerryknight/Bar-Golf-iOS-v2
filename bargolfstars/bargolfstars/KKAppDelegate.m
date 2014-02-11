@@ -156,9 +156,14 @@
 //    }
     
     if (![self isParseReachable]) {
-        [KKStatusBarNotification showWithStatus:NSLocalizedString(@"Bar Golf service is disconnected.", nil) customStyleName:KKStatusBarError];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [KKStatusBarNotification showWithStatus:NSLocalizedString(@"Bar Golf service is disconnected.", nil) customStyleName:KKStatusBarError];
+        });
     } else {
-        [KKStatusBarNotification dismiss];
+        DLogBlue(@"BAR GOLF BACK ONLINE!!!!");
+        dispatch_async(dispatch_get_main_queue(), ^{
+           [KKStatusBarNotification dismiss];
+        });
     }
     
 }
