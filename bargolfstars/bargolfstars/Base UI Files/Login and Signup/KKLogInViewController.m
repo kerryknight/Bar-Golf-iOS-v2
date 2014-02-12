@@ -72,6 +72,7 @@
     //wasteful parse api calls
     [self.viewModel.usernameAndPasswordCombinedSignal subscribeNext:^(id x) {
         if ([x boolValue]) {
+            self.loginButton.userInteractionEnabled = YES;
             //fill in our log in button's bg
             [UIView animateWithDuration:0.25 animations:^{
                 @strongify(self)
@@ -79,6 +80,7 @@
             }];
             
         } else {
+            self.loginButton.userInteractionEnabled = NO;
             [UIView animateWithDuration:0.25 animations:^{
                 @strongify(self)
                 self.loginButtonBG.alpha = 0.05;
@@ -108,22 +110,46 @@
 }
 
 - (void)rac_createFacebookButtonSignal {
-//    @weakify(self)
+    //    @weakify(self)
     self.facebookButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
-//        @strongify(self)
-//        [self forgotPassword];
+        //        @strongify(self)
+        //        [self forgotPassword];
         return [RACSignal empty];
     }];
 }
 
 - (RACDisposable *)logIn {
+    
+    @weakify(self)
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        @strongify(self)
+        //show the spinner
+        MRProgressOverlayView *spinnerView = [MRProgressOverlayView showOverlayAddedTo:self.view title:NSLocalizedString(@"Signing up...", Nil) mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+        [spinnerView setTintColor:kLtGreen];
+    });
+    
 	return [[self.viewModel rac_logIn]
 	        subscribeNext:^(PFUser *user) {
                 DLogGreen(@"user at login: %@", user);
-                //do something or noop?
-            } error:^(NSError *error) {
-                DLogRed(@"login error and show alert: %@", [error localizedDescription]);
+                @strongify(self)
+                
+                //dismiss the spinner regardless of outcome
+                [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
+                
                 //error logging in, show error message
+                NSString *message = [NSString stringWithFormat:NSLocalizedString(@"Welcome back, %@!", nil), user[@"displayName"]];
+                [KKStatusBarNotification showWithStatus:message dismissAfter:2.0 customStyleName:KKStatusBarSuccess];
+                
+            } error:^(NSError *error) {
+                @strongify(self)
+                DLogRed(@"login error and show alert: %@", [error localizedDescription]);
+                
+                //dismiss the spinner regardless of outcome
+                [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
+                
+                //error logging in, show error message
+                NSString *message = [NSString stringWithFormat:NSLocalizedString(@"Error: %@", nil), [error localizedDescription]];
+                [KKStatusBarNotification showWithStatus:message dismissAfter:2.0 customStyleName:KKStatusBarError];
             } completed:^{
                 DLog(@"log in completed successfully, so show main interface");
                 //successfully logged in
@@ -174,12 +200,6 @@
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-    @weakify(self)
-    [self.viewModel.usernameAndPasswordCombinedSignal subscribeNext:^(id x) {
-        @strongify(self)
-        [self logIn];
-    }];
-
     return YES;
 }
 

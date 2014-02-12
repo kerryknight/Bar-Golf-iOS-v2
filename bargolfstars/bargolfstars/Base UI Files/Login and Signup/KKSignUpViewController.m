@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIView *displayNameBG;
 @property (weak, nonatomic) IBOutlet UIView *signUpButtonBG;
 @property (strong, nonatomic) KKSignUpViewModel *viewModel;
-    
+
 @end
 
 @implementation KKSignUpViewController
@@ -63,7 +63,7 @@
         //post error to status bar notification
         NSString *message = [NSString stringWithFormat:@"%@", error];
         [KKStatusBarNotification showWithStatus:message dismissAfter:2.0
-                                      customStyleName:KKStatusBarError];
+                                customStyleName:KKStatusBarError];
     }];
 }
 
@@ -119,7 +119,7 @@
     @weakify(self)
     dispatch_async(dispatch_get_main_queue(), ^(void) {
         @strongify(self)
-        //dismiss the spinner regardless of outcome
+        //show the spinner
         MRProgressOverlayView *spinnerView = [MRProgressOverlayView showOverlayAddedTo:self.view title:NSLocalizedString(@"Signing up...", Nil) mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         [spinnerView setTintColor:kLtGreen];
     });
@@ -127,7 +127,7 @@
 	return [[[self.viewModel rac_signUpNewUser] deliverOn:[RACScheduler mainThreadScheduler]]
 	        subscribeError:^(NSError *error) {
                 @strongify(self)
-                DLogRed(@"login error and show alert: %@", [error localizedDescription]);
+                DLogRed(@"sign up error and show alert: %@", [error localizedDescription]);
                 
                 //dismiss the spinner regardless of outcome
                 [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
@@ -138,7 +138,7 @@
                 
             } completed: ^{
                 @strongify(self)
-                DLog(@"log in completed successfully, so show main interface");
+                DLog(@"sign up completed successfully, so show main interface");
                 
                 [KKStatusBarNotification showWithStatus:NSLocalizedString(@"Success! Welcome, new bar golfer!", nil) dismissAfter:2.0 customStyleName:KKStatusBarSuccess];
                 //successfully logged in
@@ -268,10 +268,10 @@
     
     //add the password confirmation textfield
     self.confirmPasswordFloatTextField = [[JVFloatLabeledTextField alloc] initWithFrame:
-                                   CGRectMake(kWelcomeTextFieldMargin,
-                                              self.confirmPasswordBG.frame.origin.y,
-                                              self.container.frame.size.width - 2 * kWelcomeTextFieldMargin + 5,
-                                              self.confirmPasswordBG.frame.size.height)];
+                                          CGRectMake(kWelcomeTextFieldMargin,
+                                                     self.confirmPasswordBG.frame.origin.y,
+                                                     self.container.frame.size.width - 2 * kWelcomeTextFieldMargin + 5,
+                                                     self.confirmPasswordBG.frame.size.height)];
     self.confirmPasswordFloatTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.confirmPasswordFloatTextField.delegate = self;
     self.confirmPasswordFloatTextField.returnKeyType = UIReturnKeyDone;
@@ -280,16 +280,16 @@
     //set our placeholder text color
     if ([self.confirmPasswordFloatTextField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
         self.confirmPasswordFloatTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Confirm Password", nil)
-                                                                                            attributes:@{NSForegroundColorAttributeName: gray}];
+                                                                                                   attributes:@{NSForegroundColorAttributeName: gray}];
     }
     [self.container addSubview:self.confirmPasswordFloatTextField];
     
     //add the password confirmation textfield
     self.displayNameFloatTextField = [[JVFloatLabeledTextField alloc] initWithFrame:
-                                          CGRectMake(kWelcomeTextFieldMargin,
-                                                     self.displayNameBG.frame.origin.y,
-                                                     self.container.frame.size.width - 2 * kWelcomeTextFieldMargin + 5,
-                                                     self.displayNameBG.frame.size.height)];
+                                      CGRectMake(kWelcomeTextFieldMargin,
+                                                 self.displayNameBG.frame.origin.y,
+                                                 self.container.frame.size.width - 2 * kWelcomeTextFieldMargin + 5,
+                                                 self.displayNameBG.frame.size.height)];
     self.displayNameFloatTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.displayNameFloatTextField.delegate = self;
     self.displayNameFloatTextField.returnKeyType = UIReturnKeyDone;
@@ -297,14 +297,14 @@
     //set our placeholder text color
     if ([self.displayNameFloatTextField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
         self.displayNameFloatTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Display Name", nil)
-                                                                                                   attributes:@{NSForegroundColorAttributeName: gray}];
+                                                                                               attributes:@{NSForegroundColorAttributeName: gray}];
     }
     [self.container addSubview:self.displayNameFloatTextField];
     
     // ********** FLOATING LABEL TEXT FIELDS ********************** //
     
     [self configureAgreementAttributedString];
-
+    
 }
 
 - (void)rac_racifyInputTextFields {

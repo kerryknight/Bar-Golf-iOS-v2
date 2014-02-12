@@ -19,7 +19,7 @@
 		DE56F53818A9E013000BDF13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54D918786C990019F7FF /* Foundation.framework */; };
 		DE56F53918A9E013000BDF13 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54DD18786C990019F7FF /* UIKit.framework */; };
 		DE56F53F18A9E013000BDF13 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE56F53D18A9E013000BDF13 /* InfoPlist.strings */; };
-		DE7ECB5518AB51010027435A /* XCTAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7ECB5418AB51010027435A /* XCTAsyncTestCase.m */; };
+		DE7ECB5518AB51010027435A /* XCTAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7ECB5418AB51010027435A /* XCTAsyncTestCase.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		DE7ECB5818AB51250027435A /* KKLoginViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7ECB5718AB51250027435A /* KKLoginViewControllerTests.m */; };
 		DE8F39A3187882D3007D3942 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE8F39A2187882D3007D3942 /* Crashlytics.framework */; };
 		DE8FAB8118A4B31600D66963 /* KKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8FAB7F18A4B31600D66963 /* KKLoginViewController.m */; };
