@@ -8,7 +8,6 @@
 
 #import <XCTest/XCTest.h>
 #import <objc/runtime.h>
-#import "XCTAsyncTestCase.h"
 #import "KKImportHelper.h"
 #import "KKLoginViewController.h"
 #import "KKLoginViewModel.h"
@@ -20,7 +19,7 @@
 - (RACDisposable *)logIn;
 @end
 
-@interface KKLoginViewControllerTests : XCTAsyncTestCase
+@interface KKLoginViewControllerTests : XCTestCase
 @property (strong, nonatomic) KKLoginViewController *sut;
 @end
 

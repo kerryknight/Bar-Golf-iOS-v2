@@ -11,6 +11,7 @@
 		DE0596141895C0E500892F24 /* KKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0596131895C0E500892F24 /* KKUtility.m */; };
 		DE05961E1895C63900892F24 /* KKWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE05961B1895C63900892F24 /* KKWelcomeViewController.m */; };
 		DE05963E1895C85600892F24 /* KKCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DE05963D1895C85600892F24 /* KKCache.m */; };
+		DE09D77918AB5AAE00089371 /* KKLoginViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE09D77818AB5AAE00089371 /* KKLoginViewModelTests.m */; };
 		DE0A2A5F1878E3FE002DC39A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE0A2A5D1878E3FE002DC39A /* Main.storyboard */; };
 		DE25FF8218A9A889003213EC /* KKForgotPasswordViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE25FF8118A9A889003213EC /* KKForgotPasswordViewModel.m */; };
 		DE25FF8618A9A892003213EC /* KKForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE25FF8418A9A892003213EC /* KKForgotPasswordViewController.m */; };
@@ -19,7 +20,6 @@
 		DE56F53818A9E013000BDF13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54D918786C990019F7FF /* Foundation.framework */; };
 		DE56F53918A9E013000BDF13 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54DD18786C990019F7FF /* UIKit.framework */; };
 		DE56F53F18A9E013000BDF13 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE56F53D18A9E013000BDF13 /* InfoPlist.strings */; };
-		DE7ECB5518AB51010027435A /* XCTAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7ECB5418AB51010027435A /* XCTAsyncTestCase.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		DE7ECB5818AB51250027435A /* KKLoginViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7ECB5718AB51250027435A /* KKLoginViewControllerTests.m */; };
 		DE8F39A3187882D3007D3942 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE8F39A2187882D3007D3942 /* Crashlytics.framework */; };
 		DE8FAB8118A4B31600D66963 /* KKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8FAB7F18A4B31600D66963 /* KKLoginViewController.m */; };
@@ -82,6 +82,7 @@
 		DE05961B1895C63900892F24 /* KKWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKWelcomeViewController.m; sourceTree = "<group>"; };
 		DE05963C1895C85600892F24 /* KKCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKCache.h; sourceTree = "<group>"; };
 		DE05963D1895C85600892F24 /* KKCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKCache.m; sourceTree = "<group>"; };
+		DE09D77818AB5AAE00089371 /* KKLoginViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLoginViewModelTests.m; sourceTree = "<group>"; };
 		DE0A2A5E1878E3FE002DC39A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE25FF8018A9A889003213EC /* KKForgotPasswordViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKForgotPasswordViewModel.h; sourceTree = "<group>"; };
 		DE25FF8118A9A889003213EC /* KKForgotPasswordViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKForgotPasswordViewModel.m; sourceTree = "<group>"; };
@@ -92,8 +93,6 @@
 		DE56F53C18A9E013000BDF13 /* Bar Golf Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bar Golf Tests-Info.plist"; sourceTree = "<group>"; };
 		DE56F53E18A9E013000BDF13 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DE56F54218A9E013000BDF13 /* Bar Golf Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bar Golf Tests-Prefix.pch"; sourceTree = "<group>"; };
-		DE7ECB5318AB51010027435A /* XCTAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTAsyncTestCase.h; sourceTree = "<group>"; };
-		DE7ECB5418AB51010027435A /* XCTAsyncTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCTAsyncTestCase.m; sourceTree = "<group>"; };
 		DE7ECB5618AB51120027435A /* KKImportHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKImportHelper.h; path = Helpers/KKImportHelper.h; sourceTree = "<group>"; };
 		DE7ECB5718AB51250027435A /* KKLoginViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKLoginViewControllerTests.m; path = Views/KKLoginViewControllerTests.m; sourceTree = "<group>"; };
 		DE8F39A2187882D3007D3942 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -288,6 +287,7 @@
 		DE7ECB5918AB512F0027435A /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				DE09D77818AB5AAE00089371 /* KKLoginViewModelTests.m */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -296,8 +296,6 @@
 			isa = PBXGroup;
 			children = (
 				DE7ECB5618AB51120027435A /* KKImportHelper.h */,
-				DE7ECB5318AB51010027435A /* XCTAsyncTestCase.h */,
-				DE7ECB5418AB51010027435A /* XCTAsyncTestCase.m */,
 			);
 			name = "Testing Categories";
 			sourceTree = "<group>";
@@ -762,7 +760,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE7ECB5818AB51250027435A /* KKLoginViewControllerTests.m in Sources */,
-				DE7ECB5518AB51010027435A /* XCTAsyncTestCase.m in Sources */,
+				DE09D77918AB5AAE00089371 /* KKLoginViewModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -875,6 +873,7 @@
 					"\"${PODS_ROOT}/Headers/ReactiveCocoa/ReactiveCocoa\"",
 					"\"${PODS_ROOT}/Headers/ReactiveViewModel\"",
 					"\"${PODS_ROOT}/Parse\"",
+					"\"${PODS_ROOT}/Headers/TRVSMonitor\"",
 					"\"${PODS_ROOT}/Headers/Parse-RACExtensions\"",
 				);
 				INFOPLIST_FILE = "Bar Golf Tests/Bar Golf Tests-Info.plist";
@@ -920,6 +919,7 @@
 					"\"${PODS_ROOT}/Headers/ReactiveCocoa/ReactiveCocoa\"",
 					"\"${PODS_ROOT}/Headers/ReactiveViewModel\"",
 					"\"${PODS_ROOT}/Parse\"",
+					"\"${PODS_ROOT}/Headers/TRVSMonitor\"",
 					"\"${PODS_ROOT}/Headers/Parse-RACExtensions\"",
 				);
 				INFOPLIST_FILE = "Bar Golf Tests/Bar Golf Tests-Info.plist";

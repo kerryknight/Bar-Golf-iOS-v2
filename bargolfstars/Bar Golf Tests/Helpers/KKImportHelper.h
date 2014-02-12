@@ -19,6 +19,7 @@
 #import "RVMViewModel.h"
 #import <Parse/Parse.h>
 #import "Parse-RACExtensions.h"
+#import "TRVSMonitor.h"
 
 #import "KKUtility.h"
 #import "KKCache.h"
