@@ -1,5 +1,5 @@
 //
-//  Bar_Golf_Tests.m
+//  KKLoginViewControllerTests.m
 //  Bar Golf Tests
 //
 //  Created by Kerry Knight on 2/10/14.
@@ -16,11 +16,12 @@
 #import "KKForgotPasswordViewController.h"
 
 @interface KKLoginViewController (TestExtensions)
+@property (strong, nonatomic, readwrite) KKLoginViewModel *viewModel;
 - (RACDisposable *)logIn;
 @end
 
 @interface KKLoginViewControllerTests : XCTAsyncTestCase
-@property (nonatomic, strong) KKLoginViewController *sut;
+@property (strong, nonatomic) KKLoginViewController *sut;
 @end
 
 @implementation KKLoginViewControllerTests
@@ -38,7 +39,6 @@
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
-    
     self.sut = nil;
 }
 
@@ -92,6 +92,34 @@
     XCTAssertTrue(self.sut.loginButton.rac_command != nil, @"Log In button should have a rac_command.");
 }
 
+- (void)test_loginButton_shouldBeDisabledIfEmailAddressFieldIncomplete {
+    self.sut.viewModel.username = @"";
+    XCTAssertTrue(self.sut.loginButton.userInteractionEnabled == NO, @"Log In button should be disabled if email address is blank");
+    
+    self.sut.viewModel.username = @"woozykk@";
+    XCTAssertTrue(self.sut.loginButton.userInteractionEnabled == NO, @"Log In button should be disabled if email address is incomplete");
+}
+
+- (void)test_loginButton_shouldBeDisabledIfPasswordFieldIncomplete {
+    self.sut.viewModel.password = @"";
+    XCTAssertTrue(self.sut.loginButton.userInteractionEnabled == NO, @"Log In button should be disabled if password is blank");
+    
+    self.sut.viewModel.password = @"password";
+    XCTAssertTrue(self.sut.loginButton.userInteractionEnabled == NO, @"Log In button should be disabled if password is not valid");
+}
+
+- (void)test_loginButton_shouldBeDisabledIfEmailAddressFieldCompleteButPasswordBlank {
+    self.sut.viewModel.username = @"woozykk@hotmail.com";
+    self.sut.viewModel.password = @"";
+    XCTAssertTrue(self.sut.loginButton.userInteractionEnabled == NO, @"Log In button should be disabled if email address is complete but password blank");
+}
+
+- (void)test_loginButton_shouldBeEnabledIfEmailAddressFieldCompleteAndPasswordHasLength {
+    self.sut.viewModel.username = @"woozykk@hotmail.com";
+    self.sut.viewModel.password = @"p";
+    XCTAssertTrue(self.sut.loginButton.userInteractionEnabled == YES, @"Log In button should be enable if email address is complete and password has length");
+}
+
 #pragma mark - Methods Return Signals
 - (void)test_logInMethod_shouldReturnRACDisposable {
     XCTAssertTrue([[self.sut logIn] isKindOfClass:[RACDisposable class]], @"-logIn method should return a RACDisposable");
@@ -106,7 +134,7 @@
 
 #pragma mark - View Model Initialization
 - (void)test_viewModel_shouldBeActive {
-    XCTAssertTrue(self.sut.viewModel.active == YES, @"Log In button should have a rac_command.");
+    XCTAssertTrue(self.sut.viewModel.active == YES, @"View model should be active.");
 }
 
 @end

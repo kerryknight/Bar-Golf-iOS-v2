@@ -7,9 +7,9 @@ pod 'ReactiveCocoa', '2.2.3'
 pod 'ReactiveViewModel', '0.2'
 pod 'JDStatusBarNotification', '1.4.7' #for status bar dropdown notifications
 pod 'MRProgress', '0.3.1'
-pod 'VTAcknowledgementsViewController', '0.7' #for adding licenses and library links
+pod 'VTAcknowledgementsViewController', '0.8' #for adding licenses and library links
 pod 'JazzHands', '0.0.3' #for intro tours
-pod 'ECSlidingViewController', '2.0.0' #sliding menu app framework
+pod 'ECSlidingViewController', '2.0.1' #sliding menu app framework
 pod 'RevMob', '7.4.1' #advertising
 pod 'Parse-RACExtensions', '0.0.3' #installs Parse and Facebook-iOS-SDK
 pod 'Reachability', '3.1.1'

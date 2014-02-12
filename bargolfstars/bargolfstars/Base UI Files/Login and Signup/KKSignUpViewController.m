@@ -89,12 +89,14 @@
     //wasteful parse api calls
     [self.viewModel.allFieldsCombinedSignal subscribeNext:^(id x) {
         if ([x boolValue]) {
+            self.signUpButton.userInteractionEnabled = YES;
             //fill in our log in button's bg
             [UIView animateWithDuration:0.25 animations:^{
                 @strongify(self)
                 self.signUpButtonBG.alpha = 1.0;
             }];
         } else {
+            self.signUpButton.userInteractionEnabled = NO;
             [UIView animateWithDuration:0.25 animations:^{
                 @strongify(self)
                 self.signUpButtonBG.alpha = 0.4;
