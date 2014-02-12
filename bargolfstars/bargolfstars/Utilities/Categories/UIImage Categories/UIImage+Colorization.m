@@ -8,7 +8,6 @@
 
 #import "UIImage+Colorization.h"
 
-
 @interface UIImage (Colorization)
 + (UIImage *)darkenImage:(UIImage *)image toLevel:(CGFloat)level;
 @end

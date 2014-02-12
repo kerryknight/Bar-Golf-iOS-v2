@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Kerry Knight. All rights reserved.
 //
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 
 @interface KKAppDelegate : UIResponder <UIApplicationDelegate>
 

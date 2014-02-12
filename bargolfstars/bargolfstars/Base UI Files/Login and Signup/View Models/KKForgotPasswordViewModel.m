@@ -37,4 +37,5 @@
 	}
 	return _emailIsValidEmailSignal;
 }
+
 @end

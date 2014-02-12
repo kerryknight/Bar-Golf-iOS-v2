@@ -43,21 +43,20 @@ NSString *const KKStatusBarError = @"KKStatusBarError";
 }
 
 #pragma mark - Public Methods
-+ (void)showWithStatus:(NSString *)status customStyleName:(NSString*)styleName {
++ (void)showWithStatus:(NSString *)status customStyleName:(NSString *)styleName {
     return [[self sharedInstance] sharedInstanceShowWithStatus:status customStyleName:styleName];
 }
 
-+ (void)showWithStatus:(NSString *)status dismissAfter:(NSTimeInterval)timeInterval customStyleName:(NSString*)styleName {
++ (void)showWithStatus:(NSString *)status dismissAfter:(NSTimeInterval)timeInterval customStyleName:(NSString *)styleName {
     return [[self sharedInstance] sharedInstanceShowWithStatus:status dismissAfter:timeInterval customStyleName:styleName];
 }
 
-
 #pragma mark - Private Methods
-- (void)sharedInstanceShowWithStatus:(NSString *)status customStyleName:(NSString*)styleName {
+- (void)sharedInstanceShowWithStatus:(NSString *)status customStyleName:(NSString *)styleName {
     [JDStatusBarNotification showWithStatus:status styleName:styleName];
 }
 
-- (void)sharedInstanceShowWithStatus:(NSString *)status dismissAfter:(NSTimeInterval)timeInterval customStyleName:(NSString*)styleName {
+- (void)sharedInstanceShowWithStatus:(NSString *)status dismissAfter:(NSTimeInterval)timeInterval customStyleName:(NSString *)styleName {
     [JDStatusBarNotification showWithStatus:status dismissAfter:timeInterval styleName:styleName];
 }
 

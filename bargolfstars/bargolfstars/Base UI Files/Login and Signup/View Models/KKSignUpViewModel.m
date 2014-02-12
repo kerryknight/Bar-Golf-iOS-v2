@@ -35,7 +35,6 @@
     return self;
 }
 
-
 #pragma mark - Public Methods
 - (RACSignal *)rac_signUpNewUser {
     
@@ -60,11 +59,13 @@
         NSString *err = [NSString stringWithFormat:NSLocalizedString(@"Error saving display name. Please try from account settings.", nil)];
         [(RACSubject *)self.sendErrorSignal sendNext:err];
     }];
+    
 }
 
 #pragma mark - Public Normal Properties
 - (BOOL)passwordTextLengthIsUnderLimit {
     BOOL underLimit = (self.password.length < kKKMaximumPasswordLength);
+    
     if (!underLimit) {
         NSString *characterLimit = [NSString stringWithFormat:NSLocalizedString(@"Passwords are limited to %i characters", nil), kKKMaximumDisplayNameLength];
         [(RACSubject *)self.sendErrorSignal sendNext:characterLimit];
@@ -75,6 +76,7 @@
 
 - (BOOL)displayNameTextLengthIsUnderLimit {
     BOOL underLimit = (self.displayName.length < kKKMaximumDisplayNameLength);
+    
     if (!underLimit) {
         NSString *characterLimit = [NSString stringWithFormat:NSLocalizedString(@"Display names are limited to %i characters", nil), kKKMaximumDisplayNameLength];
         [(RACSubject *)self.sendErrorSignal sendNext:characterLimit];
@@ -105,7 +107,8 @@
     }
     
     //check the characters used in the password field; new passwords must contain at least 1 digit
-    NSCharacterSet * set = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+    
     if ([self.password rangeOfCharacterFromSet:set].location == NSNotFound) {
         //no numbers found
         isValid = NO;
@@ -114,6 +117,7 @@
     
     //ensure our display name doesn't include any special characters so we don't get lots of dicks and stuff for names 8======D
     set = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    
     if ([self.password rangeOfCharacterFromSet:set].location != NSNotFound) {
         //special characters found
         NSString *error = [NSString stringWithFormat:NSLocalizedString(@"Passwords can't contain spaces.", nil)];
@@ -137,7 +141,8 @@
 - (BOOL)isValidDisplayNameCharacter:(NSString *)characters {
     BOOL isValid = YES;
     //ensure our display name doesn't include any special characters so we don't get lots of dicks and stuff for names 8======D
-    NSCharacterSet * set = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789_"] invertedSet];
+    NSCharacterSet *set = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789_"] invertedSet];
+    
     if ([characters rangeOfCharacterFromSet:set].location != NSNotFound) {
         //special characters found
         NSString *error = [NSString stringWithFormat:NSLocalizedString(@"Can contain letters, numbers, and underscores only.", nil)];

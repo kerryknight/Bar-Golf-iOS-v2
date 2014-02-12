@@ -78,7 +78,7 @@
 #define kMedWhite   [UIColor colorWithRed:231/255.0f green:234/255.0f blue:243/255.0f alpha:1.0]
 #define kLtGreen    [UIColor colorWithRed:116/255.0f green:192/255.0f blue:166/255.0f alpha:1.0]
 #define kFBBlue     [UIColor colorWithRed:61/255.0f green:94/255.0f blue:150/255.0f alpha:1.0]
-#define kErrorRed   [UIColor colorWithRed:186/255.0f green:42/255.0f blue:42/255.0f alpha:1.000];
+#define kErrorRed   [UIColor colorWithRed:186/255.0f green:42/255.0f blue:42/255.0f alpha:1.000]
 
 //font
 #define kHelveticaLight     @"HelveticaNeue-Light"

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Kerry Knight. All rights reserved.
 //
 
-@import Foundation;
+#import <Foundation/Foundation.h>
 
 #pragma mark - API keys
 extern NSString *const kREV_MOB_APP_ID;

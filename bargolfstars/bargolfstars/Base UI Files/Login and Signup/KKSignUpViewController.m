@@ -32,6 +32,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
     if (self) {
         // Custom initialization
     }
@@ -122,7 +123,7 @@
     });
     
 	return [[[self.viewModel rac_signUpNewUser] deliverOn:[RACScheduler mainThreadScheduler]]
-	        subscribeError: ^(NSError *error) {
+	        subscribeError:^(NSError *error) {
                 @strongify(self)
                 DLogRed(@"login error and show alert: %@", [error localizedDescription]);
                 
@@ -152,12 +153,15 @@
     [super touchesBegan:touches withEvent:event];
 }
 
-- (void) dismissAnyKeyboard {
+- (void)dismissAnyKeyboard {
 	NSArray *subviews = [self.container subviews];
-	for (UIView *aview in subviews) {
-		if ([aview isKindOfClass: [JVFloatLabeledTextField class]]) {
+	
+    for (UIView *aview in subviews) {
+		
+        if ([aview isKindOfClass: [JVFloatLabeledTextField class]]) {
 			JVFloatLabeledTextField *textField = (JVFloatLabeledTextField *)aview;
-			if ([textField isEditing]) {
+			
+            if ([textField isEditing]) {
                 
 				[textField resignFirstResponder];
 			}
@@ -306,6 +310,7 @@
     //change the password font color from white to green when it's a legal password
     [self.viewModel.passwordIsValidSignal subscribeNext:^(id x) {
         @strongify(self)
+        
         if ([x boolValue]) {
             //it's a valid password, turn it green
             self.passwordFloatTextField.textColor = kLtGreen;
@@ -318,6 +323,7 @@
     //change the confirm password font color from white to green when it matches password
     [self.viewModel.confirmPasswordMatchesSignal  subscribeNext:^(id x) {
         @strongify(self)
+        
         if ([x boolValue]) {
             //it matches, turn it green
             self.confirmPasswordFloatTextField.textColor = kLtGreen;
@@ -380,7 +386,7 @@
 
 #pragma mark - NIAttributedLabelDelegate
 
-- (void)attributedLabel:(NIAttributedLabel*)attributedLabel didSelectTextCheckingResult:(NSTextCheckingResult *)result atPoint:(CGPoint)point {
+- (void)attributedLabel:(NIAttributedLabel *)attributedLabel didSelectTextCheckingResult:(NSTextCheckingResult *)result atPoint:(CGPoint)point {
     // In a later example we will show how to push a Nimbus web controller onto the navigation stack
     // rather than punt the user out of the application to Safari.
     [[UIApplication sharedApplication] openURL:result.URL];

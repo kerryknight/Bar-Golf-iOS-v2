@@ -27,6 +27,7 @@
 
 - (id)init {
     self = [super init];
+    
     if (self) {
         self.cache = [[NSCache alloc] init];
     }
@@ -41,8 +42,8 @@
 
 - (void)setAttributesForUser:(PFUser *)user photoCount:(NSNumber *)count followedByCurrentUser:(BOOL)following {
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                count,kKKUserAttributesPhotoCountKey,
-                                [NSNumber numberWithBool:following],kKKUserAttributesIsFollowedByCurrentUserKey,
+                                count, kKKUserAttributesPhotoCountKey,
+                                [NSNumber numberWithBool:following], kKKUserAttributesIsFollowedByCurrentUserKey,
                                 nil];
     [self setAttributes:attributes forUser:user];
 }
@@ -54,8 +55,10 @@
 
 - (NSNumber *)photoCountForUser:(PFUser *)user {
     NSDictionary *attributes = [self attributesForUser:user];
+    
     if (attributes) {
         NSNumber *photoCount = [attributes objectForKey:kKKUserAttributesPhotoCountKey];
+        
         if (photoCount) {
             return photoCount;
         }
@@ -66,8 +69,10 @@
 
 - (BOOL)followStatusForUser:(PFUser *)user {
     NSDictionary *attributes = [self attributesForUser:user];
+    
     if (attributes) {
         NSNumber *followStatus = [attributes objectForKey:kKKUserAttributesIsFollowedByCurrentUserKey];
+        
         if (followStatus) {
             return [followStatus boolValue];
         }
@@ -97,6 +102,7 @@
 
 - (NSArray *)facebookFriends {
     NSString *key = kKKUserDefaultsCacheFacebookFriendsKey;
+    
     if ([self.cache objectForKey:key]) {
         return [self.cache objectForKey:key];
     }
@@ -109,7 +115,6 @@
     
     return friends;
 }
-
 
 #pragma mark - ()
 

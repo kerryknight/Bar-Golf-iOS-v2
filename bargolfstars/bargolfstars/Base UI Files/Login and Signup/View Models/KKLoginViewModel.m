@@ -10,8 +10,8 @@
 #import "NSString+EmailAdditions.h"
 
 @interface KKLoginViewModel ()
-@property(nonatomic, strong) RACSignal *usernameIsValidEmailSignal;
-@property(nonatomic, strong) RACSignal *passwordExistsSignal;
+@property (strong, nonatomic) RACSignal *usernameIsValidEmailSignal;
+@property (strong, nonatomic) RACSignal *passwordExistsSignal;
 @end
 
 @implementation KKLoginViewModel
@@ -63,7 +63,7 @@
 		}];
 	}
 	return _passwordExistsSignal;
-}
 
+}
 
 @end

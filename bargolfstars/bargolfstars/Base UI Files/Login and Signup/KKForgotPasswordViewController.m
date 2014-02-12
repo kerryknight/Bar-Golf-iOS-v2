@@ -24,9 +24,11 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
     if (self) {
         // Custom initialization
     }
+    
     return self;
 }
 
@@ -103,7 +105,7 @@
     });
     
 	return [[[self.viewModel rac_sendResetPasswordLink] deliverOn:[RACScheduler mainThreadScheduler]]
-	        subscribeError: ^(NSError *error) {
+	        subscribeError:^(NSError *error) {
                 @strongify(self)
                 DLogRed(@"reset link send error show alert: %@", [error localizedDescription]);
                 
@@ -114,7 +116,7 @@
                 NSString *message = [NSString stringWithFormat:NSLocalizedString(@"Error: %@", nil), [error localizedDescription]];
                 [KKStatusBarNotification showWithStatus:message dismissAfter:2.0 customStyleName:KKStatusBarError];
                 
-            } completed: ^{
+            } completed:^{
                 @strongify(self)
                 DLog(@"sent reset link successfully, go back to login view");
                 
@@ -132,11 +134,13 @@
 
 - (void)dismissAnyKeyboard {
 	NSArray *subviews = [self.container subviews];
-	for (UIView *aview in subviews) {
-		if ([aview isKindOfClass: [JVFloatLabeledTextField class]]) {
+	
+    for (UIView *aview in subviews) {
+		
+        if ([aview isKindOfClass: [JVFloatLabeledTextField class]]) {
 			JVFloatLabeledTextField *textField = (JVFloatLabeledTextField *)aview;
-			if ([textField isEditing]) {
-                
+			
+            if ([textField isEditing]) {
 				[textField resignFirstResponder];
 			}
 		}

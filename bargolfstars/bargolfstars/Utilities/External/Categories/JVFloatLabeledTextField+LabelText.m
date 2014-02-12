@@ -7,6 +7,7 @@
 //
 
 #import "JVFloatLabeledTextField+LabelText.h"
+
 @implementation JVFloatLabeledTextField (LabelText)
 
 - (void)bgs_setFloatingLabelText:(NSString *)text {

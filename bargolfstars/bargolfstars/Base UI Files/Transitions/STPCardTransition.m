@@ -72,7 +72,7 @@
     
 }
 
-- (void)executeReverseAnimationFromView:(UIView *)fromView toView:(UIView *)toView inContainerView:(UIView *)containerView executeOnCompletion:(void (^)(BOOL))onCompletion{
+- (void)executeReverseAnimationFromView:(UIView *)fromView toView:(UIView *)toView inContainerView:(UIView *)containerView executeOnCompletion:(void (^)(BOOL))onCompletion {
     
     // positions the to- view behind the from- view
     toView.frame = containerView.frame;
@@ -110,13 +110,13 @@
 
 - (CATransform3D)firstTransform {
     CATransform3D t1 = CATransform3DIdentity;
-    t1.m34 = 1.0/-900;
+    t1.m34 = 1.0 / -900;
     t1 = CATransform3DScale(t1, 0.95, 0.95, 1);
-    t1 = CATransform3DRotate(t1, 15.0f * M_PI/180.0f, 1, 0, 0);
+    t1 = CATransform3DRotate(t1, 15.0f * M_PI / 180.0f, 1, 0, 0);
     return t1;
 }
 
-- (CATransform3D)secondTransformWithView:(UIView*)view {
+- (CATransform3D)secondTransformWithView:(UIView *)view {
     CATransform3D t2 = CATransform3DIdentity;
     t2.m34 = [self firstTransform].m34;
     t2 = CATransform3DTranslate(t2, 0, view.frame.size.height * -0.08, 0);

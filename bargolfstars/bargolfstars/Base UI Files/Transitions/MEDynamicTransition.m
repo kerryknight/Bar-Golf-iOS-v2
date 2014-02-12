@@ -171,6 +171,7 @@
         CGFloat fullWidth = fabsf(finalLeftEdge - initialLeftEdge);
         
         CGRect underViewFrame;
+        
         if (CGRectIsEmpty(underViewInitialFrame)) {
             underViewFrame = underViewFinalFrame;
         } else {
@@ -217,7 +218,6 @@
             } else {
                 _isInteractive = NO;
             }
-            
             break;
         }
         case UIGestureRecognizerStateChanged: {
@@ -257,7 +257,6 @@
             self.pushBehavior.active = YES;
             
             [self.animator addBehavior:self.compositeBehavior];
-            
             break;
         }
         default:
@@ -267,7 +266,7 @@
 
 #pragma mark - UIDynamicAnimatorDelegate
 
-- (void)dynamicAnimatorDidPause:(UIDynamicAnimator*)animator {
+- (void)dynamicAnimatorDidPause:(UIDynamicAnimator *)animator {
     [self.animator removeAllBehaviors];
     
     _collisionBehavior = nil;
@@ -279,6 +278,7 @@
     
     self.slidingViewController.topViewController.view.userInteractionEnabled = YES;
     UIViewController *topViewController = [self.transitionContext viewControllerForKey:ECTransitionContextTopViewControllerKey];
+    
     if ((self.isPanningRight && self.positiveLeftToRight) || (!self.isPanningRight && !self.positiveLeftToRight)) {
         topViewController.view.frame = [self.transitionContext finalFrameForViewController:topViewController];
         [self.transitionContext finishInteractiveTransition];

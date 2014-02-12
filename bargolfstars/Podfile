@@ -19,6 +19,7 @@ pod 'STPTransitions' #for animated transitions between view controllers
 pod 'FXBlurView', '1.5.3' #for blurring overlay view in realtime
 pod 'Nimbus/Core', '= 1.0.0'
 pod 'Nimbus/AttributedLabel', '= 1.0.0'
+pod 'TRVSMonitor'
 
 
 # if permissions error, try:

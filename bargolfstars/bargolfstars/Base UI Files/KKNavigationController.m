@@ -11,7 +11,6 @@
 #import "MEDynamicTransition.h"
 #import "MEAnimationController.h"
 
-
 @interface KKNavigationController ()
 @property (nonatomic, strong) UIPanGestureRecognizer *dynamicTransitionPanGesture;
 @property (nonatomic, strong) MEDynamicTransition *dynamicTransition;
@@ -64,6 +63,7 @@
     
     return _dynamicTransitionPanGesture;
 }
+
 - (MEDynamicTransition *)dynamicTransition {
     if (_dynamicTransition) return _dynamicTransition;
     

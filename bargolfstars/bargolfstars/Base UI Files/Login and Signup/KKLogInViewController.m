@@ -22,9 +22,11 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
     if (self) {
         // Custom initialization
     }
+    
     return self;
 }
 
@@ -116,13 +118,13 @@
 
 - (RACDisposable *)logIn {
 	return [[self.viewModel rac_logIn]
-	        subscribeNext: ^(PFUser *user) {
+	        subscribeNext:^(PFUser *user) {
                 DLogGreen(@"user at login: %@", user);
                 //do something or noop?
-            } error: ^(NSError *error) {
+            } error:^(NSError *error) {
                 DLogRed(@"login error and show alert: %@", [error localizedDescription]);
                 //error logging in, show error message
-            } completed: ^{
+            } completed:^{
                 DLog(@"log in completed successfully, so show main interface");
                 //successfully logged in
             }];
@@ -153,13 +155,16 @@
     [super touchesBegan:touches withEvent:event];
 }
 
-- (void) dismissAnyKeyboard {
-	NSArray *subviews = [self.container subviews];
+- (void)dismissAnyKeyboard {
+	
+    NSArray *subviews = [self.container subviews];
+    
 	for (UIView *aview in subviews) {
-		if ([aview isKindOfClass: [JVFloatLabeledTextField class]]) {
+		
+        if ([aview isKindOfClass: [JVFloatLabeledTextField class]]) {
 			JVFloatLabeledTextField *textField = (JVFloatLabeledTextField *)aview;
-			if ([textField isEditing]) {
-                
+			
+            if ([textField isEditing]) {
 				[textField resignFirstResponder];
 			}
 		}

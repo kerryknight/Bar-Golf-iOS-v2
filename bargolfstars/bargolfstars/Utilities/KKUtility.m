@@ -32,11 +32,8 @@ void alertMessage ( NSString *format, ... ) {
     });
 }
 
-
-@interface KKUtility () {
-    
-}
-+ (BOOL)saveProfileImageToParse:(UIImage*)profileImage;
+@interface KKUtility ()
++ (BOOL)saveProfileImageToParse:(UIImage *)profileImage;
 @end
 
 @implementation KKUtility
@@ -46,7 +43,7 @@ void alertMessage ( NSString *format, ... ) {
     return [self saveProfileImageToParse:profileImage];
 }
 
-+ (BOOL)saveProfileImageToParse:(UIImage*)profileImage {
++ (BOOL)saveProfileImageToParse:(UIImage *)profileImage {
     NSLog(@"%s", __FUNCTION__);
     
     UIImage *image = profileImage;
@@ -173,7 +170,6 @@ void alertMessage ( NSString *format, ... ) {
     return (profilePictureMedium && profilePictureSmall);
 }
 
-
 #pragma mark Display Name
 
 + (NSString *)firstNameForDisplayName:(NSString *)displayName {
@@ -183,6 +179,7 @@ void alertMessage ( NSString *format, ... ) {
     
     NSArray *displayNameComponents = [displayName componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     NSString *firstName = [displayNameComponents objectAtIndex:0];
+    
     if (firstName.length > 100) {
         // truncate to 100 so that it fits in a Push payload
         firstName = [firstName substringToIndex:100];
@@ -202,6 +199,5 @@ void alertMessage ( NSString *format, ... ) {
     UIGraphicsEndImageContext();
     return img;
 }
-
 
 @end

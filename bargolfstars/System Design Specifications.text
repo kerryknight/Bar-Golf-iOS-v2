@@ -16,8 +16,8 @@ Workflow
 
 
 
-Views (in an app sense, not MVC sense)
---------------------------------------
+Views (in an app sense, not MVC/MVVM sense)
+-------------------------------------------
 
 ### Login View
 
@@ -63,6 +63,7 @@ Views (in an app sense, not MVC sense)
     JDStatusBarNotification
 
 -   
+
 
 
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Kerry Knight. All rights reserved.
 //
 
-@import Foundation;
+#import <Foundation/Foundation.h>
 
 @interface KKCache : NSObject
 

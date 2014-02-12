@@ -14,7 +14,7 @@
 @interface KKWelcomeViewController () {
 }
 
--(void)setDisplayNameEqualToAdditionalField;
+- (void)setDisplayNameEqualToAdditionalField;
 
 @end
 
@@ -51,7 +51,6 @@
     [[PFUser currentUser] refreshInBackgroundWithTarget:self selector:@selector(refreshCurrentUserCallbackWithResult:error:)];
 }
 
-
 #pragma mark - Private Methods
 
 - (void)refreshCurrentUserCallbackWithResult:(PFObject *)refreshedObject error:(NSError *)error {
@@ -59,7 +58,7 @@
     // A kPFErrorObjectNotFound error on currentUser refresh signals a deleted user
     if (error && error.code == kPFErrorObjectNotFound) {
         DLog(@"User does not exist.");
-        [(KKAppDelegate*)[[UIApplication sharedApplication] delegate] logOut];
+        [(KKAppDelegate *)[[UIApplication sharedApplication] delegate] logOut];
         return;
     }
     
@@ -81,16 +80,16 @@
 //            [request setDelegate:(KKAppDelegate*)[[UIApplication sharedApplication] delegate]];
 //            [request startWithCompletionHandler:nil];
         }
-    } /*else if ([PFTwitterUtils isLinkedWithUser:[PFUser currentUser]] ) {
-       //we're logged in with Twitter //TODO:
-    } */
-    else {
+        /*else if ([PFTwitterUtils isLinkedWithUser:[PFUser currentUser]] ) {
+         //we're logged in with Twitter //TODO:
+         } */
+    } else {
         //we're logged with via a Parse account so set the displayName
         [self setDisplayNameEqualToAdditionalField];
     }
 }
 
--(void)setDisplayNameEqualToAdditionalField {
+- (void)setDisplayNameEqualToAdditionalField {
     DLogCyan(@"");
     //check if it's a parse signee; if so, set their displayName field to the additional field from signup
     //check what type of login we have
@@ -134,6 +133,7 @@
 
 - (BOOL)shouldProceedToMainInterface:(PFUser *)user {
     DLog(@"");
+    
     if ([KKUtility userHasValidFacebookData:[PFUser currentUser]]) {
         DLog(@"User has valid Facebook data, granting permission to use app.");
         //        [MBProgressHUD hideHUDForView:self.navController.presentedViewController.view animated:YES];
@@ -147,8 +147,8 @@
     }
     
     return NO;
+    
 }
-
 
 - (void)presentLoginViewControllerAnimated:(BOOL)animated {
     KKLoginViewController *loginViewController = [[KKLoginViewController alloc] init];
@@ -159,7 +159,6 @@
         [self.navigationController pushViewController:loginViewController animated:NO];
     });
 }
-
 
 #pragma mark - PFLogInViewControllerDelegate
 - (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
@@ -238,6 +237,7 @@
 - (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
     DLogGreen(@"");
     BOOL informationComplete = YES;
+    
     for (id key in info) {
         NSString *field = [info objectForKey:key];
         //make sure all fields are filled in
@@ -253,7 +253,8 @@
         }
         
         //check the characters used in the password field; new passwords must contain at least 1 digit
-        NSCharacterSet * set = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+        NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+        
         if ([key isEqualToString:@"password"] && [field rangeOfCharacterFromSet:set].location == NSNotFound) {
             //no numbers found
             alertMessage(@"Password must contain at least one number");
@@ -263,6 +264,7 @@
         
         //ensure our display name doesn't include any special characters so we don't get lots of dicks and stuff for names 8======D
         set = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789"] invertedSet];
+        
         if ([key isEqualToString:@"password"] && [field rangeOfCharacterFromSet:set].location != NSNotFound) {
             //special characters found
             alertMessage(@"Display names can only contain letters and numbers.");
@@ -315,6 +317,5 @@
 - (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
     DLog(@"User dismissed the signUpViewController");
 }
-
 
 @end
