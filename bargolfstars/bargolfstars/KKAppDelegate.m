@@ -27,6 +27,7 @@
 @implementation KKAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     // START 3RD PARTY INSTANTIATIONS ********************************************************
     // RevMob
     //RevMob initilization

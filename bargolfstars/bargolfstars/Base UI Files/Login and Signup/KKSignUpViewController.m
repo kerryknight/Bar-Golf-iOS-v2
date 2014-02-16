@@ -17,15 +17,7 @@
 @property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *passwordFloatTextField;
 @property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *confirmPasswordFloatTextField;
 @property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *displayNameFloatTextField;
-@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
-@property (weak, nonatomic) IBOutlet UIView *container;
-@property (weak, nonatomic) IBOutlet UIView *usernameBG;
-@property (weak, nonatomic) IBOutlet UIView *passwordBG;
-@property (weak, nonatomic) IBOutlet UIView *confirmPasswordBG;
-@property (weak, nonatomic) IBOutlet UIView *displayNameBG;
-@property (weak, nonatomic) IBOutlet UIView *signUpButtonBG;
-@property (strong, nonatomic) KKSignUpViewModel *viewModel;
-
+@property (strong, nonatomic, readwrite) KKSignUpViewModel *viewModel;
 @end
 
 @implementation KKSignUpViewController

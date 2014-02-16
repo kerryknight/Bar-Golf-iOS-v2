@@ -84,6 +84,9 @@ NSString *const kKKPushPayloadFromUserObjectIdKey               = @"fu";
 NSString *const kKKPushPayloadToUserObjectIdKey                 = @"tu";
 NSString *const kKKPushPayloadPhotoObjectIdKey                  = @"pid";
 
+// *********************************************** PARSE CLOUD CODE **************************************
+NSString *const kKKCloudCodeDeleteUserKey                       = @"deleteUserAccountAndData";
+
 
 // *********************************************** PARSE CLASSES *****************************************
 #pragma mark - PFObject User Class

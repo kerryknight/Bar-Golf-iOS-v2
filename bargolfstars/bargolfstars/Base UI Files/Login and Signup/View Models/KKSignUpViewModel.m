@@ -52,7 +52,7 @@
 - (void)saveDisplayNameForNewlySignedUpUser {
     @weakify(self)
     PFUser *newUser = [PFUser currentUser];
-    newUser[kKKUserDisplayNameKey] = self.displayName;
+    newUser[kKKUserDisplayNameKey] = self.displayName.length > 0 ? self.displayName : @"New Player";
     //we'll assume a successfully save and only care about an error; if it errors out, we'll allow user to reset in account settings
     [[[newUser rac_saveEventually] deliverOn:[RACScheduler schedulerWithPriority:RACSchedulerPriorityDefault]] subscribeError:^(NSError *error) {
         @strongify(self)

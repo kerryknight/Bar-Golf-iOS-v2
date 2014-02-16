@@ -70,4 +70,8 @@
     [self.monitor wait];
 }
 
+//- (void)test_rac_logInWithFacebook_shouldLogUserInWithFacebookSDK {
+//    XCTAssertTrue(FALSE, @"-rac_logInWithFacebook should log the user in with Facebook");
+//}
+
 @end

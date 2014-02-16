@@ -24,14 +24,6 @@
     return [PFUser rac_logInWithUsername:self.username password:self.password];
 }
 
-- (RACSignal *)rac_forgotPassword {
-    return [RACSignal empty];
-}
-
-- (RACSignal *)rac_signUp {
-    return [RACSignal empty];
-}
-
 - (RACSignal *)rac_logInWithFacebook {
     return [RACSignal empty];
 }
@@ -63,7 +55,6 @@
 		}];
 	}
 	return _passwordExistsSignal;
-
 }
 
 @end

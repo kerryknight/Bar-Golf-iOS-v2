@@ -14,8 +14,6 @@
 @property (strong, nonatomic) RACSignal *usernameAndPasswordCombinedSignal;
 
 - (RACSignal *)rac_logIn;
-- (RACSignal *)rac_forgotPassword;
-- (RACSignal *)rac_signUp;
 - (RACSignal *)rac_logInWithFacebook;
 
 

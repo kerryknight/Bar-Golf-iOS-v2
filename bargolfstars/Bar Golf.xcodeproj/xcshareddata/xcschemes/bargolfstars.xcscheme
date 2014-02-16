@@ -37,6 +37,17 @@
                BlueprintName = "Bar Golf Tests"
                ReferencedContainer = "container:Bar Golf.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "KKLoginViewControllerTests">
+               </Test>
+               <Test
+                  Identifier = "KKLoginViewModelTests">
+               </Test>
+               <Test
+                  Identifier = "KKSignUpViewControllerTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

@@ -75,6 +75,8 @@ extern NSString *const kKKPushPayloadFromUserObjectIdKey;
 extern NSString *const kKKPushPayloadToUserObjectIdKey;
 extern NSString *const kKKPushPayloadPhotoObjectIdKey;
 
+// *********************************************** PARSE CLOUD CODE **************************************
+extern NSString *const kKKCloudCodeDeleteUserKey;
 
 // *********************************************** PARSE CLASSES *****************************************
 #pragma mark - PFObject User Class
