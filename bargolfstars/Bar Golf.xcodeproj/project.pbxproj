@@ -23,6 +23,8 @@
 		DE85B31A18B11A1E00040A9E /* KKSignUpViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE85B31918B11A1E00040A9E /* KKSignUpViewControllerTests.m */; };
 		DE85B31B18B1205500040A9E /* KKLoginViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7ECB5718AB51250027435A /* KKLoginViewControllerTests.m */; };
 		DE85B31D18B1210100040A9E /* KKSignUpViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE85B31C18B1210100040A9E /* KKSignUpViewModelTests.m */; };
+		DE85B32018B1353900040A9E /* KKForgotPasswordViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE85B31F18B1353900040A9E /* KKForgotPasswordViewControllerTests.m */; };
+		DE85B32218B1420E00040A9E /* KKForgotPasswordViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE85B32118B1420E00040A9E /* KKForgotPasswordViewModelTests.m */; };
 		DE8F39A3187882D3007D3942 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE8F39A2187882D3007D3942 /* Crashlytics.framework */; };
 		DE8FAB8118A4B31600D66963 /* KKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8FAB7F18A4B31600D66963 /* KKLoginViewController.m */; };
 		DE8FAB8218A4B31600D66963 /* KKLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8FAB8018A4B31600D66963 /* KKLoginViewController.xib */; };
@@ -99,6 +101,8 @@
 		DE7ECB5718AB51250027435A /* KKLoginViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKLoginViewControllerTests.m; path = Views/KKLoginViewControllerTests.m; sourceTree = "<group>"; };
 		DE85B31918B11A1E00040A9E /* KKSignUpViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKSignUpViewControllerTests.m; path = Views/KKSignUpViewControllerTests.m; sourceTree = "<group>"; };
 		DE85B31C18B1210100040A9E /* KKSignUpViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSignUpViewModelTests.m; sourceTree = "<group>"; };
+		DE85B31F18B1353900040A9E /* KKForgotPasswordViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKForgotPasswordViewControllerTests.m; path = Views/KKForgotPasswordViewControllerTests.m; sourceTree = "<group>"; };
+		DE85B32118B1420E00040A9E /* KKForgotPasswordViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKForgotPasswordViewModelTests.m; sourceTree = "<group>"; };
 		DE8F39A2187882D3007D3942 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		DE8FAB7E18A4B31600D66963 /* KKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKLoginViewController.h; sourceTree = "<group>"; };
 		DE8FAB7F18A4B31600D66963 /* KKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLoginViewController.m; sourceTree = "<group>"; };
@@ -267,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				DE7ECB5718AB51250027435A /* KKLoginViewControllerTests.m */,
+				DE85B31F18B1353900040A9E /* KKForgotPasswordViewControllerTests.m */,
 				DE85B31918B11A1E00040A9E /* KKSignUpViewControllerTests.m */,
 			);
 			name = "Login and Sign Up";
@@ -293,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				DE09D77818AB5AAE00089371 /* KKLoginViewModelTests.m */,
+				DE85B32118B1420E00040A9E /* KKForgotPasswordViewModelTests.m */,
 				DE85B31C18B1210100040A9E /* KKSignUpViewModelTests.m */,
 			);
 			path = "View Models";
@@ -767,6 +773,8 @@
 			files = (
 				DE85B31A18B11A1E00040A9E /* KKSignUpViewControllerTests.m in Sources */,
 				DE85B31B18B1205500040A9E /* KKLoginViewControllerTests.m in Sources */,
+				DE85B32218B1420E00040A9E /* KKForgotPasswordViewModelTests.m in Sources */,
+				DE85B32018B1353900040A9E /* KKForgotPasswordViewControllerTests.m in Sources */,
 				DE85B31D18B1210100040A9E /* KKSignUpViewModelTests.m in Sources */,
 				DE09D77918AB5AAE00089371 /* KKLoginViewModelTests.m in Sources */,
 			);

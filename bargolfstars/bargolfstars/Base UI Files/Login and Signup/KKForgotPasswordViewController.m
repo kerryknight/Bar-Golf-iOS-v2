@@ -12,12 +12,7 @@
 
 @interface KKForgotPasswordViewController () <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *emailAddressFloatTextField;
-@property (weak, nonatomic) IBOutlet UIButton *sendResetLinkButton;
-@property (weak, nonatomic) IBOutlet UIView *container;
-@property (weak, nonatomic) IBOutlet UIView *emailAddressBG;
-@property (weak, nonatomic) IBOutlet UIView *sendResetLinkButtonBG;
-@property (strong, nonatomic) KKForgotPasswordViewModel *viewModel;
-    
+@property (strong, nonatomic, readwrite) KKForgotPasswordViewModel *viewModel;
 @end
 
 @implementation KKForgotPasswordViewController
@@ -71,12 +66,18 @@
     //wasteful parse api calls
     [self.viewModel.emailIsValidEmailSignal subscribeNext:^(id x) {
         if ([x boolValue]) {
+            @strongify(self)
+            self.sendResetLinkButton.userInteractionEnabled = YES;
+            @weakify(self)
             //fill in our log in button's bg
             [UIView animateWithDuration:0.25 animations:^{
                 @strongify(self)
                 self.sendResetLinkButtonBG.alpha = 1.0;
             }];
         } else {
+            @strongify(self)
+            self.sendResetLinkButton.userInteractionEnabled = NO;
+            @weakify(self)
             [UIView animateWithDuration:0.25 animations:^{
                 @strongify(self)
                 self.sendResetLinkButtonBG.alpha = 0.4;

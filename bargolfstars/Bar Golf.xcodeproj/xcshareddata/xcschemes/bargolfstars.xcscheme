@@ -39,13 +39,16 @@
             </BuildableReference>
             <SkippedTests>
                <Test
-                  Identifier = "KKLoginViewControllerTests">
-               </Test>
-               <Test
-                  Identifier = "KKLoginViewModelTests">
-               </Test>
-               <Test
                   Identifier = "KKSignUpViewControllerTests">
+               </Test>
+               <Test
+                  Identifier = "KKSignUpViewModelTests">
+               </Test>
+               <Test
+                  Identifier = "KKForgotPasswordViewControllerTests">
+               </Test>
+               <Test
+                  Identifier = "KKForgotPasswordViewModelTests">
                </Test>
             </SkippedTests>
          </TestableReference>
