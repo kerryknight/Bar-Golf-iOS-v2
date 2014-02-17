@@ -25,6 +25,9 @@
 		DE85B31D18B1210100040A9E /* KKSignUpViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE85B31C18B1210100040A9E /* KKSignUpViewModelTests.m */; };
 		DE85B32018B1353900040A9E /* KKForgotPasswordViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE85B31F18B1353900040A9E /* KKForgotPasswordViewControllerTests.m */; };
 		DE85B32218B1420E00040A9E /* KKForgotPasswordViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE85B32118B1420E00040A9E /* KKForgotPasswordViewModelTests.m */; };
+		DE85B32618B145D100040A9E /* PFFacebookUtils+RACExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DE85B32518B145D100040A9E /* PFFacebookUtils+RACExtensions.m */; };
+		DE85B32918B14A8800040A9E /* PFRACCallbacks+BGS_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DE85B32818B14A8800040A9E /* PFRACCallbacks+BGS_Extensions.m */; };
+		DE85B32C18B1735D00040A9E /* PFFile+RACExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DE85B32B18B1735D00040A9E /* PFFile+RACExtensions.m */; };
 		DE8F39A3187882D3007D3942 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE8F39A2187882D3007D3942 /* Crashlytics.framework */; };
 		DE8FAB8118A4B31600D66963 /* KKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8FAB7F18A4B31600D66963 /* KKLoginViewController.m */; };
 		DE8FAB8218A4B31600D66963 /* KKLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8FAB8018A4B31600D66963 /* KKLoginViewController.xib */; };
@@ -103,6 +106,12 @@
 		DE85B31C18B1210100040A9E /* KKSignUpViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSignUpViewModelTests.m; sourceTree = "<group>"; };
 		DE85B31F18B1353900040A9E /* KKForgotPasswordViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKForgotPasswordViewControllerTests.m; path = Views/KKForgotPasswordViewControllerTests.m; sourceTree = "<group>"; };
 		DE85B32118B1420E00040A9E /* KKForgotPasswordViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKForgotPasswordViewModelTests.m; sourceTree = "<group>"; };
+		DE85B32418B145D100040A9E /* PFFacebookUtils+RACExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFFacebookUtils+RACExtensions.h"; sourceTree = "<group>"; };
+		DE85B32518B145D100040A9E /* PFFacebookUtils+RACExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFFacebookUtils+RACExtensions.m"; sourceTree = "<group>"; };
+		DE85B32718B14A8800040A9E /* PFRACCallbacks+BGS_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFRACCallbacks+BGS_Extensions.h"; sourceTree = "<group>"; };
+		DE85B32818B14A8800040A9E /* PFRACCallbacks+BGS_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFRACCallbacks+BGS_Extensions.m"; sourceTree = "<group>"; };
+		DE85B32A18B1735D00040A9E /* PFFile+RACExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFFile+RACExtensions.h"; sourceTree = "<group>"; };
+		DE85B32B18B1735D00040A9E /* PFFile+RACExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFFile+RACExtensions.m"; sourceTree = "<group>"; };
 		DE8F39A2187882D3007D3942 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		DE8FAB7E18A4B31600D66963 /* KKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKLoginViewController.h; sourceTree = "<group>"; };
 		DE8FAB7F18A4B31600D66963 /* KKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLoginViewController.m; sourceTree = "<group>"; };
@@ -304,6 +313,19 @@
 			path = "View Models";
 			sourceTree = "<group>";
 		};
+		DE85B32318B145B700040A9E /* Parse+RACExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				DE85B32418B145D100040A9E /* PFFacebookUtils+RACExtensions.h */,
+				DE85B32518B145D100040A9E /* PFFacebookUtils+RACExtensions.m */,
+				DE85B32718B14A8800040A9E /* PFRACCallbacks+BGS_Extensions.h */,
+				DE85B32818B14A8800040A9E /* PFRACCallbacks+BGS_Extensions.m */,
+				DE85B32A18B1735D00040A9E /* PFFile+RACExtensions.h */,
+				DE85B32B18B1735D00040A9E /* PFFile+RACExtensions.m */,
+			);
+			path = "Parse+RACExtensions";
+			sourceTree = "<group>";
+		};
 		DE91EFD618A9EAE900CE2489 /* Testing Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +337,7 @@
 		DEAB465218A5FC79008FB73D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				DE85B32318B145B700040A9E /* Parse+RACExtensions */,
 				DEAB465318A5FC79008FB73D /* NSString+EmailAdditions.h */,
 				DEAB465418A5FC79008FB73D /* NSString+EmailAdditions.m */,
 				DEAB465518A5FC79008FB73D /* UIImage Categories */,
@@ -784,16 +807,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE85B32618B145D100040A9E /* PFFacebookUtils+RACExtensions.m in Sources */,
 				DE0596141895C0E500892F24 /* KKUtility.m in Sources */,
 				DEE2EE961891E73F00FC2991 /* KKHelpViewController.m in Sources */,
 				DEE2EEA91891F05300FC2991 /* KKMenuViewController.m in Sources */,
 				DEAB466118A5FC79008FB73D /* UIImage+ResizeAdditions.m in Sources */,
 				DEE2EEAB1891F05300FC2991 /* MEDynamicTransition.m in Sources */,
+				DE85B32918B14A8800040A9E /* PFRACCallbacks+BGS_Extensions.m in Sources */,
 				DEAB466F18A6290C008FB73D /* STPSlideUpTransition.m in Sources */,
 				DE25FF8218A9A889003213EC /* KKForgotPasswordViewModel.m in Sources */,
 				DEAB468118A6CA36008FB73D /* JVFloatLabeledTextField+LabelText.m in Sources */,
 				DEE2EE911891E73F00FC2991 /* KKJoinRoundViewController.m in Sources */,
 				DEE2EE8E1891E73F00FC2991 /* KKCreateRoundViewController.m in Sources */,
+				DE85B32C18B1735D00040A9E /* PFFile+RACExtensions.m in Sources */,
 				DEE2EEAE1891F07B00FC2991 /* KKNavigationController.m in Sources */,
 				DEB649BD18A5E1FC005C17AA /* KKLoginViewModel.m in Sources */,
 				DEE2EE8F1891E73F00FC2991 /* KKCurrentLeaderboardViewController.m in Sources */,

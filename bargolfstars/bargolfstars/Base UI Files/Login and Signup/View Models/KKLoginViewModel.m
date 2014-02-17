@@ -8,6 +8,9 @@
 
 #import "KKLoginViewModel.h"
 #import "NSString+EmailAdditions.h"
+#import "PFFacebookUtils+RACExtensions.h"
+#import "PFFile+RACExtensions.h"
+#import "UIImage+ResizeAdditions.h"
 
 @interface KKLoginViewModel ()
 @property (strong, nonatomic) RACSignal *usernameIsValidEmailSignal;
@@ -25,7 +28,25 @@
 }
 
 - (RACSignal *)rac_logInWithFacebook {
-    return [RACSignal empty];
+    __block id facebookRequestResult;
+    @weakify(self)
+	return [[[[[[PFFacebookUtils rac_logInWithPermissions:kFacebookPermissionsList]
+	           flattenMap: ^id (id value) {
+                   return [PFFacebookUtils rac_getCurrentFacebookUserConnectionInfo];
+               }]
+	          flattenMap: ^id (id result) {
+                  facebookRequestResult = result;
+                  NSString *facebookId = result[@"id"];
+                  return [PFFacebookUtils rac_getCurrentFacebookUsersProfilePicture:facebookId];
+              }]
+             flattenMap: ^id (id imageData) {
+                 @strongify(self)
+                 return [self rac_savePFFileFromImageData:imageData];
+             }]
+             flattenMap: ^id (PFFile *imageFile) {
+                 facebookRequestResult[kKKUserProfilePicSmallKey] = imageFile;
+                 return [PFFacebookUtils rac_saveFacebookUserDataToParseForCurrentUser:facebookRequestResult];
+             }] deliverOn:[RACScheduler mainThreadScheduler]];
 }
 
 #pragma mark - Public Signal Properties
@@ -37,6 +58,31 @@
 }
 
 #pragma mark - Private Methods
+- (RACSubject *)rac_savePFFileFromImageData:(NSData *)imageData {
+    RACSubject *subject = [RACSubject subject];
+    
+    UIImage *image = [UIImage imageWithData:imageData];
+    UIImage *smallImage = [image thumbnailImage:64 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationLow];
+    
+    NSData *newImageData = UIImageJPEGRepresentation(smallImage, 1.0); // using JPEG for larger pictures
+    
+    if (newImageData.length == 0) {
+        return nil;
+    }
+    
+    PFFile *imageFile = [PFFile fileWithData:newImageData];
+    
+    [[imageFile rac_save] subscribeError:^(NSError *error) {
+        [subject sendError:error];
+    } completed:^{
+        //on successfully saving the image to parse, pass it on to our currentUser
+        //so we can save it with our user account
+        [subject sendNext:imageFile];
+        [subject sendCompleted];
+    }];
+    
+    return subject;
+}
 
 #pragma mark - Private Signal Properties
 - (RACSignal *)usernameIsValidEmailSignal {

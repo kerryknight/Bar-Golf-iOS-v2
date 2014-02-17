@@ -87,3 +87,6 @@
 #define kWelcomButtonHeight         50
 #define kWelcomeButtonWidth         270
 #define kWelcomeTextFieldMargin     15
+
+// Facebook permissions
+#define kFacebookPermissionsList @[@"user_about_me", @"email"]
