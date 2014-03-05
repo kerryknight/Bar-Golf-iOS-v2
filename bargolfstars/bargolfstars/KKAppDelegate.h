@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KKNavigationController.h"
 
 @interface KKAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, strong) UINavigationController *welcomeNavigationController;
+@property (nonatomic, strong) UINavigationController *navController;
 @property (assign, nonatomic, readonly) int networkStatus;
 
+- (void)showMainInterface;
 - (BOOL)isParseReachable;
 - (void)logOut;
 

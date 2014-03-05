@@ -20,7 +20,6 @@
 @implementation KKNavigationController
 
 - (void)viewDidLoad {
-    DLog(@"");
     [super viewDidLoad];
     
     self.dynamicTransition.slidingViewController = self.slidingViewController;
@@ -33,19 +32,16 @@
 }
 
 - (void)viewDidLayoutSubviews {
-    DLog(@"");
     self.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.view.bounds].CGPath;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    DLog(@"");
     [super viewWillAppear:animated];
     
     [self configureGestures];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    DLog(@"");
     [super viewWillDisappear:animated];
 }
 

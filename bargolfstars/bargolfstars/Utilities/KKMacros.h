@@ -4,6 +4,8 @@
 //  Created by Kerry Knight on 1/23/14.
 //
 
+#define KKAD ((KKAppDelegate *)[UIApplication sharedApplication].delegate)
+
 // xcodecolors xcode plugin logger
 #ifdef DEBUG
     #ifdef XCODE_COLORS
