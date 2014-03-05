@@ -6,6 +6,7 @@
 //
 
 #import "KKMenuViewController.h"
+#import "KKAppDelegate.h"
 #import "UIViewController+ECSlidingViewController.h"
 
 @interface KKMenuViewController ()
@@ -79,7 +80,8 @@
     } else if ([menuItem isEqualToString:@"My Player Profile"]) {
         newVC = [self.storyboard instantiateViewControllerWithIdentifier:@"KKMyPlayerProfileViewController"];
     } else if ([menuItem isEqualToString:@"Log Out"]) {
-        DLog(@"Should log out");
+        [self.slidingViewController resetTopViewAnimated:YES];
+        [KKAD logOut];
         return;
     }
     

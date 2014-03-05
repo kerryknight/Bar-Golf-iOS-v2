@@ -9,13 +9,17 @@ To Do
 -   Be sure to check for stale info from Facebook if the user logs in via FB as
     their photo could change
 
--   Get facebook login working
-
 -   Add analytics for returned errors
 
 -   Be sure to check formatting on 4S screen size
 
 -   Always Harvest my time
+
+-   Add Bar and Taxi Finders first
+
+-   Turn email confirmation back on in Parse
+
+-   Get the toolbar buttons responding
 
 
 

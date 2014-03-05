@@ -4,6 +4,8 @@
 //  Created by Kerry Knight on 1/23/14.
 //
 
+#define KKAD ((KKAppDelegate *)[UIApplication sharedApplication].delegate)
+
 // xcodecolors xcode plugin logger
 #ifdef DEBUG
     #ifdef XCODE_COLORS
@@ -77,6 +79,7 @@
 #define kLtWhite    [UIColor colorWithRed:243/255.0f green:246/255.0f blue:253/255.0f alpha:1.0]
 #define kMedWhite   [UIColor colorWithRed:231/255.0f green:234/255.0f blue:243/255.0f alpha:1.0]
 #define kLtGreen    [UIColor colorWithRed:116/255.0f green:192/255.0f blue:166/255.0f alpha:1.0]
+#define kMedGreen   [UIColor colorWithRed:73/255.0f green:156/255.0f blue:128/255.0f alpha:1.0]
 #define kFBBlue     [UIColor colorWithRed:61/255.0f green:94/255.0f blue:150/255.0f alpha:1.0]
 #define kErrorRed   [UIColor colorWithRed:186/255.0f green:42/255.0f blue:42/255.0f alpha:1.000]
 
