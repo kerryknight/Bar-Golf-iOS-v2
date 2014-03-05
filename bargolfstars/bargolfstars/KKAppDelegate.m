@@ -59,8 +59,19 @@
         [[PFInstallation currentInstallation] saveEventually];
     }
     
-    [self showWelcomeView];
+    // Create the navigation controller with our welcome vc
+	self.welcomeViewController = [[KKWelcomeViewController alloc] init];
+	self.welcomeNavigationController = [[UINavigationController alloc] initWithRootViewController:self.welcomeViewController];
+    // This is the tits. Don't forget to do this! for STPTransitions
+    self.welcomeNavigationController.delegate = STPTransitionCenter.sharedInstance;
+	
+	// Create the window and add our nav controller to it
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor blackColor];
+	self.welcomeNavigationController.navigationBarHidden = YES;
+    self.window.rootViewController = self.welcomeNavigationController;
     [self.window makeKeyAndVisible];
+    
     
     [self handlePush:launchOptions];
     
@@ -92,35 +103,28 @@
     [PFUser logOut];
     
     // clear out cached data, view controllers, etc
-    [self.navController popToRootViewControllerAnimated:NO];
+    [self.welcomeNavigationController popToRootViewControllerAnimated:NO];
 }
 
 #pragma mark - Private Methods
-- (void)showWelcomeView {
-    // Create the navigation controller with our welcome vc
-	self.welcomeViewController = [[KKWelcomeViewController alloc] init];
-	self.navController = [[UINavigationController alloc] initWithRootViewController:self.welcomeViewController];
-    // This is the tits. Don't forget to do this! for STPTransitions
-    self.navController.delegate = STPTransitionCenter.sharedInstance;
-	
-	// Create the window and add our nav controller to it
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor blackColor];
-	self.navController.navigationBarHidden = YES;
-    self.window.rootViewController = self.navController;
+- (void)setupAppearance {
+    DLog(@"");
+    //create all our global styles here
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.498f green:0.388f blue:0.329f alpha:1.0f]];
+
 }
 
-- (void)showMainInterface {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ECSlidingViewController *mainInterfaceController = [storyboard instantiateInitialViewController];
+- (BOOL)handleActionURL:(NSURL *)url {
+    DLog(@"");
     
-//    self.navController.delegate = STPTransitionCenter.sharedInstance;
-//    STPCardTransition *transition = [STPCardTransition new];
-//    transition.reverseTransition = [STPCardTransition new];
-//    
-//    [self.navController pushViewController:mainInterfaceController
-//                                  usingTransition:transition];
-    [self.navController setViewControllers:[NSArray arrayWithObjects:self.welcomeViewController, mainInterfaceController, nil] animated:NO];
+    if ([[url host] isEqualToString:kKKLaunchURLHostTakePicture]) {
+        if ([PFUser currentUser]) {
+            DLog(@"******************* CALLING A METHOD I DELETED BUT DON'T KNOW WHEN THIS WOULD OCCUR************************");
+            //            return [self.tabBarController shouldPresentPhotoCaptureController];
+        }
+    }
+    
+    return NO;
 }
 
 #pragma mark - Reachability

@@ -8,7 +8,6 @@
 
 #import "KKLoginViewController.h"
 #import "KKLoginViewModel.h"
-#import "KKAppDelegate.h"
 #import "STPSlideUpTransition.h"
 #import "KKSignUpViewController.h"
 #import "KKForgotPasswordViewController.h"
@@ -73,19 +72,15 @@
     //wasteful parse api calls
     [self.viewModel.usernameAndPasswordCombinedSignal subscribeNext:^(id x) {
         if ([x boolValue]) {
-            @strongify(self)
             self.loginButton.userInteractionEnabled = YES;
             //fill in our log in button's bg
-            @weakify(self)
             [UIView animateWithDuration:0.25 animations:^{
                 @strongify(self)
                 self.loginButtonBG.alpha = 1.0;
             }];
             
         } else {
-            @strongify(self)
             self.loginButton.userInteractionEnabled = NO;
-            @weakify(self)
             [UIView animateWithDuration:0.25 animations:^{
                 @strongify(self)
                 self.loginButtonBG.alpha = 0.05;
@@ -115,15 +110,16 @@
 }
 
 - (void)rac_createFacebookButtonSignal {
-    @weakify(self)
+    //    @weakify(self)
     self.facebookButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
-        @strongify(self)
-        [self logInWithFacebook];
+        //        @strongify(self)
+        //        [self forgotPassword];
         return [RACSignal empty];
     }];
 }
 
 - (RACDisposable *)logIn {
+    
     @weakify(self)
     dispatch_async(dispatch_get_main_queue(), ^(void) {
         @strongify(self)
@@ -134,6 +130,7 @@
     
 	return [[self.viewModel rac_logIn]
 	        subscribeNext:^(PFUser *user) {
+                DLogGreen(@"user at login: %@", user);
                 @strongify(self)
                 
                 //dismiss the spinner regardless of outcome
@@ -156,62 +153,6 @@
             } completed:^{
                 DLog(@"log in completed successfully, so show main interface");
                 //successfully logged in
-                [KKAD showMainInterface];
-            }];
-}
-
-- (RACDisposable *)logInWithFacebook {
-    DLogGreen(@"");
-    @weakify(self)
-    dispatch_async(dispatch_get_main_queue(), ^(void) {
-        @strongify(self)
-        //show the spinner
-        MRProgressOverlayView *spinnerView = [MRProgressOverlayView showOverlayAddedTo:self.view title:NSLocalizedString(@"Signing up...", Nil) mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-        [spinnerView setTintColor:kLtGreen];
-    });
-    
-	return [[self.viewModel rac_logInWithFacebook]
-            subscribeNext:^(id x) {
-                DLog(@"rac_logInWithFacebook subscribeNext:");
-            }
-	        error:^(NSError *error) {
-                @strongify(self)
-                
-                NSString *message;
-                //dismiss the spinner regardless of outcome
-                [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
-                
-                //check if the error was caused by the use disallowing FB integration within their device settings
-                if ([[error userInfo][@"com.facebook.sdk:ErrorLoginFailedReason"] isEqualToString:@"com.facebook.sdk:SystemLoginDisallowedWithoutError"]) {
-                    //alert user to allow facebook integration in Settings > Facebook > ApplicationName (NO)
-                    message = NSLocalizedString(@"Enable logging into Bar Golf with Facebook by going to Settings > Facebook > and ensuring Bar Golf is turned ON.", nil);
-                } else {
-                    //error logging in, show error message
-                    message = [NSString stringWithFormat:NSLocalizedString(@"Error: %@ \n\nPlease try again.", nil), [error localizedDescription]];
-                }
-                
-                SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Facebook Login Error" andMessage:message];
-                [alertView addButtonWithTitle:@"OK"
-                                         type:SIAlertViewButtonTypeDefault
-                                      handler:^(SIAlertView *alert) {
-                                          //called when button pressed
-                                      }];
-                alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
-                [alertView show];
-                
-            } completed:^{
-                DLog(@"rac_logInWithFacebook completed successfully, so show main interface");
-                //successfully logged in
-                @strongify(self)
-                
-                //dismiss the spinner regardless of outcome
-                [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
-                
-                //error logging in, show error message
-                NSString *message = [NSString stringWithFormat:NSLocalizedString(@"Welcome to Bar Golf, %@!", nil), [PFUser currentUser][@"displayName"]];
-                [KKStatusBarNotification showWithStatus:message dismissAfter:2.0 customStyleName:KKStatusBarSuccess];
-                
-                [KKAD showMainInterface];
             }];
 }
 

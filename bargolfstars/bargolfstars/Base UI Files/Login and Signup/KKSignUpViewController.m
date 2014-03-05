@@ -8,7 +8,6 @@
 
 #import "KKSignUpViewController.h"
 #import "KKSignUpViewModel.h"
-#import "KKAppDelegate.h"
 #import "JVFloatLabeledTextField+LabelText.h"
 #import "NimbusCore.h"
 #import "NimbusAttributedLabel.h"
@@ -139,11 +138,11 @@
                 
                 [KKStatusBarNotification showWithStatus:NSLocalizedString(@"Success! Welcome, new bar golfer!", nil) dismissAfter:2.0 customStyleName:KKStatusBarSuccess];
                 //successfully logged in
+#warning prob let welcome view controller do this instead or post notification to it or something
+                [self.navigationController popViewControllerAnimated:YES];
                 
                 //also, save the Display Name for the new user; we'll do this in the background on view model
                 [self.viewModel saveDisplayNameForNewlySignedUpUser];
-                
-                [KKAD showMainInterface];
             }];
 }
 
