@@ -8,12 +8,18 @@
 
 #import "KKCurrentLeaderboardViewController.h"
 
+@interface KKCurrentLeaderboardViewController ()
+@property (weak, nonatomic) IBOutlet KKBarGolfToolbarView *toolBar;
+@end
+
 @implementation KKCurrentLeaderboardViewController
 
-#pragma mark - UIViewController
+#pragma mark - Life Cycle and Lazy Instantiation
 - (void)viewDidLoad {
     DLog(@"");
     [super viewDidLoad];
+    
+    [self configureUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -23,5 +29,12 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 }
+
+#pragma mark - Private Methods
+- (void)configureUI {
+    [self.toolBar configureToolbar];
+}
+
+#pragma mark - Public Methods
 
 @end

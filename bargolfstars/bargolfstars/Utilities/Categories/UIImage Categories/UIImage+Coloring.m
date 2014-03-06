@@ -11,10 +11,10 @@
 @implementation UIImage (Coloring)
 
 
-+ (UIImage *)imageWithColor:(UIColor *)color andSize:(CGSize)size {
++ (UIImage *)imageWithColor:(UIColor *)color {
     UIImage *img = nil;
     
-    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    CGRect rect = CGRectMake(0, 0, 1, 1);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(context, color.CGColor);

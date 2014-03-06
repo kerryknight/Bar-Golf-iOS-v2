@@ -15,8 +15,8 @@
 #import "ECSlidingViewController.h"
 
 @interface KKNavigationController : UINavigationController <ECSlidingViewControllerDelegate>
-//@property (strong, nonatomic) UIToolbar *toolbar;
-//
-//- (void)toggleToolbar;
+@property (strong, nonatomic) UIToolbar *toolbar;
+
+- (void)toggleToolbar;
 - (IBAction)menuButtonTapped:(id)sender;
 @end

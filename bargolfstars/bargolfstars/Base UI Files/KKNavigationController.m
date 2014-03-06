@@ -10,7 +10,6 @@
 #import "UIViewController+ECSlidingViewController.h"
 #import "MEDynamicTransition.h"
 #import "MEAnimationController.h"
-#import "KKBarGolfNavigationBar.h"
 #import "ReactiveCocoa.h"
 #import "RACEXTScope.h"
 
@@ -18,7 +17,8 @@
 @property (strong, nonatomic) UIPanGestureRecognizer *dynamicTransitionPanGesture;
 @property (strong, nonatomic) MEDynamicTransition *dynamicTransition;
 @property (strong, nonatomic) MEAnimationController *animationController;
-@property (weak, nonatomic) IBOutlet KKBarGolfNavigationBar *navBar;
+//@property (weak, nonatomic) IBOutlet KKBarGolfNavigationBar *navBar;
+@property (unsafe_unretained, nonatomic) BOOL isVisible;
 @end
 
 @implementation KKNavigationController
@@ -35,12 +35,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self configureGestures];
-    [self.navBar configureDropDownToolBarView];
+//    [self configureDropDownToolBar];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.navBar toggleToolbar];
+//    [self toggleToolbar];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -48,42 +48,42 @@
 }
 
 //#pragma mark - Public Methods
-//- (void)toggleToolbar {
-//    @weakify(self)
-//    
-//    if (self.isVisible) {
-//        CGRect frame = self.toolbar.frame;
-//        frame.origin.y = self.navigationBar.frame.size.height;
-//        self.toolbar.frame = frame;
-//        
-//        [UIView animateWithDuration:0.25 animations:^{
-//            @strongify(self)
-//            CGRect frame = self.toolbar.frame;
-//            frame.origin.y = 0.;
-//            self.toolbar.frame = frame;
-//        } completion:^(BOOL finished) {
-//            @strongify(self)
-//            self.isVisible = !self.isVisible;
-//            self.toolbar.hidden = YES;
-//        }];
-//        
-//    } else {
-//        CGRect frame = self.toolbar.frame;
-//        frame.origin.y = 0.;
-//        self.toolbar.hidden = NO;
-//        self.toolbar.frame = frame;
-//        
-//        [UIView animateWithDuration:0.25 animations:^{
-//            @strongify(self)
-//            CGRect frame = self.toolbar.frame;
-//            frame.origin.y = self.navigationBar.frame.size.height;
-//            self.toolbar.frame = frame;
-//        } completion:^(BOOL finished) {
-//            @strongify(self)
-//            self.isVisible = !self.isVisible;
-//        }];
-//    }
-//}
+- (void)toggleToolbar {
+    DLogOrange(@"");
+    @weakify(self)
+    if (self.isVisible) {
+        CGRect frame = self.toolbar.frame;
+        frame.origin.y = self.navigationBar.frame.size.height;
+        self.toolbar.frame = frame;
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            @strongify(self)
+            CGRect frame = self.toolbar.frame;
+            frame.origin.y = 0.;
+            self.toolbar.frame = frame;
+        } completion:^(BOOL finished) {
+            @strongify(self)
+            self.isVisible = !self.isVisible;
+            self.toolbar.hidden = YES;
+        }];
+        
+    } else {
+        CGRect frame = self.toolbar.frame;
+        frame.origin.y = 0.;
+        self.toolbar.hidden = NO;
+        self.toolbar.frame = frame;
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            @strongify(self)
+            CGRect frame = self.toolbar.frame;
+            frame.origin.y = self.navigationBar.frame.size.height;
+            self.toolbar.frame = frame;
+        } completion:^(BOOL finished) {
+            @strongify(self)
+            self.isVisible = !self.isVisible;
+        }];
+    }
+}
 
 
 #pragma mark - Private Methods
@@ -110,69 +110,58 @@
     self.view.layer.shadowPath    = [UIBezierPath bezierPathWithRect:self.view.bounds].CGPath;
 }
 
-//- (void)configureDropDownToolBar {
-//    self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+- (void)configureDropDownToolBar {
+    DLogOrange(@"");
+    self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    self.toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [self.toolbar setBarTintColor:kLtGreen];
+//    self.toolbar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
 //    self.toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-//    [self.toolbar setBarTintColor:kLtGreen];
-////    self.toolbar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
-////    self.toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-////    [self.toolbar setBackgroundColor:kLtGreen];
-//    
-//    //Make a custom UIButton for the navBar export button.
-//	UIButton *findABarButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.toolbar.frame.size.width/2, self.toolbar.frame.size.height)];
-////    findABarButton.frame = CGRectMake(0, 0, self.toolbar.frame.size.width/2,
-////    self.toolbar.frame.size.height); [findABarButton
-////    setBackgroundImage:[UIImage imageWithColor:kMedGreen
-////    andSize:findABarButton.frame.size] forState:UIControlStateHighlighted];
-////    [findABarButton setBackgroundImage:[UIImage imageWithColor:kMedGreen andSize:findABarButton.frame.size] forState:UIControlStateSelected];
-//	[findABarButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18]];
-//	[findABarButton.titleLabel setTextAlignment:NSTextAlignmentRight];
-//	[findABarButton.titleLabel setTextColor:kMedGreen];
-//	[findABarButton setTitle:@"Find Bars" forState:UIControlStateNormal];
-//	[findABarButton addTarget:self action:@selector(findBarsHandler) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    UIButton *findATaxiButton = [[UIButton alloc] initWithFrame:CGRectMake(self.toolbar.frame.size.width/2, 0, self.toolbar.frame.size.width/2, self.toolbar.frame.size.height)];
-////    findATaxiButton.frame = eight);
-////    [findATaxiButton setBackgroundImage:[UIImage imageWithColor:kMedGreen
-////    andSize:findATaxiButton.frame.size] forState:UIControlStateHighlighted];
-////    [findATaxiButton setBackgroundImage:[UIImage imageWithColor:kMedGreen andSize:findATaxiButton.frame.size] forState:UIControlStateSelected];
-//	[findATaxiButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18]];
-//	[findATaxiButton.titleLabel setTextAlignment:NSTextAlignmentRight];
-//	[findATaxiButton.titleLabel setTextColor:kMedGreen];
-//	[findATaxiButton setTitle:@"Find Bars" forState:UIControlStateNormal];
-//	[findATaxiButton addTarget:self action:@selector(findTaxisHandler) forControlEvents:UIControlEventTouchUpInside];
-//
-//	//Assign it to the navBar.
-//	//All we need to to now is change the text when appropriate.
-//	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:findABarButton];
-//	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:findATaxiButton];
-//    
-//	//add the buttons
-//	self.toolbar.items = ({@[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-//	                            leftButton,
-//	                            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-//	                            rightButton,
-//	                            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]];});
-//
-//	self.toolbar.userInteractionEnabled = YES;
-//	self.navigationBar.userInteractionEnabled = YES;
-//
-//	[self.navigationBar insertSubview:self.toolbar atIndex:0];
-//    
-//}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	// We only support single touches, so anyObject retrieves just that touch from touches
-	UITouch *touch = [touches anyObject];
-	
-    if ([touch view] == self.navigationBar) {
-		DLogGreen(@"self.navBar");
-	}
+//    [self.toolbar setBackgroundColor:kLtGreen];
     
-	// Only move the placard view if the touch was in the placard view
-	if ([touch view] == self.toolbar) {
-		DLogGreen(@"toolbar");
-	}
+    //Make a custom UIButton for the navBar export button.
+	UIButton *findABarButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.toolbar.frame.size.width/2, self.toolbar.frame.size.height)];
+//    findABarButton.frame = CGRectMake(0, 0, self.toolbar.frame.size.width/2,
+//    self.toolbar.frame.size.height); [findABarButton
+//    setBackgroundImage:[UIImage imageWithColor:kMedGreen
+//    andSize:findABarButton.frame.size] forState:UIControlStateHighlighted];
+//    [findABarButton setBackgroundImage:[UIImage imageWithColor:kMedGreen andSize:findABarButton.frame.size] forState:UIControlStateSelected];
+	[findABarButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18]];
+	[findABarButton.titleLabel setTextAlignment:NSTextAlignmentRight];
+	[findABarButton.titleLabel setTextColor:kMedGreen];
+	[findABarButton setTitle:@"Find Bars" forState:UIControlStateNormal];
+	[findABarButton addTarget:self action:@selector(findBarsHandler) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *findATaxiButton = [[UIButton alloc] initWithFrame:CGRectMake(self.toolbar.frame.size.width/2, 0, self.toolbar.frame.size.width/2, self.toolbar.frame.size.height)];
+//    findATaxiButton.frame = eight);
+//    [findATaxiButton setBackgroundImage:[UIImage imageWithColor:kMedGreen
+//    andSize:findATaxiButton.frame.size] forState:UIControlStateHighlighted];
+//    [findATaxiButton setBackgroundImage:[UIImage imageWithColor:kMedGreen andSize:findATaxiButton.frame.size] forState:UIControlStateSelected];
+	[findATaxiButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18]];
+	[findATaxiButton.titleLabel setTextAlignment:NSTextAlignmentRight];
+	[findATaxiButton.titleLabel setTextColor:kMedGreen];
+	[findATaxiButton setTitle:@"Find Bars" forState:UIControlStateNormal];
+	[findATaxiButton addTarget:self action:@selector(findTaxisHandler) forControlEvents:UIControlEventTouchUpInside];
+
+	//Assign it to the navBar.
+	//All we need to to now is change the text when appropriate.
+	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:findABarButton];
+	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:findATaxiButton];
+    
+	//add the buttons
+	self.toolbar.items = ({@[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+	                            leftButton,
+	                            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+	                            rightButton,
+	                            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]];});
+
+	self.toolbar.userInteractionEnabled = YES;
+	self.navigationBar.userInteractionEnabled = YES;
+
+	[self.navigationBar insertSubview:self.toolbar atIndex:0];
+    
+    [self.toolbar setNeedsDisplay];
+    [self.toolbar setNeedsLayout];
     
 }
 

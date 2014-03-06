@@ -107,10 +107,19 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ycV-u3-6wm" customClass="KKBarGolfToolbarView">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.4549019608" green="0.75294117650000003" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.1764705882352941" green="0.22352941176470587" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="My Scorecard" id="Fqa-yn-H53"/>
+                    <connections>
+                        <outlet property="toolBar" destination="ycV-u3-6wm" id="dXS-hn-axA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IhN-Sm-LyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -135,10 +144,18 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Qm-FT-2LU" customClass="KKBarGolfToolbarView">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.4549019608" green="0.75294117650000003" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.1764705882" green="0.22352941179999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Player Profile" id="lYy-di-FI6"/>
+                    <connections>
+                        <outlet property="toolBar" destination="3Qm-FT-2LU" id="WlN-ef-9PF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ps0-jP-VvP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -147,8 +164,8 @@
         <!--Navigation Controller-->
         <scene sceneID="HfK-3h-wmj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lnc-IQ-qO1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="KKMyScorecardNavigationController" definesPresentationContext="YES" id="zAf-9I-xrz" customClass="KKNavigationController" sceneMemberID="viewController">
+                    <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fXh-mW-8ta">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.20000000000000001" green="0.24705882352941178" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
@@ -162,6 +179,7 @@
                         <segue destination="8zT-r4-IDI" kind="relationship" relationship="rootViewController" id="J9E-qt-XEg"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lnc-IQ-qO1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="277" y="873"/>
         </scene>

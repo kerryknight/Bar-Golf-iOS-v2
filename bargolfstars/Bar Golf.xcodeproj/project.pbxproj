@@ -55,7 +55,7 @@
 		DEAF550F18786D8E0019F7FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF550E18786D8E0019F7FF /* MapKit.framework */; };
 		DEB649BD18A5E1FC005C17AA /* KKLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB649BC18A5E1FC005C17AA /* KKLoginViewModel.m */; };
 		DED1DF7D18C77BD200DB9088 /* UIImage+Coloring.m in Sources */ = {isa = PBXBuildFile; fileRef = DED1DF7C18C77BD200DB9088 /* UIImage+Coloring.m */; };
-		DED1DF8018C77BE000DB9088 /* KKBarGolfNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DED1DF7F18C77BE000DB9088 /* KKBarGolfNavigationBar.m */; };
+		DEDA636818C8177E00997763 /* KKBarGolfToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA636718C8177E00997763 /* KKBarGolfToolbarView.m */; };
 		DEE2EE8D1891E73F00FC2991 /* KKAcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE711891E73F00FC2991 /* KKAcknowledgementsViewController.m */; };
 		DEE2EE8E1891E73F00FC2991 /* KKCreateRoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE741891E73F00FC2991 /* KKCreateRoundViewController.m */; };
 		DEE2EE8F1891E73F00FC2991 /* KKCurrentLeaderboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE771891E73F00FC2991 /* KKCurrentLeaderboardViewController.m */; };
@@ -161,8 +161,8 @@
 		DEB649BC18A5E1FC005C17AA /* KKLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLoginViewModel.m; sourceTree = "<group>"; };
 		DED1DF7B18C77BD200DB9088 /* UIImage+Coloring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Coloring.h"; sourceTree = "<group>"; };
 		DED1DF7C18C77BD200DB9088 /* UIImage+Coloring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Coloring.m"; sourceTree = "<group>"; };
-		DED1DF7E18C77BE000DB9088 /* KKBarGolfNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKBarGolfNavigationBar.h; sourceTree = "<group>"; };
-		DED1DF7F18C77BE000DB9088 /* KKBarGolfNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKBarGolfNavigationBar.m; sourceTree = "<group>"; };
+		DEDA636618C8177E00997763 /* KKBarGolfToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBarGolfToolbarView.h; path = Views/KKBarGolfToolbarView.h; sourceTree = "<group>"; };
+		DEDA636718C8177E00997763 /* KKBarGolfToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBarGolfToolbarView.m; path = Views/KKBarGolfToolbarView.m; sourceTree = "<group>"; };
 		DEE2EE701891E73F00FC2991 /* KKAcknowledgementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKAcknowledgementsViewController.h; sourceTree = "<group>"; };
 		DEE2EE711891E73F00FC2991 /* KKAcknowledgementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKAcknowledgementsViewController.m; sourceTree = "<group>"; };
 		DEE2EE731891E73F00FC2991 /* KKCreateRoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKCreateRoundViewController.h; sourceTree = "<group>"; };
@@ -491,6 +491,15 @@
 			name = "Menu Accessed";
 			sourceTree = "<group>";
 		};
+		DEDA636118C807DA00997763 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DEDA636618C8177E00997763 /* KKBarGolfToolbarView.h */,
+				DEDA636718C8177E00997763 /* KKBarGolfToolbarView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		DEE2EE6E1891E73F00FC2991 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
@@ -601,8 +610,7 @@
 		DEE2EEA11891F05300FC2991 /* Base UI Files */ = {
 			isa = PBXGroup;
 			children = (
-				DED1DF7E18C77BE000DB9088 /* KKBarGolfNavigationBar.h */,
-				DED1DF7F18C77BE000DB9088 /* KKBarGolfNavigationBar.m */,
+				DEDA636118C807DA00997763 /* Views */,
 				DEE2EEA21891F05300FC2991 /* KKMenuViewController.h */,
 				DEE2EEA31891F05300FC2991 /* KKMenuViewController.m */,
 				DEE2EEAC1891F07B00FC2991 /* KKNavigationController.h */,
@@ -821,6 +829,7 @@
 				DE0596141895C0E500892F24 /* KKUtility.m in Sources */,
 				DEE2EE961891E73F00FC2991 /* KKHelpViewController.m in Sources */,
 				DEE2EEA91891F05300FC2991 /* KKMenuViewController.m in Sources */,
+				DEDA636818C8177E00997763 /* KKBarGolfToolbarView.m in Sources */,
 				DEAB466118A5FC79008FB73D /* UIImage+ResizeAdditions.m in Sources */,
 				DEE2EEAB1891F05300FC2991 /* MEDynamicTransition.m in Sources */,
 				DE85B32918B14A8800040A9E /* PFRACCallbacks+BGS_Extensions.m in Sources */,
@@ -836,7 +845,6 @@
 				DE05963E1895C85600892F24 /* KKCache.m in Sources */,
 				DEE2EE921891E73F00FC2991 /* KKModifyCurrentRoundViewController.m in Sources */,
 				DEE2EE951891E73F00FC2991 /* KKPrivacyPolicyViewController.m in Sources */,
-				DED1DF8018C77BE000DB9088 /* KKBarGolfNavigationBar.m in Sources */,
 				DEAB466018A5FC79008FB73D /* UIImage+Colorization.m in Sources */,
 				DEAB466B18A620FE008FB73D /* KKSignUpViewController.m in Sources */,
 				DED1DF7D18C77BD200DB9088 /* UIImage+Coloring.m in Sources */,
