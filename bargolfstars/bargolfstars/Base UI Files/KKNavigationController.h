@@ -7,16 +7,14 @@
 //  This subclass will contain the gestures for opening and closing side panel
 //  and contains the Find Bars/Taxis sub-toolbar; all other views will be loaded
 //  into this main UI class
-//
-//  Dropdown secondary toolbar code adapted from APNavigationController by
-//  Ankur Patel https://github.com/ankurp/APDropDownNavToolbar
 
 #import <UIKit/UIKit.h>
-#import "ECSlidingViewController.h"
+#import "ICSDrawerController.h"
 
-@interface KKNavigationController : UINavigationController <ECSlidingViewControllerDelegate>
-@property (strong, nonatomic) UIToolbar *toolbar;
+@interface KKNavigationController : UINavigationController <ICSDrawerControllerChild, ICSDrawerControllerPresenting>
 
-- (void)toggleToolbar;
-- (IBAction)menuButtonTapped:(id)sender;
+@property (weak, nonatomic) ICSDrawerController *drawer;
+
+- (instancetype)initWithRootViewController:(UIViewController *)rootViewController andTitle:(NSString *)title;
+
 @end

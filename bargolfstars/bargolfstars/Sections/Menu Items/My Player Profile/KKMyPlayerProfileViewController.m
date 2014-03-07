@@ -2,14 +2,13 @@
 //  KKMyPlayerProfileViewController.m
 //  Bar Golf
 //
-//  Created by Kerry Knight on 1/4/14.
+//  Created by Kerry Knight on 3/6/14.
 //  Copyright (c) 2014 Kerry Knight. All rights reserved.
 //
 
 #import "KKMyPlayerProfileViewController.h"
 
 @interface KKMyPlayerProfileViewController ()
-@property (weak, nonatomic) IBOutlet KKBarGolfToolbarView *toolBar;
 @end
 
 @implementation KKMyPlayerProfileViewController
@@ -32,7 +31,7 @@
 
 #pragma mark - Private Methods
 - (void)configureUI {
-    [self.toolBar configureToolbar];
+    self.navigationController.title = @"My Profile";
 }
 
 #pragma mark - Public Methods

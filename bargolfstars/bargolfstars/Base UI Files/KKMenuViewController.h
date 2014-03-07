@@ -6,7 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KKAppDelegate.h"
+#import "KKNavigationController.h"
+#import "ICSDrawerController.h"
+#import "KKMyScorecardViewController.h"
+#import "KKMyPlayerProfileViewController.h"
 
-@interface KKMenuViewController : UIViewController <UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@interface KKMenuViewController : UIViewController <ICSDrawerControllerChild, ICSDrawerControllerPresenting>
+
+@property(nonatomic, weak) ICSDrawerController *drawer;
+
 @end

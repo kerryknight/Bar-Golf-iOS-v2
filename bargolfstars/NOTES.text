@@ -19,7 +19,17 @@ To Do
 
 -   Turn email confirmation back on in Parse
 
--   Get the toolbar buttons responding
+-   Convert Phonegap Foursquare and Google APIs to blocks and RACExtensions
+
+-   Use Mantle or Core Data/MagicalRecord for data?
+    -   use mantle at least for Foursquare and Google objects; 
+    -   if decide to use core data for Parse persistence, can still use Mantle as a translation layer apparenty between the API and the managed model objects of core data
+    
+-   Hardcode default rules in app instead of on Parse to make easier
+    -   RW tutorial on MagicalRecord shows how: http://www.raywenderlich.com/56879/magicalrecord-tutorial-ios
+        -   shows how to only load once, and even allows deleting defaults and not reloading unless want to
+        -   also includes a table view header search bar for searching records
+    -   note, the RW tut on Parse w/core data uses AFNetworking and Parse REST API, not it's SDK so may not use core data for anything other than storing default rules locally?
 
 
 

@@ -20,18 +20,18 @@
     #import "ReactiveCocoa.h"
     #import "RACEXTScope.h"
     #import "RVMViewModel.h"
-    #import "IFTTTJazzHands.h"
+    //#import "IFTTTJazzHands.h"
     #import "MRProgress.h"
     #import "JVFloatLabeledTextField.h"
-    #import "VTAcknowledgementsViewController.h"
+    //#import "VTAcknowledgementsViewController.h"
     #import <RevMobAds/RevMobAds.h>
     #import <Parse/Parse.h>
-    #import "IFTTTJazzHands.h"
     #import "Parse-RACExtensions.h"
     #import "Reachability.h"
     #import "SIAlertView.h"
     #import "STPTransitions.h"
-    #import "ECSlidingViewController.h"
+    #import "ICSDrawerController.h"
+    #import "MBPullDownController.h"
 
     //Local Files
     #import "KKConfig.h"
@@ -41,5 +41,6 @@
     #import "KKCache.h"
     #import "KKAllSTPTransitions.h"
     #import "KKStatusBarNotification.h"
-    #import "KKBarGolfToolbarView.h"
+    #import "KKBarGolfToolbarViewController.h"  
+
 #endif

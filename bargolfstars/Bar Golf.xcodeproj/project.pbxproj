@@ -11,7 +11,6 @@
 		DE0596141895C0E500892F24 /* KKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0596131895C0E500892F24 /* KKUtility.m */; };
 		DE05963E1895C85600892F24 /* KKCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DE05963D1895C85600892F24 /* KKCache.m */; };
 		DE09D77918AB5AAE00089371 /* KKLoginViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE09D77818AB5AAE00089371 /* KKLoginViewModelTests.m */; };
-		DE0A2A5F1878E3FE002DC39A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE0A2A5D1878E3FE002DC39A /* Main.storyboard */; };
 		DE56F53718A9E013000BDF13 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54F818786C990019F7FF /* XCTest.framework */; };
 		DE56F53818A9E013000BDF13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54D918786C990019F7FF /* Foundation.framework */; };
 		DE56F53918A9E013000BDF13 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54DD18786C990019F7FF /* UIKit.framework */; };
@@ -44,8 +43,16 @@
 		DEAF54EA18786C990019F7FF /* KKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAF54E918786C990019F7FF /* KKAppDelegate.m */; };
 		DEAF54F218786C990019F7FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEAF54F118786C990019F7FF /* Images.xcassets */; };
 		DEAF550F18786D8E0019F7FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF550E18786D8E0019F7FF /* MapKit.framework */; };
+		DEB1FFDB18C95AFF0071DCF7 /* KKBarGolfToolbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB1FFD918C95AFF0071DCF7 /* KKBarGolfToolbarViewController.m */; };
+		DEB1FFDC18C95AFF0071DCF7 /* KKBarGolfToolbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEB1FFDA18C95AFF0071DCF7 /* KKBarGolfToolbarViewController.xib */; };
+		DEB1FFE018C962ED0071DCF7 /* KKMyScorecardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB1FFDE18C962ED0071DCF7 /* KKMyScorecardViewController.m */; };
+		DEB1FFE118C962ED0071DCF7 /* KKMyScorecardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEB1FFDF18C962ED0071DCF7 /* KKMyScorecardViewController.xib */; };
+		DEB1FFE518C963840071DCF7 /* KKMyPlayerProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB1FFE318C963840071DCF7 /* KKMyPlayerProfileViewController.m */; };
+		DEB1FFE618C963840071DCF7 /* KKMyPlayerProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEB1FFE418C963840071DCF7 /* KKMyPlayerProfileViewController.xib */; };
+		DEB1FFE818C965BD0071DCF7 /* KKMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEB1FFE718C965BD0071DCF7 /* KKMenuViewController.xib */; };
+		DEB1FFEF18C976E20071DCF7 /* ICSDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB1FFEC18C976E20071DCF7 /* ICSDrawerController.m */; };
+		DEB1FFF018C976E30071DCF7 /* ICSDropShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB1FFEE18C976E20071DCF7 /* ICSDropShadowView.m */; };
 		DED1DF7D18C77BD200DB9088 /* UIImage+Coloring.m in Sources */ = {isa = PBXBuildFile; fileRef = DED1DF7C18C77BD200DB9088 /* UIImage+Coloring.m */; };
-		DEDA636818C8177E00997763 /* KKBarGolfToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA636718C8177E00997763 /* KKBarGolfToolbarView.m */; };
 		DEDA639E18C81CCB00997763 /* KKForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA636F18C81CCB00997763 /* KKForgotPasswordViewController.m */; };
 		DEDA639F18C81CCB00997763 /* KKForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEDA637018C81CCB00997763 /* KKForgotPasswordViewController.xib */; };
 		DEDA63A018C81CCB00997763 /* KKLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA637218C81CCB00997763 /* KKLogInViewController.m */; };
@@ -56,20 +63,8 @@
 		DEDA63A518C81CCB00997763 /* KKForgotPasswordViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA637B18C81CCB00997763 /* KKForgotPasswordViewModel.m */; };
 		DEDA63A618C81CCB00997763 /* KKLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA637D18C81CCB00997763 /* KKLoginViewModel.m */; };
 		DEDA63A718C81CCB00997763 /* KKSignUpViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA637F18C81CCB00997763 /* KKSignUpViewModel.m */; };
-		DEDA63A818C81CCB00997763 /* KKAcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA638318C81CCB00997763 /* KKAcknowledgementsViewController.m */; };
-		DEDA63A918C81CCB00997763 /* KKCreateRoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA638618C81CCB00997763 /* KKCreateRoundViewController.m */; };
-		DEDA63AA18C81CCB00997763 /* KKCurrentLeaderboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA638918C81CCB00997763 /* KKCurrentLeaderboardViewController.m */; };
-		DEDA63AB18C81CCB00997763 /* KKDisclaimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA638C18C81CCB00997763 /* KKDisclaimerViewController.m */; };
-		DEDA63AC18C81CCB00997763 /* KKJoinRoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA638F18C81CCB00997763 /* KKJoinRoundViewController.m */; };
-		DEDA63AD18C81CCB00997763 /* KKModifyCurrentRoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA639118C81CCB00997763 /* KKModifyCurrentRoundViewController.m */; };
-		DEDA63AE18C81CCB00997763 /* KKMyPlayerProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA639418C81CCB00997763 /* KKMyPlayerProfileViewController.m */; };
-		DEDA63AF18C81CCB00997763 /* KKMyScorecardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA639718C81CCB00997763 /* KKMyScorecardViewController.m */; };
-		DEDA63B018C81CCB00997763 /* KKPrivacyPolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA639A18C81CCB00997763 /* KKPrivacyPolicyViewController.m */; };
-		DEDA63B118C81CCB00997763 /* KKHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA639D18C81CCB00997763 /* KKHelpViewController.m */; };
 		DEE2EE9D1891E7EA00FC2991 /* KKConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE9B1891E7EA00FC2991 /* KKConfig.m */; };
 		DEE2EEA91891F05300FC2991 /* KKMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EEA31891F05300FC2991 /* KKMenuViewController.m */; };
-		DEE2EEAA1891F05300FC2991 /* MEAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EEA61891F05300FC2991 /* MEAnimationController.m */; };
-		DEE2EEAB1891F05300FC2991 /* MEDynamicTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EEA81891F05300FC2991 /* MEDynamicTransition.m */; };
 		DEE2EEAE1891F07B00FC2991 /* KKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EEAD1891F07B00FC2991 /* KKNavigationController.m */; };
 /* End PBXBuildFile section */
 
@@ -90,7 +85,6 @@
 		DE05963C1895C85600892F24 /* KKCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKCache.h; sourceTree = "<group>"; };
 		DE05963D1895C85600892F24 /* KKCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKCache.m; sourceTree = "<group>"; };
 		DE09D77818AB5AAE00089371 /* KKLoginViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLoginViewModelTests.m; sourceTree = "<group>"; };
-		DE0A2A5E1878E3FE002DC39A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE56F53618A9E013000BDF13 /* Bar Golf Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bar Golf Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE56F53C18A9E013000BDF13 /* Bar Golf Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bar Golf Tests-Info.plist"; sourceTree = "<group>"; };
 		DE56F53E18A9E013000BDF13 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -142,10 +136,22 @@
 		DEAF54F118786C990019F7FF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DEAF54F818786C990019F7FF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		DEAF550E18786D8E0019F7FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DEB1FFD818C95AFF0071DCF7 /* KKBarGolfToolbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBarGolfToolbarViewController.h; path = Views/KKBarGolfToolbarViewController.h; sourceTree = "<group>"; };
+		DEB1FFD918C95AFF0071DCF7 /* KKBarGolfToolbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBarGolfToolbarViewController.m; path = Views/KKBarGolfToolbarViewController.m; sourceTree = "<group>"; };
+		DEB1FFDA18C95AFF0071DCF7 /* KKBarGolfToolbarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KKBarGolfToolbarViewController.xib; path = Views/KKBarGolfToolbarViewController.xib; sourceTree = "<group>"; };
+		DEB1FFDD18C962ED0071DCF7 /* KKMyScorecardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMyScorecardViewController.h; sourceTree = "<group>"; };
+		DEB1FFDE18C962ED0071DCF7 /* KKMyScorecardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMyScorecardViewController.m; sourceTree = "<group>"; };
+		DEB1FFDF18C962ED0071DCF7 /* KKMyScorecardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKMyScorecardViewController.xib; sourceTree = "<group>"; };
+		DEB1FFE218C963840071DCF7 /* KKMyPlayerProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMyPlayerProfileViewController.h; sourceTree = "<group>"; };
+		DEB1FFE318C963840071DCF7 /* KKMyPlayerProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMyPlayerProfileViewController.m; sourceTree = "<group>"; };
+		DEB1FFE418C963840071DCF7 /* KKMyPlayerProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKMyPlayerProfileViewController.xib; sourceTree = "<group>"; };
+		DEB1FFE718C965BD0071DCF7 /* KKMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKMenuViewController.xib; sourceTree = "<group>"; };
+		DEB1FFEB18C976E20071DCF7 /* ICSDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSDrawerController.h; sourceTree = "<group>"; };
+		DEB1FFEC18C976E20071DCF7 /* ICSDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSDrawerController.m; sourceTree = "<group>"; };
+		DEB1FFED18C976E20071DCF7 /* ICSDropShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSDropShadowView.h; sourceTree = "<group>"; };
+		DEB1FFEE18C976E20071DCF7 /* ICSDropShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSDropShadowView.m; sourceTree = "<group>"; };
 		DED1DF7B18C77BD200DB9088 /* UIImage+Coloring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Coloring.h"; sourceTree = "<group>"; };
 		DED1DF7C18C77BD200DB9088 /* UIImage+Coloring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Coloring.m"; sourceTree = "<group>"; };
-		DEDA636618C8177E00997763 /* KKBarGolfToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBarGolfToolbarView.h; path = Views/KKBarGolfToolbarView.h; sourceTree = "<group>"; };
-		DEDA636718C8177E00997763 /* KKBarGolfToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBarGolfToolbarView.m; path = Views/KKBarGolfToolbarView.m; sourceTree = "<group>"; };
 		DEDA636E18C81CCB00997763 /* KKForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKForgotPasswordViewController.h; sourceTree = "<group>"; };
 		DEDA636F18C81CCB00997763 /* KKForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKForgotPasswordViewController.m; sourceTree = "<group>"; };
 		DEDA637018C81CCB00997763 /* KKForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKForgotPasswordViewController.xib; sourceTree = "<group>"; };
@@ -163,35 +169,11 @@
 		DEDA637D18C81CCB00997763 /* KKLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLoginViewModel.m; sourceTree = "<group>"; };
 		DEDA637E18C81CCB00997763 /* KKSignUpViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSignUpViewModel.h; sourceTree = "<group>"; };
 		DEDA637F18C81CCB00997763 /* KKSignUpViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSignUpViewModel.m; sourceTree = "<group>"; };
-		DEDA638218C81CCB00997763 /* KKAcknowledgementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKAcknowledgementsViewController.h; sourceTree = "<group>"; };
-		DEDA638318C81CCB00997763 /* KKAcknowledgementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKAcknowledgementsViewController.m; sourceTree = "<group>"; };
-		DEDA638518C81CCB00997763 /* KKCreateRoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKCreateRoundViewController.h; sourceTree = "<group>"; };
-		DEDA638618C81CCB00997763 /* KKCreateRoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKCreateRoundViewController.m; sourceTree = "<group>"; };
-		DEDA638818C81CCB00997763 /* KKCurrentLeaderboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKCurrentLeaderboardViewController.h; sourceTree = "<group>"; };
-		DEDA638918C81CCB00997763 /* KKCurrentLeaderboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKCurrentLeaderboardViewController.m; sourceTree = "<group>"; };
-		DEDA638B18C81CCB00997763 /* KKDisclaimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKDisclaimerViewController.h; sourceTree = "<group>"; };
-		DEDA638C18C81CCB00997763 /* KKDisclaimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKDisclaimerViewController.m; sourceTree = "<group>"; };
-		DEDA638E18C81CCB00997763 /* KKJoinRoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKJoinRoundViewController.h; sourceTree = "<group>"; };
-		DEDA638F18C81CCB00997763 /* KKJoinRoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKJoinRoundViewController.m; sourceTree = "<group>"; };
-		DEDA639018C81CCB00997763 /* KKModifyCurrentRoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKModifyCurrentRoundViewController.h; sourceTree = "<group>"; };
-		DEDA639118C81CCB00997763 /* KKModifyCurrentRoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKModifyCurrentRoundViewController.m; sourceTree = "<group>"; };
-		DEDA639318C81CCB00997763 /* KKMyPlayerProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMyPlayerProfileViewController.h; sourceTree = "<group>"; };
-		DEDA639418C81CCB00997763 /* KKMyPlayerProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMyPlayerProfileViewController.m; sourceTree = "<group>"; };
-		DEDA639618C81CCB00997763 /* KKMyScorecardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMyScorecardViewController.h; sourceTree = "<group>"; };
-		DEDA639718C81CCB00997763 /* KKMyScorecardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMyScorecardViewController.m; sourceTree = "<group>"; };
-		DEDA639918C81CCB00997763 /* KKPrivacyPolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKPrivacyPolicyViewController.h; sourceTree = "<group>"; };
-		DEDA639A18C81CCB00997763 /* KKPrivacyPolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKPrivacyPolicyViewController.m; sourceTree = "<group>"; };
-		DEDA639C18C81CCB00997763 /* KKHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKHelpViewController.h; sourceTree = "<group>"; };
-		DEDA639D18C81CCB00997763 /* KKHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKHelpViewController.m; sourceTree = "<group>"; };
 		DEE2EE9A1891E7EA00FC2991 /* KKConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKConfig.h; sourceTree = "<group>"; };
 		DEE2EE9B1891E7EA00FC2991 /* KKConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKConfig.m; sourceTree = "<group>"; };
 		DEE2EE9C1891E7EA00FC2991 /* KKMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMacros.h; sourceTree = "<group>"; };
 		DEE2EEA21891F05300FC2991 /* KKMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMenuViewController.h; sourceTree = "<group>"; };
 		DEE2EEA31891F05300FC2991 /* KKMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMenuViewController.m; sourceTree = "<group>"; };
-		DEE2EEA51891F05300FC2991 /* MEAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEAnimationController.h; sourceTree = "<group>"; };
-		DEE2EEA61891F05300FC2991 /* MEAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEAnimationController.m; sourceTree = "<group>"; };
-		DEE2EEA71891F05300FC2991 /* MEDynamicTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEDynamicTransition.h; sourceTree = "<group>"; };
-		DEE2EEA81891F05300FC2991 /* MEDynamicTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEDynamicTransition.m; sourceTree = "<group>"; };
 		DEE2EEAC1891F07B00FC2991 /* KKNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKNavigationController.h; sourceTree = "<group>"; };
 		DEE2EEAD1891F07B00FC2991 /* KKNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKNavigationController.m; sourceTree = "<group>"; };
 		F172BBDD0FFB49A6A15EA00F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -227,6 +209,7 @@
 		DE0596841895F2BE00892F24 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				DEB1FFE918C976E20071DCF7 /* Non-Pod Libraries */,
 				DEAB468618A82F1C008FB73D /* Subclasses */,
 				DEAB467E18A6CA12008FB73D /* Categories */,
 			);
@@ -442,11 +425,31 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DEB1FFE918C976E20071DCF7 /* Non-Pod Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				DEB1FFEA18C976E20071DCF7 /* ICSDrawerController */,
+			);
+			path = "Non-Pod Libraries";
+			sourceTree = "<group>";
+		};
+		DEB1FFEA18C976E20071DCF7 /* ICSDrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				DEB1FFEB18C976E20071DCF7 /* ICSDrawerController.h */,
+				DEB1FFEC18C976E20071DCF7 /* ICSDrawerController.m */,
+				DEB1FFED18C976E20071DCF7 /* ICSDropShadowView.h */,
+				DEB1FFEE18C976E20071DCF7 /* ICSDropShadowView.m */,
+			);
+			path = ICSDrawerController;
+			sourceTree = "<group>";
+		};
 		DEDA636118C807DA00997763 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DEDA636618C8177E00997763 /* KKBarGolfToolbarView.h */,
-				DEDA636718C8177E00997763 /* KKBarGolfToolbarView.m */,
+				DEB1FFD818C95AFF0071DCF7 /* KKBarGolfToolbarViewController.h */,
+				DEB1FFD918C95AFF0071DCF7 /* KKBarGolfToolbarViewController.m */,
+				DEB1FFDA18C95AFF0071DCF7 /* KKBarGolfToolbarViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -535,8 +538,6 @@
 		DEDA638118C81CCB00997763 /* Acknowledgements */ = {
 			isa = PBXGroup;
 			children = (
-				DEDA638218C81CCB00997763 /* KKAcknowledgementsViewController.h */,
-				DEDA638318C81CCB00997763 /* KKAcknowledgementsViewController.m */,
 			);
 			path = Acknowledgements;
 			sourceTree = "<group>";
@@ -544,8 +545,6 @@
 		DEDA638418C81CCB00997763 /* Create and Modify a Round */ = {
 			isa = PBXGroup;
 			children = (
-				DEDA638518C81CCB00997763 /* KKCreateRoundViewController.h */,
-				DEDA638618C81CCB00997763 /* KKCreateRoundViewController.m */,
 			);
 			path = "Create and Modify a Round";
 			sourceTree = "<group>";
@@ -553,8 +552,6 @@
 		DEDA638718C81CCB00997763 /* Current Leaderboard */ = {
 			isa = PBXGroup;
 			children = (
-				DEDA638818C81CCB00997763 /* KKCurrentLeaderboardViewController.h */,
-				DEDA638918C81CCB00997763 /* KKCurrentLeaderboardViewController.m */,
 			);
 			path = "Current Leaderboard";
 			sourceTree = "<group>";
@@ -562,8 +559,6 @@
 		DEDA638A18C81CCB00997763 /* Disclaimer */ = {
 			isa = PBXGroup;
 			children = (
-				DEDA638B18C81CCB00997763 /* KKDisclaimerViewController.h */,
-				DEDA638C18C81CCB00997763 /* KKDisclaimerViewController.m */,
 			);
 			path = Disclaimer;
 			sourceTree = "<group>";
@@ -571,10 +566,6 @@
 		DEDA638D18C81CCB00997763 /* Join a Round */ = {
 			isa = PBXGroup;
 			children = (
-				DEDA638E18C81CCB00997763 /* KKJoinRoundViewController.h */,
-				DEDA638F18C81CCB00997763 /* KKJoinRoundViewController.m */,
-				DEDA639018C81CCB00997763 /* KKModifyCurrentRoundViewController.h */,
-				DEDA639118C81CCB00997763 /* KKModifyCurrentRoundViewController.m */,
 			);
 			path = "Join a Round";
 			sourceTree = "<group>";
@@ -582,8 +573,9 @@
 		DEDA639218C81CCB00997763 /* My Player Profile */ = {
 			isa = PBXGroup;
 			children = (
-				DEDA639318C81CCB00997763 /* KKMyPlayerProfileViewController.h */,
-				DEDA639418C81CCB00997763 /* KKMyPlayerProfileViewController.m */,
+				DEB1FFE218C963840071DCF7 /* KKMyPlayerProfileViewController.h */,
+				DEB1FFE318C963840071DCF7 /* KKMyPlayerProfileViewController.m */,
+				DEB1FFE418C963840071DCF7 /* KKMyPlayerProfileViewController.xib */,
 			);
 			path = "My Player Profile";
 			sourceTree = "<group>";
@@ -591,8 +583,9 @@
 		DEDA639518C81CCB00997763 /* My Scorecard */ = {
 			isa = PBXGroup;
 			children = (
-				DEDA639618C81CCB00997763 /* KKMyScorecardViewController.h */,
-				DEDA639718C81CCB00997763 /* KKMyScorecardViewController.m */,
+				DEB1FFDD18C962ED0071DCF7 /* KKMyScorecardViewController.h */,
+				DEB1FFDE18C962ED0071DCF7 /* KKMyScorecardViewController.m */,
+				DEB1FFDF18C962ED0071DCF7 /* KKMyScorecardViewController.xib */,
 			);
 			path = "My Scorecard";
 			sourceTree = "<group>";
@@ -600,8 +593,6 @@
 		DEDA639818C81CCB00997763 /* Privacy Policy and TOS */ = {
 			isa = PBXGroup;
 			children = (
-				DEDA639918C81CCB00997763 /* KKPrivacyPolicyViewController.h */,
-				DEDA639A18C81CCB00997763 /* KKPrivacyPolicyViewController.m */,
 			);
 			path = "Privacy Policy and TOS";
 			sourceTree = "<group>";
@@ -609,8 +600,6 @@
 		DEDA639B18C81CCB00997763 /* Rules and Help */ = {
 			isa = PBXGroup;
 			children = (
-				DEDA639C18C81CCB00997763 /* KKHelpViewController.h */,
-				DEDA639D18C81CCB00997763 /* KKHelpViewController.m */,
 			);
 			path = "Rules and Help";
 			sourceTree = "<group>";
@@ -636,6 +625,7 @@
 				DEDA636118C807DA00997763 /* Views */,
 				DEE2EEA21891F05300FC2991 /* KKMenuViewController.h */,
 				DEE2EEA31891F05300FC2991 /* KKMenuViewController.m */,
+				DEB1FFE718C965BD0071DCF7 /* KKMenuViewController.xib */,
 				DEE2EEAC1891F07B00FC2991 /* KKNavigationController.h */,
 				DEE2EEAD1891F07B00FC2991 /* KKNavigationController.m */,
 			);
@@ -646,10 +636,6 @@
 			isa = PBXGroup;
 			children = (
 				DEAB467018A68295008FB73D /* STPTransitions */,
-				DEE2EEA51891F05300FC2991 /* MEAnimationController.h */,
-				DEE2EEA61891F05300FC2991 /* MEAnimationController.m */,
-				DEE2EEA71891F05300FC2991 /* MEDynamicTransition.h */,
-				DEE2EEA81891F05300FC2991 /* MEDynamicTransition.m */,
 			);
 			name = Transitions;
 			path = "Base UI Files/Transitions";
@@ -658,7 +644,6 @@
 		DEE8BAA218787C52000EA492 /* UI Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DE0A2A5D1878E3FE002DC39A /* Main.storyboard */,
 				DEAF54F118786C990019F7FF /* Images.xcassets */,
 			);
 			name = "UI Resources";
@@ -758,12 +743,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEDA639F18C81CCB00997763 /* KKForgotPasswordViewController.xib in Resources */,
-				DE0A2A5F1878E3FE002DC39A /* Main.storyboard in Resources */,
+				DEB1FFE618C963840071DCF7 /* KKMyPlayerProfileViewController.xib in Resources */,
 				DEAB468D18A84BBD008FB73D /* System Design Specifications.text in Resources */,
 				DEAF54F218786C990019F7FF /* Images.xcassets in Resources */,
 				DEDA63A118C81CCB00997763 /* KKLoginViewController.xib in Resources */,
+				DEB1FFE118C962ED0071DCF7 /* KKMyScorecardViewController.xib in Resources */,
+				DEB1FFE818C965BD0071DCF7 /* KKMenuViewController.xib in Resources */,
 				DEAB468518A80DAC008FB73D /* NOTES.text in Resources */,
 				DEDA63A318C81CCB00997763 /* KKSignUpViewController.xib in Resources */,
+				DEB1FFDC18C95AFF0071DCF7 /* KKBarGolfToolbarViewController.xib in Resources */,
 				DEAF54E418786C990019F7FF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -855,39 +843,31 @@
 				DEDA63A418C81CCB00997763 /* KKWelcomeViewController.m in Sources */,
 				DEDA63A618C81CCB00997763 /* KKLoginViewModel.m in Sources */,
 				DEDA63A218C81CCB00997763 /* KKSignUpViewController.m in Sources */,
-				DEDA636818C8177E00997763 /* KKBarGolfToolbarView.m in Sources */,
 				DEAB466118A5FC79008FB73D /* UIImage+ResizeAdditions.m in Sources */,
-				DEDA63AB18C81CCB00997763 /* KKDisclaimerViewController.m in Sources */,
-				DEDA63B018C81CCB00997763 /* KKPrivacyPolicyViewController.m in Sources */,
-				DEDA63A918C81CCB00997763 /* KKCreateRoundViewController.m in Sources */,
-				DEE2EEAB1891F05300FC2991 /* MEDynamicTransition.m in Sources */,
-				DEDA63AE18C81CCB00997763 /* KKMyPlayerProfileViewController.m in Sources */,
 				DE85B32918B14A8800040A9E /* PFRACCallbacks+BGS_Extensions.m in Sources */,
+				DEB1FFEF18C976E20071DCF7 /* ICSDrawerController.m in Sources */,
 				DEAB466F18A6290C008FB73D /* STPSlideUpTransition.m in Sources */,
-				DEDA63A818C81CCB00997763 /* KKAcknowledgementsViewController.m in Sources */,
 				DEAB468118A6CA36008FB73D /* JVFloatLabeledTextField+LabelText.m in Sources */,
 				DEDA63A518C81CCB00997763 /* KKForgotPasswordViewModel.m in Sources */,
 				DEDA63A718C81CCB00997763 /* KKSignUpViewModel.m in Sources */,
 				DE85B32C18B1735D00040A9E /* PFFile+RACExtensions.m in Sources */,
 				DEE2EEAE1891F07B00FC2991 /* KKNavigationController.m in Sources */,
+				DEB1FFDB18C95AFF0071DCF7 /* KKBarGolfToolbarViewController.m in Sources */,
 				DE05963E1895C85600892F24 /* KKCache.m in Sources */,
-				DEDA63B118C81CCB00997763 /* KKHelpViewController.m in Sources */,
 				DEDA63A018C81CCB00997763 /* KKLogInViewController.m in Sources */,
-				DEDA63AC18C81CCB00997763 /* KKJoinRoundViewController.m in Sources */,
+				DEB1FFE018C962ED0071DCF7 /* KKMyScorecardViewController.m in Sources */,
 				DEAB466018A5FC79008FB73D /* UIImage+Colorization.m in Sources */,
 				DED1DF7D18C77BD200DB9088 /* UIImage+Coloring.m in Sources */,
 				DEAB467318A682C6008FB73D /* STPCardTransition.m in Sources */,
-				DEDA63AF18C81CCB00997763 /* KKMyScorecardViewController.m in Sources */,
 				DEAF54EA18786C990019F7FF /* KKAppDelegate.m in Sources */,
-				DEDA63AD18C81CCB00997763 /* KKModifyCurrentRoundViewController.m in Sources */,
-				DEDA63AA18C81CCB00997763 /* KKCurrentLeaderboardViewController.m in Sources */,
 				DEAB466218A5FC79008FB73D /* UIImage+RoundedCornerAdditions.m in Sources */,
 				DEAB465E18A5FC79008FB73D /* NSString+EmailAdditions.m in Sources */,
-				DEE2EEAA1891F05300FC2991 /* MEAnimationController.m in Sources */,
 				DEAB465F18A5FC79008FB73D /* UIImage+AlphaAdditions.m in Sources */,
 				DEAF54E618786C990019F7FF /* main.m in Sources */,
 				DEAB468918A82F3C008FB73D /* KKStatusBarNotification.m in Sources */,
+				DEB1FFF018C976E30071DCF7 /* ICSDropShadowView.m in Sources */,
 				DEE2EE9D1891E7EA00FC2991 /* KKConfig.m in Sources */,
+				DEB1FFE518C963840071DCF7 /* KKMyPlayerProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -902,14 +882,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DE0A2A5D1878E3FE002DC39A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DE0A2A5E1878E3FE002DC39A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DE56F53D18A9E013000BDF13 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
