@@ -11,6 +11,10 @@
 		DE0596141895C0E500892F24 /* KKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0596131895C0E500892F24 /* KKUtility.m */; };
 		DE05963E1895C85600892F24 /* KKCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DE05963D1895C85600892F24 /* KKCache.m */; };
 		DE09D77918AB5AAE00089371 /* KKLoginViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE09D77818AB5AAE00089371 /* KKLoginViewModelTests.m */; };
+		DE46C02218C9962E0006748C /* KKMyPlayerProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE46C02018C9962E0006748C /* KKMyPlayerProfileViewController.m */; };
+		DE46C02318C9962E0006748C /* KKMyPlayerProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE46C02118C9962E0006748C /* KKMyPlayerProfileViewController.xib */; };
+		DE46C02718C998CC0006748C /* KKMyScorecardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE46C02518C998CC0006748C /* KKMyScorecardViewController.m */; };
+		DE46C02818C998CC0006748C /* KKMyScorecardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE46C02618C998CC0006748C /* KKMyScorecardViewController.xib */; };
 		DE56F53718A9E013000BDF13 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54F818786C990019F7FF /* XCTest.framework */; };
 		DE56F53818A9E013000BDF13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54D918786C990019F7FF /* Foundation.framework */; };
 		DE56F53918A9E013000BDF13 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF54DD18786C990019F7FF /* UIKit.framework */; };
@@ -45,10 +49,6 @@
 		DEAF550F18786D8E0019F7FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAF550E18786D8E0019F7FF /* MapKit.framework */; };
 		DEB1FFDB18C95AFF0071DCF7 /* KKBarGolfToolbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB1FFD918C95AFF0071DCF7 /* KKBarGolfToolbarViewController.m */; };
 		DEB1FFDC18C95AFF0071DCF7 /* KKBarGolfToolbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEB1FFDA18C95AFF0071DCF7 /* KKBarGolfToolbarViewController.xib */; };
-		DEB1FFE018C962ED0071DCF7 /* KKMyScorecardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB1FFDE18C962ED0071DCF7 /* KKMyScorecardViewController.m */; };
-		DEB1FFE118C962ED0071DCF7 /* KKMyScorecardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEB1FFDF18C962ED0071DCF7 /* KKMyScorecardViewController.xib */; };
-		DEB1FFE518C963840071DCF7 /* KKMyPlayerProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB1FFE318C963840071DCF7 /* KKMyPlayerProfileViewController.m */; };
-		DEB1FFE618C963840071DCF7 /* KKMyPlayerProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEB1FFE418C963840071DCF7 /* KKMyPlayerProfileViewController.xib */; };
 		DEB1FFE818C965BD0071DCF7 /* KKMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEB1FFE718C965BD0071DCF7 /* KKMenuViewController.xib */; };
 		DEB1FFEF18C976E20071DCF7 /* ICSDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB1FFEC18C976E20071DCF7 /* ICSDrawerController.m */; };
 		DEB1FFF018C976E30071DCF7 /* ICSDropShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB1FFEE18C976E20071DCF7 /* ICSDropShadowView.m */; };
@@ -85,6 +85,12 @@
 		DE05963C1895C85600892F24 /* KKCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKCache.h; sourceTree = "<group>"; };
 		DE05963D1895C85600892F24 /* KKCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKCache.m; sourceTree = "<group>"; };
 		DE09D77818AB5AAE00089371 /* KKLoginViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLoginViewModelTests.m; sourceTree = "<group>"; };
+		DE46C01F18C9962E0006748C /* KKMyPlayerProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMyPlayerProfileViewController.h; sourceTree = "<group>"; };
+		DE46C02018C9962E0006748C /* KKMyPlayerProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMyPlayerProfileViewController.m; sourceTree = "<group>"; };
+		DE46C02118C9962E0006748C /* KKMyPlayerProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKMyPlayerProfileViewController.xib; sourceTree = "<group>"; };
+		DE46C02418C998CC0006748C /* KKMyScorecardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMyScorecardViewController.h; sourceTree = "<group>"; };
+		DE46C02518C998CC0006748C /* KKMyScorecardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMyScorecardViewController.m; sourceTree = "<group>"; };
+		DE46C02618C998CC0006748C /* KKMyScorecardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKMyScorecardViewController.xib; sourceTree = "<group>"; };
 		DE56F53618A9E013000BDF13 /* Bar Golf Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bar Golf Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE56F53C18A9E013000BDF13 /* Bar Golf Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bar Golf Tests-Info.plist"; sourceTree = "<group>"; };
 		DE56F53E18A9E013000BDF13 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -139,12 +145,6 @@
 		DEB1FFD818C95AFF0071DCF7 /* KKBarGolfToolbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBarGolfToolbarViewController.h; path = Views/KKBarGolfToolbarViewController.h; sourceTree = "<group>"; };
 		DEB1FFD918C95AFF0071DCF7 /* KKBarGolfToolbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBarGolfToolbarViewController.m; path = Views/KKBarGolfToolbarViewController.m; sourceTree = "<group>"; };
 		DEB1FFDA18C95AFF0071DCF7 /* KKBarGolfToolbarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KKBarGolfToolbarViewController.xib; path = Views/KKBarGolfToolbarViewController.xib; sourceTree = "<group>"; };
-		DEB1FFDD18C962ED0071DCF7 /* KKMyScorecardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMyScorecardViewController.h; sourceTree = "<group>"; };
-		DEB1FFDE18C962ED0071DCF7 /* KKMyScorecardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMyScorecardViewController.m; sourceTree = "<group>"; };
-		DEB1FFDF18C962ED0071DCF7 /* KKMyScorecardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKMyScorecardViewController.xib; sourceTree = "<group>"; };
-		DEB1FFE218C963840071DCF7 /* KKMyPlayerProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMyPlayerProfileViewController.h; sourceTree = "<group>"; };
-		DEB1FFE318C963840071DCF7 /* KKMyPlayerProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMyPlayerProfileViewController.m; sourceTree = "<group>"; };
-		DEB1FFE418C963840071DCF7 /* KKMyPlayerProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKMyPlayerProfileViewController.xib; sourceTree = "<group>"; };
 		DEB1FFE718C965BD0071DCF7 /* KKMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKMenuViewController.xib; sourceTree = "<group>"; };
 		DEB1FFEB18C976E20071DCF7 /* ICSDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSDrawerController.h; sourceTree = "<group>"; };
 		DEB1FFEC18C976E20071DCF7 /* ICSDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSDrawerController.m; sourceTree = "<group>"; };
@@ -573,9 +573,9 @@
 		DEDA639218C81CCB00997763 /* My Player Profile */ = {
 			isa = PBXGroup;
 			children = (
-				DEB1FFE218C963840071DCF7 /* KKMyPlayerProfileViewController.h */,
-				DEB1FFE318C963840071DCF7 /* KKMyPlayerProfileViewController.m */,
-				DEB1FFE418C963840071DCF7 /* KKMyPlayerProfileViewController.xib */,
+				DE46C01F18C9962E0006748C /* KKMyPlayerProfileViewController.h */,
+				DE46C02018C9962E0006748C /* KKMyPlayerProfileViewController.m */,
+				DE46C02118C9962E0006748C /* KKMyPlayerProfileViewController.xib */,
 			);
 			path = "My Player Profile";
 			sourceTree = "<group>";
@@ -583,9 +583,9 @@
 		DEDA639518C81CCB00997763 /* My Scorecard */ = {
 			isa = PBXGroup;
 			children = (
-				DEB1FFDD18C962ED0071DCF7 /* KKMyScorecardViewController.h */,
-				DEB1FFDE18C962ED0071DCF7 /* KKMyScorecardViewController.m */,
-				DEB1FFDF18C962ED0071DCF7 /* KKMyScorecardViewController.xib */,
+				DE46C02418C998CC0006748C /* KKMyScorecardViewController.h */,
+				DE46C02518C998CC0006748C /* KKMyScorecardViewController.m */,
+				DE46C02618C998CC0006748C /* KKMyScorecardViewController.xib */,
 			);
 			path = "My Scorecard";
 			sourceTree = "<group>";
@@ -743,14 +743,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEDA639F18C81CCB00997763 /* KKForgotPasswordViewController.xib in Resources */,
-				DEB1FFE618C963840071DCF7 /* KKMyPlayerProfileViewController.xib in Resources */,
 				DEAB468D18A84BBD008FB73D /* System Design Specifications.text in Resources */,
+				DE46C02318C9962E0006748C /* KKMyPlayerProfileViewController.xib in Resources */,
 				DEAF54F218786C990019F7FF /* Images.xcassets in Resources */,
 				DEDA63A118C81CCB00997763 /* KKLoginViewController.xib in Resources */,
-				DEB1FFE118C962ED0071DCF7 /* KKMyScorecardViewController.xib in Resources */,
 				DEB1FFE818C965BD0071DCF7 /* KKMenuViewController.xib in Resources */,
 				DEAB468518A80DAC008FB73D /* NOTES.text in Resources */,
 				DEDA63A318C81CCB00997763 /* KKSignUpViewController.xib in Resources */,
+				DE46C02818C998CC0006748C /* KKMyScorecardViewController.xib in Resources */,
 				DEB1FFDC18C95AFF0071DCF7 /* KKBarGolfToolbarViewController.xib in Resources */,
 				DEAF54E418786C990019F7FF /* InfoPlist.strings in Resources */,
 			);
@@ -845,6 +845,7 @@
 				DEDA63A218C81CCB00997763 /* KKSignUpViewController.m in Sources */,
 				DEAB466118A5FC79008FB73D /* UIImage+ResizeAdditions.m in Sources */,
 				DE85B32918B14A8800040A9E /* PFRACCallbacks+BGS_Extensions.m in Sources */,
+				DE46C02718C998CC0006748C /* KKMyScorecardViewController.m in Sources */,
 				DEB1FFEF18C976E20071DCF7 /* ICSDrawerController.m in Sources */,
 				DEAB466F18A6290C008FB73D /* STPSlideUpTransition.m in Sources */,
 				DEAB468118A6CA36008FB73D /* JVFloatLabeledTextField+LabelText.m in Sources */,
@@ -855,7 +856,6 @@
 				DEB1FFDB18C95AFF0071DCF7 /* KKBarGolfToolbarViewController.m in Sources */,
 				DE05963E1895C85600892F24 /* KKCache.m in Sources */,
 				DEDA63A018C81CCB00997763 /* KKLogInViewController.m in Sources */,
-				DEB1FFE018C962ED0071DCF7 /* KKMyScorecardViewController.m in Sources */,
 				DEAB466018A5FC79008FB73D /* UIImage+Colorization.m in Sources */,
 				DED1DF7D18C77BD200DB9088 /* UIImage+Coloring.m in Sources */,
 				DEAB467318A682C6008FB73D /* STPCardTransition.m in Sources */,
@@ -867,7 +867,7 @@
 				DEAB468918A82F3C008FB73D /* KKStatusBarNotification.m in Sources */,
 				DEB1FFF018C976E30071DCF7 /* ICSDropShadowView.m in Sources */,
 				DEE2EE9D1891E7EA00FC2991 /* KKConfig.m in Sources */,
-				DEB1FFE518C963840071DCF7 /* KKMyPlayerProfileViewController.m in Sources */,
+				DE46C02218C9962E0006748C /* KKMyPlayerProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

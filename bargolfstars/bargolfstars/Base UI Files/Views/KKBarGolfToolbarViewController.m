@@ -37,8 +37,10 @@
 
 #pragma mark - Private Methods
 - (void)configureButtons {
-    //Make a custom UIButton for the navBar export button.
+    //set touch down coloring to darker
     [self.findBarsButton setBackgroundImage:[UIImage imageWithColor:kMedGreen] forState:UIControlStateHighlighted];
+    [self.findBarsButton setTitleColor:kDrkGreen forState:UIControlStateHighlighted];
+    
     @weakify(self)
     self.findBarsButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
         @strongify(self)
@@ -46,7 +48,10 @@
         return [RACSignal empty];
     }];
 
+    //set touch down coloring to darker
     [self.findTaxisButton setBackgroundImage:[UIImage imageWithColor:kMedGreen] forState:UIControlStateHighlighted];
+    [self.findTaxisButton setTitleColor:kDrkGreen forState:UIControlStateHighlighted];
+    
     self.findTaxisButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
         @strongify(self)
         [self findTaxisHandler:nil];

@@ -47,6 +47,8 @@
 #pragma mark - Private Methods
 - (void)configureUI {
     [self configureNavBar];
+    
+    self.view.backgroundColor = kMedGray;
 }
 
 - (void)configureNavBar {

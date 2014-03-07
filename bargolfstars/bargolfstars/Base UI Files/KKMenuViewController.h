@@ -16,4 +16,6 @@
 
 @property(nonatomic, weak) ICSDrawerController *drawer;
 
+- (KKNavigationController *)getNavControllerForInitialDrawer;
+
 @end

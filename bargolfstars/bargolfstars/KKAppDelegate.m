@@ -113,38 +113,12 @@
 }
 
 - (void)showMainInterface {
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    ECSlidingViewController *mainInterfaceController = [storyboard instantiateInitialViewController];
-    
-//    KKMyScorecardViewController *scorecardVC = [[KKMyScorecardViewController alloc] init];
-//    KKMenuViewController *menuVC = [[KKMenuViewController alloc] init];
-//    KKNavigationController *navController = [[KKNavigationController alloc] initWithRootViewController:scorecardVC];
-//    ECSlidingViewController *slidingViewController = [ECSlidingViewController slidingWithTopViewController:navController];
-//    slidingViewController.underLeftViewController  = menuVC;
-    
-//    [self.navController setViewControllers:[NSArray arrayWithObjects:self.welcomeViewController, mainInterfaceController, nil] animated:NO];
-    
     KKMenuViewController *menuVC = [[KKMenuViewController alloc] init];
-    KKMyScorecardViewController *scorecardVC = [[KKMyScorecardViewController alloc] init];
-    KKNavigationController *navController = [[KKNavigationController alloc] initWithRootViewController:scorecardVC andTitle:@"My Scorecard"];
+    KKNavigationController *navController = [menuVC getNavControllerForInitialDrawer];
     ICSDrawerController *drawer = [[ICSDrawerController alloc] initWithLeftViewController:menuVC
                                                                      centerViewController:navController];
-    
     self.window.rootViewController = drawer;
 }
-
-//- (UIViewController *)setUpViewControllerHierarchy {
-//	MBImagesViewController *front = [[MBImagesViewController alloc] init];
-//	MBSettingsController *back = [[MBSettingsController alloc] init];
-//	MBPullDownController *pullDownController = [[MBPullDownController alloc] initWithFrontController:front backController:back];
-//	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:pullDownController];
-//	navigationController.navigationBarHidden = YES;
-//	// Adjust top spacing for iOS 7 status bar
-//	if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-//		pullDownController.closedTopOffset += 20.f;
-//	}
-//	return navigationController;
-//}
 
 #pragma mark - Reachability
 - (void)monitorReachability {

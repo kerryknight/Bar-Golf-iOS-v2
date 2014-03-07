@@ -30,15 +30,29 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-
-//	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kMenuViewControllerCellReuseId];
-//	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 #pragma mark - Public Methods
+- (KKNavigationController *)getNavControllerForInitialDrawer {
+    KKMyScorecardViewController *scorecardVC = [[KKMyScorecardViewController alloc] init];
+    MBPullDownController *pullDownController = [self configurePullDownControllerForFrontController:scorecardVC];
+    return [[KKNavigationController alloc] initWithRootViewController:pullDownController andTitle:@"My Scorecard"];
+}
 
 #pragma mark - Private Methods
+- (MBPullDownController *)configurePullDownControllerForFrontController:(UIViewController *)controller {
+    
+    KKBarGolfToolbarViewController *barGolfToolbar = [[KKBarGolfToolbarViewController alloc] init];
+    MBPullDownController *pullDownController = [[MBPullDownController alloc] initWithFrontController:controller backController:barGolfToolbar];
+    pullDownController.backgroundView.backgroundColor = kMedGray;
+    [(MBPullDownControllerBackgroundView *)pullDownController.backgroundView setDropShadowVisible:NO];
+    pullDownController.closedTopOffset += 20.f;
+    pullDownController.openBottomOffset = KKAD.window.frame.size.height - (64.f + 64.f);
+    pullDownController.openDragOffset = 45.f;
+    pullDownController.closeDragOffset = 25.f;
 
+    return pullDownController;
+}
 
 
 
@@ -95,11 +109,9 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
 		UIViewController *newVC;
 
 		if ([menuItem isEqualToString:@"My Scorecard"]) {
-			//        newVC = [self.storyboard instantiateViewControllerWithIdentifier:@"KKMyScorecardViewController"];
 			newVC = [[KKMyScorecardViewController alloc] init];
 		}
 		else if ([menuItem isEqualToString:@"My Player Profile"]) {
-			//        newVC = [self.storyboard instantiateViewControllerWithIdentifier:@"KKMyPlayerProfileViewController"];
 			newVC = [[KKMyPlayerProfileViewController alloc] init];
 		}
 		else if ([menuItem isEqualToString:@"Log Out"]) {
@@ -108,7 +120,8 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
 			return;
 		}
 
-		KKNavigationController *newNavController = [[KKNavigationController alloc] initWithRootViewController:newVC andTitle:menuItem];
+        MBPullDownController *pullDownController = [self configurePullDownControllerForFrontController:newVC];
+		KKNavigationController *newNavController = [[KKNavigationController alloc] initWithRootViewController:pullDownController andTitle:menuItem];
 		[self.drawer replaceCenterViewControllerWithViewController:newNavController];
 	}
 
