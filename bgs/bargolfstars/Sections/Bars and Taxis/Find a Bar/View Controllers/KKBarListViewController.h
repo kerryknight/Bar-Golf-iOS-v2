@@ -11,5 +11,4 @@
 
 @interface KKBarListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) KKBarListAndMapViewModel *viewModel;
 @end

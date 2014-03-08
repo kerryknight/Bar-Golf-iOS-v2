@@ -60,17 +60,14 @@ static NSString *const kScorecardViewControllerCellReuseId = @"KKScorecardCell";
 
 #pragma mark - Private Methods
 - (void)configureViewModel {
-    @weakify(self);
-    self.viewModel = [[KKBarListAndMapViewModel alloc] init];
-    
     //update our table view anytime we get a list of bars from our view model
-    [[self.viewModel.updatedBarListSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(NSArray *bars) {
+    [[[KKBarListAndMapViewModel sharedViewModel].updatedBarListSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(NSArray *bars) {
         DLogOrange(@"bars: %@", bars);
     }];
     
     //show an error notification anytime we receive an error signal from our
     //view model
-    [[self.viewModel.sendErrorSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(NSError *error) {
+    [[[KKBarListAndMapViewModel sharedViewModel].sendErrorSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(NSError *error) {
         //error logging in, show error message
         NSString *message = [NSString stringWithFormat:NSLocalizedString(@"Error: %@", nil), [error localizedDescription]];
         [KKStatusBarNotification showWithStatus:message dismissAfter:2.0 customStyleName:KKStatusBarError];
@@ -79,12 +76,9 @@ static NSString *const kScorecardViewControllerCellReuseId = @"KKScorecardCell";
     //bind our view model to our tableview content offset so we can add a
     //parallax effect to our map view and recenter it was the view opens
     [RACObserve(self.tableView, contentOffset) subscribeNext:^(NSValue *value) {
-        @strongify(self)
         NSInteger y = floor(self.tableView.contentOffset.y);
-        self.viewModel.frontViewOffset = y;
+        [KKBarListAndMapViewModel sharedViewModel].frontViewOffset = y;
     }];
-    
-    self.viewModel.active = YES;
 }
 
 - (void)configureUI {

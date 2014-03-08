@@ -21,6 +21,16 @@
 @implementation KKBarListAndMapViewModel
 
 #pragma mark - Life Cycle and Lazy Instantiation
++ (KKBarListAndMapViewModel *)sharedViewModel {
+	static KKBarListAndMapViewModel * _sharedViewModel = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+	    _sharedViewModel = [[KKBarListAndMapViewModel alloc] init];
+	});
+    
+	return _sharedViewModel;
+}
+
 - (instancetype)init {
     self = [super init];
     if (self == nil) return nil;
@@ -30,12 +40,8 @@
     self.sendErrorSignal = [[RACSubject subject] setNameWithFormat:@"KKBarListAndMapViewModel sendErrorSignal"];
     self.frontViewOffsetSignal = [[RACSubject subject] setNameWithFormat:@"KKBarListAndMapViewModel frontViewOffsetSignal"];
     
-    @weakify(self)
-    [self.didBecomeActiveSignal subscribeNext:^(id x) {
-        @strongify(self)
-        [self createRACBindings];
-        [self getUserLocation];
-    }];
+    [self createRACBindings];
+    [self getUserLocation];
     
     return self;
 }
@@ -64,12 +70,10 @@
 
 #pragma mark - Private Methods
 - (void)createRACBindings {
-    
     //bind to our front view's scrolling offset so that anytime it changes, we
     //can fire a signal that let's our map view know so it can create a slight
     //parallax effect on it's own
     [RACObserve(self, frontViewOffset) subscribeNext:^(NSValue *offset) {
-        DLogOrange(@"offset: %@", offset);
         [(RACSubject *)self.frontViewOffsetSignal sendNext:offset];
     }];
 }

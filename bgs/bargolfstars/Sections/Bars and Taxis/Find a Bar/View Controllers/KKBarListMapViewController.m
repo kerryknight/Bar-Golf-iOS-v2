@@ -9,7 +9,8 @@
 #import "KKBarListMapViewController.h"
 
 @interface KKBarListMapViewController ()
-@property (unsafe_unretained, nonatomic, readwrite) BOOL mapViewIsOpen;
+@property (assign, nonatomic) float deltaLatFor1px;
+@property (assign, nonatomic) CLLocationCoordinate2D originalCoordinate;
 @end
 
 @implementation KKBarListMapViewController
@@ -48,53 +49,127 @@
 #pragma mark - Private Methods
 - (void)configureViewModel {
     @weakify(self)
-    self.viewModel = [[KKBarListAndMapViewModel alloc] init];
     
     //center our map on the user's location anytime it updates
-    [[self.viewModel.updatedUserLocationSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(CLLocation *location) {
+    [[[KKBarListAndMapViewModel sharedViewModel].updatedUserLocationSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(CLLocation *location) {
         @strongify(self)
-        [self centerMapOnUserLocation:location];
+        [self centerMapOnUserLocation:location withAnimation:NO];
     }];
     
     //update our map's dropped pins anytime we receive a new list of bars
-    [[self.viewModel.updatedBarListSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(NSArray *bars) {
+    [[[KKBarListAndMapViewModel sharedViewModel].updatedBarListSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(NSArray *bars) {
         [self addMapAnnotationsForBarList:bars];
     }];
     
     //bind our to our view model's offset property so we can add a
     //parallax effect to our map view and re-center it as the view opens
-    [self.viewModel.frontViewOffsetSignal subscribeNext:^(NSValue *offset) {
-        DLogRed(@"offset: %@", offset);
+    [[[KKBarListAndMapViewModel sharedViewModel].frontViewOffsetSignal combinePreviousWithStart:@0 reduce:^(NSNumber *previous, NSNumber *next) {
+        @strongify(self)
+        [self parallaxMapViewForOldOffset:previous andNewOffset:next];
+        return [RACSignal empty];
+    }] subscribeNext:^(id x) {
+        //no op
     }];
+}
+
+- (float)deltaLatFor1px {
+    if (!_deltaLatFor1px) {
+        // We compute how much latitude represent 1point.  so that we know how much
+        // the center coordinate of the map should be moved
+        // when being dragged.
+        CLLocationCoordinate2D referencePosition = [self.mapView convertPoint:CGPointMake(0, 0) toCoordinateFromView:self.mapView];
+        CLLocationCoordinate2D referencePosition2 = [self.mapView convertPoint:CGPointMake(0, 100) toCoordinateFromView:self.mapView];
+        _deltaLatFor1px = (referencePosition2.latitude - referencePosition.latitude)/100;
+    }
     
-    self.viewModel.active = YES;
+    return _deltaLatFor1px;
+}
+
+- (void)parallaxMapViewForOldOffset:(NSNumber *)oldOffset andNewOffset:(NSNumber *)newOffset {
+    double oldContentOffset = [oldOffset floatValue]/2;
+    double newContentOffset = [newOffset floatValue]/2;
+    double offsetDifference = 0;
+    BOOL draggingDownwards = (newContentOffset < oldContentOffset) ? YES : NO;
+    
+    if (draggingDownwards) {
+        offsetDifference = oldContentOffset - newContentOffset;
+    } else {
+        offsetDifference = newContentOffset - oldContentOffset;
+    }
+    
+    CLLocationCoordinate2D mapCenter = self.mapView.centerCoordinate;
+    CLLocationCoordinate2D newCenter;
+    //we moved y pixels down, how much latitude is that ?
+    double deltaLat = offsetDifference * self.deltaLatFor1px;
+    
+    // what direction did we drag?
+    if (draggingDownwards) {
+        //Move the center coordinate accordingly
+        newCenter = CLLocationCoordinate2DMake(mapCenter.latitude - deltaLat, mapCenter.longitude);
+    } else {
+        newCenter = CLLocationCoordinate2DMake(mapCenter.latitude + deltaLat, mapCenter.longitude);
+    }
+    
+    self.mapView.centerCoordinate = newCenter;
 }
 
 - (void)configureMap {
     @weakify(self)
     
     //bind to the view model's userLocation which will update our map
-    [RACObserve(self.viewModel, userLocation) subscribeNext:^(CLLocation *location) {
+    [RACObserve([KKBarListAndMapViewModel sharedViewModel], userLocation) subscribeNext:^(CLLocation *location) {
         @strongify(self)
-        [self centerMapOnUserLocation:location];
+        [self centerMapOnUserLocation:location withAnimation:NO];
     }];
     
-    [self.mapView setZoomEnabled:YES];
-    [self.mapView setScrollEnabled:YES];
     self.mapView.showsUserLocation = YES;
-    self.mapViewIsOpen = NO;
+    
+    //only allow scrolling/zooming if our map view is open fully
+    [[[RACObserve(self.pullDownController, open) deliverOn:[RACScheduler mainThreadScheduler]] skip:1] subscribeNext:^(id x) {
+        @strongify(self)
+        if (![x boolValue]) {
+            [self.mapView setZoomEnabled:NO];
+            [self.mapView setScrollEnabled:NO];
+            [self performSelector:@selector(resetMapToStartingPosition) withObject:nil afterDelay:0.5];
+        } else {
+            [self.mapView setZoomEnabled:YES];
+            [self.mapView setScrollEnabled:YES];
+            [self.mapView setNeedsLayout];
+        }
+    }];
 }
 
-- (void)centerMapOnUserLocation:(CLLocation *)location {
+- (void)resetMapToStartingPosition {
+    @weakify(self)
+    //this is definitely getting kinda hackish trying to synchronize map
+    //animations that don't have completion callbacks here, but it works for
+    //the most part; not perfectly smooth but workable
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:0.5 animations:^{
+            @strongify(self)
+            [self setMapRegionForLocation:[KKBarListAndMapViewModel sharedViewModel].userLocation withAnimation:NO];
+        } completion:^(BOOL finished) {
+            @strongify(self)
+            [self.mapView setCenterCoordinate:self.originalCoordinate animated:YES];
+        }];
+    });
+}
+
+- (void)setMapRegionForLocation:(CLLocation *)location withAnimation:(BOOL)animation {
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude), 3000, 3000);
+	[self.mapView setRegion:region animated:animation];
+}
+
+- (void)centerMapOnUserLocation:(CLLocation *)location withAnimation:(BOOL)animation {
     [self.mapView setCenterCoordinate:location.coordinate animated:YES];
 
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude), 3000, 3000);
-	[self.mapView setRegion:region animated:NO];
+    [self setMapRegionForLocation:location withAnimation:animation];
     
     //since we initially show the map in a smaller view, we need to center but
     //offset vertically slightly
     CGPoint fakecenter = CGPointMake(self.view.frame.size.width/2, 470);
     CLLocationCoordinate2D coordinate = [self.mapView convertPoint:fakecenter toCoordinateFromView:self.mapView];
+    self.originalCoordinate = coordinate;
     [self.mapView setCenterCoordinate:coordinate animated:YES];
     
     //attempt to zoom around the pins; if there are none, nothing will happen

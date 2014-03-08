@@ -12,6 +12,5 @@
 
 @interface KKBarListMapViewController : UIViewController <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (strong, nonatomic) KKBarListAndMapViewModel *viewModel;
 @property (unsafe_unretained, nonatomic, readonly) BOOL mapViewIsOpen;
 @end

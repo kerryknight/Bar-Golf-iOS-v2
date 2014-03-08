@@ -16,4 +16,6 @@
 @property (strong, nonatomic, readonly) RACSignal *sendErrorSignal;
 @property (strong, nonatomic, readonly) RACSignal *frontViewOffsetSignal;
 
++ (KKBarListAndMapViewModel *)sharedViewModel;
+
 @end
