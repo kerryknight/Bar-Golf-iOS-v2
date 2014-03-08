@@ -31,6 +31,14 @@ static NSString *const kScorecardViewControllerCellReuseId = @"KKScorecardCell";
     [self configureUI];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    //have to set our custom nav controller's title by hand each time by
+    //casting to it for forward and backward navigation compatibility
+    KKNavigationController *navController = (KKNavigationController *)self.navigationController;
+    [navController setTitleLabelText:@"My Scorecard"];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

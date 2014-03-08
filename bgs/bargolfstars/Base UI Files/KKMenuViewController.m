@@ -134,20 +134,19 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
 - (void)pushInNewViewController:(UIViewController *)vc withTitle:(NSString *)title {
     self.toolbarPullDownController.frontController = vc;
     [self.navController setViewControllers:@[self.toolbarPullDownController]];
-    self.navController.customTitle = title;
-#warning title setting is not working anymore
+//    self.navController.titleLabel.text = title;
     [self.drawer replaceCenterViewControllerWithViewController:self.navController];
 }
 
 - (void)showBars {
     [self.navController pushViewController:self.mapViewPullDownController animated:YES];
     //close the toolbar pull down after it's offscreen
-    [self performSelector:@selector(closeToolbarPulldown) withObject:nil afterDelay:2.0];
+    [self performSelector:@selector(closeToolbarPulldown) withObject:nil afterDelay:1.0];
 }
 
 - (void)showTaxis {
     //close the toolbar pull down after it's offscreen
-    [self performSelector:@selector(closeToolbarPulldown) withObject:nil afterDelay:2.0];
+    [self performSelector:@selector(closeToolbarPulldown) withObject:nil afterDelay:1.0];
 }
 
 - (void)closeToolbarPulldown {

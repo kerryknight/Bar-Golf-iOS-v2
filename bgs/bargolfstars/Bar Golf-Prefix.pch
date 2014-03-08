@@ -43,6 +43,7 @@
     #import "KKCache.h"
     #import "KKAllSTPTransitions.h"
     #import "KKStatusBarNotification.h"
+    #import "KKNavigationController.h"
     #import "KKBarGolfToolbarViewController.h"  
 
 #endif

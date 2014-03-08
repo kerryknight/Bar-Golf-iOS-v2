@@ -14,8 +14,7 @@
 @interface KKNavigationController : UINavigationController <ICSDrawerControllerChild, ICSDrawerControllerPresenting>
 
 @property (weak, nonatomic) ICSDrawerController *drawer;
-@property (copy, nonatomic) NSString *customTitle;
 
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController andTitle:(NSString *)title;
-
+- (void)setTitleLabelText:(NSString *)title;
 @end
