@@ -96,8 +96,12 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
 }
 
 - (void)addNotificationObservers {
+    //these are posted by the bar golf toolbar buttons when pressed
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBars) name:kBarGolfShowBarsNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTaxis) name:kBarGolfShowTaxisNotification object:nil];
+    //this is posted by the find a bar view when it disappears to ensure we
+    //always return to it when the map view closed
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeMapViewPulldown) name:kMenuShouldCloseMapViewNotification object:nil];
 }
 
 #pragma mark - Private Methods that Create and/or Push New View Controllers
@@ -112,7 +116,6 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
     KKAD.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     KKAD.window.backgroundColor = kDrkGray;
     KKAD.window.rootViewController = navController;
-    
     [KKAD.window makeKeyAndVisible];
 }
 
@@ -133,6 +136,7 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
 
 - (void)pushInNewViewController:(UIViewController *)vc withTitle:(NSString *)title {
     self.toolbarPullDownController.frontController = vc;
+    
     [self.navController setViewControllers:@[self.toolbarPullDownController]];
 //    self.navController.titleLabel.text = title;
     [self.drawer replaceCenterViewControllerWithViewController:self.navController];
@@ -155,6 +159,12 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
     }
 }
 
+- (void)closeMapViewPulldown {
+    if (self.mapViewPullDownController.open) {
+        [self.mapViewPullDownController setOpen:NO animated:YES];
+    }
+}
+
 #pragma mark - Configuration Methods
 - (void)configureToolBarPullDownController {
     //configure things like the pulldown distance needed and spacing
@@ -172,7 +182,7 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
     self.mapViewPullDownController.backgroundView.backgroundColor = kMedGray;
     [(MBPullDownControllerBackgroundView *)self.mapViewPullDownController.backgroundView setDropShadowVisible:NO];
     self.mapViewPullDownController.closedTopOffset += 130.f;
-    self.mapViewPullDownController.openBottomOffset = KKAD.window.frame.size.height - (64.f + 164.f);
+    self.mapViewPullDownController.openBottomOffset = 100.f;//amount of top view controller left at bottom when open
     //set distances to drage before opening/closing automatically kicks in
     self.mapViewPullDownController.openDragOffset = 45.f;
     self.mapViewPullDownController.closeDragOffset = 25.f;

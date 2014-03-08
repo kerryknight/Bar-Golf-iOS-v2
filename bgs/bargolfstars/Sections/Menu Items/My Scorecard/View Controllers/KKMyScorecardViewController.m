@@ -29,6 +29,7 @@ static NSString *const kScorecardViewControllerCellReuseId = @"KKScorecardCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self configureUI];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,8 +74,12 @@ static NSString *const kScorecardViewControllerCellReuseId = @"KKScorecardCell";
 	cell.textLabel.textColor = [UIColor whiteColor];
     cell.backgroundColor = kMedGray;
     
-    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.bounds] ;
-    cell.selectedBackgroundView.backgroundColor = kDrkGray;
+//    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.bounds] ;
+//    cell.selectedBackgroundView.backgroundColor = kDrkGray;
+    
+    //TODO: remove then when ready to start dev on this view
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.alpha = 0.0;
     
 	return cell;
 }

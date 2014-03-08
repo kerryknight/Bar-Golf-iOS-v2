@@ -44,6 +44,7 @@ extern NSString *const kLaunchURLHostTakePicture;
 #pragma mark - NSNotification
 extern NSString *const kAppDelegateApplicationDidReceiveRemoteNotification;
 extern NSString *const kMenuShouldShowMainInterfaceNotification;
+extern NSString *const kMenuShouldCloseMapViewNotification;
 extern NSString *const kBarGolfShowBarsNotification;
 extern NSString *const kBarGolfShowTaxisNotification;
 

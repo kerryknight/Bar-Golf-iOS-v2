@@ -11,9 +11,13 @@
 
 @interface BarAnnotation : NSObject <MKAnnotation>
 
-@property (nonatomic, assign) CLLocationCoordinate2D coordinate;
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *subtitle;
-@property (nonatomic, assign) int index;
+@property (assign, nonatomic) CLLocationCoordinate2D coordinate;
+@property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *subtitle;
+@property (strong, nonatomic) NSNumber *barDistance;
+@property (copy, nonatomic) NSString *phoneNumber;
+@property (assign, nonatomic) int index;
 
 @end
+
+

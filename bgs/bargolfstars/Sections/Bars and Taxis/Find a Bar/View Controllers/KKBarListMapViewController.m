@@ -9,7 +9,7 @@
 #import "KKBarListMapViewController.h"
 
 @interface KKBarListMapViewController ()
-
+@property (unsafe_unretained, nonatomic, readwrite) BOOL mapViewIsOpen;
 @end
 
 @implementation KKBarListMapViewController
@@ -25,6 +25,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    //wait until the view is about to appear to configure the view model so that
+    //we don't prematurely display the "Bar Golf Wants to Use Your Location"
+    //alert to the user when the app launches for the first time; this makes
+    //it a more proactive thing on the user and a better experience
     [self configureViewModel];
     [self configureMap];
 }
@@ -38,50 +47,92 @@
 
 #pragma mark - Private Methods
 - (void)configureViewModel {
+    @weakify(self)
     self.viewModel = [[KKBarListAndMapViewModel alloc] init];
-    self.viewModel.active = YES;
     
-    //subscribe to our viewModel's signal
-    [[self.viewModel.updatedBarListSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(NSArray *bars) {
-        DLogOrange(@"bars: %@", bars);
+    //center our map on the user's location anytime it updates
+    [[self.viewModel.updatedUserLocationSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(CLLocation *location) {
+        @strongify(self)
+        [self centerMapOnUserLocation:location];
     }];
+    
+    //update our map's dropped pins anytime we receive a new list of bars
+    [[self.viewModel.updatedBarListSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(NSArray *bars) {
+        [self addMapAnnotationsForBarList:bars];
+    }];
+    
+    //bind our to our view model's offset property so we can add a
+    //parallax effect to our map view and re-center it as the view opens
+    [self.viewModel.frontViewOffsetSignal subscribeNext:^(NSValue *offset) {
+        DLogRed(@"offset: %@", offset);
+    }];
+    
+    self.viewModel.active = YES;
 }
 
 - (void)configureMap {
+    @weakify(self)
     
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(self.viewModel.location.coordinate.latitude, self.viewModel.location.coordinate.longitude), 2000, 2000);
+    //bind to the view model's userLocation which will update our map
+    [RACObserve(self.viewModel, userLocation) subscribeNext:^(CLLocation *location) {
+        @strongify(self)
+        [self centerMapOnUserLocation:location];
+    }];
+    
+    [self.mapView setZoomEnabled:YES];
+    [self.mapView setScrollEnabled:YES];
+    self.mapView.showsUserLocation = YES;
+    self.mapViewIsOpen = NO;
+}
+
+- (void)centerMapOnUserLocation:(CLLocation *)location {
+    [self.mapView setCenterCoordinate:location.coordinate animated:YES];
+
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude), 3000, 3000);
 	[self.mapView setRegion:region animated:NO];
     
-//    for (Store *store in self.stores) {
-//        
-//        StoreAnnotation *annotation = [[StoreAnnotation alloc] init];
-//        [annotation setTitle:store.name];
-//        [annotation setSubtitle:store.address1];
-//        [annotation setIsOpen:[store.openNow boolValue]];
-//        [annotation setIndex:[self.stores indexOfObject:store]];
-//        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([store.lat doubleValue], [store.lng doubleValue]);
-//        [annotation setCoordinate:coordinate];
-//        [self.mapView addAnnotation:annotation];
-//        
-//    }
-//    
-//    self._tapInterceptor = [[WildcardGestureRecognizer alloc] init];
-//    __weak WildcardGestureRecognizer *tapInterceptor = self._tapInterceptor;
-//    __weak typeof(self) weakSelf = self;
-//    tapInterceptor.touchesBeganCallback = ^(NSSet * touches, UIEvent * event) {
-//        typeof(self) strongSelf = weakSelf;
-//        [strongSelf.mapView removeGestureRecognizer:tapInterceptor];
-//        strongSelf._tapInterceptor = nil;
-//        [strongSelf openMapView];
-//    };
-//    [self.mapView addGestureRecognizer:tapInterceptor];
-//    
-//    if(![self.stores count]) {
-//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:NSLocalizedString(@"Empty results", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-//        [alertView show];
-//    }
-//    
-//    [self zoomMapViewToFitAnnotationsWithUserLocation:self.includeUserLocation];
+    //since we initially show the map in a smaller view, we need to center but
+    //offset vertically slightly
+    CGPoint fakecenter = CGPointMake(self.view.frame.size.width/2, 470);
+    CLLocationCoordinate2D coordinate = [self.mapView convertPoint:fakecenter toCoordinateFromView:self.mapView];
+    [self.mapView setCenterCoordinate:coordinate animated:YES];
+    
+    //attempt to zoom around the pins; if there are none, nothing will happen
+    [self zoomMapViewToFitAnnotationsWithUserLocation:location];
+}
+
+- (void)zoomMapViewToFitAnnotationsWithUserLocation:(BOOL)fitToUserLocation {
+    if ([self.mapView.annotations count] > 1) {
+        MKMapRect zoomRect = MKMapRectNull;
+        for (id <MKAnnotation> annotation in self.mapView.annotations) {
+            if (fitToUserLocation) {
+                MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
+                MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.2, 0.2);
+                if (MKMapRectIsNull(zoomRect)) {
+                    zoomRect = pointRect;
+                } else {
+                    zoomRect = MKMapRectUnion(zoomRect, pointRect);
+                }
+            } else {
+                if (![annotation isKindOfClass:[MKUserLocation class]] ) {
+                    MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
+                    MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.2, 0.2);
+                    if (MKMapRectIsNull(zoomRect)) {
+                        zoomRect = pointRect;
+                    } else {
+                        zoomRect = MKMapRectUnion(zoomRect, pointRect);
+                    }
+                }
+            }
+        }
+        
+        [self.mapView setVisibleMapRect:zoomRect animated:YES];
+    }
+}
+
+- (void)addMapAnnotationsForBarList:(NSArray *)list {
+    DLogOrange(@"bars: %@", list);
+    [self.mapView removeAnnotations:self.mapView.annotations];
 }
 
 #pragma mark - MKMapViewDelegate

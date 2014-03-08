@@ -76,6 +76,10 @@ static NSString *const kProfileViewControllerCellReuseId = @"KKProfileCell";
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.bounds] ;
     cell.selectedBackgroundView.backgroundColor = kDrkGray;
     
+    //TODO: remove then when ready to start dev on this view
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.alpha = 0.0;
+    
 	return cell;
 }
 

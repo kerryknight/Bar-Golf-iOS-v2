@@ -350,12 +350,8 @@
 		DE98378F18CAAAA600BBC926 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DE98379018CAAAA600BBC926 /* KKBarListViewController.h */,
-				DE98379118CAAAA600BBC926 /* KKBarListViewController.m */,
-				DE98379218CAAAA600BBC926 /* KKBarListViewController.xib */,
-				DE98379618CAAB5000BBC926 /* KKBarListMapViewController.h */,
-				DE98379718CAAB5000BBC926 /* KKBarListMapViewController.m */,
-				DE98379818CAAB5000BBC926 /* KKBarListMapViewController.xib */,
+				DEBC217418CB7C9200276C3E /* Map View */,
+				DEBC217318CB7C8B00276C3E /* List View */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -758,6 +754,26 @@
 				DEB1FFEE18C976E20071DCF7 /* ICSDropShadowView.m */,
 			);
 			path = ICSDrawerController;
+			sourceTree = "<group>";
+		};
+		DEBC217318CB7C8B00276C3E /* List View */ = {
+			isa = PBXGroup;
+			children = (
+				DE98379018CAAAA600BBC926 /* KKBarListViewController.h */,
+				DE98379118CAAAA600BBC926 /* KKBarListViewController.m */,
+				DE98379218CAAAA600BBC926 /* KKBarListViewController.xib */,
+			);
+			name = "List View";
+			sourceTree = "<group>";
+		};
+		DEBC217418CB7C9200276C3E /* Map View */ = {
+			isa = PBXGroup;
+			children = (
+				DE98379618CAAB5000BBC926 /* KKBarListMapViewController.h */,
+				DE98379718CAAB5000BBC926 /* KKBarListMapViewController.m */,
+				DE98379818CAAB5000BBC926 /* KKBarListMapViewController.xib */,
+			);
+			name = "Map View";
 			sourceTree = "<group>";
 		};
 		DEDA636118C807DA00997763 /* Views */ = {

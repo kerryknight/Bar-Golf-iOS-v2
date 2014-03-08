@@ -41,6 +41,7 @@ NSString *const kLaunchURLHostTakePicture                     = @"camera";
 
 NSString *const kAppDelegateApplicationDidReceiveRemoteNotification = @"com.kerryknight.bargolfstars.appDelegate.applicationDidReceiveRemoteNotification";
 NSString *const kMenuShouldShowMainInterfaceNotification      = @"KKMenuShouldShowMainInterfaceNotification";
+NSString *const kMenuShouldCloseMapViewNotification           = @"kMenuShouldCloseMapViewNotification";
 NSString *const kBarGolfShowBarsNotification                  = @"kBarGolfShowBarsNotification";
 NSString *const kBarGolfShowTaxisNotification                 = @"kBarGolfShowTaxisNotification";
 
