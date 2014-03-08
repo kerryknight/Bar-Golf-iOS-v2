@@ -48,7 +48,6 @@
     self.findBarsButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
         //post a notification to let our menu view controller know we should
         //load the find a bar list view controller
-        DLogPurple(@"");
         [[NSNotificationCenter defaultCenter] postNotificationName:kBarGolfShowBarsNotification object:nil];
         return [RACSignal empty];
     }];

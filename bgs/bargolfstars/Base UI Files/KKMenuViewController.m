@@ -13,8 +13,13 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *menuItems;
 @property (assign, nonatomic) NSInteger previousRow;
+@property (strong, nonatomic) KKNavigationController *navController;
 @property (strong, nonatomic) KKWelcomeViewController *welcomeViewController;
 @property (strong, nonatomic) ICSDrawerController *drawerController;
+@property (strong, nonatomic) MBPullDownController *toolbarPullDownController;
+@property (strong, nonatomic) MBPullDownController *mapViewPullDownController;
+@property (strong, nonatomic) KKBarGolfToolbarViewController *barGolfToolbarViewController;
+@property (strong, nonatomic) KKBarListMapViewController *mapViewController;
 @end
 
 
@@ -32,13 +37,6 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
     return self;
 }
 
-- (NSArray *)menuItems {
-	if (!_menuItems) {
-		_menuItems = @[@"My Scorecard", @"My Player Profile", @"Log Out"];
-	}
-	return _menuItems;
-}
-
 - (void)viewDidLoad {
 	[super viewDidLoad];
 }
@@ -47,21 +45,63 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (NSArray *)menuItems {
+	if (!_menuItems) {
+		_menuItems = @[@"My Scorecard", @"My Player Profile", @"Log Out"];
+	}
+	return _menuItems;
+}
+
+- (MBPullDownController *)toolbarPullDownController {
+    if (!_toolbarPullDownController) {
+        _toolbarPullDownController = [[MBPullDownController alloc] init];
+        _toolbarPullDownController.backController = self.barGolfToolbarViewController;
+    }
+    return _toolbarPullDownController;
+}
+
+- (MBPullDownController *)mapViewPullDownController {
+    if (!_mapViewPullDownController) {
+        _mapViewPullDownController = [[MBPullDownController alloc] init];
+        KKBarListViewController *barListViewController = [[KKBarListViewController alloc] init];
+        _mapViewPullDownController.frontController = barListViewController;
+        _mapViewPullDownController.backController = self.mapViewController;
+    }
+    return _mapViewPullDownController;
+}
+
+- (KKBarGolfToolbarViewController *)barGolfToolbarViewController {
+    if (!_barGolfToolbarViewController) {
+        _barGolfToolbarViewController = [[KKBarGolfToolbarViewController alloc] init];
+    }
+    return _barGolfToolbarViewController;
+}
+
+- (KKBarListMapViewController *)mapViewController {
+    if (!_mapViewController) {
+        _mapViewController = [[KKBarListMapViewController alloc] init];
+    }
+    
+    return _mapViewController;
+}
+
 #pragma mark - Public Methods
 - (void)configureAndLoadInitialWelcomeView {
-    DLogCyan(@"");
     [self showWelcomeView];
+    
+    //also, configure our pull downs once the app delegate window has had a
+    //chance to load
+    [self configureToolBarPullDownController];
+    [self configureMapViewPullDownController];
 }
 
 - (void)addNotificationObservers {
-    DLogCyan(@"");
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBars) name:kBarGolfShowBarsNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTaxis) name:kBarGolfShowTaxisNotification object:nil];
 }
 
-#pragma mark - Private Methods
+#pragma mark - Private Methods that Create and/or Push New View Controllers
 - (void)showWelcomeView {
-    DLogCyan(@"");
     // Create the navigation controller with our welcome vc
 	self.welcomeViewController = [[KKWelcomeViewController alloc] init];
 	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.welcomeViewController];
@@ -77,15 +117,13 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
 }
 
 - (void)showMainInterface {
-    DLogCyan(@"");
-    KKMenuViewController *menuVC = [[KKMenuViewController alloc] init];
     //the scorecard view will be the first view shown by default
     KKMyScorecardViewController *scorecardVC = [[KKMyScorecardViewController alloc] init];
-    MBPullDownController *pullDownController = [self configurePullDownControllerWithBarGolfToolbarForFrontController:scorecardVC];
+    self.toolbarPullDownController.frontController = scorecardVC;
     
-    KKNavigationController *navController = [[KKNavigationController alloc] initWithRootViewController:pullDownController andTitle:@"My Scorecard"];
-    self.drawerController = [[ICSDrawerController alloc] initWithLeftViewController:menuVC
-                                                                     centerViewController:navController];
+    self.navController = [[KKNavigationController alloc] initWithRootViewController:self.toolbarPullDownController andTitle:@"My Scorecard"];
+    self.drawerController = [[ICSDrawerController alloc] initWithLeftViewController:self
+                                                                     centerViewController:self.navController];
     
     //drawer needs to be the main interface view so it's top view can hold any
     //navigation controllers while the menu view controller is not part of a
@@ -93,61 +131,55 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
     KKAD.window.rootViewController = self.drawerController;
 }
 
-//creates the layers pulldown view where a scrollview overlaps the find a
-//bar/call a taxi toolbar view
-- (MBPullDownController *)configurePullDownControllerWithBarGolfToolbarForFrontController:(UIViewController *)controller {
-    //create the find a bar/call a taxi toolbar controller
-    KKBarGolfToolbarViewController *barGolfToolbar = [[KKBarGolfToolbarViewController alloc] init];
-    
-    //create our pulldown view controller and set our passed-in top view and
-    //then our toolbar as the background view
-    MBPullDownController *pullDownController = [[MBPullDownController alloc] initWithFrontController:controller backController:barGolfToolbar];
-    
-    //configure things like the pulldown distance needed and spacing
-    pullDownController.backgroundView.backgroundColor = kMedGray;
-    [(MBPullDownControllerBackgroundView *)pullDownController.backgroundView setDropShadowVisible:NO];
-    pullDownController.closedTopOffset += 20.f;
-    pullDownController.openBottomOffset = KKAD.window.frame.size.height - (64.f + 64.f);
-    pullDownController.openDragOffset = 45.f;
-    pullDownController.closeDragOffset = 25.f;
-
-    return pullDownController;
-}
-
-//used for the layered pulldown views where there's a list over top of map view
-- (MBPullDownController *)configurePullDownControllerWithMapViewForFrontController:(UIViewController *)controller {
-    DLogOrange(@"");
-    KKBarListMapViewController *mapVC = [[KKBarListMapViewController alloc] init];
-    MBPullDownController *pullDownController = [[MBPullDownController alloc] initWithFrontController:controller backController:mapVC];
-    pullDownController.backgroundView.backgroundColor = kMedGray;
-    [(MBPullDownControllerBackgroundView *)pullDownController.backgroundView setDropShadowVisible:NO];
-    pullDownController.closedTopOffset += 20.f;
-    pullDownController.openBottomOffset = KKAD.window.frame.size.height - (64.f + 164.f);
-    pullDownController.openDragOffset = 45.f;
-    pullDownController.closeDragOffset = 25.f;
-    
-    return pullDownController;
-}
-
 - (void)pushInNewViewController:(UIViewController *)vc withTitle:(NSString *)title {
-    MBPullDownController *pullDownController = [self configurePullDownControllerWithBarGolfToolbarForFrontController:vc];
-    KKNavigationController *newNavController = [[KKNavigationController alloc] initWithRootViewController:pullDownController andTitle:title];
-    [self.drawer replaceCenterViewControllerWithViewController:newNavController];
+    self.toolbarPullDownController.frontController = vc;
+    [self.navController setViewControllers:@[self.toolbarPullDownController]];
+    self.navController.customTitle = title;
+#warning title setting is not working anymore
+    [self.drawer replaceCenterViewControllerWithViewController:self.navController];
 }
 
 - (void)showBars {
-    KKBarListViewController *barListViewController = [[KKBarListViewController alloc] init];
-    //pass our vc and it's title off to our helper method which will
-    //create a new pulldown view controller to put them into
-    [self pushInNewViewController:barListViewController withTitle:@"Find a Bar"];
+    [self.navController pushViewController:self.mapViewPullDownController animated:YES];
+    //close the toolbar pull down after it's offscreen
+    [self performSelector:@selector(closeToolbarPulldown) withObject:nil afterDelay:2.0];
 }
 
 - (void)showTaxis {
+    //close the toolbar pull down after it's offscreen
+    [self performSelector:@selector(closeToolbarPulldown) withObject:nil afterDelay:2.0];
 }
 
+- (void)closeToolbarPulldown {
+    if (self.toolbarPullDownController.open) {
+        [self.toolbarPullDownController setOpen:NO animated:YES];
+    }
+}
+
+#pragma mark - Configuration Methods
+- (void)configureToolBarPullDownController {
+    //configure things like the pulldown distance needed and spacing
+    self.toolbarPullDownController.backgroundView.backgroundColor = kMedGray;
+    [(MBPullDownControllerBackgroundView *)self.toolbarPullDownController.backgroundView setDropShadowVisible:NO];
+    self.toolbarPullDownController.closedTopOffset += 20.f;
+    self.toolbarPullDownController.openBottomOffset = KKAD.window.frame.size.height - (64.f + 64.f);
+    //set distances to drage before opening/closing automatically kicks in
+    self.toolbarPullDownController.openDragOffset = 45.f;
+    self.toolbarPullDownController.closeDragOffset = 25.f;
+}
+
+//used for the layered pulldown views where there's a list over top of map view
+- (void)configureMapViewPullDownController {
+    self.mapViewPullDownController.backgroundView.backgroundColor = kMedGray;
+    [(MBPullDownControllerBackgroundView *)self.mapViewPullDownController.backgroundView setDropShadowVisible:NO];
+    self.mapViewPullDownController.closedTopOffset += 130.f;
+    self.mapViewPullDownController.openBottomOffset = KKAD.window.frame.size.height - (64.f + 164.f);
+    //set distances to drage before opening/closing automatically kicks in
+    self.mapViewPullDownController.openDragOffset = 45.f;
+    self.mapViewPullDownController.closeDragOffset = 25.f;
+}
 
 #pragma mark - Configuring the view’s layout behavior
-
 - (UIStatusBarStyle)preferredStatusBarStyle {
 	// Even if this view controller hides the status bar, implementing this method is still needed to match the center view controller's
 	// status bar style to avoid a flicker when the drawer is dragged and then left to open.
@@ -159,7 +191,6 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
 }
 
 #pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
 }
@@ -194,7 +225,9 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
 		[self.drawer close];
 	}
 	else {
-		
+        //close the toolbar pull down after it's offscreen
+        [self closeToolbarPulldown];
+        
 		NSString *menuItem = self.menuItems[indexPath.row];
 		UIViewController *newVC;
 
@@ -222,8 +255,7 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
 	self.previousRow = indexPath.row;
 }
 
-#pragma mark - ICSDrawerControllerPresenting
-
+#pragma mark - ICSDrawerControllerPresenting Methods
 - (void)drawerControllerWillOpen:(ICSDrawerController *)drawerController {
 	self.view.userInteractionEnabled = NO;
 }
