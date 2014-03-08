@@ -20,5 +20,6 @@
 @property(nonatomic, weak) ICSDrawerController *drawer;
 
 - (void)configureAndLoadInitialWelcomeView;
+- (void)addNotificationObservers;
 
 @end

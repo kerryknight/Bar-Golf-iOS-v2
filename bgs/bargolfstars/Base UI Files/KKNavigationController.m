@@ -68,19 +68,15 @@
 }
 
 #pragma mark - ICSDrawerControllerPresenting
-
 - (void)drawerControllerWillOpen:(ICSDrawerController *)drawerController {
-    DLogOrange(@"");
     self.view.userInteractionEnabled = NO;
 }
 
 - (void)drawerControllerDidClose:(ICSDrawerController *)drawerController {
-    DLogOrange(@"");
     self.view.userInteractionEnabled = YES;
 }
 
 #pragma mark - Open drawer button
-
 - (void)openDrawer:(id)sender {
     [self.drawer open];
 }

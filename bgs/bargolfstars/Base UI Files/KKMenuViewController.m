@@ -14,7 +14,6 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
 @property (strong, nonatomic) NSArray *menuItems;
 @property (assign, nonatomic) NSInteger previousRow;
 @property (strong, nonatomic) KKWelcomeViewController *welcomeViewController;
-@property (strong, nonatomic) KKNavigationController *navigationController;
 @property (strong, nonatomic) ICSDrawerController *drawerController;
 @end
 
@@ -25,10 +24,9 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-        DLogOrange(@"");
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBars) name:@"kBarGolfShowBarsNotification" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTaxis) name:@"kBarGolfShowTaxisNotification" object:nil];
+        // Custom initialization this is the only observer need to have
+        //immediately at instantiation; the others can and should wait to be
+        //added in the -addNotificationObservers method
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMainInterface) name:kMenuShouldShowMainInterfaceNotification object:nil];
     }
     return self;
@@ -51,30 +49,43 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
 
 #pragma mark - Public Methods
 - (void)configureAndLoadInitialWelcomeView {
+    DLogCyan(@"");
     [self showWelcomeView];
+}
+
+- (void)addNotificationObservers {
+    DLogCyan(@"");
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBars) name:kBarGolfShowBarsNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTaxis) name:kBarGolfShowTaxisNotification object:nil];
 }
 
 #pragma mark - Private Methods
 - (void)showWelcomeView {
+    DLogCyan(@"");
     // Create the navigation controller with our welcome vc
 	self.welcomeViewController = [[KKWelcomeViewController alloc] init];
-	self.navigationController = [[KKNavigationController alloc] initWithRootViewController:self.welcomeViewController];
+	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.welcomeViewController];
     // This is the tits. Don't forget to do this! for STPTransitions
-    self.navigationController.delegate = STPTransitionCenter.sharedInstance;
-	self.navigationController.navigationBarHidden = YES;
+    navController.delegate = STPTransitionCenter.sharedInstance;
+	navController.navigationBarHidden = YES;
     
-	[KKAD addNavControllerToWindow:self.navigationController];
+    KKAD.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    KKAD.window.backgroundColor = kDrkGray;
+    KKAD.window.rootViewController = navController;
+    
+    [KKAD.window makeKeyAndVisible];
 }
 
 - (void)showMainInterface {
+    DLogCyan(@"");
     KKMenuViewController *menuVC = [[KKMenuViewController alloc] init];
     //the scorecard view will be the first view shown by default
     KKMyScorecardViewController *scorecardVC = [[KKMyScorecardViewController alloc] init];
     MBPullDownController *pullDownController = [self configurePullDownControllerWithBarGolfToolbarForFrontController:scorecardVC];
     
-    self.navigationController = [[KKNavigationController alloc] initWithRootViewController:pullDownController andTitle:@"My Scorecard"];
+    KKNavigationController *navController = [[KKNavigationController alloc] initWithRootViewController:pullDownController andTitle:@"My Scorecard"];
     self.drawerController = [[ICSDrawerController alloc] initWithLeftViewController:menuVC
-                                                                     centerViewController:self.navigationController];
+                                                                     centerViewController:navController];
     
     //drawer needs to be the main interface view so it's top view can hold any
     //navigation controllers while the menu view controller is not part of a
@@ -119,26 +130,19 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
 }
 
 - (void)pushInNewViewController:(UIViewController *)vc withTitle:(NSString *)title {
-    DLogOrange(@"");
     MBPullDownController *pullDownController = [self configurePullDownControllerWithBarGolfToolbarForFrontController:vc];
-//    KKNavigationController *newNavController = [[KKNavigationController alloc] initWithRootViewController:pullDownController andTitle:title];
-    [self.navigationController setViewControllers:@[pullDownController]];
-    self.navigationController.customTitle = title;
-//    [self.drawer replaceCenterViewControllerWithViewController:self.navigationController];
+    KKNavigationController *newNavController = [[KKNavigationController alloc] initWithRootViewController:pullDownController andTitle:title];
+    [self.drawer replaceCenterViewControllerWithViewController:newNavController];
 }
 
 - (void)showBars {
-    DLogGreen(@"");
     KKBarListViewController *barListViewController = [[KKBarListViewController alloc] init];
     //pass our vc and it's title off to our helper method which will
     //create a new pulldown view controller to put them into
     [self pushInNewViewController:barListViewController withTitle:@"Find a Bar"];
-    
-    
 }
 
 - (void)showTaxis {
-    
 }
 
 

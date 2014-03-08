@@ -10,15 +10,15 @@
 #import "KKMenuViewController.h"
 #import "KKConfig.h"
 
-#import "KKWelcomeViewController.h"
-#import "KKMenuViewController.h"
-#import "KKNavigationController.h"
-#import "KKMyScorecardViewController.h"
+//#import "KKWelcomeViewController.h"
+//#import "KKMenuViewController.h"
+//#import "KKNavigationController.h"
+//#import "KKMyScorecardViewController.h"
 
 @interface KKAppDelegate () {
 }
 
-@property (strong, nonatomic) KKWelcomeViewController *welcomeViewController;
+//@property (strong, nonatomic) KKWelcomeViewController *welcomeViewController;
 @property (strong, nonatomic) KKMenuViewController *menuViewController;
 @property (strong, nonatomic) Reachability *hostReach;
 @property (strong, nonatomic) Reachability *internetReach;
@@ -35,18 +35,7 @@
     
     [self configure3rdParties];
     
-    if (application.applicationIconBadgeNumber != 0) {
-        application.applicationIconBadgeNumber = 0;
-        [[PFInstallation currentInstallation] saveEventually];
-    }
-    
-    //the menuViewController will configure all view loading for the app
-    //delegate and event set it's window's root view controller for it;
-    //eventhough the menu view controller won't have actual menu items for some
-    //of the views we're having it load, it will make it easier to user it
-    //essentially as a GCD for loading view controllers regardless
-    self.menuViewController = [[KKMenuViewController alloc] init];
-    [self.menuViewController configureAndLoadInitialWelcomeView];
+    [self configureMenuController];
     
     // Use Reachability to monitor connectivity
     [self monitorReachability];
@@ -85,15 +74,6 @@
 }
 
 #pragma mark - Public methods
-- (void)addNavControllerToWindow:(UINavigationController *)navController {
-    // Create the window and add our nav controller to it
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = kDrkGray;
-    self.window.rootViewController = navController;
-    
-    [self.window makeKeyAndVisible];
-}
-
 - (BOOL)isParseReachable {
     return self.networkStatus != NotReachable;
 }
@@ -116,6 +96,16 @@
 }
 
 #pragma mark - Private Methods
+- (void)configureMenuController {
+    //the menuViewController will control all view loading for the app
+    //delegate and even sets the window's root view controller on app load;
+    //eventhough the menu view controller won't have actual menu items for some
+    //of the views we're having it load, it will make it easier to user it
+    //essentially as a GCD for loading view controllers regardless
+    self.menuViewController = [[KKMenuViewController alloc] init];
+    [self.menuViewController configureAndLoadInitialWelcomeView];
+    [self.menuViewController addNotificationObservers];
+}
 
 #pragma mark - Reachability
 - (void)monitorReachability {
@@ -135,7 +125,6 @@
 - (void)reachabilityChanged:(NSNotification *)note {
     Reachability *curReach = (Reachability *)[note object];
     NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
-//    DLogRed(@"Reachability changed: %ld", [curReach currentReachabilityStatus]);
     self.networkStatus = [curReach currentReachabilityStatus];
 
     if (![self isParseReachable]) {
