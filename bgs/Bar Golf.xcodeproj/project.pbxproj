@@ -61,6 +61,8 @@
 		DEB1FFE818C965BD0071DCF7 /* KKMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEB1FFE718C965BD0071DCF7 /* KKMenuViewController.xib */; };
 		DEB1FFEF18C976E20071DCF7 /* ICSDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB1FFEC18C976E20071DCF7 /* ICSDrawerController.m */; };
 		DEB1FFF018C976E30071DCF7 /* ICSDropShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB1FFEE18C976E20071DCF7 /* ICSDropShadowView.m */; };
+		DEBC217F18CBCB4200276C3E /* KKParallaxSignalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBC217E18CBCB4200276C3E /* KKParallaxSignalViewModel.m */; };
+		DEBC218218CBCDD100276C3E /* KKMyScorecardViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBC218118CBCDD100276C3E /* KKMyScorecardViewModel.m */; };
 		DED1DF7D18C77BD200DB9088 /* UIImage+Coloring.m in Sources */ = {isa = PBXBuildFile; fileRef = DED1DF7C18C77BD200DB9088 /* UIImage+Coloring.m */; };
 		DEDA639E18C81CCB00997763 /* KKForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDA636F18C81CCB00997763 /* KKForgotPasswordViewController.m */; };
 		DEDA639F18C81CCB00997763 /* KKForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEDA637018C81CCB00997763 /* KKForgotPasswordViewController.xib */; };
@@ -174,6 +176,10 @@
 		DEB1FFEC18C976E20071DCF7 /* ICSDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSDrawerController.m; sourceTree = "<group>"; };
 		DEB1FFED18C976E20071DCF7 /* ICSDropShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSDropShadowView.h; sourceTree = "<group>"; };
 		DEB1FFEE18C976E20071DCF7 /* ICSDropShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSDropShadowView.m; sourceTree = "<group>"; };
+		DEBC217D18CBCB4200276C3E /* KKParallaxSignalViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKParallaxSignalViewModel.h; sourceTree = "<group>"; };
+		DEBC217E18CBCB4200276C3E /* KKParallaxSignalViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKParallaxSignalViewModel.m; sourceTree = "<group>"; };
+		DEBC218018CBCDD100276C3E /* KKMyScorecardViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMyScorecardViewModel.h; sourceTree = "<group>"; };
+		DEBC218118CBCDD100276C3E /* KKMyScorecardViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMyScorecardViewModel.m; sourceTree = "<group>"; };
 		DED1DF7B18C77BD200DB9088 /* UIImage+Coloring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Coloring.h"; sourceTree = "<group>"; };
 		DED1DF7C18C77BD200DB9088 /* UIImage+Coloring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Coloring.m"; sourceTree = "<group>"; };
 		DEDA636E18C81CCB00997763 /* KKForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKForgotPasswordViewController.h; sourceTree = "<group>"; };
@@ -544,8 +550,8 @@
 		DE9837B218CAB2C200BBC926 /* My Scorecard */ = {
 			isa = PBXGroup;
 			children = (
-				DE9837B318CAB2C200BBC926 /* View Controllers */,
 				DE9837B718CAB2C200BBC926 /* View Models */,
+				DE9837B318CAB2C200BBC926 /* View Controllers */,
 			);
 			path = "My Scorecard";
 			sourceTree = "<group>";
@@ -563,6 +569,8 @@
 		DE9837B718CAB2C200BBC926 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				DEBC218018CBCDD100276C3E /* KKMyScorecardViewModel.h */,
+				DEBC218118CBCDD100276C3E /* KKMyScorecardViewModel.m */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -776,6 +784,23 @@
 			name = "Map View";
 			sourceTree = "<group>";
 		};
+		DEBC217B18CBCB4200276C3E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				DEBC217C18CBCB4200276C3E /* Subclasses */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		DEBC217C18CBCB4200276C3E /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				DEBC217D18CBCB4200276C3E /* KKParallaxSignalViewModel.h */,
+				DEBC217E18CBCB4200276C3E /* KKParallaxSignalViewModel.m */,
+			);
+			path = Subclasses;
+			sourceTree = "<group>";
+		};
 		DEDA636118C807DA00997763 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -845,6 +870,7 @@
 		DEE2EE8C1891E73F00FC2991 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				DEBC217B18CBCB4200276C3E /* Classes */,
 				DE98377F18CAA03200BBC926 /* Models */,
 				DE98378618CAA03200BBC926 /* Networking */,
 				DEAB465218A5FC79008FB73D /* Categories */,
@@ -1088,6 +1114,7 @@
 				DEDA63A418C81CCB00997763 /* KKWelcomeViewController.m in Sources */,
 				DEDA63A618C81CCB00997763 /* KKLoginViewModel.m in Sources */,
 				DEDA63A218C81CCB00997763 /* KKSignUpViewController.m in Sources */,
+				DEBC218218CBCDD100276C3E /* KKMyScorecardViewModel.m in Sources */,
 				DE98378818CAA03200BBC926 /* Bar.m in Sources */,
 				DEAB466118A5FC79008FB73D /* UIImage+ResizeAdditions.m in Sources */,
 				DE9837BE18CAB2C200BBC926 /* KKMyPlayerProfileViewController.m in Sources */,
@@ -1106,6 +1133,7 @@
 				DE98378718CAA03200BBC926 /* ReverseGeocoding.m in Sources */,
 				DEDA63A018C81CCB00997763 /* KKLogInViewController.m in Sources */,
 				DEAB466018A5FC79008FB73D /* UIImage+Colorization.m in Sources */,
+				DEBC217F18CBCB4200276C3E /* KKParallaxSignalViewModel.m in Sources */,
 				DED1DF7D18C77BD200DB9088 /* UIImage+Coloring.m in Sources */,
 				DEAB467318A682C6008FB73D /* STPCardTransition.m in Sources */,
 				DEAF54EA18786C990019F7FF /* KKAppDelegate.m in Sources */,

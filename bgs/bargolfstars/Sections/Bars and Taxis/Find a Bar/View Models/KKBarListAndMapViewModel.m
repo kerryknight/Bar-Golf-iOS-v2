@@ -15,7 +15,6 @@
 @property (strong, nonatomic, readwrite) RACSignal *updatedBarListSignal;
 @property (strong, nonatomic, readwrite) RACSignal *updatedUserLocationSignal;
 @property (strong, nonatomic, readwrite) RACSignal *sendErrorSignal;
-@property (strong, nonatomic, readwrite) RACSignal *frontViewOffsetSignal;
 @end
 
 @implementation KKBarListAndMapViewModel
@@ -38,9 +37,7 @@
     self.updatedBarListSignal = [[RACSubject subject] setNameWithFormat:@"KKBarListAndMapViewModel updatedBarListSignal"];
     self.updatedUserLocationSignal = [[RACSubject subject] setNameWithFormat:@"KKBarListAndMapViewModel updatedUserLocationSignal"];
     self.sendErrorSignal = [[RACSubject subject] setNameWithFormat:@"KKBarListAndMapViewModel sendErrorSignal"];
-    self.frontViewOffsetSignal = [[RACSubject subject] setNameWithFormat:@"KKBarListAndMapViewModel frontViewOffsetSignal"];
     
-    [self createRACBindings];
     [self getUserLocation];
     
     return self;
@@ -69,15 +66,6 @@
 #pragma mark - Public Methods
 
 #pragma mark - Private Methods
-- (void)createRACBindings {
-    //bind to our front view's scrolling offset so that anytime it changes, we
-    //can fire a signal that let's our map view know so it can create a slight
-    //parallax effect on it's own
-    [RACObserve(self, frontViewOffset) subscribeNext:^(NSValue *offset) {
-        [(RACSubject *)self.frontViewOffsetSignal sendNext:offset];
-    }];
-}
-
 - (void)getUserLocation {
     [self.locationManager startUpdatingLocation];
 }

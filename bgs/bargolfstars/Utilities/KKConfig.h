@@ -45,6 +45,7 @@ extern NSString *const kLaunchURLHostTakePicture;
 extern NSString *const kAppDelegateApplicationDidReceiveRemoteNotification;
 extern NSString *const kMenuShouldShowMainInterfaceNotification;
 extern NSString *const kMenuShouldCloseMapViewNotification;
+extern NSString *const kScrollViewOffsetDidChangeForParallax;
 extern NSString *const kBarGolfShowBarsNotification;
 extern NSString *const kBarGolfShowTaxisNotification;
 

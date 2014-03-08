@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KKMyScorecardViewModel.h"
 
 @interface KKMyScorecardViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

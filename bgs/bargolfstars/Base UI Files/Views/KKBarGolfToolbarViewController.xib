@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="findBarsButton" destination="3Dh-u7-8p4" id="gAC-Xr-3dj"/>
                 <outlet property="findTaxisButton" destination="ED8-Oz-nAT" id="cfG-nW-Chg"/>
+                <outlet property="toolBarView" destination="0fR-t1-dwM" id="BBT-1V-Nsp"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -17,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0fR-t1-dwM">
-                    <rect key="frame" x="0.0" y="64" width="320" height="64"/>
+                    <rect key="frame" x="0.0" y="44" width="320" height="64"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dh-u7-8p4">

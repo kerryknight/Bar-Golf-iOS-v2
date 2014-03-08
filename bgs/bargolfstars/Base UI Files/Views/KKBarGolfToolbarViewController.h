@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface KKBarGolfToolbarViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIView *toolBarView;
 @property (weak, nonatomic) IBOutlet UIButton *findBarsButton;
 @property (weak, nonatomic) IBOutlet UIButton *findTaxisButton;
 

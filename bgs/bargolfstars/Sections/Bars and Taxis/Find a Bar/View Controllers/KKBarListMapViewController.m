@@ -37,11 +37,17 @@
     //it a more proactive thing on the user and a better experience
     [self configureViewModel];
     [self configureMap];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mapOffsetDidChange:) name:kScrollViewOffsetDidChangeForParallax object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Public Methods
@@ -60,16 +66,13 @@
     [[[KKBarListAndMapViewModel sharedViewModel].updatedBarListSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(NSArray *bars) {
         [self addMapAnnotationsForBarList:bars];
     }];
-    
-    //bind our to our view model's offset property so we can add a
-    //parallax effect to our map view and re-center it as the view opens
-    [[[KKBarListAndMapViewModel sharedViewModel].frontViewOffsetSignal combinePreviousWithStart:@0 reduce:^(NSNumber *previous, NSNumber *next) {
-        @strongify(self)
-        [self parallaxMapViewForOldOffset:previous andNewOffset:next];
-        return [RACSignal empty];
-    }] subscribeNext:^(id x) {
-        //no op
-    }];
+}
+
+- (void)mapOffsetDidChange:(NSNotification *)notification {
+    NSDictionary *userDict = [notification userInfo];
+    NSNumber *previous = userDict[@"previousOffset"];
+    NSNumber *next = userDict[@"nextOffset"];
+    [self parallaxMapViewForOldOffset:previous andNewOffset:next];
 }
 
 - (float)deltaLatFor1px {

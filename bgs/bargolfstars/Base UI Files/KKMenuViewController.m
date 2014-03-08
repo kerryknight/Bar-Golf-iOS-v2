@@ -173,7 +173,7 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
     self.toolbarPullDownController.closedTopOffset += 20.f;
     self.toolbarPullDownController.openBottomOffset = KKAD.window.frame.size.height - (64.f + 64.f);
     //set distances to drage before opening/closing automatically kicks in
-    self.toolbarPullDownController.openDragOffset = 45.f;
+    self.toolbarPullDownController.openDragOffset = 64.f;
     self.toolbarPullDownController.closeDragOffset = 25.f;
 }
 
