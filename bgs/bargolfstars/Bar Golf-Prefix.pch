@@ -1,0 +1,48 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <QuartzCore/QuartzCore.h>
+
+    //Pods
+    #import "Crashlytics.h"
+    #import "ReactiveCocoa.h"
+    #import "RACEXTScope.h"
+    #import "RVMViewModel.h"
+    //#import "IFTTTJazzHands.h"
+    #import "MRProgress.h"
+    #import "JVFloatLabeledTextField.h"
+    //#import "VTAcknowledgementsViewController.h"
+    #import <RevMobAds/RevMobAds.h>
+    #import <Parse/Parse.h>
+    #import "Parse-RACExtensions.h"
+    #import "Reachability.h"
+    #import "SIAlertView.h"
+    #import "STPTransitions.h"
+    #import "MBPullDownController.h"
+    #import "ICSDrawerController.h"
+    #import "Mantle.h"
+    #import "Foursquare2.h"
+
+    //Local Files
+    #import "KKConfig.h"
+    #import "KKMacros.h"
+    #import "UIImage+Coloring.h"
+    #import "KKUtility.h"
+    #import "KKCache.h"
+    #import "KKAllSTPTransitions.h"
+    #import "KKStatusBarNotification.h"
+    #import "KKBarGolfToolbarViewController.h"  
+
+#endif
