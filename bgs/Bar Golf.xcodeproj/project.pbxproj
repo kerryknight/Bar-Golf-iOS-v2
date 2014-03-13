@@ -965,7 +965,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = KK;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Kerry Knight";
 				TargetAttributes = {
 					DE56F53518A9E013000BDF13 = {
@@ -1181,7 +1181,6 @@
 		DE56F54618A9E013000BDF13 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bar Golf.app/Bar Golf";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"${PODS_ROOT}/Parse\"",
@@ -1232,7 +1231,6 @@
 		DE56F54718A9E013000BDF13 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bar Golf.app/Bar Golf";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"${PODS_ROOT}/Parse\"",
@@ -1279,7 +1277,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1319,7 +1316,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;

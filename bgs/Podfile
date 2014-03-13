@@ -21,7 +21,7 @@ pod 'Nimbus/AttributedLabel', '= 1.2.0'
 pod 'TRVSMonitor', '0.0.3' #for unit testing async operations
 pod 'CrashlyticsFramework', '2.1.7'
 pod 'MBPullDownController', '1.1.1' #to display the hidden find bar/call taxi
-pod 'Mantle', '1.4'
+pod 'Mantle', '1.4.1'
 pod 'Foursquare-API-v2', '1.4.4'
 
 # if permissions error, try:

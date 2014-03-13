@@ -10,7 +10,7 @@
 
 @interface KKBarListMapViewController ()
 @property (assign, nonatomic) float deltaLatFor1px;
-@property (assign, nonatomic) CLLocationCoordinate2D originalCoordinate;
+@property (strong, nonatomic) CLLocation *originalLocation;
 @end
 
 @implementation KKBarListMapViewController
@@ -133,7 +133,7 @@
         if (![x boolValue]) {
             [self.mapView setZoomEnabled:NO];
             [self.mapView setScrollEnabled:NO];
-            [self performSelector:@selector(resetMapToStartingPosition) withObject:nil afterDelay:0.5];
+            [self performSelector:@selector(resetMapToStartingLocation:) withObject:self.originalLocation afterDelay:0.75];
         } else {
             [self.mapView setZoomEnabled:YES];
             [self.mapView setScrollEnabled:YES];
@@ -142,7 +142,7 @@
     }];
 }
 
-- (void)resetMapToStartingPosition {
+- (void)resetMapToStartingLocation:(CLLocation *)location {
     @weakify(self)
     //this is definitely getting kinda hackish trying to synchronize map
     //animations that don't have completion callbacks here, but it works for
@@ -150,10 +150,11 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:0.5 animations:^{
             @strongify(self)
-            [self setMapRegionForLocation:[KKBarListAndMapViewModel sharedViewModel].userLocation withAnimation:NO];
+            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
+            [self.mapView setCenterCoordinate:coordinate animated:YES];
         } completion:^(BOOL finished) {
             @strongify(self)
-            [self.mapView setCenterCoordinate:self.originalCoordinate animated:YES];
+            [self setMapRegionForLocation:location withAnimation:YES];
         }];
     });
 }
@@ -164,7 +165,7 @@
 }
 
 - (void)centerMapOnUserLocation:(CLLocation *)location withAnimation:(BOOL)animation {
-    [self.mapView setCenterCoordinate:location.coordinate animated:YES];
+    [self.mapView setCenterCoordinate:location.coordinate animated:NO];
 
     [self setMapRegionForLocation:location withAnimation:animation];
     
@@ -172,15 +173,22 @@
     //offset vertically slightly
     CGPoint fakecenter = CGPointMake(self.view.frame.size.width/2, 470);
     CLLocationCoordinate2D coordinate = [self.mapView convertPoint:fakecenter toCoordinateFromView:self.mapView];
-    self.originalCoordinate = coordinate;
-    [self.mapView setCenterCoordinate:coordinate animated:YES];
+    
+    //keep track of originally set offset location so we can animate back to it if user opens map up and moves around in it
+    self.originalLocation = [[CLLocation alloc] initWithCoordinate:coordinate altitude:location.altitude horizontalAccuracy:location.horizontalAccuracy verticalAccuracy:location.verticalAccuracy course:location.course speed:location.speed timestamp:location.timestamp];
     
     //attempt to zoom around the pins; if there are none, nothing will happen
     [self zoomMapViewToFitAnnotationsWithUserLocation:location];
+    
+    if (location) {
+        //only animate to position if location isn't null
+        [self resetMapToStartingLocation:self.originalLocation];
+    }
 }
 
 - (void)zoomMapViewToFitAnnotationsWithUserLocation:(BOOL)fitToUserLocation {
     if ([self.mapView.annotations count] > 1) {
+        DLogYellow(@"");
         MKMapRect zoomRect = MKMapRectNull;
         for (id <MKAnnotation> annotation in self.mapView.annotations) {
             if (fitToUserLocation) {

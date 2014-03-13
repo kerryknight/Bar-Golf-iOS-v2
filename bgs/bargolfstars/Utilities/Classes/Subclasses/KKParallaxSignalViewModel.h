@@ -9,5 +9,5 @@
 #import "RVMViewModel.h"
 
 @interface KKParallaxSignalViewModel : RVMViewModel
-@property (assign, nonatomic) NSInteger frontViewOffset;
+@property (assign, nonatomic) CGFloat frontViewOffset;
 @end
