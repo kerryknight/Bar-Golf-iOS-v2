@@ -45,5 +45,7 @@
     #import "KKStatusBarNotification.h"
     #import "KKNavigationController.h"
     #import "KKBarGolfToolbarViewController.h"  
+    #import "Foursquare2+RACExtensions.h"
+    #import "FSVenue.h"
 
 #endif

@@ -62,7 +62,7 @@ static NSString *const kScorecardViewControllerCellReuseId = @"KKScorecardCell";
 - (void)configureViewModel {
     //update our table view anytime we get a list of bars from our view model
     [[[KKBarListAndMapViewModel sharedViewModel].updatedBarListSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(NSArray *bars) {
-        DLogOrange(@"bars: %@", bars);
+//        DLogOrange(@"bars: %@", bars);
     }];
     
     //show an error notification anytime we receive an error signal from our

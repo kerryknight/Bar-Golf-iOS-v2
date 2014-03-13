@@ -71,7 +71,23 @@
 }
 
 - (void)getBarsForLocation:(CLLocation *)location {
-//    DLogBlue(@"location: %@", location);
+    // Use Foursquare2 library and map results to convert into an array of Mantle objects
+    [[[Foursquare2 rac_queryFourquareForBarsNearLocation:location forSearchTerm:nil]
+    map:^id(NSDictionary *json) {
+        // Build a sequence from the list of raw JSON
+        RACSequence *list = [json[@"response"][@"venues"] rac_sequence];
+        
+        // Use a function to map results from JSON to Mantle objects
+        return [[list map:^(NSDictionary *item) {
+            return [MTLJSONAdapter modelOfClass:[FSVenue class] fromJSONDictionary:item error:nil];
+        }] array];
+    }] subscribeNext:^(NSArray *barList) {
+        //send our signal so our map view can know to update itself
+        [(RACSubject *)self.updatedBarListSignal sendNext:barList];
+        
+    } error:^(NSError *error) {
+        DLogRed(@"error: %@", error);
+    }];
 }
 
 #pragma mark - CLLocationManagerDelegate

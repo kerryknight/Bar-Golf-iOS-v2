@@ -119,13 +119,14 @@
 - (void)configureMap {
     @weakify(self)
     
+    self.mapView.delegate = self;
+    self.mapView.showsUserLocation = YES;
+    
     //bind to the view model's userLocation which will update our map
     [RACObserve([KKBarListAndMapViewModel sharedViewModel], userLocation) subscribeNext:^(CLLocation *location) {
         @strongify(self)
         [self centerMapOnUserLocation:location withAnimation:NO];
     }];
-    
-    self.mapView.showsUserLocation = YES;
     
     //only allow scrolling/zooming if our map view is open fully
     [[[RACObserve(self.pullDownController, open) deliverOn:[RACScheduler mainThreadScheduler]] skip:1] subscribeNext:^(id x) {
@@ -133,11 +134,12 @@
         if (![x boolValue]) {
             [self.mapView setZoomEnabled:NO];
             [self.mapView setScrollEnabled:NO];
-            [self performSelector:@selector(resetMapToStartingLocation:) withObject:self.originalLocation afterDelay:0.75];
+            [self performSelector:@selector(resetMapToStartingLocation:) withObject:self.originalLocation afterDelay:0.5];
         } else {
             [self.mapView setZoomEnabled:YES];
             [self.mapView setScrollEnabled:YES];
             [self.mapView setNeedsLayout];
+            [self performSelector:@selector(zoomMapViewToFitAnnotationsWithUserLocation:) withObject:@YES afterDelay:0.5];
         }
     }];
 }
@@ -155,6 +157,7 @@
         } completion:^(BOOL finished) {
             @strongify(self)
             [self setMapRegionForLocation:location withAnimation:YES];
+            DLogOrange(@"");
         }];
     });
 }
@@ -177,9 +180,6 @@
     //keep track of originally set offset location so we can animate back to it if user opens map up and moves around in it
     self.originalLocation = [[CLLocation alloc] initWithCoordinate:coordinate altitude:location.altitude horizontalAccuracy:location.horizontalAccuracy verticalAccuracy:location.verticalAccuracy course:location.course speed:location.speed timestamp:location.timestamp];
     
-    //attempt to zoom around the pins; if there are none, nothing will happen
-    [self zoomMapViewToFitAnnotationsWithUserLocation:location];
-    
     if (location) {
         //only animate to position if location isn't null
         [self resetMapToStartingLocation:self.originalLocation];
@@ -188,7 +188,6 @@
 
 - (void)zoomMapViewToFitAnnotationsWithUserLocation:(BOOL)fitToUserLocation {
     if ([self.mapView.annotations count] > 1) {
-        DLogYellow(@"");
         MKMapRect zoomRect = MKMapRectNull;
         for (id <MKAnnotation> annotation in self.mapView.annotations) {
             if (fitToUserLocation) {
@@ -217,14 +216,12 @@
 }
 
 - (void)addMapAnnotationsForBarList:(NSArray *)list {
-    DLogOrange(@"bars: %@", list);
     [self.mapView removeAnnotations:self.mapView.annotations];
+    [self.mapView addAnnotations:list];
 }
 
 #pragma mark - MKMapViewDelegate
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    DLogOrange(@"");
-    
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
     
@@ -232,9 +229,10 @@
     
     MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:AnnotationViewID];
     if (!annotationView) {
-        
         annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
         annotationView.canShowCallout = YES;
+        annotationView.animatesDrop = YES;
+        annotationView.pinColor = MKPinAnnotationColorPurple;
         annotationView.draggable = NO;
         
     } else {

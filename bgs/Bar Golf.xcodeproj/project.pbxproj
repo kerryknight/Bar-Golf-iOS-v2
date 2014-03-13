@@ -77,6 +77,9 @@
 		DEE2EE9D1891E7EA00FC2991 /* KKConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EE9B1891E7EA00FC2991 /* KKConfig.m */; };
 		DEE2EEA91891F05300FC2991 /* KKMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EEA31891F05300FC2991 /* KKMenuViewController.m */; };
 		DEE2EEAE1891F07B00FC2991 /* KKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2EEAD1891F07B00FC2991 /* KKNavigationController.m */; };
+		DEE8B4E218D153C100E80570 /* Foursquare2+RACExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE8B4E118D153C100E80570 /* Foursquare2+RACExtensions.m */; };
+		DEE8B4E518D1552000E80570 /* Foursquare2RACCallbacks.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE8B4E418D1552000E80570 /* Foursquare2RACCallbacks.m */; };
+		DEE8B4EF18D1664100E80570 /* FSVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE8B4EE18D1664100E80570 /* FSVenue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,6 +209,12 @@
 		DEE2EEA31891F05300FC2991 /* KKMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMenuViewController.m; sourceTree = "<group>"; };
 		DEE2EEAC1891F07B00FC2991 /* KKNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKNavigationController.h; sourceTree = "<group>"; };
 		DEE2EEAD1891F07B00FC2991 /* KKNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKNavigationController.m; sourceTree = "<group>"; };
+		DEE8B4E018D153C100E80570 /* Foursquare2+RACExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Foursquare2+RACExtensions.h"; path = "Fourquare/Foursquare2+RACExtensions.h"; sourceTree = "<group>"; };
+		DEE8B4E118D153C100E80570 /* Foursquare2+RACExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Foursquare2+RACExtensions.m"; path = "Fourquare/Foursquare2+RACExtensions.m"; sourceTree = "<group>"; };
+		DEE8B4E318D1552000E80570 /* Foursquare2RACCallbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Foursquare2RACCallbacks.h; path = Fourquare/Foursquare2RACCallbacks.h; sourceTree = "<group>"; };
+		DEE8B4E418D1552000E80570 /* Foursquare2RACCallbacks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Foursquare2RACCallbacks.m; path = Fourquare/Foursquare2RACCallbacks.m; sourceTree = "<group>"; };
+		DEE8B4ED18D1664100E80570 /* FSVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSVenue.h; path = Fourquare/Models/FSVenue.h; sourceTree = "<group>"; };
+		DEE8B4EE18D1664100E80570 /* FSVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSVenue.m; path = Fourquare/Models/FSVenue.m; sourceTree = "<group>"; };
 		F172BBDD0FFB49A6A15EA00F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -349,6 +358,7 @@
 		DE98378618CAA03200BBC926 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				DEE8B4DF18D1535700E80570 /* Foursquare */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -907,6 +917,27 @@
 			path = "Base UI Files/Transitions";
 			sourceTree = "<group>";
 		};
+		DEE8B4DF18D1535700E80570 /* Foursquare */ = {
+			isa = PBXGroup;
+			children = (
+				DEE8B4EC18D1661800E80570 /* Models */,
+				DEE8B4E018D153C100E80570 /* Foursquare2+RACExtensions.h */,
+				DEE8B4E118D153C100E80570 /* Foursquare2+RACExtensions.m */,
+				DEE8B4E318D1552000E80570 /* Foursquare2RACCallbacks.h */,
+				DEE8B4E418D1552000E80570 /* Foursquare2RACCallbacks.m */,
+			);
+			name = Foursquare;
+			sourceTree = "<group>";
+		};
+		DEE8B4EC18D1661800E80570 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DEE8B4ED18D1664100E80570 /* FSVenue.h */,
+				DEE8B4EE18D1664100E80570 /* FSVenue.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		DEE8BAA218787C52000EA492 /* UI Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1123,12 +1154,14 @@
 				DEAB466F18A6290C008FB73D /* STPSlideUpTransition.m in Sources */,
 				DEAB468118A6CA36008FB73D /* JVFloatLabeledTextField+LabelText.m in Sources */,
 				DEDA63A518C81CCB00997763 /* KKForgotPasswordViewModel.m in Sources */,
+				DEE8B4EF18D1664100E80570 /* FSVenue.m in Sources */,
 				DE98379918CAAB5000BBC926 /* KKBarListMapViewController.m in Sources */,
 				DEDA63A718C81CCB00997763 /* KKSignUpViewModel.m in Sources */,
 				DE85B32C18B1735D00040A9E /* PFFile+RACExtensions.m in Sources */,
 				DEE2EEAE1891F07B00FC2991 /* KKNavigationController.m in Sources */,
 				DEB1FFDB18C95AFF0071DCF7 /* KKBarGolfToolbarViewController.m in Sources */,
 				DE05963E1895C85600892F24 /* KKCache.m in Sources */,
+				DEE8B4E218D153C100E80570 /* Foursquare2+RACExtensions.m in Sources */,
 				DE9837C018CAB2C200BBC926 /* KKMyScorecardViewController.m in Sources */,
 				DE98378718CAA03200BBC926 /* ReverseGeocoding.m in Sources */,
 				DEDA63A018C81CCB00997763 /* KKLogInViewController.m in Sources */,
@@ -1145,6 +1178,7 @@
 				DEB1FFF018C976E30071DCF7 /* ICSDropShadowView.m in Sources */,
 				DE9837C418CAB2EF00BBC926 /* KKBarListAndMapViewModel.m in Sources */,
 				DEE2EE9D1891E7EA00FC2991 /* KKConfig.m in Sources */,
+				DEE8B4E518D1552000E80570 /* Foursquare2RACCallbacks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
