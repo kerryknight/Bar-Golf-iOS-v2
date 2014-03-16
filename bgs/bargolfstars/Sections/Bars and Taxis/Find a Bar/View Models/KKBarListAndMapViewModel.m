@@ -40,7 +40,8 @@
     self.updatedUserLocationSignal = [[RACSubject subject] setNameWithFormat:@"KKBarListAndMapViewModel updatedUserLocationSignal"];
     self.sendErrorSignal = [[RACSubject subject] setNameWithFormat:@"KKBarListAndMapViewModel sendErrorSignal"];
     
-    [self getUserLocation];
+    //add observer for refresh notification we might get from the our custom nav bar
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getUserLocation) name:kBarGolfRefreshButtonNotification object:nil];
     
     return self;
 }
@@ -63,6 +64,10 @@
         _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     }
     return _locationManager;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Public Methods

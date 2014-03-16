@@ -34,6 +34,7 @@
     #import "ICSDrawerController.h"
     #import "Mantle.h"
     #import "Foursquare2.h"
+    #import "FXBlurView.h"
 
     //Local Files
     #import "KKConfig.h"

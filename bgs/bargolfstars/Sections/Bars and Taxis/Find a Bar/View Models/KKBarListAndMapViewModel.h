@@ -16,5 +16,6 @@
 @property (strong, nonatomic, readonly) RACSignal *sendErrorSignal;
 
 + (KKBarListAndMapViewModel *)sharedViewModel;
+- (void)getUserLocation;
 
 @end

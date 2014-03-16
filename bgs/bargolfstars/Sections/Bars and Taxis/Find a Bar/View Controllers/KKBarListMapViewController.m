@@ -47,7 +47,8 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     //post a notification to hide our address bar as casting then telling the nav controller directly
-    //seems to be a bit unreliable in doing so
+    //seems to be a bit unreliable in doing so; need to double post here and on list view as this only
+    //gets called when the map view is closed
     [[NSNotificationCenter defaultCenter] postNotificationName:kBarGolfHideUserAddressBarNotification object:nil];
 }
 
@@ -160,7 +161,7 @@
         if (![x boolValue]) {
             [self.mapView setZoomEnabled:NO];
             [self.mapView setScrollEnabled:NO];
-            [self performSelector:@selector(resetMapToStartingLocation:) withObject:self.originalLocation afterDelay:0.5];
+            [self performSelector:@selector(resetMapToStartingLocation:) withObject:self.originalLocation afterDelay:0.75];
             
             //only enable map tap gesture to open when the map is in closed state
             self.tapInterceptor.enabled = YES;

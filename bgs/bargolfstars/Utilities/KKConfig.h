@@ -49,6 +49,7 @@ extern NSString *const kScrollViewOffsetDidChangeForParallax;
 extern NSString *const kBarGolfShowBarsNotification;
 extern NSString *const kBarGolfShowTaxisNotification;
 extern NSString *const kBarGolfHideUserAddressBarNotification;
+extern NSString *const kBarGolfRefreshButtonNotification;
 
 
 #pragma mark - Installation Class

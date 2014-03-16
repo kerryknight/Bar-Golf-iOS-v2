@@ -16,5 +16,7 @@
 
 - (BOOL)isParseReachable;
 - (void)logOut;
+- (void)showSpinnerWithMessage:(NSString *)message;
+- (void)hideSpinner;
 
 @end

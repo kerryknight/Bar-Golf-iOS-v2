@@ -7,6 +7,7 @@
 //
 
 #import "KKBarListViewController.h"
+#import "KKAppDelegate.h"
 
 static NSString *const kScorecardViewControllerCellReuseId = @"KKScorecardCell";
 
@@ -29,6 +30,13 @@ static NSString *const kScorecardViewControllerCellReuseId = @"KKScorecardCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self configureUI];
+    
+    //add observer for refresh notification we might get from the our custom nav bar
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSpinner) name:kBarGolfRefreshButtonNotification object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -45,10 +53,19 @@ static NSString *const kScorecardViewControllerCellReuseId = @"KKScorecardCell";
     [self configureViewModel];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    //post a notification to hide our address bar as casting then telling the nav controller directly
+    //seems to be a bit unreliable in doing so; need to double post here on on map view as this only
+    //gets called when the map view is open
+    [[NSNotificationCenter defaultCenter] postNotificationName:kBarGolfHideUserAddressBarNotification object:nil];
+}
+
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     //let our menu view know to close our map view in case it's been opened
     [[NSNotificationCenter defaultCenter] postNotificationName:kMenuShouldCloseMapViewNotification object:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,9 +77,12 @@ static NSString *const kScorecardViewControllerCellReuseId = @"KKScorecardCell";
 
 #pragma mark - Private Methods
 - (void)configureViewModel {
+    @weakify(self)
     //update our table view anytime we get a list of bars from our view model
     [[[KKBarListAndMapViewModel sharedViewModel].updatedBarListSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(NSArray *bars) {
 //        DLogOrange(@"bars: %@", bars);
+        [KKAD hideSpinner];
+        
     }];
     
     //show an error notification anytime we receive an error signal from our
@@ -76,14 +96,23 @@ static NSString *const kScorecardViewControllerCellReuseId = @"KKScorecardCell";
     //bind our view model to our tableview content offset so we can add a
     //parallax effect to our map view and recenter it was the view opens
     [RACObserve(self.tableView, contentOffset) subscribeNext:^(NSValue *value) {
+        @strongify(self)
         NSInteger y = floor(self.tableView.contentOffset.y);
         [KKBarListAndMapViewModel sharedViewModel].frontViewOffset = y;
     }];
+    
+    [KKAD showSpinnerWithMessage:@"Updating..."];
+    //tell our view model to start looking for the user's location now
+    [[KKBarListAndMapViewModel sharedViewModel] getUserLocation];
 }
 
 - (void)configureUI {
     self.tableView.backgroundColor = kMedGray;
     self.view.backgroundColor = kMedGray;
+}
+
+- (void)showSpinner {
+    [KKAD showSpinnerWithMessage:@"Updating..."];
 }
 
 #pragma mark - Table view data source

@@ -18,4 +18,5 @@
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController andTitle:(NSString *)title;
 - (void)setTitleLabelText:(NSString *)title;
 - (void)showUserAddressBarWithAddress:(NSString *)address;
+- (void)shouldShowRefreshButton:(BOOL)show;
 @end

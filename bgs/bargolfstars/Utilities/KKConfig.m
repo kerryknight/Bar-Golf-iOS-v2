@@ -46,6 +46,7 @@ NSString *const kScrollViewOffsetDidChangeForParallax         = @"kScrollViewOff
 NSString *const kBarGolfShowBarsNotification                  = @"kBarGolfShowBarsNotification";
 NSString *const kBarGolfShowTaxisNotification                 = @"kBarGolfShowTaxisNotification";
 NSString *const kBarGolfHideUserAddressBarNotification        = @"kBarGolfHideUserAddressBarNotification";
+NSString *const kBarGolfRefreshButtonNotification             = @"kBarGolfRefreshButtonNotification";
 
 #pragma mark - Installation Class
 

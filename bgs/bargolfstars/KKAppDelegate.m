@@ -10,15 +10,9 @@
 #import "KKMenuViewController.h"
 #import "KKConfig.h"
 
-//#import "KKWelcomeViewController.h"
-//#import "KKMenuViewController.h"
-//#import "KKNavigationController.h"
-//#import "KKMyScorecardViewController.h"
-
 @interface KKAppDelegate () {
 }
 
-//@property (strong, nonatomic) KKWelcomeViewController *welcomeViewController;
 @property (strong, nonatomic) KKMenuViewController *menuViewController;
 @property (strong, nonatomic) Reachability *hostReach;
 @property (strong, nonatomic) Reachability *internetReach;
@@ -93,6 +87,24 @@
     
     // Log out
     [PFUser logOut];
+}
+
+- (void)showSpinnerWithMessage:(NSString *)message {
+    @weakify(self)
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        @strongify(self)
+        //show the spinner
+        MRProgressOverlayView *spinnerView = [MRProgressOverlayView showOverlayAddedTo:self.window title:NSLocalizedString(message, Nil) mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+        [spinnerView setTintColor:kLtGreen];
+    });
+}
+
+- (void)hideSpinner {
+    @weakify(self)
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        @strongify(self)
+        [MRProgressOverlayView dismissOverlayForView:self.window animated:YES];
+    });
 }
 
 #pragma mark - Private Methods
