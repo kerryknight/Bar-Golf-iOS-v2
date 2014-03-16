@@ -23,12 +23,13 @@ static NSError *Fourquare2RACNormalizeError(NSError *error) {
 
 Foursquare2Callback Foursquare2RACCallback(id<RACSubscriber> subscriber) {
 	return ^(BOOL success, id result) {
+        
 		if (success) {
 			[subscriber sendNext:result];
 			[subscriber sendCompleted];
 		} else {
             NSMutableDictionary* details = [NSMutableDictionary dictionary];
-            [details setValue:@"Foursquare query failed." forKey:NSLocalizedDescriptionKey];
+            [details setValue:@"Foursquare nearby bars query failed." forKey:NSLocalizedDescriptionKey];
             NSError *error = [NSError errorWithDomain:Fourquare2RACErrorDomain code:Fourquare2RACUnknownError userInfo:details];
 			[subscriber sendError:Fourquare2RACNormalizeError(error)];
 		}

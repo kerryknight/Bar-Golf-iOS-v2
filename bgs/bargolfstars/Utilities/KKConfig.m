@@ -45,6 +45,7 @@ NSString *const kMenuShouldCloseMapViewNotification           = @"kMenuShouldClo
 NSString *const kScrollViewOffsetDidChangeForParallax         = @"kScrollViewOffsetDidChangeForParallax";
 NSString *const kBarGolfShowBarsNotification                  = @"kBarGolfShowBarsNotification";
 NSString *const kBarGolfShowTaxisNotification                 = @"kBarGolfShowTaxisNotification";
+NSString *const kBarGolfHideUserAddressBarNotification        = @"kBarGolfHideUserAddressBarNotification";
 
 #pragma mark - Installation Class
 

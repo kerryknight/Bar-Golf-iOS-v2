@@ -86,6 +86,8 @@
 
 //font
 #define kHelveticaLight     @"HelveticaNeue-Light"
+#define kHelveticaMedium     @"HelveticaNeue-Medium"
+#define kHelveticaBold     @"HelveticaNeue-Bold"
 
 //welcome/login/signup/forgot password view formatting
 #define kWelcomButtonHeight         50

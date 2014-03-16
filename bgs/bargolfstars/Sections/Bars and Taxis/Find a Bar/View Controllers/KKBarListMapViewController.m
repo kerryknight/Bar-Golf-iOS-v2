@@ -7,10 +7,13 @@
 //
 
 #import "KKBarListMapViewController.h"
+#import "WildcardGestureRecognizer.h"
+#import "KKNavigationController.h"
 
 @interface KKBarListMapViewController ()
 @property (assign, nonatomic) float deltaLatFor1px;
 @property (strong, nonatomic) CLLocation *originalLocation;
+@property (nonatomic, strong) WildcardGestureRecognizer *tapInterceptor;
 @end
 
 @implementation KKBarListMapViewController
@@ -41,6 +44,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mapOffsetDidChange:) name:kScrollViewOffsetDidChangeForParallax object:nil];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    //post a notification to hide our address bar as casting then telling the nav controller directly
+    //seems to be a bit unreliable in doing so
+    [[NSNotificationCenter defaultCenter] postNotificationName:kBarGolfHideUserAddressBarNotification object:nil];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -57,9 +67,14 @@
     @weakify(self)
     
     //center our map on the user's location anytime it updates
-    [[[KKBarListAndMapViewModel sharedViewModel].updatedUserLocationSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(CLLocation *location) {
+    [[[KKBarListAndMapViewModel sharedViewModel].updatedUserLocationSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(NSDictionary *location) {
         @strongify(self)
-        [self centerMapOnUserLocation:location withAnimation:NO];
+        //animate our user's location view in from the nav bar
+        KKNavigationController *navController = (KKNavigationController *)self.pullDownController.navigationController;
+        [navController showUserAddressBarWithAddress:location[@"address"]];
+        
+        //then center our map on the user's location as well
+        [self centerMapOnUserLocation:(CLLocation *)location[@"location"] withAnimation:NO];
     }];
     
     //update our map's dropped pins anytime we receive a new list of bars
@@ -122,6 +137,17 @@
     self.mapView.delegate = self;
     self.mapView.showsUserLocation = YES;
     
+    //add the tap gesture recognizer that opens the map fully
+    self.tapInterceptor = [[WildcardGestureRecognizer alloc] init];
+    self.tapInterceptor.touchesBeganCallback = ^(NSSet * touches, UIEvent * event) {
+        @strongify(self)
+        //only open if we're aren't already open
+        if (!self.pullDownController.open) {
+            [self.pullDownController setOpen:YES animated:YES];
+        }
+    };
+    [self.mapView addGestureRecognizer:self.tapInterceptor];
+    
     //bind to the view model's userLocation which will update our map
     [RACObserve([KKBarListAndMapViewModel sharedViewModel], userLocation) subscribeNext:^(CLLocation *location) {
         @strongify(self)
@@ -135,11 +161,18 @@
             [self.mapView setZoomEnabled:NO];
             [self.mapView setScrollEnabled:NO];
             [self performSelector:@selector(resetMapToStartingLocation:) withObject:self.originalLocation afterDelay:0.5];
+            
+            //only enable map tap gesture to open when the map is in closed state
+            self.tapInterceptor.enabled = YES;
+            
         } else {
             [self.mapView setZoomEnabled:YES];
             [self.mapView setScrollEnabled:YES];
             [self.mapView setNeedsLayout];
             [self performSelector:@selector(zoomMapViewToFitAnnotationsWithUserLocation:) withObject:@YES afterDelay:0.5];
+            
+            //only enable map tap gesture to open when the map is in closed state
+            self.tapInterceptor.enabled = NO;
         }
     }];
 }
@@ -157,7 +190,6 @@
         } completion:^(BOOL finished) {
             @strongify(self)
             [self setMapRegionForLocation:location withAnimation:YES];
-            DLogOrange(@"");
         }];
     });
 }
@@ -174,7 +206,7 @@
     
     //since we initially show the map in a smaller view, we need to center but
     //offset vertically slightly
-    CGPoint fakecenter = CGPointMake(self.view.frame.size.width/2, 470);
+    CGPoint fakecenter = CGPointMake(self.view.frame.size.width/2, 400);
     CLLocationCoordinate2D coordinate = [self.mapView convertPoint:fakecenter toCoordinateFromView:self.mapView];
     
     //keep track of originally set offset location so we can animate back to it if user opens map up and moves around in it

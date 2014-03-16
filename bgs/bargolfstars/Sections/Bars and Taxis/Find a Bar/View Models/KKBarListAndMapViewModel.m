@@ -7,7 +7,9 @@
 //
 
 #import "KKBarListAndMapViewModel.h"
+
 @import CoreLocation;
+@import AddressBookUI;
 
 @interface KKBarListAndMapViewModel() <CLLocationManagerDelegate>
 @property (strong, nonatomic, readwrite) CLLocation *userLocation;
@@ -87,6 +89,7 @@
         
     } error:^(NSError *error) {
         DLogRed(@"error: %@", error);
+        [(RACSubject *)self.sendErrorSignal sendNext:error];
     }];
 }
 
@@ -94,8 +97,17 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     self.userLocation = [locations lastObject];
     
-    //send our signal so our map view can know to update itself
-    [(RACSubject *)self.updatedUserLocationSignal sendNext:self.userLocation];
+    @weakify(self)
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:self.userLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        @strongify(self)
+        CLPlacemark *placemark = placemarks[0];
+        NSString *address = [NSString stringWithFormat:@"%@, %@", placemark.addressDictionary[@"FormattedAddressLines"][0], placemark.addressDictionary[@"FormattedAddressLines"][1]];
+        //pass the address string along with the actual cllocation object to our map view so we can update accordingaly
+        NSDictionary *locationDictionary = @{@"address": address, @"location": self.userLocation};
+        //send our signal so our map view can know to update itself
+        [(RACSubject *)self.updatedUserLocationSignal sendNext:locationDictionary];
+    }];
     
     //query foursquare for nearby bar list whenever our location updates
     [self getBarsForLocation:self.userLocation];

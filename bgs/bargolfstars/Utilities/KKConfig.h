@@ -48,6 +48,7 @@ extern NSString *const kMenuShouldCloseMapViewNotification;
 extern NSString *const kScrollViewOffsetDidChangeForParallax;
 extern NSString *const kBarGolfShowBarsNotification;
 extern NSString *const kBarGolfShowTaxisNotification;
+extern NSString *const kBarGolfHideUserAddressBarNotification;
 
 
 #pragma mark - Installation Class

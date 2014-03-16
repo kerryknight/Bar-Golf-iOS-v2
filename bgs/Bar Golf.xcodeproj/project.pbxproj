@@ -80,6 +80,7 @@
 		DEE8B4E218D153C100E80570 /* Foursquare2+RACExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE8B4E118D153C100E80570 /* Foursquare2+RACExtensions.m */; };
 		DEE8B4E518D1552000E80570 /* Foursquare2RACCallbacks.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE8B4E418D1552000E80570 /* Foursquare2RACCallbacks.m */; };
 		DEE8B4EF18D1664100E80570 /* FSVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE8B4EE18D1664100E80570 /* FSVenue.m */; };
+		DEF24ED818D6057C00B2985A /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF24ED718D6057C00B2985A /* WildcardGestureRecognizer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -215,6 +216,8 @@
 		DEE8B4E418D1552000E80570 /* Foursquare2RACCallbacks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Foursquare2RACCallbacks.m; path = Fourquare/Foursquare2RACCallbacks.m; sourceTree = "<group>"; };
 		DEE8B4ED18D1664100E80570 /* FSVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSVenue.h; path = Fourquare/Models/FSVenue.h; sourceTree = "<group>"; };
 		DEE8B4EE18D1664100E80570 /* FSVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSVenue.m; path = Fourquare/Models/FSVenue.m; sourceTree = "<group>"; };
+		DEF24ED618D6057C00B2985A /* WildcardGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildcardGestureRecognizer.h; sourceTree = "<group>"; };
+		DEF24ED718D6057C00B2985A /* WildcardGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildcardGestureRecognizer.m; sourceTree = "<group>"; };
 		F172BBDD0FFB49A6A15EA00F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -787,6 +790,8 @@
 		DEBC217418CB7C9200276C3E /* Map View */ = {
 			isa = PBXGroup;
 			children = (
+				DEF24ED618D6057C00B2985A /* WildcardGestureRecognizer.h */,
+				DEF24ED718D6057C00B2985A /* WildcardGestureRecognizer.m */,
 				DE98379618CAAB5000BBC926 /* KKBarListMapViewController.h */,
 				DE98379718CAAB5000BBC926 /* KKBarListMapViewController.m */,
 				DE98379818CAAB5000BBC926 /* KKBarListMapViewController.xib */,
@@ -1142,6 +1147,7 @@
 				DE0596141895C0E500892F24 /* KKUtility.m in Sources */,
 				DEE2EEA91891F05300FC2991 /* KKMenuViewController.m in Sources */,
 				DE98378918CAA03200BBC926 /* BarAnnotation.m in Sources */,
+				DEF24ED818D6057C00B2985A /* WildcardGestureRecognizer.m in Sources */,
 				DEDA63A418C81CCB00997763 /* KKWelcomeViewController.m in Sources */,
 				DEDA63A618C81CCB00997763 /* KKLoginViewModel.m in Sources */,
 				DEDA63A218C81CCB00997763 /* KKSignUpViewController.m in Sources */,
@@ -1387,10 +1393,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/knight/Desktop/Kerry_Apps/Bar-Golf-iOS-v2/bargolfstars",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bargolfstars/Bar Golf-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1471,10 +1474,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/knight/Desktop/Kerry_Apps/Bar-Golf-iOS-v2/bargolfstars",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bargolfstars/Bar Golf-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (

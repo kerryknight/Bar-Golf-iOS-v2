@@ -136,9 +136,7 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
 
 - (void)pushInNewViewController:(UIViewController *)vc withTitle:(NSString *)title {
     self.toolbarPullDownController.frontController = vc;
-    
     [self.navController setViewControllers:@[self.toolbarPullDownController]];
-//    self.navController.titleLabel.text = title;
     [self.drawer replaceCenterViewControllerWithViewController:self.navController];
 }
 
@@ -181,7 +179,7 @@ static NSString *const kMenuViewControllerCellReuseId = @"KKMenuCell";
 - (void)configureMapViewPullDownController {
     self.mapViewPullDownController.backgroundView.backgroundColor = kMedGray;
     [(MBPullDownControllerBackgroundView *)self.mapViewPullDownController.backgroundView setDropShadowVisible:NO];
-    self.mapViewPullDownController.closedTopOffset += 130.f;
+    self.mapViewPullDownController.closedTopOffset += 190.f;
     self.mapViewPullDownController.openBottomOffset = 100.f;//amount of top view controller left at bottom when open
     //set distances to drage before opening/closing automatically kicks in
     self.mapViewPullDownController.openDragOffset = 45.f;

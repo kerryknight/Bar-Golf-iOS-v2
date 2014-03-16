@@ -12,6 +12,9 @@
 
 @interface KKNavigationController ()
 @property (strong, nonatomic) UILabel *titleLabel;
+@property (strong, nonatomic) UIView *dropdown;
+@property (assign, nonatomic) BOOL dropdownIsVisible;
+@property (strong, nonatomic) UILabel *addressLabel;
 @end
 
 @implementation KKNavigationController
@@ -28,6 +31,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideUserAddressBar) name:kBarGolfHideUserAddressBarNotification object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -43,9 +52,76 @@
 }
 
 #pragma mark - Public Methods
-
 - (void)setTitleLabelText:(NSString *)title {
     self.titleLabel.text = title;
+}
+
+- (void)showUserAddressBarWithAddress:(NSString *)address {
+    //create the user's current address label dropdown view
+    self.dropdown = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    self.dropdown.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    self.dropdown.backgroundColor = kLtGreen;
+    
+    //add the labels to the view
+    UILabel *appearToBeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.view.frame.size.width, 20)];
+    appearToBeLabel.textColor = [UIColor whiteColor];
+    appearToBeLabel.backgroundColor = [UIColor clearColor];
+    appearToBeLabel.font = [UIFont fontWithName:kHelveticaMedium size:12.0f];
+    [appearToBeLabel setTextAlignment:NSTextAlignmentCenter];
+    [appearToBeLabel setContentMode:UIViewContentModeCenter];
+    appearToBeLabel.text = @"You appear to be near:";
+    
+    self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 20)];
+    self.addressLabel.textColor = [UIColor whiteColor];
+    self.addressLabel.backgroundColor = [UIColor clearColor];
+    self.addressLabel.font = [UIFont fontWithName:kHelveticaLight size:12.0f];
+    [self.addressLabel setTextAlignment:NSTextAlignmentCenter];
+    [self.addressLabel setContentMode:UIViewContentModeCenter];
+    //update the address
+    self.addressLabel.text = address;
+    
+    [self.dropdown addSubview:appearToBeLabel];
+    [self.dropdown addSubview:self.addressLabel];
+    
+    [self.navigationBar insertSubview:self.dropdown atIndex:0];
+    
+    //animate in if not showing
+    if (!self.dropdownIsVisible) {
+        CGRect frame = self.dropdown.frame;
+        frame.origin.y = 0.;
+        self.dropdown.hidden = NO;
+        self.dropdown.frame = frame;
+        
+        @weakify(self)
+        [UIView animateWithDuration:0.25 animations:^{
+            @strongify(self)
+            CGRect frame = self.dropdown.frame;
+            frame.origin.y = self.navigationBar.frame.size.height;
+            self.dropdown.frame = frame;
+        } completion:^(BOOL finished) {
+            @strongify(self)
+            self.dropdownIsVisible = !self.dropdownIsVisible;
+        }];
+    }
+}
+
+- (void)hideUserAddressBar {
+    CGRect frame = self.dropdown.frame;
+    frame.origin.y = self.navigationBar.frame.size.height;
+    self.dropdown.frame = frame;
+    
+    @weakify(self)
+    [UIView animateWithDuration:0.25 animations:^{
+        @strongify(self)
+        CGRect frame = self.dropdown.frame;
+        frame.origin.y = 0.;
+        self.dropdown.frame = frame;
+    } completion:^(BOOL finished) {
+        @strongify(self)
+        self.dropdownIsVisible = !self.dropdownIsVisible;
+        self.dropdown.hidden = YES;
+        [self.dropdown removeFromSuperview];
+    }];
 }
 
 #pragma mark - Private Methods
