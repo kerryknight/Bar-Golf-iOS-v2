@@ -25,6 +25,8 @@ To Do
         -   also includes a table view header search bar for searching records
     -   note, the RW tut on Parse w/core data uses AFNetworking and Parse REST API, not it's SDK so may not use core data for anything other than storing default rules locally?
 -   make the pull down controller have a slight parallax on the background view controller like map on foursquare
+-   add a search bar for finding bars
+-   add results by foursquare logo
 
 
 Issues

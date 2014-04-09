@@ -17,6 +17,7 @@
 @property (strong, nonatomic, readwrite) RACSignal *updatedBarListSignal;
 @property (strong, nonatomic, readwrite) RACSignal *updatedUserLocationSignal;
 @property (strong, nonatomic, readwrite) RACSignal *sendErrorSignal;
+@property (copy, nonatomic, readwrite) NSArray *barList;
 @end
 
 @implementation KKBarListAndMapViewModel
@@ -66,6 +67,13 @@
     return _locationManager;
 }
 
+- (NSArray *)barList {
+    if (!_barList) {
+        _barList = [NSArray new];
+    }
+    return _barList;
+}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -78,6 +86,7 @@
 }
 
 - (void)getBarsForLocation:(CLLocation *)location {
+    @weakify(self)
     // Use Foursquare2 library and map results to convert into an array of Mantle objects
     [[[Foursquare2 rac_queryFourquareForBarsNearLocation:location forSearchTerm:nil]
     map:^id(NSDictionary *json) {
@@ -89,8 +98,11 @@
             return [MTLJSONAdapter modelOfClass:[FSVenue class] fromJSONDictionary:item error:nil];
         }] array];
     }] subscribeNext:^(NSArray *barList) {
+        @strongify(self)
         //send our signal so our map view can know to update itself
         [(RACSubject *)self.updatedBarListSignal sendNext:barList];
+        
+        self.barList = barList;
         
     } error:^(NSError *error) {
         DLogRed(@"error: %@", error);

@@ -10,6 +10,12 @@
 
 @implementation FSVenue
 
+#define METERS_TO_FEET  3.2808399
+#define METERS_TO_MILES 0.000621371192
+#define METERS_CUTOFF   1000
+#define FEET_CUTOFF     3281
+#define FEET_IN_MILES   5280
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{@"venueId": @"id",
              @"title": @"name",
@@ -29,9 +35,6 @@
              @"totalUsers": @"stats.usersCount",
              @"usersHereNow": @"hereNow.count",
              @"country": @"location.cc",
-             @"country": @"location.cc",
-             @"country": @"location.cc",
-             @"country": @"location.cc",
              @"imageURLSmall": @"photo.standardEmailPhotoUrl"};
 }
 
@@ -44,6 +47,36 @@
 
 + (NSValueTransformer *)urlJSONTransformer {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
+- (NSString *)convertDistanceToString {
+    BOOL isMetric = [[[NSLocale currentLocale] objectForKey:NSLocaleUsesMetricSystem] boolValue];
+    
+    NSString *format;
+    double distanceForConversion = self.distance;
+    
+    if (isMetric) {
+        if (distanceForConversion < METERS_CUTOFF) {
+            format = @"%@m away";
+        } else {
+            format = @"%@km away";
+            distanceForConversion = distanceForConversion / 1000;
+        }
+    } else {
+        distanceForConversion = distanceForConversion * METERS_TO_FEET;
+        if (distanceForConversion < FEET_CUTOFF) {
+            format = @"%@ft away";
+        } else {
+            format = @"%@mi away";
+            distanceForConversion = distanceForConversion / FEET_IN_MILES;
+        }
+    }
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setLocale:[NSLocale currentLocale]];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [numberFormatter setMaximumFractionDigits:1];
+    return [NSString stringWithFormat:format, [numberFormatter stringFromNumber:[NSNumber numberWithDouble:distanceForConversion]]];
 }
 
 

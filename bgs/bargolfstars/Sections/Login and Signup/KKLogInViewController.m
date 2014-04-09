@@ -128,7 +128,7 @@
     dispatch_async(dispatch_get_main_queue(), ^(void) {
         @strongify(self)
         //show the spinner
-        MRProgressOverlayView *spinnerView = [MRProgressOverlayView showOverlayAddedTo:self.view title:NSLocalizedString(@"Signing up...", Nil) mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+        MRProgressOverlayView *spinnerView = [MRProgressOverlayView showOverlayAddedTo:self.view title:NSLocalizedString(@"Logging in...", Nil) mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         [spinnerView setTintColor:kLtGreen];
     });
     
@@ -168,7 +168,7 @@
     dispatch_async(dispatch_get_main_queue(), ^(void) {
         @strongify(self)
         //show the spinner
-        MRProgressOverlayView *spinnerView = [MRProgressOverlayView showOverlayAddedTo:self.view title:NSLocalizedString(@"Signing up...", Nil) mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+        MRProgressOverlayView *spinnerView = [MRProgressOverlayView showOverlayAddedTo:self.view title:NSLocalizedString(@"Logging in...", Nil) mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         [spinnerView setTintColor:kLtGreen];
     });
     

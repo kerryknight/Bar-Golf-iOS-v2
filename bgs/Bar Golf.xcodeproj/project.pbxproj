@@ -25,7 +25,6 @@
 		DE85B32C18B1735D00040A9E /* PFFile+RACExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DE85B32B18B1735D00040A9E /* PFFile+RACExtensions.m */; };
 		DE8F39A3187882D3007D3942 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE8F39A2187882D3007D3942 /* Crashlytics.framework */; };
 		DE98378718CAA03200BBC926 /* ReverseGeocoding.m in Sources */ = {isa = PBXBuildFile; fileRef = DE98378118CAA03200BBC926 /* ReverseGeocoding.m */; };
-		DE98378818CAA03200BBC926 /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = DE98378318CAA03200BBC926 /* Bar.m */; };
 		DE98378918CAA03200BBC926 /* BarAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE98378518CAA03200BBC926 /* BarAnnotation.m */; };
 		DE98379418CAAAA600BBC926 /* KKBarListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE98379118CAAAA600BBC926 /* KKBarListViewController.m */; };
 		DE98379518CAAAA600BBC926 /* KKBarListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE98379218CAAAA600BBC926 /* KKBarListViewController.xib */; };
@@ -61,6 +60,10 @@
 		DEB1FFE818C965BD0071DCF7 /* KKMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEB1FFE718C965BD0071DCF7 /* KKMenuViewController.xib */; };
 		DEB1FFEF18C976E20071DCF7 /* ICSDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB1FFEC18C976E20071DCF7 /* ICSDrawerController.m */; };
 		DEB1FFF018C976E30071DCF7 /* ICSDropShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB1FFEE18C976E20071DCF7 /* ICSDropShadowView.m */; };
+		DEB6836118F4D3A6006688F8 /* KKBarAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB6836018F4D3A6006688F8 /* KKBarAnnotation.m */; };
+		DEB6836B18F4D7C7006688F8 /* KKBarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB6836918F4D7C7006688F8 /* KKBarDetailViewController.m */; };
+		DEB6836C18F4D7C7006688F8 /* KKBarDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEB6836A18F4D7C7006688F8 /* KKBarDetailViewController.xib */; };
+		DEB6836F18F4DBE1006688F8 /* KKBarDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB6836E18F4DBE1006688F8 /* KKBarDetailViewModel.m */; };
 		DEBC217F18CBCB4200276C3E /* KKParallaxSignalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBC217E18CBCB4200276C3E /* KKParallaxSignalViewModel.m */; };
 		DEBC218218CBCDD100276C3E /* KKMyScorecardViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBC218118CBCDD100276C3E /* KKMyScorecardViewModel.m */; };
 		DED1DF7D18C77BD200DB9088 /* UIImage+Coloring.m in Sources */ = {isa = PBXBuildFile; fileRef = DED1DF7C18C77BD200DB9088 /* UIImage+Coloring.m */; };
@@ -119,8 +122,6 @@
 		DE8F39A2187882D3007D3942 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		DE98378018CAA03200BBC926 /* ReverseGeocoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReverseGeocoding.h; sourceTree = "<group>"; };
 		DE98378118CAA03200BBC926 /* ReverseGeocoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReverseGeocoding.m; sourceTree = "<group>"; };
-		DE98378218CAA03200BBC926 /* Bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bar.h; sourceTree = "<group>"; };
-		DE98378318CAA03200BBC926 /* Bar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bar.m; sourceTree = "<group>"; };
 		DE98378418CAA03200BBC926 /* BarAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarAnnotation.h; sourceTree = "<group>"; };
 		DE98378518CAA03200BBC926 /* BarAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarAnnotation.m; sourceTree = "<group>"; };
 		DE98379018CAAAA600BBC926 /* KKBarListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKBarListViewController.h; sourceTree = "<group>"; };
@@ -180,6 +181,13 @@
 		DEB1FFEC18C976E20071DCF7 /* ICSDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSDrawerController.m; sourceTree = "<group>"; };
 		DEB1FFED18C976E20071DCF7 /* ICSDropShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSDropShadowView.h; sourceTree = "<group>"; };
 		DEB1FFEE18C976E20071DCF7 /* ICSDropShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSDropShadowView.m; sourceTree = "<group>"; };
+		DEB6835F18F4D3A6006688F8 /* KKBarAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKBarAnnotation.h; sourceTree = "<group>"; };
+		DEB6836018F4D3A6006688F8 /* KKBarAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKBarAnnotation.m; sourceTree = "<group>"; };
+		DEB6836818F4D7C7006688F8 /* KKBarDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKBarDetailViewController.h; sourceTree = "<group>"; };
+		DEB6836918F4D7C7006688F8 /* KKBarDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKBarDetailViewController.m; sourceTree = "<group>"; };
+		DEB6836A18F4D7C7006688F8 /* KKBarDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKBarDetailViewController.xib; sourceTree = "<group>"; };
+		DEB6836D18F4DBE1006688F8 /* KKBarDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKBarDetailViewModel.h; sourceTree = "<group>"; };
+		DEB6836E18F4DBE1006688F8 /* KKBarDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKBarDetailViewModel.m; sourceTree = "<group>"; };
 		DEBC217D18CBCB4200276C3E /* KKParallaxSignalViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKParallaxSignalViewModel.h; sourceTree = "<group>"; };
 		DEBC217E18CBCB4200276C3E /* KKParallaxSignalViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKParallaxSignalViewModel.m; sourceTree = "<group>"; };
 		DEBC218018CBCDD100276C3E /* KKMyScorecardViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMyScorecardViewModel.h; sourceTree = "<group>"; };
@@ -350,8 +358,6 @@
 			children = (
 				DE98378018CAA03200BBC926 /* ReverseGeocoding.h */,
 				DE98378118CAA03200BBC926 /* ReverseGeocoding.m */,
-				DE98378218CAA03200BBC926 /* Bar.h */,
-				DE98378318CAA03200BBC926 /* Bar.m */,
 				DE98378418CAA03200BBC926 /* BarAnnotation.h */,
 				DE98378518CAA03200BBC926 /* BarAnnotation.m */,
 			);
@@ -369,6 +375,7 @@
 		DE98378F18CAAAA600BBC926 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DEB6836218F4D74A006688F8 /* Detail View */,
 				DEBC217418CB7C9200276C3E /* Map View */,
 				DEBC217318CB7C8B00276C3E /* List View */,
 			);
@@ -380,6 +387,10 @@
 			children = (
 				DE9837C218CAB2EF00BBC926 /* KKBarListAndMapViewModel.h */,
 				DE9837C318CAB2EF00BBC926 /* KKBarListAndMapViewModel.m */,
+				DEB6835F18F4D3A6006688F8 /* KKBarAnnotation.h */,
+				DEB6836018F4D3A6006688F8 /* KKBarAnnotation.m */,
+				DEB6836D18F4DBE1006688F8 /* KKBarDetailViewModel.h */,
+				DEB6836E18F4DBE1006688F8 /* KKBarDetailViewModel.m */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -777,6 +788,16 @@
 			path = ICSDrawerController;
 			sourceTree = "<group>";
 		};
+		DEB6836218F4D74A006688F8 /* Detail View */ = {
+			isa = PBXGroup;
+			children = (
+				DEB6836818F4D7C7006688F8 /* KKBarDetailViewController.h */,
+				DEB6836918F4D7C7006688F8 /* KKBarDetailViewController.m */,
+				DEB6836A18F4D7C7006688F8 /* KKBarDetailViewController.xib */,
+			);
+			name = "Detail View";
+			sourceTree = "<group>";
+		};
 		DEBC217318CB7C8B00276C3E /* List View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1051,6 +1072,7 @@
 				DE98379A18CAAB5000BBC926 /* KKBarListMapViewController.xib in Resources */,
 				DEDA63A118C81CCB00997763 /* KKLoginViewController.xib in Resources */,
 				DE9837C118CAB2C200BBC926 /* KKMyScorecardViewController.xib in Resources */,
+				DEB6836C18F4D7C7006688F8 /* KKBarDetailViewController.xib in Resources */,
 				DEB1FFE818C965BD0071DCF7 /* KKMenuViewController.xib in Resources */,
 				DEAB468518A80DAC008FB73D /* NOTES.text in Resources */,
 				DEDA63A318C81CCB00997763 /* KKSignUpViewController.xib in Resources */,
@@ -1152,8 +1174,8 @@
 				DEDA63A618C81CCB00997763 /* KKLoginViewModel.m in Sources */,
 				DEDA63A218C81CCB00997763 /* KKSignUpViewController.m in Sources */,
 				DEBC218218CBCDD100276C3E /* KKMyScorecardViewModel.m in Sources */,
-				DE98378818CAA03200BBC926 /* Bar.m in Sources */,
 				DEAB466118A5FC79008FB73D /* UIImage+ResizeAdditions.m in Sources */,
+				DEB6836118F4D3A6006688F8 /* KKBarAnnotation.m in Sources */,
 				DE9837BE18CAB2C200BBC926 /* KKMyPlayerProfileViewController.m in Sources */,
 				DE85B32918B14A8800040A9E /* PFRACCallbacks+BGS_Extensions.m in Sources */,
 				DEB1FFEF18C976E20071DCF7 /* ICSDrawerController.m in Sources */,
@@ -1175,6 +1197,8 @@
 				DEBC217F18CBCB4200276C3E /* KKParallaxSignalViewModel.m in Sources */,
 				DED1DF7D18C77BD200DB9088 /* UIImage+Coloring.m in Sources */,
 				DEAB467318A682C6008FB73D /* STPCardTransition.m in Sources */,
+				DEB6836F18F4DBE1006688F8 /* KKBarDetailViewModel.m in Sources */,
+				DEB6836B18F4D7C7006688F8 /* KKBarDetailViewController.m in Sources */,
 				DEAF54EA18786C990019F7FF /* KKAppDelegate.m in Sources */,
 				DEAB466218A5FC79008FB73D /* UIImage+RoundedCornerAdditions.m in Sources */,
 				DEAB465E18A5FC79008FB73D /* NSString+EmailAdditions.m in Sources */,

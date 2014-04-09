@@ -19,7 +19,7 @@
 @property (copy, nonatomic) NSString *subtitle;//actually the FS 'address' but renamed for MKAnnotation
 @property (copy, nonatomic) NSString *latitude;
 @property (copy, nonatomic) NSString *longitude;
-@property (copy, nonatomic) NSNumber *distance;
+@property (assign, nonatomic) int distance;
 @property (copy, nonatomic) NSString *zip;
 @property (copy, nonatomic) NSString *cc;
 @property (copy, nonatomic) NSString *city;
@@ -29,6 +29,7 @@
 @property (copy, nonatomic) NSNumber *totalCheckins;
 @property (copy, nonatomic) NSNumber *totalUsers;
 @property (copy, nonatomic) NSNumber *usersHereNow;
-@property (nonatomic, assign) CLLocationCoordinate2D coordinate;
+@property (assign, nonatomic) CLLocationCoordinate2D coordinate;
 
+- (NSString *)convertDistanceToString;
 @end

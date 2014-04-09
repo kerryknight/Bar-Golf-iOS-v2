@@ -162,8 +162,6 @@
     [self.navigationBar addSubview:self.titleLabel];
     
     //add the right refresh button
-    
-    
     [self addRefreshBarButton];
 }
 

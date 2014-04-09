@@ -45,6 +45,7 @@ static NSString *const kScorecardViewControllerCellReuseId = @"KKScorecardCell";
     //casting to it for forward and backward navigation compatibility
     KKNavigationController *navController = (KKNavigationController *)self.navigationController;
     [navController setTitleLabelText:@"Find a Bar"];
+    [navController shouldShowRefreshButton:YES];
     
     //wait until the view is about to appear to configure the view model so that
     //we don't prematurely display the "Bar Golf Wants to Use Your Location"
@@ -91,6 +92,9 @@ static NSString *const kScorecardViewControllerCellReuseId = @"KKScorecardCell";
         //error logging in, show error message
         NSString *message = [NSString stringWithFormat:NSLocalizedString(@"Error: %@", nil), [error localizedDescription]];
         [KKStatusBarNotification showWithStatus:message dismissAfter:2.0 customStyleName:KKStatusBarError];
+        
+        //hide any spinner
+        [KKAD hideSpinner];
     }];
     
     //bind our view model to our tableview content offset so we can add a

@@ -14,6 +14,7 @@
 @property (strong, nonatomic, readonly) RACSignal *updatedUserLocationSignal;
 @property (strong, nonatomic, readonly) RACSignal *updatedBarListSignal;
 @property (strong, nonatomic, readonly) RACSignal *sendErrorSignal;
+@property (copy, nonatomic, readonly) NSArray *barList;
 
 + (KKBarListAndMapViewModel *)sharedViewModel;
 - (void)getUserLocation;

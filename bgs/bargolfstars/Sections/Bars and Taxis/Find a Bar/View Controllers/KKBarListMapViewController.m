@@ -9,11 +9,16 @@
 #import "KKBarListMapViewController.h"
 #import "WildcardGestureRecognizer.h"
 #import "KKNavigationController.h"
+#import "FSVenue.h"
+#import "KKBarAnnotation.h"
+#import "KKBarDetailViewController.h"
 
 @interface KKBarListMapViewController ()
 @property (assign, nonatomic) float deltaLatFor1px;
 @property (strong, nonatomic) CLLocation *originalLocation;
 @property (nonatomic, strong) WildcardGestureRecognizer *tapInterceptor;
+@property (assign, nonatomic) BOOL viewHasBeenConfigured;
+@property (assign, nonatomic) BOOL shouldRefreshMap;
 @end
 
 @implementation KKBarListMapViewController
@@ -29,19 +34,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.shouldRefreshMap = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    //wait until the view is about to appear to configure the view model so that
-    //we don't prematurely display the "Bar Golf Wants to Use Your Location"
-    //alert to the user when the app launches for the first time; this makes
-    //it a more proactive thing on the user and a better experience
-    [self configureViewModel];
-    [self configureMap];
+    if (!self.viewHasBeenConfigured) {
+        //wait until the view is about to appear to configure the view model so that
+        //we don't prematurely display the "Bar Golf Wants to Use Your Location"
+        //alert to the user when the app launches for the first time; this makes
+        //it a more proactive thing on the user and a better experience
+        [self configureViewModel];
+        [self configureMap];
+        
+        //since we don't configure until the view is about to appear, set a flag
+        //so we'll know to only configure once should we pop backwards in view hierarchy
+        self.viewHasBeenConfigured = YES;
+    }
     
+    [self hideMapViewAnnotationCallouts];
+    
+    //add our notifications back each time we come into view
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mapOffsetDidChange:) name:kScrollViewOffsetDidChangeForParallax object:nil];
+    
+    //add observer for refresh notification we might get from the our custom nav bar
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(allowMapRefresh) name:kBarGolfRefreshButtonNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -50,15 +68,13 @@
     //seems to be a bit unreliable in doing so; need to double post here and on list view as this only
     //gets called when the map view is closed
     [[NSNotificationCenter defaultCenter] postNotificationName:kBarGolfHideUserAddressBarNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Public Methods
@@ -70,18 +86,39 @@
     //center our map on the user's location anytime it updates
     [[[KKBarListAndMapViewModel sharedViewModel].updatedUserLocationSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(NSDictionary *location) {
         @strongify(self)
-        //animate our user's location view in from the nav bar
-        KKNavigationController *navController = (KKNavigationController *)self.pullDownController.navigationController;
-        [navController showUserAddressBarWithAddress:location[@"address"]];
-        
-        //then center our map on the user's location as well
-        [self centerMapOnUserLocation:(CLLocation *)location[@"location"] withAnimation:NO];
+        if (self.shouldRefreshMap) {
+            //animate our user's location view in from the nav bar
+            KKNavigationController *navController = (KKNavigationController *)self.pullDownController.navigationController;
+            [navController showUserAddressBarWithAddress:location[@"address"]];
+            
+            //then center our map on the user's location as well
+            [self centerMapOnUserLocation:(CLLocation *)location[@"location"] withAnimation:NO];
+        }
     }];
     
     //update our map's dropped pins anytime we receive a new list of bars
     [[[KKBarListAndMapViewModel sharedViewModel].updatedBarListSignal deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(NSArray *bars) {
-        [self addMapAnnotationsForBarList:bars];
+        @strongify(self)
+        if (self.shouldRefreshMap) {
+            [self addMapAnnotationsForBarList:bars];
+            
+            //set our flag to create a kind of caching mechanism; we'll only
+            //override it in viewDidLoad or by hitting the refresh button
+            self.shouldRefreshMap = NO;
+        }
     }];
+}
+
+- (void)allowMapRefresh {
+    self.shouldRefreshMap = YES;
+}
+
+- (void)hideMapViewAnnotationCallouts {
+    for (id currentAnnotation in self.mapView.annotations) {
+        if ([currentAnnotation isKindOfClass:[KKBarAnnotation class]]) {
+            [self.mapView deselectAnnotation:currentAnnotation animated:YES];
+        } 
+    }
 }
 
 - (void)mapOffsetDidChange:(NSNotification *)notification {
@@ -152,7 +189,9 @@
     //bind to the view model's userLocation which will update our map
     [RACObserve([KKBarListAndMapViewModel sharedViewModel], userLocation) subscribeNext:^(CLLocation *location) {
         @strongify(self)
-        [self centerMapOnUserLocation:location withAnimation:NO];
+        if (self.shouldRefreshMap) {
+            [self centerMapOnUserLocation:location withAnimation:NO];
+        }
     }];
     
     //only allow scrolling/zooming if our map view is open fully
@@ -250,7 +289,17 @@
 
 - (void)addMapAnnotationsForBarList:(NSArray *)list {
     [self.mapView removeAnnotations:self.mapView.annotations];
-    [self.mapView addAnnotations:list];
+    
+    //add each annotation one by one after setting its index
+    for (FSVenue *venue in list) {
+        KKBarAnnotation *annotation = [[KKBarAnnotation alloc] init];
+        [annotation setTitle:venue.title];
+        [annotation setSubtitle:venue.subtitle];
+        [annotation setIndex:(int)[list indexOfObject:venue]];
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([venue.latitude doubleValue], [venue.longitude doubleValue]);
+        [annotation setCoordinate:coordinate];
+        [self.mapView addAnnotation:annotation];
+    }
 }
 
 #pragma mark - MKMapViewDelegate
@@ -272,33 +321,22 @@
         annotationView.annotation = annotation;
     }
     
-//    StoreAnnotation *ann = (StoreAnnotation *)annotation;
-    
-//    BOOL isOpen = ann.isOpen;
-    
-//    [annotationView setImage:[UIImage imageNamed: isOpen ? @"pinOn" : @"pinOff"]];
-    
-//    UIImage *leftImage = [UIImage circleImageWithSize:32 color: isOpen ? self.navigationController.view.tintColor : [UIColor lightGrayColor]];
-//    UIImageView *leftIconView = [[UIImageView alloc] initWithImage:leftImage];
-    
+    UIImage *leftImage = [UIImage imageNamed:@"bgsLogoSmall"];
+    UIImageView *leftIconView = [[UIImageView alloc] initWithImage:leftImage];
+    leftIconView.frame = CGRectMake(0, 0, 80, 80);
     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-//    annotationView.leftCalloutAccessoryView = leftIconView;
+    annotationView.leftCalloutAccessoryView = leftIconView;
     
     return annotationView;
 }
 
 - (void)mapView:(MKMapView *)mv annotationView:(MKAnnotationView *)pin calloutAccessoryControlTapped:(UIControl *)control {
-    DLogOrange(@"");
-//    __weak typeof(self) weakSelf = self;
-//    [self closeMapViewWithCompletion:^{
-//        
-//        typeof(self) strongSelf = weakSelf;
-//        StoreAnnotation *annotation = (StoreAnnotation *)pin.annotation;
-//        Store *store = [self.stores objectAtIndex:annotation.index];
-//        DetailViewController *detailViewController = [[DetailViewController alloc] init];
-//        [detailViewController setStore:store];
-//        [strongSelf.navigationController pushViewController:detailViewController animated:YES];
-//        
-//    }];
+    KKBarAnnotation *annotation = (KKBarAnnotation *)pin.annotation;
+    int indexForVenue = annotation.index;
+    NSArray *tempArray = (NSArray *)[KKBarListAndMapViewModel sharedViewModel].barList;
+    FSVenue *bar = (FSVenue *)[tempArray objectAtIndex:indexForVenue];
+    KKBarDetailViewController *detailViewController = [[KKBarDetailViewController alloc] init];
+    detailViewController.viewModel.bar = bar;
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 @end
